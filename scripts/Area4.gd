@@ -22,6 +22,3 @@ func on_interact(object_number):
     
 func on_use(object_number):
     pass
-
-func reset():
-    pass
