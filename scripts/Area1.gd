@@ -2,11 +2,14 @@ extends Spatial
 
 onready var object_1 = $Object1
 onready var object_2 = $Object2
+onready var object_3 = $Object3
 
 func _ready():
     visible = false
 
 func on_enter():
+    $ViewLight.visible = Global.lights_on
+    $ViewDark.visible = not Global.lights_on
     visible = true
     add_to_group("area")
     
@@ -22,6 +25,9 @@ func on_interact(object_number):
         object_2.object_number:
             get_tree().call_group("subtitles", "show_subtitles", "the door is locked", 2)
             yield(get_tree().create_timer(3), "timeout")
+        object_3.object_number:
+            get_tree().call_group("subtitles", "show_subtitles", "a lightswitch", 2)
+            yield(get_tree().create_timer(3), "timeout")
     
 func on_use(object_number):
     match object_number:
@@ -30,6 +36,11 @@ func on_use(object_number):
         object_2.object_number:
             get_tree().call_group("subtitles", "show_subtitles", "the door is locked", 2)
             yield(get_tree().create_timer(3), "timeout")
+        object_3.object_number:
+            Global.lights_on = not Global.lights_on
+            $ViewLight.visible = Global.lights_on
+            $ViewDark.visible = not Global.lights_on
+
 
 func reset():
     pass
