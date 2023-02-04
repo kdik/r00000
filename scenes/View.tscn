@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://images/area1/Panorama-1.jpg" type="Texture" id=1]
+[ext_resource path="res://images/area1/area_1_light_view.jpg" type="Texture" id=1]
 [ext_resource path="res://scripts/View.gd" type="Script" id=2]
 
 [sub_resource type="SpatialMaterial" id=2]

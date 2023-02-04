@@ -43,6 +43,8 @@ func on_use(object_number):
             $ViewDark.visible = true
             get_tree().call_group("subtitles", "show_subtitles", "the evil is unleashed", 2)
             yield(get_tree().create_timer(3), "timeout")
+            Global.ending = Global.EVIL
+            get_tree().call_group("main", "game_over")
         object_2.object_number:
             object_2.visible = false
             Global.lights_on = false
@@ -52,9 +54,7 @@ func on_use(object_number):
                 get_tree().call_group("subtitles", "show_subtitles", "I have no use for the battery I removed", 2)
                 yield(get_tree().create_timer(3), "timeout")
         object_3.object_number:
-            #get_tree().call_group("main", "switch_areas", "Area3")
-            Global.ending = Global.EVIL
-            get_tree().call_group("main", "game_over")
+            get_tree().call_group("main", "switch_areas", "Area3")
         object_4.object_number:
             get_tree().call_group("main", "switch_areas", "Area1")
 

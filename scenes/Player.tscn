@@ -359,7 +359,6 @@ cull_mask = 1048573
 script = ExtResource( 2 )
 
 [node name="Flashlight" type="SpotLight" parent="."]
-visible = false
 light_color = Color( 1, 0.807843, 0, 1 )
 light_energy = 10.0
 light_specular = 0.0
