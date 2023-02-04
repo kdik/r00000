@@ -4,7 +4,6 @@
 [ext_resource path="res://scripts/View.gd" type="Script" id=2]
 
 [sub_resource type="SpatialMaterial" id=2]
-flags_unshaded = true
 params_cull_mode = 1
 albedo_texture = ExtResource( 1 )
 

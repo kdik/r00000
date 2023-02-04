@@ -358,6 +358,15 @@ animations = [ {
 cull_mask = 1048573
 script = ExtResource( 2 )
 
+[node name="Flashlight" type="SpotLight" parent="."]
+visible = false
+light_color = Color( 1, 0.807843, 0, 1 )
+light_energy = 10.0
+light_specular = 0.0
+spot_range = 20.0
+spot_angle = 22.5
+script = ExtResource( 5 )
+
 [node name="Cursor" type="Node2D" parent="."]
 position = Vector2( 320, 240 )
 script = ExtResource( 4 )
@@ -373,11 +382,8 @@ position = Vector2( -212, 48 )
 frames = SubResource( 21 )
 frame = 19
 
-[node name="Flashlight" type="Node2D" parent="."]
-script = ExtResource( 5 )
-
-[node name="RightHand" type="AnimatedSprite" parent="Flashlight"]
-position = Vector2( 450, 375 )
+[node name="RightHand" type="AnimatedSprite" parent="Cursor"]
+position = Vector2( 130, 135 )
 frames = SubResource( 42 )
 frame = 45
 

@@ -8,6 +8,7 @@ func on_enter():
     add_to_group("area")
     
 func on_leave():
+    visible = false
     remove_from_group("area")
 
 func on_interact(object_number):

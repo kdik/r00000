@@ -142,8 +142,17 @@ object_number = 4
 [node name="Area3" type="Spatial" parent="Areas"]
 script = ExtResource( 17 )
 
+[node name="ViewLight" parent="Areas/Area3" instance=ExtResource( 8 )]
+
+[node name="ViewDark" parent="Areas/Area3" instance=ExtResource( 8 )]
+
 [node name="Area4" type="Spatial" parent="Areas"]
 script = ExtResource( 18 )
+
+[node name="ViewLight" parent="Areas/Area4" instance=ExtResource( 8 )]
+
+[node name="ViewDark" parent="Areas/Area4" instance=ExtResource( 8 )]
+skeleton = NodePath("../ViewLight")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 5 )
@@ -168,3 +177,8 @@ anims/fade_in = SubResource( 8 )
 anims/fade_out = SubResource( 9 )
 
 [node name="AudioPlayer" parent="." instance=ExtResource( 4 )]
+
+[node name="OmniLight" type="OmniLight" parent="."]
+light_specular = 0.0
+omni_range = 25.0
+omni_attenuation = 1e-05
