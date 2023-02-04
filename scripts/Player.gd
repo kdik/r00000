@@ -60,4 +60,6 @@ func _use():
         yield(get_tree().create_timer(2), "timeout")
         
 func _interact():
-    pass
+    if $CursorActive.visible:
+        get_tree().call_group("subtitles", "show_subtitles", "no way I'm going down there", 3)
+        yield(get_tree().create_timer(3), "timeout")
