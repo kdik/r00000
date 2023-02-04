@@ -49,3 +49,6 @@ func _use():
         
 func _interact():
     get_tree().call_group("area", "on_interact", object_in_sight_number)
+
+func has_flashlight():
+    return $Flashlight.own_flashlight

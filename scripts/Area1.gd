@@ -30,3 +30,6 @@ func on_use(object_number):
         object_2.object_number:
             get_tree().call_group("subtitles", "show_subtitles", "the door is locked", 2)
             yield(get_tree().create_timer(3), "timeout")
+
+func reset():
+    pass
