@@ -4,8 +4,13 @@ onready var current_area = $Areas/Area1
 
 func _ready():
     add_to_group("main")
+    get_tree().call_group("ui", "fade_in")
     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
     current_area.on_enter()
+    
+func _process(_delta):
+    if Input.is_action_just_pressed("ui_cancel"):
+        get_tree().quit()
 
 func switch_areas(next_area):
     print("Switching to " + next_area)
@@ -18,3 +23,10 @@ func switch_areas(next_area):
     yield(get_tree().create_timer(0.5), "timeout")
     get_tree().call_group("ui", "fade_in")
     yield(get_tree().create_timer(0.5), "timeout")
+
+func game_over():
+    get_tree().call_group("ui", "fade_out")
+    yield(get_tree().create_timer(1.5), "timeout")
+    get_tree().reload_current_scene()
+    Global.reset()
+    get_tree().change_scene("res://scenes/GameOver.tscn")

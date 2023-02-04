@@ -52,7 +52,8 @@ func on_use(object_number):
                 get_tree().call_group("subtitles", "show_subtitles", "I have no use for the battery I removed", 2)
                 yield(get_tree().create_timer(3), "timeout")
         object_3.object_number:
-            get_tree().call_group("main", "switch_areas", "Area3")
+            #get_tree().call_group("main", "switch_areas", "Area3")
+            get_tree().call_group("main", "game_over")
         object_4.object_number:
             get_tree().call_group("main", "switch_areas", "Area1")
 

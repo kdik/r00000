@@ -8,9 +8,7 @@ onready var hidden_detector_viewport = $HiddenDetectorViewport
 onready var hidden_detector_camera = $HiddenDetectorViewport/HiddenDetectorCamera
 
 func _process(_delta):
-    if Input.is_action_just_pressed("ui_cancel"):
-        get_tree().quit()
-    elif Input.is_action_pressed("ui_left"):
+    if Input.is_action_pressed("ui_left"):
         rotation_y += rotation_speed
         _update_rotation()
     elif Input.is_action_pressed("ui_right"):

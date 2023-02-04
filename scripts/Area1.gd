@@ -12,7 +12,7 @@ func on_enter():
     $ViewDark.visible = not Global.lights_on
     visible = true
     add_to_group("area")
-    
+
 func on_leave():
     visible = false
     remove_from_group("area")
