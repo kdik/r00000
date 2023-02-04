@@ -21,7 +21,6 @@ func reset():
     battery_count = 0
     actions_in_darkness = 0
     loops_completed = 0
-    ending = null
     
 func reset_single_loop():
     lights_on = true

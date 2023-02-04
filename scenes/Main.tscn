@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://images/area1/area_1_object_1.png" type="Texture" id=1]
 [ext_resource path="res://images/area1/area_1_light_view.jpg" type="Texture" id=2]
@@ -9,8 +9,8 @@
 [ext_resource path="res://scenes/Object.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/View.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Subtitles.tscn" type="PackedScene" id=9]
-[ext_resource path="res://images/area3/area_3_dark_view.JPG" type="Texture" id=10]
-[ext_resource path="res://images/area3/area_3_light_view_door_3_open.JPG" type="Texture" id=11]
+[ext_resource path="res://images/area3/area_3_dark_view.jpg" type="Texture" id=10]
+[ext_resource path="res://images/area3/area_3_light_view_door_3_open.jpg" type="Texture" id=11]
 [ext_resource path="res://scripts/Area1.gd" type="Script" id=12]
 [ext_resource path="res://images/area1/area_1_object_2.png" type="Texture" id=13]
 [ext_resource path="res://images/area2/area_2_light_view.jpg" type="Texture" id=14]
@@ -24,10 +24,9 @@
 [ext_resource path="res://images/area2/area_2_object_2.png" type="Texture" id=22]
 [ext_resource path="res://images/area2/area_2_object_3.png" type="Texture" id=23]
 [ext_resource path="res://images/area2/area_2_object_4.png" type="Texture" id=24]
-[ext_resource path="res://images/area3/area_3_dark_view_door_3_open.JPG" type="Texture" id=25]
-[ext_resource path="res://images/area3/area_3_dark_view_door_3_gate_3_open.JPG" type="Texture" id=26]
-[ext_resource path="res://images/area3/area_3_light_view.JPG" type="Texture" id=27]
-[ext_resource path="res://images/area3/area_3_light_view_door_3_gate_3_open.JPG" type="Texture" id=28]
+[ext_resource path="res://images/area3/area_3_dark_view_door_3_open.jpg" type="Texture" id=25]
+[ext_resource path="res://images/area3/area_3_light_view.jpg" type="Texture" id=27]
+[ext_resource path="res://images/area3/area_3_light_view_door_3_gate_3_open.jpg" type="Texture" id=28]
 [ext_resource path="res://images/area4/area_4_dark_view.jpg" type="Texture" id=29]
 [ext_resource path="res://images/area4/area_4_light_view_flashlight_door_3_open.jpg" type="Texture" id=30]
 [ext_resource path="res://images/area4/area_4_light_view.jpg" type="Texture" id=31]
@@ -129,9 +128,6 @@ texture = ExtResource( 10 )
 
 [node name="ViewDarkDoor3Open" parent="Areas/Area3" instance=ExtResource( 8 )]
 texture = ExtResource( 25 )
-
-[node name="ViewDarkDoor3Gate3Open" parent="Areas/Area3" instance=ExtResource( 8 )]
-texture = ExtResource( 26 )
 
 [node name="Object1" parent="Areas/Area3" instance=ExtResource( 7 )]
 texture = ExtResource( 36 )

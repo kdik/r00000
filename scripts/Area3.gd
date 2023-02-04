@@ -51,7 +51,6 @@ func on_use(object_number):
                 Global.loops_completed += 1
                 Global.reset_single_loop()
                 get_tree().call_group("main", "switch_areas", "Area1")
-            yield(get_tree().create_timer(3), "timeout")
     get_tree().call_group("player", "unlock_actions")
 
 func _update_view_visibility():
@@ -59,5 +58,4 @@ func _update_view_visibility():
     $ViewLightDoor3Open.visible = Global.lights_on and Global.door_3_open and not Global.gate_3_open
     $ViewLightDoor3Gate3Open.visible = Global.lights_on and Global.door_3_open and Global.gate_3_open
     $ViewDark.visible = not Global.lights_on and not Global.door_3_open and not Global.gate_3_open
-    $ViewDarkDoor3Open.visible = not Global.lights_on and Global.door_3_open and not Global.gate_3_open
-    $ViewDarkDoor3Gate3Open.visible = not Global.lights_on and Global.door_3_open and Global.gate_3_open
+    $ViewDarkDoor3Open.visible = not Global.lights_on and Global.door_3_open

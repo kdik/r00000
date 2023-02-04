@@ -384,7 +384,6 @@ texture = ExtResource( 3 )
 [node name="LeftHand" type="AnimatedSprite" parent="Cursor"]
 position = Vector2( -212, 48 )
 frames = SubResource( 21 )
-frame = 19
 
 [node name="RightHand" type="AnimatedSprite" parent="Cursor"]
 visible = false

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/area_3_light_view_door_3_open.JPG-a360579470a28032aa8e4725ce0970e6.stex"
+path="res://.import/area_3_light_view_door_3_gate_3_open.jpg-757fbd4dd92e3225199f14daf3d51d24.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/area3/area_3_light_view_door_3_open.JPG"
-dest_files=[ "res://.import/area_3_light_view_door_3_open.JPG-a360579470a28032aa8e4725ce0970e6.stex" ]
+source_file="res://images/area3/area_3_light_view_door_3_gate_3_open.jpg"
+dest_files=[ "res://.import/area_3_light_view_door_3_gate_3_open.jpg-757fbd4dd92e3225199f14daf3d51d24.stex" ]
 
 [params]
 

@@ -2,6 +2,8 @@ extends Node2D
 
 func _ready():
     add_to_group("crosshairs")
+    $Target/Active.visible = false
+    $Target/Inactive.visible = true
 
 func in_sight(object_number):
     if $Target/Inactive.visible and object_number > 0:
