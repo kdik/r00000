@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/panorama_area_1.png-4bd477b20312530a18ff6aa852679d49.s3tc.stex"
-path.etc2="res://.import/panorama_area_1.png-4bd477b20312530a18ff6aa852679d49.etc2.stex"
+path.s3tc="res://.import/Panorama-1.jpg-a6a9bb103d54f4ded6d5c2f2fc9e7cd2.s3tc.stex"
+path.etc2="res://.import/Panorama-1.jpg-a6a9bb103d54f4ded6d5c2f2fc9e7cd2.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://images/panorama_area_1.png"
-dest_files=[ "res://.import/panorama_area_1.png-4bd477b20312530a18ff6aa852679d49.s3tc.stex", "res://.import/panorama_area_1.png-4bd477b20312530a18ff6aa852679d49.etc2.stex" ]
+source_file="res://images/area1/Panorama-1.jpg"
+dest_files=[ "res://.import/Panorama-1.jpg-a6a9bb103d54f4ded6d5c2f2fc9e7cd2.s3tc.stex", "res://.import/Panorama-1.jpg-a6a9bb103d54f4ded6d5c2f2fc9e7cd2.etc2.stex" ]
 
 [params]
 

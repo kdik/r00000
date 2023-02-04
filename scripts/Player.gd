@@ -3,11 +3,9 @@ extends Camera
 var rotation_speed = PI / 48
 var rotation_x = 0
 var rotation_y = 0
+var object_in_sight_number
 onready var hidden_detector_viewport = $HiddenDetectorViewport
 onready var hidden_detector_camera = $HiddenDetectorViewport/HiddenDetectorCamera
-
-func _ready():
-    _update_cursor()
 
 func _process(_delta):
     if Input.is_action_just_pressed("ui_cancel"):
@@ -15,19 +13,15 @@ func _process(_delta):
     elif Input.is_action_pressed("ui_left"):
         rotation_y += rotation_speed
         _update_rotation()
-        _update_cursor()
     elif Input.is_action_pressed("ui_right"):
         rotation_y -= rotation_speed
         _update_rotation()
-        _update_cursor()
     elif Input.is_action_pressed("ui_up"):
         rotation_x += rotation_speed
         _update_rotation()
-        _update_cursor()
     elif Input.is_action_pressed("ui_down"):
         rotation_x -= rotation_speed
         _update_rotation()    
-        _update_cursor()
     elif Input.is_action_just_pressed("ui_accept"):
         _use()
     elif Input.is_action_just_pressed("ui_select"):
@@ -41,25 +35,17 @@ func _update_rotation():
     hidden_detector_camera.transform.basis = Basis()
     hidden_detector_camera.rotate_x(rotation_x)
     hidden_detector_camera.rotate_y(rotation_y)
+    _check_crosshairs()    
     
-func _update_cursor():
+func _check_crosshairs():
     var pixel_data = hidden_detector_viewport.get_texture().get_data()
     pixel_data.lock()
-    if pixel_data.get_pixel(320, 240).a > 0:
-        $CursorActive.visible = true
-        $CursorInactive.visible = false
-    else:
-        $CursorActive.visible = false
-        $CursorInactive.visible = true
+    object_in_sight_number = int(pixel_data.get_pixel(320, 240).a)
+    get_tree().call_group("crosshairs", "in_sight", object_in_sight_number)
     pixel_data.unlock()
 
 func _use():
-    if $CursorActive.visible:
-        get_tree().call_group("audio", "play", "Footsteps")
-        get_tree().call_group("ui", "fade_out_fade_in")
-        yield(get_tree().create_timer(2), "timeout")
+    get_tree().call_group("area", "on_use", object_in_sight_number)
         
 func _interact():
-    if $CursorActive.visible:
-        get_tree().call_group("subtitles", "show_subtitles", "no way I'm going down there", 3)
-        yield(get_tree().create_timer(3), "timeout")
+    get_tree().call_group("area", "on_interact", object_in_sight_number)
