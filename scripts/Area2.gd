@@ -66,8 +66,11 @@ func on_use(object_number):
     get_tree().call_group("player", "unlock_actions")
 
 func _update_view_visibility():
-    $ViewLight.visible = Global.lights_on
-    $ViewDark.visible = not Global.lights_on
+    $ViewLight.visible = Global.lights_on and not Global.door_3_open and not Global.gate_3_open
+    $ViewLightDoor3Open.visible = Global.lights_on and Global.door_3_open and not Global.gate_3_open
+    $ViewLightDoor3Gate3Open.visible = Global.lights_on and Global.door_3_open and Global.gate_3_open
+    $ViewDark.visible = not Global.lights_on and not Global.door_3_open
+    $ViewDarkDoor3Open.visible = not Global.lights_on and Global.door_3_open
     _update_object_visibility()
     
 func _update_object_visibility():
