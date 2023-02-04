@@ -11,6 +11,7 @@ var lights_on = true
 var actions_in_darkness = 0
 var door_3_open = false
 var gate_3_open = false
+var flashlight_on = false
 
 enum {ROOTS, EVIL, WIN}
 
@@ -27,3 +28,4 @@ func reset_single_loop():
     actions_in_darkness = 0
     door_3_open = false
     gate_3_open = false
+    flashlight_on = false

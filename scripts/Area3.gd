@@ -32,6 +32,7 @@ func on_interact(object_number):
             else:
                 get_tree().call_group("subtitles", "show_subtitles", "a passageway", 2)
             yield(get_tree().create_timer(3), "timeout")
+    get_tree().call_group("player", "unlock_actions")
     
 func on_use(object_number):
     match object_number:
@@ -47,9 +48,11 @@ func on_use(object_number):
                 Global.gate_3_open = true
                 _update_view_visibility()
             else:
+                Global.loops_completed += 1
                 Global.reset_single_loop()
                 get_tree().call_group("main", "switch_areas", "Area1")
             yield(get_tree().create_timer(3), "timeout")
+    get_tree().call_group("player", "unlock_actions")
 
 func _update_view_visibility():
     $ViewLight.visible = Global.lights_on and not Global.door_3_open and not Global.gate_3_open

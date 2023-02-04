@@ -31,6 +31,7 @@ func on_interact(object_number):
         object_4.object_number:
             get_tree().call_group("subtitles", "show_subtitles", "upstairs, the door I came through", 2)
             yield(get_tree().create_timer(3), "timeout")
+    get_tree().call_group("player", "unlock_actions")
     
 func on_use(object_number):
     match object_number:
@@ -44,13 +45,25 @@ func on_use(object_number):
         object_2.object_number:
             Global.lights_on = false
             _update_view_visibility()
-            if not Global.have_flashlight:
+            if Global.have_flashlight:
+                get_tree().call_group("player", "add_battery")
+                yield(get_tree().create_timer(3), "timeout")
+                if Global.battery_count == 1:
+                    get_tree().call_group("subtitles", "show_subtitles", "two more batteries left to go", 2)
+                elif Global.battery_count == 2:
+                    get_tree().call_group("subtitles", "show_subtitles", "one more battery left to go", 2)
+                elif Global.battery_count == 3:
+                    get_tree().call_group("subtitles", "show_subtitles", "bingo", 2)
+                    get_tree().call_group("player", "turn_on_flashlight")
+                yield(get_tree().create_timer(3), "timeout")
+            else:
                 get_tree().call_group("subtitles", "show_subtitles", "I have no use for the battery I removed", 2)
                 yield(get_tree().create_timer(3), "timeout")
         object_3.object_number:
             get_tree().call_group("main", "switch_areas", "Area3")
         object_4.object_number:
             get_tree().call_group("main", "switch_areas", "Area1")
+    get_tree().call_group("player", "unlock_actions")
 
 func _update_view_visibility():
     $ViewLight.visible = Global.lights_on

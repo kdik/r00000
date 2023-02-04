@@ -27,6 +27,7 @@ func on_interact(object_number):
         object_3.object_number:
             get_tree().call_group("subtitles", "show_subtitles", "a light switch", 2)
             yield(get_tree().create_timer(3), "timeout")
+    get_tree().call_group("player", "unlock_actions")
     
 func on_use(object_number):
     match object_number:
@@ -38,6 +39,7 @@ func on_use(object_number):
         object_3.object_number:
             Global.lights_on = not Global.lights_on
             _update_view_visibility()
+    get_tree().call_group("player", "unlock_actions")
 
 func _update_view_visibility():
     $ViewLight.visible = Global.lights_on

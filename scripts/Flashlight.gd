@@ -2,9 +2,6 @@ extends SpotLight
 
 func _ready():
     visible = false
-    
-func acquire():
-    Global.own_flashlight = true
 
 func add_battery():
     if not Global.own_flashlight:

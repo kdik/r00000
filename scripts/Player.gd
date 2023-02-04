@@ -4,8 +4,12 @@ var rotation_speed = PI / 48
 var rotation_x = 0
 var rotation_y = 0
 var object_in_sight_number
+var actions_locked = false
 onready var hidden_detector_viewport = $HiddenDetectorViewport
 onready var hidden_detector_camera = $HiddenDetectorViewport/HiddenDetectorCamera
+
+func _ready():
+    add_to_group("player")
 
 func _process(_delta):
     if Input.is_action_pressed("ui_left"):
@@ -41,11 +45,46 @@ func _check_crosshairs():
     object_in_sight_number = int(pixel_data.get_pixel(320, 240).a)
     get_tree().call_group("crosshairs", "in_sight", object_in_sight_number)
     pixel_data.unlock()
+        
+func acquire_flashlight():
+    Global.have_flashlight = true
+    $Cursor/RightHand.set_frame(45)
+    $Cursor/RightHand.visible = true
 
+func add_battery():
+    Global.battery_count += 1
+    $Cursor/LeftHand.visible = false
+    $Cursor/RightHand.set_frame(0)
+    $Cursor/RightHand.visible = true
+    $Cursor/RightHand.play()
+    yield(get_tree().create_timer(3), "timeout")
+    $Cursor/LeftHand.visible = true
+    
+func turn_on_flashlight():
+    $Flashlight.visible = true
+    Global.flashlight_on = true
+    
+func turn_off_flashlight():
+    $Flashlight.visible = false
+    
+func lock_actions():
+    $Cursor/Target.visible = false
+    actions_locked = true
+    
+func unlock_actions():
+    $Cursor/Target.visible = true
+    actions_locked = false    
+    
 func _use():
+    if actions_locked:
+        return
+    lock_actions()
     get_tree().call_group("area", "on_use", object_in_sight_number)
         
 func _interact():
+    if actions_locked:
+        return
+    lock_actions()
     get_tree().call_group("area", "on_interact", object_in_sight_number)
 
 func has_flashlight():
