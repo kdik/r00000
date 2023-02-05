@@ -39,9 +39,9 @@ func monster_hide_and_seek():
         return yield(get_tree(), "idle_frame")
     match Global.actions_in_darkness:
         0:
-            get_tree().call_group("monster_subtitles", "show_subtitles", "hello, my friend", 3)
-            yield(get_tree().create_timer(4), "timeout")
-            get_tree().call_group("monster_subtitles", "show_subtitles", "I will give you a few moves before I hurt you", 4)
+            get_tree().call_group("monster_subtitles", "show_subtitles", "hello, my friend", 4)
+            yield(get_tree().create_timer(6), "timeout")
+            get_tree().call_group("monster_subtitles", "show_subtitles", "I will give you a few moves before I hurt you", 5)
             yield(get_tree().create_timer(7), "timeout")
         1:
             get_tree().call_group("monster_subtitles", "show_subtitles", "three", 3)
@@ -51,7 +51,7 @@ func monster_hide_and_seek():
             yield(get_tree().create_timer(4), "timeout")
         3:
             get_tree().call_group("monster_subtitles", "show_subtitles", "one", 3)
-            yield(get_tree().create_timer(4), "timeout")
+            yield(get_tree().create_timer(5), "timeout")
             get_tree().call_group("monster_subtitles", "show_subtitles", "here I come", 5)
             yield(get_tree().create_timer(7), "timeout")
             Global.ending = Global.EVIL

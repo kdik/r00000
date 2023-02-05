@@ -15,7 +15,6 @@ func on_enter(previous_area):
     visible = true
     add_to_group("area")
     if Global.loops_completed > 0:
-        get_tree().call_group("player", "lock_actions")
         yield(get_tree().create_timer(1), "timeout")
         var subtitle_text = ""
         match Global.loops_completed:
@@ -26,7 +25,6 @@ func on_enter(previous_area):
             5: subtitle_text = "the horror, at last"
         get_tree().call_group("player_subtitles", "show_subtitles", subtitle_text, 3)
         yield(get_tree().create_timer(4), "timeout")
-        get_tree().call_group("player", "unlock_actions")
 
 func on_leave(next_area):
     visible = false
@@ -61,7 +59,7 @@ func on_use(object_number):
             Global.lights_on = not Global.lights_on
             _update_view_visibility()
     yield(Global.monster_hide_and_seek(), "completed")
-    get_tree().call_group("player", "unlock_actions")
+    if visible: get_tree().call_group("player", "unlock_actions")
 
 func _update_view_visibility():
     $ViewLight.visible = Global.lights_on

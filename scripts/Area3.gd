@@ -78,7 +78,7 @@ func on_use(object_number):
                 get_tree().call_group("player_subtitles", "show_subtitles", "I have no use for the battery I removed", 2)
                 yield(get_tree().create_timer(3), "timeout")
     yield(Global.monster_hide_and_seek(), "completed")
-    get_tree().call_group("player", "unlock_actions")
+    if visible: get_tree().call_group("player", "unlock_actions")
 
 func _update_view_visibility():
     $ViewLight.visible = Global.lights_on and not Global.door_3_open and not Global.gate_3_open
