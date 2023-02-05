@@ -12,7 +12,10 @@ config_version=4
 
 config/name="R00000"
 run/main_scene="res://scenes/Main.tscn"
+boot_splash/image="res://weekend_warriors.png"
 config/icon="res://icon.png"
+config/macos_native_icon="res://icon.icns"
+config/windows_native_icon="res://icon.ico"
 boot_splash/name="roots"
 
 [autoload]
