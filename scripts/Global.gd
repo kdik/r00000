@@ -29,6 +29,8 @@ func reset_single_loop():
     flashlight_on = false
     
 func monster_introduction():
+    if Global.flashlight_on:
+        return
     get_tree().call_group("monster_subtitles", "show_subtitles", "it's me, behind the door", 3)
     yield(get_tree().create_timer(4), "timeout")
     get_tree().call_group("monster_subtitles", "show_subtitles", "let me out", 3)
