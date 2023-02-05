@@ -80,3 +80,4 @@ func _update_view_visibility():
     
 func _update_object_visibility():
     object_2.visible = Global.lights_on
+    $Monster.visible = not Global.lights_on and not Global.flashlight_on
