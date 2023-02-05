@@ -78,6 +78,11 @@ func unlock_actions():
 func reset_object_in_sight():
     _check_crosshairs()
     
+func reset_position():
+    rotation_x = 0
+    rotation_y = 0
+    _update_rotation()
+    
 func _use():
     if actions_locked:
         return

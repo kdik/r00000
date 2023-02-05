@@ -6,7 +6,7 @@ func _ready():
     add_to_group("main")
     get_tree().call_group("ui", "fade_in")
     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-    current_area.on_enter()
+    current_area.on_enter(null)
     
 func _process(_delta):
     if Input.is_action_just_pressed("ui_cancel"):
@@ -17,9 +17,11 @@ func switch_areas(next_area):
     get_tree().call_group("audio", "play", "Footsteps")
     get_tree().call_group("ui", "fade_out")
     yield(get_tree().create_timer(0.5), "timeout")
-    current_area.on_leave()
+    var previous_area = current_area.name
+    current_area.on_leave(next_area)
     current_area = $Areas.get_node(next_area)
-    current_area.on_enter()
+    current_area.on_enter(previous_area)
+    get_tree().call_group("player", "reset_position")
     get_tree().call_group("player", "reset_object_in_sight")
     yield(get_tree().create_timer(0.5), "timeout")
     get_tree().call_group("ui", "fade_in")

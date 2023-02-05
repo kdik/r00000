@@ -7,12 +7,14 @@ onready var object_3 = $Object3
 func _ready():
     visible = false
 
-func on_enter():
+func on_enter(previous_area):
+    if previous_area == "Area2": _rotate_self_on_start(135)
+    if previous_area == "Area4": _rotate_self_on_start(0)
     _update_view_visibility()
     visible = true
     add_to_group("area")
     
-func on_leave():
+func on_leave(next_area):
     visible = false
     remove_from_group("area")
 
@@ -66,3 +68,7 @@ func _update_view_visibility():
 
 func _update_object_visibility():
     $Monster.visible = not Global.lights_on and not Global.flashlight_on
+
+func _rotate_self_on_start(rotation_deg):
+    transform.basis = Basis()
+    rotate_y(deg2rad(rotation_deg))

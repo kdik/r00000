@@ -7,7 +7,10 @@ onready var object_3 = $Object3
 func _ready():
     visible = false
 
-func on_enter():
+func on_enter(previous_area):
+    if previous_area == null: _rotate_self_on_start(-55)
+    elif previous_area == "Area3": _rotate_self_on_start(-55)
+    elif previous_area == "Area2": _rotate_self_on_start(120)
     _update_view_visibility()
     visible = true
     add_to_group("area")
@@ -25,7 +28,7 @@ func on_enter():
         yield(get_tree().create_timer(5), "timeout")
         get_tree().call_group("player", "unlock_actions")
 
-func on_leave():
+func on_leave(next_area):
     visible = false
     remove_from_group("area")
 
@@ -62,3 +65,7 @@ func on_use(object_number):
 func _update_view_visibility():
     $ViewLight.visible = Global.lights_on
     $ViewDark.visible = not Global.lights_on
+    
+func _rotate_self_on_start(rotation_deg):
+    transform.basis = Basis()
+    rotate_y(deg2rad(rotation_deg))
