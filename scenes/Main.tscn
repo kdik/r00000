@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://images/area1/area_1_object_1.png" type="Texture" id=1]
 [ext_resource path="res://images/area1/area_1_light_view.jpg" type="Texture" id=2]
@@ -45,6 +45,9 @@
 [ext_resource path="res://images/area2/area_2_monster.png" type="Texture" id=43]
 [ext_resource path="res://images/area3/area_3_monster.png" type="Texture" id=44]
 [ext_resource path="res://materials/crt.material" type="Material" id=45]
+[ext_resource path="res://scenes/PlayerSubtitles.tscn" type="PackedScene" id=46]
+[ext_resource path="res://scenes/MonsterSubtitles.tscn" type="PackedScene" id=47]
+[ext_resource path="res://images/area3/area_3_object_4.png" type="Texture" id=48]
 
 [sub_resource type="Environment" id=5]
 background_mode = 1
@@ -147,6 +150,10 @@ object_number = 2
 texture = ExtResource( 35 )
 object_number = 3
 
+[node name="Object4" parent="Areas/Area3" instance=ExtResource( 7 )]
+texture = ExtResource( 48 )
+object_number = 4
+
 [node name="Monster" parent="Areas/Area3" instance=ExtResource( 26 )]
 texture = ExtResource( 44 )
 
@@ -188,6 +195,10 @@ omni_attenuation = 1e-05
 environment = SubResource( 5 )
 
 [node name="Subtitles" parent="." instance=ExtResource( 9 )]
+
+[node name="PlayerSubtitles" parent="." instance=ExtResource( 46 )]
+
+[node name="MonsterSubtitles" parent="." instance=ExtResource( 47 )]
 
 [node name="TransitionCurtain" parent="." instance=ExtResource( 5 )]
 

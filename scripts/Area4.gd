@@ -19,10 +19,10 @@ func on_leave(next_area):
 func on_interact(object_number):
     match object_number:
         object_1.object_number:
-            get_tree().call_group("subtitles", "show_subtitles", "the corridor does not seem as cramped", 2)
+            get_tree().call_group("player_subtitles", "show_subtitles", "the corridor does not seem as cramped", 2)
             yield(get_tree().create_timer(3), "timeout")
         object_2.object_number:
-            get_tree().call_group("subtitles", "show_subtitles", "a flashlight without batteries", 2)
+            get_tree().call_group("player_subtitles", "show_subtitles", "a flashlight without batteries", 2)
             yield(get_tree().create_timer(3), "timeout")
     get_tree().call_group("player", "unlock_actions")
     
@@ -35,7 +35,7 @@ func on_use(object_number):
             Global.have_flashlight = true
             _update_view_visibility()
             get_tree().call_group("player", "acquire_flashlight")
-            get_tree().call_group("subtitles", "show_subtitles", "now I only need batteries", 2)
+            get_tree().call_group("player_subtitles", "show_subtitles", "now I only need batteries", 2)
             yield(get_tree().create_timer(3), "timeout")
     get_tree().call_group("player", "unlock_actions")
     

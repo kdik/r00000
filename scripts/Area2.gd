@@ -23,19 +23,19 @@ func on_interact(object_number):
     match object_number:
         object_1.object_number:
             if Global.flashlight_on:
-                get_tree().call_group("subtitles", "show_subtitles", "the light destroyed the parasite", 2)
+                get_tree().call_group("player_subtitles", "show_subtitles", "the light destroyed the parasite", 2)
                 yield(get_tree().create_timer(3), "timeout")
             else:
-                get_tree().call_group("subtitles", "show_subtitles", "an evil presence awaits", 2)
+                get_tree().call_group("player_subtitles", "show_subtitles", "an evil presence awaits", 2)
                 yield(get_tree().create_timer(3), "timeout")
         object_2.object_number:
-            get_tree().call_group("subtitles", "show_subtitles", "a battery powered light source", 2)
+            get_tree().call_group("player_subtitles", "show_subtitles", "a battery powered light source", 2)
             yield(get_tree().create_timer(3), "timeout")
         object_3.object_number:
-            get_tree().call_group("subtitles", "show_subtitles", "the corridor goes a little bit further", 2)
+            get_tree().call_group("player_subtitles", "show_subtitles", "the corridor goes a little bit further", 2)
             yield(get_tree().create_timer(3), "timeout")
         object_4.object_number:
-            get_tree().call_group("subtitles", "show_subtitles", "upstairs, the door I came through", 2)
+            get_tree().call_group("player_subtitles", "show_subtitles", "upstairs, the door I came through", 2)
             yield(get_tree().create_timer(3), "timeout")
     get_tree().call_group("player", "unlock_actions")
     
@@ -54,15 +54,15 @@ func on_use(object_number):
                 get_tree().call_group("player", "add_battery")
                 yield(get_tree().create_timer(3), "timeout")
                 if Global.battery_count == 1:
-                    get_tree().call_group("subtitles", "show_subtitles", "two more batteries left to go", 2)
+                    get_tree().call_group("player_subtitles", "show_subtitles", "two more batteries left to go", 2)
                 elif Global.battery_count == 2:
-                    get_tree().call_group("subtitles", "show_subtitles", "one more battery left to go", 2)
+                    get_tree().call_group("player_subtitles", "show_subtitles", "one more battery left to go", 2)
                 elif Global.battery_count == 3:
-                    get_tree().call_group("subtitles", "show_subtitles", "bingo", 2)
+                    get_tree().call_group("player_subtitles", "show_subtitles", "bingo", 2)
                     get_tree().call_group("player", "turn_on_flashlight")
                 yield(get_tree().create_timer(3), "timeout")
             else:
-                get_tree().call_group("subtitles", "show_subtitles", "I have no use for the battery I removed", 2)
+                get_tree().call_group("player_subtitles", "show_subtitles", "I have no use for the battery I removed", 2)
                 yield(get_tree().create_timer(3), "timeout")
         object_3.object_number:
             get_tree().call_group("main", "switch_areas", "Area3")

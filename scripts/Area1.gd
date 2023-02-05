@@ -24,7 +24,7 @@ func on_enter(previous_area):
             3: subtitle_text = "I feel worse every time"
             4: subtitle_text = "I am one with the roots, in my head"
             5: subtitle_text = "the horror, at last"
-        get_tree().call_group("subtitles", "show_subtitles", subtitle_text, 3)
+        get_tree().call_group("player_subtitles", "show_subtitles", subtitle_text, 3)
         yield(get_tree().create_timer(5), "timeout")
         get_tree().call_group("player", "unlock_actions")
 
@@ -35,13 +35,13 @@ func on_leave(next_area):
 func on_interact(object_number):
     match object_number:
         object_1.object_number:
-            get_tree().call_group("subtitles", "show_subtitles", "no way I'm going down there", 2)
+            get_tree().call_group("player_subtitles", "show_subtitles", "no way I'm going down there", 2)
             yield(get_tree().create_timer(3), "timeout")
         object_2.object_number:
-            get_tree().call_group("subtitles", "show_subtitles", "the door is locked", 2)
+            get_tree().call_group("player_subtitles", "show_subtitles", "the door is locked", 2)
             yield(get_tree().create_timer(3), "timeout")
         object_3.object_number:
-            get_tree().call_group("subtitles", "show_subtitles", "a light switch", 2)
+            get_tree().call_group("player_subtitles", "show_subtitles", "a light switch", 2)
             yield(get_tree().create_timer(3), "timeout")
     get_tree().call_group("player", "unlock_actions")
     
@@ -55,7 +55,7 @@ func on_use(object_number):
                 get_tree().call_group("main", "switch_areas", "Area2")
                 yield(get_tree().create_timer(3), "timeout")
         object_2.object_number:
-            get_tree().call_group("subtitles", "show_subtitles", "the door is locked", 2)
+            get_tree().call_group("player_subtitles", "show_subtitles", "the door is locked", 2)
             yield(get_tree().create_timer(3), "timeout")
         object_3.object_number:
             Global.lights_on = not Global.lights_on
