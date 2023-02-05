@@ -1,19 +1,21 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scripts/MonsterSubtitles.gd" type="Script" id=1]
-[ext_resource path="res://shaders/wobbly_text.shader" type="Shader" id=10]
-[ext_resource path="res://fonts/font.tres" type="DynamicFont" id=11]
+[ext_resource path="res://fonts/vhs_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://shaders/monster_text.shader" type="Shader" id=3]
 
-[sub_resource type="ShaderMaterial" id=6]
-shader = ExtResource( 10 )
+[sub_resource type="ShaderMaterial" id=10]
+shader = ExtResource( 3 )
 shader_param/wobble_height = 1.0
 shader_param/wobble_width = 1.0
 shader_param/wobble_curve = 1.5
 shader_param/wobble_speed = 5.5
+shader_param/color = Color( 0.576471, 0.0901961, 0.0901961, 1 )
+shader_param/alpha = 0.33
+shader_param/phase = 0.0
 shader_param/time = 0.0
-shader_param/color = Color( 0.188235, 0.87451, 0.117647, 1 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=30]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:material:shader_param/time")
@@ -28,7 +30,7 @@ tracks/0/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=31]
 resource_name = "fade_in"
 length = 0.5
 tracks/0/type = "value"
@@ -44,8 +46,9 @@ tracks/0/keys = {
 "values": [ 0.0, 1.57 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=32]
 resource_name = "fade_out"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:material:shader_param/time")
 tracks/0/interp = 1
@@ -53,25 +56,253 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 1.57, 0.0 ]
 }
 
-[node name="MonsterSubtitles" type="RichTextLabel"]
-material = SubResource( 6 )
-margin_top = 400.0
-margin_right = 640.0
-margin_bottom = 480.0
-custom_fonts/normal_font = ExtResource( 11 )
-bbcode_enabled = true
+[sub_resource type="ShaderMaterial" id=14]
+shader = ExtResource( 3 )
+shader_param/wobble_height = 1.0
+shader_param/wobble_width = 1.0
+shader_param/wobble_curve = 1.5
+shader_param/wobble_speed = 5.5
+shader_param/color = Color( 0.576471, 0.0901961, 0.0901961, 1 )
+shader_param/alpha = 0.33
+shader_param/phase = 0.0
+shader_param/time = 0.0
+
+[sub_resource type="Animation" id=33]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/time")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=34]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/time")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.57 ]
+}
+
+[sub_resource type="Animation" id=35]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/time")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.57, 0.0 ]
+}
+
+[sub_resource type="ShaderMaterial" id=23]
+shader = ExtResource( 3 )
+shader_param/wobble_height = 1.0
+shader_param/wobble_width = 1.0
+shader_param/wobble_curve = 1.5
+shader_param/wobble_speed = 5.5
+shader_param/color = Color( 1, 1, 1, 1 )
+shader_param/alpha = 0.33
+shader_param/phase = 0.0
+shader_param/time = 1.57
+
+[sub_resource type="Animation" id=27]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/time")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.57 ]
+}
+
+[sub_resource type="Animation" id=28]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/time")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.57 ]
+}
+
+[sub_resource type="Animation" id=29]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/time")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.57, 0.0 ]
+}
+
+[sub_resource type="ShaderMaterial" id=22]
+shader = ExtResource( 3 )
+shader_param/wobble_height = 0.5
+shader_param/wobble_width = 0.5
+shader_param/wobble_curve = 1.0
+shader_param/wobble_speed = 5.0
+shader_param/color = Color( 0.576471, 0.0901961, 0.0901961, 1 )
+shader_param/alpha = 1.0
+shader_param/phase = 0.0
+shader_param/time = 0.0
+
+[sub_resource type="Animation" id=24]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/time")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=25]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/time")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.57 ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/time")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.57, 0.0 ]
+}
+
+[node name="MonsterSubtitles" type="Control"]
+rect_min_size = Vector2( 640, 480 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 7 )
-anims/fade_in = SubResource( 8 )
-anims/fade_out = SubResource( 9 )
+[node name="Red" type="RichTextLabel" parent="."]
+material = SubResource( 10 )
+margin_top = 32.0
+margin_right = 616.0
+margin_bottom = 112.0
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Red"]
+anims/RESET = SubResource( 30 )
+anims/fade_in = SubResource( 31 )
+anims/fade_out = SubResource( 32 )
+
+[node name="Green" type="RichTextLabel" parent="."]
+material = SubResource( 14 )
+margin_top = 32.0
+margin_right = 616.0
+margin_bottom = 112.0
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Green"]
+anims/RESET = SubResource( 33 )
+anims/fade_in = SubResource( 34 )
+anims/fade_out = SubResource( 35 )
+
+[node name="Blue" type="RichTextLabel" parent="."]
+material = SubResource( 23 )
+margin_top = 32.0
+margin_right = 616.0
+margin_bottom = 112.0
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Blue"]
+anims/RESET = SubResource( 27 )
+anims/fade_in = SubResource( 28 )
+anims/fade_out = SubResource( 29 )
+
+[node name="Main" type="RichTextLabel" parent="."]
+material = SubResource( 22 )
+margin_top = 32.0
+margin_right = 616.0
+margin_bottom = 112.0
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Main"]
+anims/RESET = SubResource( 24 )
+anims/fade_in = SubResource( 25 )
+anims/fade_out = SubResource( 26 )

@@ -196,6 +196,7 @@ environment = SubResource( 5 )
 [node name="PlayerSubtitles" parent="." instance=ExtResource( 46 )]
 
 [node name="MonsterSubtitles" parent="." instance=ExtResource( 47 )]
+text_color = Color( 0.188235, 0.87451, 0.117647, 1 )
 
 [node name="TransitionCurtain" parent="." instance=ExtResource( 5 )]
 

@@ -41,7 +41,7 @@ func monster_hide_and_seek():
         0:
             get_tree().call_group("monster_subtitles", "show_subtitles", "hello, my friend", 4)
             yield(get_tree().create_timer(6), "timeout")
-            get_tree().call_group("monster_subtitles", "show_subtitles", "I will give you a few moves before I hurt you", 5)
+            get_tree().call_group("monster_subtitles", "show_subtitles", "You get a few moves before I hurt you", 5)
             yield(get_tree().create_timer(7), "timeout")
         1:
             get_tree().call_group("monster_subtitles", "show_subtitles", "three", 3)
