@@ -1,17 +1,13 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/PlayerSubtitles.gd" type="Script" id=1]
-[ext_resource path="res://shaders/wobbly_text.shader" type="Shader" id=10]
-[ext_resource path="res://fonts/font.tres" type="DynamicFont" id=11]
+[ext_resource path="res://shaders/player_text.shader" type="Shader" id=2]
+[ext_resource path="res://fonts/vhs_font.tres" type="DynamicFont" id=3]
 
-[sub_resource type="ShaderMaterial" id=6]
-shader = ExtResource( 10 )
-shader_param/wobble_height = 1.0
-shader_param/wobble_width = 1.0
-shader_param/wobble_curve = 1.5
-shader_param/wobble_speed = 5.5
+[sub_resource type="ShaderMaterial" id=10]
+shader = ExtResource( 2 )
 shader_param/time = 0.0
-shader_param/color = Color( 0.188235, 0.87451, 0.117647, 1 )
+shader_param/color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="Animation" id=7]
 length = 0.001
@@ -60,11 +56,11 @@ tracks/0/keys = {
 }
 
 [node name="PlayerSubtitles" type="RichTextLabel"]
-material = SubResource( 6 )
-margin_top = 400.0
-margin_right = 640.0
-margin_bottom = 480.0
-custom_fonts/normal_font = ExtResource( 11 )
+material = SubResource( 10 )
+margin_top = 24.0
+margin_right = 624.0
+margin_bottom = 104.0
+custom_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
 script = ExtResource( 1 )
 __meta__ = {
