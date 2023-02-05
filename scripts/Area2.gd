@@ -61,6 +61,7 @@ func on_use(object_number):
                 elif Global.battery_count == 3:
                     get_tree().call_group("player_subtitles", "show_subtitles", "bingo", 2)
                     get_tree().call_group("player", "turn_on_flashlight")
+                    Global.flashlight_on = true
                     _update_view_visibility()
                 yield(get_tree().create_timer(3), "timeout")
             else:

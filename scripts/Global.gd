@@ -35,7 +35,7 @@ func monster_introduction():
     yield(get_tree().create_timer(4), "timeout")
     
 func monster_hide_and_seek():
-    if Global.lights_on:
+    if Global.lights_on or Global.flashlight_on:
         return yield(get_tree(), "idle_frame")
     match Global.actions_in_darkness:
         0:
