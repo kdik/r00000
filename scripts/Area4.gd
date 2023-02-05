@@ -37,6 +37,7 @@ func on_use(object_number):
             get_tree().call_group("player", "acquire_flashlight")
             get_tree().call_group("player_subtitles", "show_subtitles", "now I only need batteries", 2)
             yield(get_tree().create_timer(3), "timeout")
+    yield(Global.monster_hide_and_seek(), "completed")
     get_tree().call_group("player", "unlock_actions")
     
 func _update_view_visibility():

@@ -25,7 +25,7 @@ func on_enter(previous_area):
             4: subtitle_text = "I am one with the roots, in my head"
             5: subtitle_text = "the horror, at last"
         get_tree().call_group("player_subtitles", "show_subtitles", subtitle_text, 3)
-        yield(get_tree().create_timer(5), "timeout")
+        yield(get_tree().create_timer(4), "timeout")
         get_tree().call_group("player", "unlock_actions")
 
 func on_leave(next_area):
@@ -60,6 +60,7 @@ func on_use(object_number):
         object_3.object_number:
             Global.lights_on = not Global.lights_on
             _update_view_visibility()
+    yield(Global.monster_hide_and_seek(), "completed")
     get_tree().call_group("player", "unlock_actions")
 
 func _update_view_visibility():

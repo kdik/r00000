@@ -87,6 +87,7 @@ func _use():
     if actions_locked:
         return
     lock_actions()
+    if not Global.lights_on: Global.actions_in_darkness += 1
     get_tree().call_group("area", "on_use", object_in_sight_number)
         
 func _interact():

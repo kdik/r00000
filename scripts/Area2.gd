@@ -14,6 +14,7 @@ func on_enter(previous_area):
     _update_view_visibility()
     visible = true
     add_to_group("area")
+    yield(Global.monster_introduction(), "completed")
     
 func on_leave(next_area):
     visible = false
@@ -26,7 +27,7 @@ func on_interact(object_number):
                 get_tree().call_group("player_subtitles", "show_subtitles", "the light destroyed the parasite", 2)
                 yield(get_tree().create_timer(3), "timeout")
             else:
-                get_tree().call_group("player_subtitles", "show_subtitles", "an evil presence awaits", 2)
+                get_tree().call_group("player_subtitles", "show_subtitles", "an evil presence lurks there", 2)
                 yield(get_tree().create_timer(3), "timeout")
         object_2.object_number:
             get_tree().call_group("player_subtitles", "show_subtitles", "a battery powered light source", 2)
@@ -44,9 +45,9 @@ func on_use(object_number):
         object_1.object_number:
             Global.lights_on = false
             _update_view_visibility()
-            if Global.flashlight_on: Global.ending = Global.WIN
-            else: Global.ending = Global.EVIL
-            get_tree().call_group("main", "game_over")
+            if Global.flashlight_on:
+                Global.ending = Global.WIN
+                get_tree().call_group("main", "game_over")
         object_2.object_number:
             Global.lights_on = false
             _update_view_visibility()
@@ -70,6 +71,7 @@ func on_use(object_number):
         object_4.object_number:
             get_tree().call_group("main", "switch_areas", "Area1")
             yield(get_tree().create_timer(3), "timeout")
+    yield(Global.monster_hide_and_seek(), "completed")
     get_tree().call_group("player", "unlock_actions")
 
 func _update_view_visibility():
