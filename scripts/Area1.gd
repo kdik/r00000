@@ -18,7 +18,7 @@ func on_enter(previous_area):
         yield(get_tree().create_timer(1), "timeout")
         var subtitle_text = ""
         match Global.loops_completed:
-            1: subtitle_text = "this loops never ends"
+            1: subtitle_text = "this loop never ends"
             2: subtitle_text = "the roots are finally taking over"
             3: subtitle_text = "I feel worse every time"
             4: subtitle_text = "I am one with the roots, in my head"
