@@ -20,8 +20,12 @@ func on_leave():
 func on_interact(object_number):
     match object_number:
         object_1.object_number:
-            get_tree().call_group("subtitles", "show_subtitles", "an evil presence awaits", 2)
-            yield(get_tree().create_timer(3), "timeout")
+            if Global.flashlight_on:
+                get_tree().call_group("subtitles", "show_subtitles", "the light destroyed the parasite", 2)
+                yield(get_tree().create_timer(3), "timeout")
+            else:
+                get_tree().call_group("subtitles", "show_subtitles", "an evil presence awaits", 2)
+                yield(get_tree().create_timer(3), "timeout")
         object_2.object_number:
             get_tree().call_group("subtitles", "show_subtitles", "a battery powered light source", 2)
             yield(get_tree().create_timer(3), "timeout")
@@ -38,14 +42,13 @@ func on_use(object_number):
         object_1.object_number:
             Global.lights_on = false
             _update_view_visibility()
-            get_tree().call_group("subtitles", "show_subtitles", "the evil is unleashed", 2)
-            yield(get_tree().create_timer(3), "timeout")
-            Global.ending = Global.EVIL
+            if Global.flashlight_on: Global.ending = Global.WIN
+            else: Global.ending = Global.EVIL
             get_tree().call_group("main", "game_over")
         object_2.object_number:
             Global.lights_on = false
             _update_view_visibility()
-            if Global.have_flashlight:
+            if Global.have_flashlight and Global.battery_count < 3:
                 get_tree().call_group("player", "add_battery")
                 yield(get_tree().create_timer(3), "timeout")
                 if Global.battery_count == 1:

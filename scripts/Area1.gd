@@ -18,13 +18,12 @@ func on_enter():
         match Global.loops_completed:
             1: subtitle_text = "this loops never ends"
             2: subtitle_text = "the roots are finally taking over"
-            3: subtitle_text = "I feel worse with every time"
+            3: subtitle_text = "I feel worse every time"
             4: subtitle_text = "I am one with the roots, in my head"
             5: subtitle_text = "the horror, at last"
         get_tree().call_group("subtitles", "show_subtitles", subtitle_text, 3)
         yield(get_tree().create_timer(5), "timeout")
         get_tree().call_group("player", "unlock_actions")
-    
 
 func on_leave():
     visible = false
