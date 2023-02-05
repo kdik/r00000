@@ -9,7 +9,7 @@ func _ready():
     current_area.on_enter(null)
     
 func _process(_delta):
-    if Input.is_action_just_pressed("ui_cancel"):
+    if Input.is_action_just_pressed("ui_cancel") and OS.get_name() != "HTML5":
         get_tree().quit()
 
 func switch_areas(next_area):
