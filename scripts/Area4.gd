@@ -29,6 +29,7 @@ func on_use(object_number):
     match object_number:
         object_1.object_number:
             get_tree().call_group("main", "switch_areas", "Area3")
+            yield(get_tree().create_timer(3), "timeout")
         object_2.object_number:
             Global.have_flashlight = true
             _update_view_visibility()

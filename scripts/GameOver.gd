@@ -4,11 +4,11 @@ func _ready():
     var text
     match Global.ending:
         Global.EVIL:
-            text = "YOU WERE KILLED BY SOMETHING WICKED"
+            text = "YOU WERE KILLED BY\nSOMETHING WICKED"
         Global.ROOTS:
-            text = "YOU VENTURED TOO FAR AND THE ROOTS GOT YOU"
+            text = "YOU WERE KILLED BY\nTHE ROOTS IN YOUR HEAD"
         Global.WIN:
-            text = "YOU ARE WINNER XD"
+            text = "YOU HAVE BECOME\nTHE EVIL PRESENCE BEYOND THE DOOR"
     yield($Subtitles.show_subtitles(text, 5), "completed")
     yield(get_tree().create_timer(1.0), "timeout")
     get_tree().change_scene("res://scenes/Main.tscn")

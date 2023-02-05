@@ -3,7 +3,7 @@ extends Camera
 var rotation_speed = PI / 48
 var rotation_x = 0
 var rotation_y = 0
-var object_in_sight_number
+var object_in_sight_number = 0
 var actions_locked = false
 onready var hidden_detector_viewport = $HiddenDetectorViewport
 onready var hidden_detector_camera = $HiddenDetectorViewport/HiddenDetectorCamera
@@ -74,6 +74,9 @@ func lock_actions():
 func unlock_actions():
     $Cursor/Target.visible = true
     actions_locked = false    
+    
+func reset_object_in_sight():
+    _check_crosshairs()
     
 func _use():
     if actions_locked:

@@ -20,6 +20,7 @@ func switch_areas(next_area):
     current_area.on_leave()
     current_area = $Areas.get_node(next_area)
     current_area.on_enter()
+    get_tree().call_group("player", "reset_object_in_sight")
     yield(get_tree().create_timer(0.5), "timeout")
     get_tree().call_group("ui", "fade_in")
     yield(get_tree().create_timer(0.5), "timeout")

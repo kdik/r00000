@@ -11,6 +11,20 @@ func on_enter():
     _update_view_visibility()
     visible = true
     add_to_group("area")
+    if Global.loops_completed > 0:
+        get_tree().call_group("player", "lock_actions")
+        yield(get_tree().create_timer(1), "timeout")
+        var subtitle_text = ""
+        match Global.loops_completed:
+            1: subtitle_text = "this loops never ends"
+            2: subtitle_text = "the roots are finally taking over"
+            3: subtitle_text = "I feel worse with every time"
+            4: subtitle_text = "I am one with the roots, in my head"
+            5: subtitle_text = "the horror, at last"
+        get_tree().call_group("subtitles", "show_subtitles", subtitle_text, 3)
+        yield(get_tree().create_timer(5), "timeout")
+        get_tree().call_group("player", "unlock_actions")
+    
 
 func on_leave():
     visible = false
@@ -32,7 +46,12 @@ func on_interact(object_number):
 func on_use(object_number):
     match object_number:
         object_1.object_number:
-            get_tree().call_group("main", "switch_areas", "Area2")
+            if Global.loops_completed == 5:
+                Global.ending = Global.ROOTS
+                get_tree().call_group("main", "game_over")
+            else:
+                get_tree().call_group("main", "switch_areas", "Area2")
+                yield(get_tree().create_timer(3), "timeout")
         object_2.object_number:
             get_tree().call_group("subtitles", "show_subtitles", "the door is locked", 2)
             yield(get_tree().create_timer(3), "timeout")

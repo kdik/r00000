@@ -38,8 +38,10 @@ func on_use(object_number):
     match object_number:
         object_1.object_number:
             get_tree().call_group("main", "switch_areas", "Area2")
+            yield(get_tree().create_timer(3), "timeout")
         object_2.object_number:
             get_tree().call_group("main", "switch_areas", "Area4")
+            yield(get_tree().create_timer(3), "timeout")
         object_3.object_number:
             if not Global.door_3_open:
                 Global.door_3_open = true
@@ -51,6 +53,7 @@ func on_use(object_number):
                 Global.loops_completed += 1
                 Global.reset_single_loop()
                 get_tree().call_group("main", "switch_areas", "Area1")
+                yield(get_tree().create_timer(3), "timeout")
     get_tree().call_group("player", "unlock_actions")
 
 func _update_view_visibility():
