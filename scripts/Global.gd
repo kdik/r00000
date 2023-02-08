@@ -4,14 +4,15 @@ extends Node
 var have_flashlight = false
 var battery_count = 0
 var loops_completed = 0
+var flashlight_on = false
 var ending
 
-# non persistent between loops variables 
+# non persistent between loops variables
 var lights_on = true
 var actions_in_darkness = 0
 var door_3_open = false
 var gate_3_open = false
-var flashlight_on = false
+var batteries_removed = false
 
 enum {ROOTS, EVIL, WIN}
 
@@ -19,6 +20,8 @@ func reset():
     have_flashlight = false
     battery_count = 0
     loops_completed = 0
+    flashlight_on = false
+    
     reset_single_loop()
     
 func reset_single_loop():
@@ -26,11 +29,11 @@ func reset_single_loop():
     actions_in_darkness = 0
     door_3_open = false
     gate_3_open = false
-    flashlight_on = false
+    batteries_removed = false
     
 func monster_introduction():
-    if Global.flashlight_on:
-        return
+    if not Global.lights_on or Global.flashlight_on:
+        return yield(get_tree(), "idle_frame")
     get_tree().call_group("monster_subtitles", "show_subtitles", "it's me, behind the door", 3)
     yield(get_tree().create_timer(4), "timeout")
     get_tree().call_group("monster_subtitles", "show_subtitles", "let me out", 3)

@@ -14,7 +14,7 @@ func on_enter(previous_area):
     _update_view_visibility()
     visible = true
     add_to_group("area")
-    if Global.loops_completed > 0:
+    if Global.loops_completed > 0 and previous_area != "Area2":
         yield(get_tree().create_timer(1), "timeout")
         var subtitle_text = ""
         match Global.loops_completed:
@@ -56,8 +56,13 @@ func on_use(object_number):
             get_tree().call_group("player_subtitles", "show_subtitles", "the door is locked", 2)
             yield(get_tree().create_timer(3), "timeout")
         object_3.object_number:
-            Global.lights_on = not Global.lights_on
-            _update_view_visibility()
+            if Global.batteries_removed:
+                get_tree().call_group("player_subtitles", "show_subtitles", "it did not work", 2)
+                yield(get_tree().create_timer(3), "timeout")
+            else:
+                Global.lights_on = not Global.lights_on
+                Global.actions_in_darkness = 0
+                _update_view_visibility()
     yield(Global.monster_hide_and_seek(), "completed")
     if visible: get_tree().call_group("player", "unlock_actions")
 

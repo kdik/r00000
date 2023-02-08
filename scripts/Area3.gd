@@ -61,24 +61,32 @@ func on_use(object_number):
                 get_tree().call_group("main", "switch_areas", "Area1")
                 yield(get_tree().create_timer(3), "timeout")
         object_4.object_number:
-            Global.lights_on = false
-            _update_view_visibility()
-            if Global.have_flashlight and Global.battery_count < 3:
-                get_tree().call_group("player", "add_battery")
+            if Global.batteries_removed:
+                get_tree().call_group("player_subtitles", "show_subtitles", "I have no use for more batteries", 2)
                 yield(get_tree().create_timer(3), "timeout")
-                if Global.battery_count == 1:
-                    get_tree().call_group("player_subtitles", "show_subtitles", "two more batteries left to go", 2)
-                elif Global.battery_count == 2:
-                    get_tree().call_group("player_subtitles", "show_subtitles", "one more battery left to go", 2)
-                elif Global.battery_count == 3:
-                    get_tree().call_group("player_subtitles", "show_subtitles", "bingo", 2)
-                    get_tree().call_group("player", "turn_on_flashlight")
-                    Global.flashlight_on = true
-                    _update_view_visibility()
+            elif Global.batteries_removed:
+                get_tree().call_group("player_subtitles", "show_subtitles", "the light source has no batteries", 2)
                 yield(get_tree().create_timer(3), "timeout")
             else:
-                get_tree().call_group("player_subtitles", "show_subtitles", "I have no use for the battery I removed", 2)
-                yield(get_tree().create_timer(3), "timeout")
+                Global.batteries_removed = true
+                Global.lights_on = false
+                _update_view_visibility()
+                if Global.have_flashlight and Global.battery_count < 3:
+                    get_tree().call_group("player", "add_battery")
+                    yield(get_tree().create_timer(3), "timeout")
+                    if Global.battery_count == 1:
+                        get_tree().call_group("player_subtitles", "show_subtitles", "two more batteries left to go", 2)
+                    elif Global.battery_count == 2:
+                        get_tree().call_group("player_subtitles", "show_subtitles", "one more battery left to go", 2)
+                    elif Global.battery_count == 3:
+                        get_tree().call_group("player_subtitles", "show_subtitles", "bingo", 2)
+                        get_tree().call_group("player", "turn_on_flashlight")
+                        Global.flashlight_on = true
+                        _update_view_visibility()
+                    yield(get_tree().create_timer(3), "timeout")
+                else:
+                    get_tree().call_group("player_subtitles", "show_subtitles", "I have no use for the battery I removed", 2)
+                    yield(get_tree().create_timer(3), "timeout")
     yield(Global.monster_hide_and_seek(), "completed")
     if visible: get_tree().call_group("player", "unlock_actions")
 
