@@ -8,6 +8,9 @@ func _ready():
     visible = false
 
 func on_enter(previous_area):
+    if previous_area == null or previous_area == "Area3": 
+        get_tree().call_group("blue_screen", "show")
+        yield(get_tree().create_timer(2.5), "timeout")
     if previous_area == null: _rotate_self_on_start(-55)
     elif previous_area == "Area3": _rotate_self_on_start(-55)
     elif previous_area == "Area2": _rotate_self_on_start(120)

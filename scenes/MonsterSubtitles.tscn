@@ -70,7 +70,7 @@ shader_param/wobble_curve = 1.5
 shader_param/wobble_speed = 5.5
 shader_param/color = Color( 0.576471, 0.0901961, 0.0901961, 1 )
 shader_param/alpha = 0.33
-shader_param/phase = 0.0
+shader_param/phase = 1.0
 shader_param/time = 0.0
 
 [sub_resource type="Animation" id=33]
@@ -128,7 +128,7 @@ shader_param/wobble_curve = 1.5
 shader_param/wobble_speed = 5.5
 shader_param/color = Color( 1, 1, 1, 1 )
 shader_param/alpha = 0.33
-shader_param/phase = 0.0
+shader_param/phase = 2.0
 shader_param/time = 1.57
 
 [sub_resource type="Animation" id=27]
@@ -250,9 +250,6 @@ margin_right = 616.0
 margin_bottom = 112.0
 custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Red"]
 anims/RESET = SubResource( 30 )
@@ -266,9 +263,6 @@ margin_right = 616.0
 margin_bottom = 112.0
 custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Green"]
 anims/RESET = SubResource( 33 )
@@ -282,9 +276,6 @@ margin_right = 616.0
 margin_bottom = 112.0
 custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Blue"]
 anims/RESET = SubResource( 27 )
