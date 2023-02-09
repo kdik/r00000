@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/AudioPlayer.gd" type="Script" id=1]
-[ext_resource path="res://sounds/footsteps.mp3" type="AudioStream" id=2]
-[ext_resource path="res://sounds/ambience_danger_loop.wav" type="AudioStream" id=3]
-[ext_resource path="res://sounds/ambience_general2_loop.wav" type="AudioStream" id=4]
+[ext_resource path="res://sounds/footsteps.ogg" type="AudioStream" id=2]
+[ext_resource path="res://sounds/ambience_general.ogg" type="AudioStream" id=3]
+[ext_resource path="res://sounds/ambience_danger.ogg" type="AudioStream" id=4]
 
 [node name="AudioPlayer" type="Node"]
 script = ExtResource( 1 )
@@ -12,7 +12,7 @@ script = ExtResource( 1 )
 stream = ExtResource( 2 )
 
 [node name="AmbienceDanger" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
+stream = ExtResource( 4 )
 
 [node name="AmbienceGeneral" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
+stream = ExtResource( 3 )

@@ -56,16 +56,6 @@ background_mode = 1
 background_energy = 0.0
 ambient_light_energy = 0.0
 
-[sub_resource type="AtlasTexture" id=7]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 0, 0, 640, 480 )
-
-[sub_resource type="AtlasTexture" id=8]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 0, 480, 640, 480 )
-
 [sub_resource type="AtlasTexture" id=9]
 flags = 4
 atlas = ExtResource( 9 )
@@ -166,13 +156,18 @@ flags = 4
 atlas = ExtResource( 9 )
 region = Rect2( 0, 2880, 640, 480 )
 
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 480, 640, 480 )
+
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 7 ) ],
-"loop": true,
-"name": "level_1",
-"speed": 1.0
-}, {
 "frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 10 ), SubResource( 9 ) ],
 "loop": true,
 "name": "level_2",
@@ -192,6 +187,11 @@ animations = [ {
 "loop": true,
 "name": "level_5",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 7 ) ],
+"loop": true,
+"name": "level_1",
+"speed": 1.0
 } ]
 
 [node name="Main" type="Spatial"]
