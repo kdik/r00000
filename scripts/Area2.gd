@@ -21,24 +21,15 @@ func on_leave(next_area):
     remove_from_group("area")
 
 func on_interact(object_number):
+    var description = ""
     match object_number:
         object_1.object_number:
-            if Global.flashlight_on:
-                get_tree().call_group("player_subtitles", "show_subtitles", "the light destroyed the parasite", 2)
-                yield(get_tree().create_timer(3), "timeout")
-            else:
-                get_tree().call_group("player_subtitles", "show_subtitles", "an evil presence lurks there", 2)
-                yield(get_tree().create_timer(3), "timeout")
-        object_2.object_number:
-            get_tree().call_group("player_subtitles", "show_subtitles", "a battery powered light source", 2)
-            yield(get_tree().create_timer(3), "timeout")
-        object_3.object_number:
-            get_tree().call_group("player_subtitles", "show_subtitles", "the corridor goes a little bit further", 2)
-            yield(get_tree().create_timer(3), "timeout")
-        object_4.object_number:
-            get_tree().call_group("player_subtitles", "show_subtitles", "upstairs, the door I came through", 2)
-            yield(get_tree().create_timer(3), "timeout")
-    get_tree().call_group("player", "unlock_actions")
+            if Global.flashlight_on: description = "light destroyed the parasite"
+            else: description = "an evil presence lurks there"
+        object_2.object_number: description = "a battery powered light source"
+        object_3.object_number: description = "the corridor goes a little bit further"
+        object_4.object_number: description = "upstairs, the door I came through"
+    get_tree().call_group("player_subtitles", "show_subtitles", description)
     
 func on_use(object_number):
     match object_number:

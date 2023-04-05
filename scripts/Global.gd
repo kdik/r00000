@@ -34,14 +34,17 @@ func reset_single_loop():
 func monster_introduction():
     if not Global.lights_on or Global.flashlight_on:
         return yield(get_tree(), "idle_frame")
+    get_tree().call_group("player", "lock_actions")
     get_tree().call_group("monster_subtitles", "show_subtitles", "it's me, behind the door", 3)
     yield(get_tree().create_timer(4), "timeout")
     get_tree().call_group("monster_subtitles", "show_subtitles", "let me out", 3)
     yield(get_tree().create_timer(4), "timeout")
+    get_tree().call_group("player", "unlock_actions")
     
 func monster_hide_and_seek():
     if Global.lights_on or Global.flashlight_on:
         return yield(get_tree(), "idle_frame")
+    get_tree().call_group("player", "lock_actions")
     match Global.actions_in_darkness:
         0:
             get_tree().call_group("monster_subtitles", "show_subtitles", "hello, my friend", 4)
@@ -61,4 +64,5 @@ func monster_hide_and_seek():
             yield(get_tree().create_timer(7), "timeout")
             Global.ending = Global.EVIL
             get_tree().call_group("main", "game_over")
+    get_tree().call_group("player", "unlock_actions")
 

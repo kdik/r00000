@@ -59,46 +59,6 @@ background_mode = 1
 background_energy = 0.0
 ambient_light_energy = 0.0
 
-[sub_resource type="AtlasTexture" id=24]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 0, 0, 640, 480 )
-
-[sub_resource type="AtlasTexture" id=25]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 0, 480, 640, 480 )
-
-[sub_resource type="AtlasTexture" id=26]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 0, 960, 640, 480 )
-
-[sub_resource type="AtlasTexture" id=27]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 0, 1440, 640, 480 )
-
-[sub_resource type="AtlasTexture" id=28]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 0, 1920, 640, 480 )
-
-[sub_resource type="AtlasTexture" id=29]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 0, 2400, 640, 480 )
-
-[sub_resource type="AtlasTexture" id=30]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 0, 2400, 640, 480 )
-
-[sub_resource type="AtlasTexture" id=31]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 0, 2880, 640, 480 )
-
 [sub_resource type="AtlasTexture" id=7]
 flags = 4
 atlas = ExtResource( 9 )
@@ -169,13 +129,48 @@ flags = 4
 atlas = ExtResource( 9 )
 region = Rect2( 0, 1920, 640, 480 )
 
+[sub_resource type="AtlasTexture" id=24]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 480, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 960, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=27]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 1440, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 1920, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=29]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 2400, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 2400, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=31]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 2880, 640, 480 )
+
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 30 ), SubResource( 29 ), SubResource( 28 ), SubResource( 27 ), SubResource( 26 ), SubResource( 25 ), SubResource( 24 ) ],
-"loop": true,
-"name": "level_5",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 7 ) ],
 "loop": true,
 "name": "level_1",
@@ -195,6 +190,11 @@ animations = [ {
 "loop": true,
 "name": "level_4",
 "speed": 4.0
+}, {
+"frames": [ SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 30 ), SubResource( 29 ), SubResource( 28 ), SubResource( 27 ), SubResource( 26 ), SubResource( 25 ), SubResource( 24 ) ],
+"loop": true,
+"name": "level_5",
+"speed": 5.0
 } ]
 
 [node name="Main" type="Spatial"]

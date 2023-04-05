@@ -24,10 +24,8 @@ func _process(_delta):
     elif Input.is_action_pressed("ui_down"):
         rotation_x -= rotation_speed
         _update_rotation()    
-    elif Input.is_action_just_pressed("ui_accept"):
+    elif Input.is_action_just_pressed("ui_select") or Input.is_action_just_pressed("ui_accept"):
         _use()
-    elif Input.is_action_just_pressed("ui_select"):
-        _interact()    
 
 func _update_rotation():
     rotation_x = clamp(rotation_x, -0.25 * PI, 0.25 * PI)
@@ -73,7 +71,8 @@ func lock_actions():
     
 func unlock_actions():
     $Cursor.unlock()
-    actions_locked = false    
+    actions_locked = false
+    _check_crosshairs()
     
 func reset_object_in_sight():
     _check_crosshairs()
@@ -89,12 +88,6 @@ func _use():
     lock_actions()
     if not Global.lights_on: Global.actions_in_darkness += 1
     get_tree().call_group("area", "on_use", object_in_sight_number)
-        
-func _interact():
-    if actions_locked:
-        return
-    lock_actions()
-    get_tree().call_group("area", "on_interact", object_in_sight_number)
 
 func has_flashlight():
     return $Flashlight.own_flashlight

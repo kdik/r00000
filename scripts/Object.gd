@@ -2,6 +2,7 @@ extends MeshInstance
 
 export var texture : StreamTexture
 export var object_number : int = 1
+export var description : String
 
 func _ready():
     var material = mesh.surface_get_material(0).duplicate()

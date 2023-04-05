@@ -20,25 +20,16 @@ func on_leave(next_area):
     remove_from_group("area")
 
 func on_interact(object_number):
+    var description = ""
     match object_number:
-        object_1.object_number:
-            get_tree().call_group("player_subtitles", "show_subtitles", "the corridor goes a little bit back", 2)
-            yield(get_tree().create_timer(3), "timeout")
-        object_2.object_number:
-            get_tree().call_group("player_subtitles", "show_subtitles", "a small nook under the staircase", 2)
-            yield(get_tree().create_timer(3), "timeout")
+        object_1.object_number: description = "the corridor goes a little bit back"
+        object_2.object_number: description = "a small nook under the staircase"
         object_3.object_number:
-            if not Global.door_3_open:
-                get_tree().call_group("player_subtitles", "show_subtitles", "a door", 2)
-            elif not Global.gate_3_open:
-                get_tree().call_group("player_subtitles", "show_subtitles", "a gate", 2)
-            else:
-                get_tree().call_group("player_subtitles", "show_subtitles", "a passageway", 2)
-            yield(get_tree().create_timer(3), "timeout")
-        object_4.object_number:
-            get_tree().call_group("player_subtitles", "show_subtitles", "a battery powered light source", 2)
-            yield(get_tree().create_timer(3), "timeout")
-    get_tree().call_group("player", "unlock_actions")
+            if not Global.door_3_open: description = "a door"
+            elif not Global.gate_3_open: description = "a gate"
+            else: description = "a passageway"
+        object_4.object_number: description = "a battery powered light source"
+    get_tree().call_group("player_subtitles", "show_subtitles", description)    
     
 func on_use(object_number):
     match object_number:

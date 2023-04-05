@@ -34,18 +34,13 @@ func on_leave(next_area):
     remove_from_group("area")
 
 func on_interact(object_number):
+    var description = ""
     match object_number:
-        object_1.object_number:
-            get_tree().call_group("player_subtitles", "show_subtitles", "no way I'm going down there", 2)
-            yield(get_tree().create_timer(3), "timeout")
-        object_2.object_number:
-            get_tree().call_group("player_subtitles", "show_subtitles", "the door is locked", 2)
-            yield(get_tree().create_timer(3), "timeout")
-        object_3.object_number:
-            get_tree().call_group("player_subtitles", "show_subtitles", "a light switch", 2)
-            yield(get_tree().create_timer(3), "timeout")
-    get_tree().call_group("player", "unlock_actions")
-    
+        object_1.object_number: description = "no way I'm going down there"
+        object_2.object_number: description = "the door is locked"
+        object_3.object_number: description = "a light switch"
+    get_tree().call_group("player_subtitles", "show_subtitles", description)
+
 func on_use(object_number):
     match object_number:
         object_1.object_number:
