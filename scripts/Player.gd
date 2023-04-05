@@ -68,11 +68,11 @@ func turn_off_flashlight():
     $Flashlight.visible = false
     
 func lock_actions():
-    $Cursor/Target.visible = false
+    $Cursor.lock()
     actions_locked = true
     
 func unlock_actions():
-    $Cursor/Target.visible = true
+    $Cursor.unlock()
     actions_locked = false    
     
 func reset_object_in_sight():
