@@ -28,8 +28,8 @@ settings/fps/force_fps=15
 
 [display]
 
-window/size/width=640
-window/size/height=480
+window/size/width=680
+window/size/height=510
 window/size/resizable=false
 window/size/fullscreen=true
 window/stretch/mode="viewport"

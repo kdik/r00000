@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=76 format=2]
 
 [ext_resource path="res://images/area1/area_1_object_1.png" type="Texture" id=1]
 [ext_resource path="res://images/area1/area_1_light_view.jpg" type="Texture" id=2]
@@ -51,10 +51,63 @@
 [ext_resource path="res://scripts/Roots.gd" type="Script" id=49]
 [ext_resource path="res://scenes/BlueScreen.tscn" type="PackedScene" id=50]
 
+[sub_resource type="ViewportTexture" id=32]
+viewport_path = NodePath("Viewport")
+
 [sub_resource type="Environment" id=5]
 background_mode = 1
 background_energy = 0.0
 ambient_light_energy = 0.0
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 480, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 960, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=27]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 1440, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 1920, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=29]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 2400, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 2400, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=31]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 2880, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 480, 640, 480 )
 
 [sub_resource type="AtlasTexture" id=9]
 flags = 4
@@ -116,58 +169,18 @@ flags = 4
 atlas = ExtResource( 9 )
 region = Rect2( 0, 1920, 640, 480 )
 
-[sub_resource type="AtlasTexture" id=24]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 0, 0, 640, 480 )
-
-[sub_resource type="AtlasTexture" id=25]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 0, 480, 640, 480 )
-
-[sub_resource type="AtlasTexture" id=26]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 0, 960, 640, 480 )
-
-[sub_resource type="AtlasTexture" id=27]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 0, 1440, 640, 480 )
-
-[sub_resource type="AtlasTexture" id=28]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 0, 1920, 640, 480 )
-
-[sub_resource type="AtlasTexture" id=29]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 0, 2400, 640, 480 )
-
-[sub_resource type="AtlasTexture" id=30]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 0, 2400, 640, 480 )
-
-[sub_resource type="AtlasTexture" id=31]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 0, 2880, 640, 480 )
-
-[sub_resource type="AtlasTexture" id=7]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 0, 0, 640, 480 )
-
-[sub_resource type="AtlasTexture" id=8]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 0, 480, 640, 480 )
-
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
+"frames": [ SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 30 ), SubResource( 29 ), SubResource( 28 ), SubResource( 27 ), SubResource( 26 ), SubResource( 25 ), SubResource( 24 ) ],
+"loop": true,
+"name": "level_5",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 7 ) ],
+"loop": true,
+"name": "level_1",
+"speed": 1.0
+}, {
 "frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 10 ), SubResource( 9 ) ],
 "loop": true,
 "name": "level_2",
@@ -182,22 +195,34 @@ animations = [ {
 "loop": true,
 "name": "level_4",
 "speed": 4.0
-}, {
-"frames": [ SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 30 ), SubResource( 29 ), SubResource( 28 ), SubResource( 27 ), SubResource( 26 ), SubResource( 25 ), SubResource( 24 ) ],
-"loop": true,
-"name": "level_5",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 7 ) ],
-"loop": true,
-"name": "level_1",
-"speed": 1.0
 } ]
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 6 )
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
+[node name="Background" type="ColorRect" parent="."]
+margin_right = 680.0
+margin_bottom = 510.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportTexture" type="TextureRect" parent="."]
+margin_left = 20.0
+margin_top = 15.0
+margin_right = 660.0
+margin_bottom = 495.0
+texture = SubResource( 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 640, 480 )
+render_target_v_flip = true
+
+[node name="Player" parent="Viewport" instance=ExtResource( 3 )]
 
 [node name="Areas" type="Spatial" parent="."]
 
@@ -335,8 +360,16 @@ omni_attenuation = 1e-05
 environment = SubResource( 5 )
 
 [node name="PlayerSubtitles" parent="." instance=ExtResource( 46 )]
+margin_left = 40.0
+margin_top = 47.0
+margin_right = 656.0
+margin_bottom = 127.0
 
 [node name="MonsterSubtitles" parent="." instance=ExtResource( 47 )]
+margin_left = 20.0
+margin_top = 15.0
+margin_right = 660.0
+margin_bottom = 495.0
 text_color = Color( 0.87451, 0.117647, 0.117647, 1 )
 
 [node name="Roots" type="AnimatedSprite" parent="."]
@@ -346,13 +379,23 @@ centered = false
 script = ExtResource( 49 )
 
 [node name="TransitionCurtain" parent="." instance=ExtResource( 5 )]
+margin_left = 20.0
+margin_top = 15.0
+margin_right = 660.0
+margin_bottom = 495.0
 
 [node name="BlueScreen" parent="." instance=ExtResource( 50 )]
+margin_left = 20.0
+margin_top = 15.0
+margin_right = 660.0
+margin_bottom = 495.0
 
 [node name="CrtCurtain" type="ColorRect" parent="."]
 material = ExtResource( 45 )
-margin_right = 640.0
-margin_bottom = 480.0
+margin_left = 20.0
+margin_top = 15.0
+margin_right = 660.0
+margin_bottom = 495.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
