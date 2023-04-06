@@ -1,6 +1,9 @@
 extends Spatial
 
 func _ready():
+    $Static.visible = true
+    yield(get_tree().create_timer(1.5), "timeout")
+    $Static.visible = false
     var text
     match Global.ending:
         Global.EVIL:
@@ -10,4 +13,6 @@ func _ready():
         Global.WIN:
             text = "YOU HAVE BECOME\nTHE EVIL PRESENCE BEYOND THE DOOR"
     yield($Subtitles.show_subtitles(text, 5), "completed")
+    $Static.visible = true
+    yield(get_tree(), "idle_frame")
     get_tree().change_scene("res://scenes/Menu.tscn")

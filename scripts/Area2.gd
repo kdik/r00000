@@ -9,12 +9,14 @@ func _ready():
     visible = false
 
 func on_enter(previous_area):
+    get_tree().call_group("player", "lock_actions")
     if previous_area == "Area1": _rotate_self_on_start(0)
     if previous_area == "Area3": _rotate_self_on_start(170)
     _update_view_visibility()
     visible = true
     add_to_group("area")
     yield(Global.monster_introduction(), "completed")
+    get_tree().call_group("player", "unlock_actions")
     
 func on_leave(next_area):
     visible = false

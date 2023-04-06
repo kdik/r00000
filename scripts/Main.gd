@@ -12,17 +12,19 @@ func _process(_delta):
         $Pause.pause()
 
 func switch_areas(next_area):
+    get_tree().call_group("player", "lock_actions")
     var previous_area = current_area.name
     print("Switching to " + next_area + " from " + previous_area)
-    get_tree().call_group("audio", "play", "Footsteps")
-    get_tree().call_group("ui", "fade_out")
-    yield(get_tree().create_timer(0.5), "timeout")
+    if previous_area != "Area3" or next_area != "Area1":
+        get_tree().call_group("audio", "play", "Footsteps")
+        get_tree().call_group("ui", "fade_out")
+        yield(get_tree().create_timer(0.5), "timeout")
     current_area.on_leave(next_area)
-    get_tree().call_group("player", "lock_actions")
     get_tree().call_group("player", "reset_position")
     get_tree().call_group("player", "reset_object_in_sight")
-    yield(get_tree().create_timer(0.5), "timeout")
-    get_tree().call_group("ui", "fade_in")
+    if previous_area != "Area3" or next_area != "Area1":    
+        yield(get_tree().create_timer(0.5), "timeout")
+        get_tree().call_group("ui", "fade_in")
     current_area = $Areas.get_node(next_area)
     var on_enter_state = current_area.on_enter(previous_area)
     if on_enter_state is GDScriptFunctionState: yield(on_enter_state, "completed")
@@ -31,8 +33,6 @@ func switch_areas(next_area):
 
 func game_over():
     get_tree().call_group("player", "lock_actions")
-    get_tree().call_group("ui", "fade_out")
-    yield(get_tree().create_timer(1.5), "timeout")
     get_tree().reload_current_scene()
     Global.reset()
     get_tree().change_scene("res://scenes/GameOver.tscn")

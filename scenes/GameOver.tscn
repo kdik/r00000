@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/GameOver.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Subtitles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://materials/crt.material" type="Material" id=3]
+[ext_resource path="res://images/static.png" type="Texture" id=4]
 
 [node name="GameOver" type="Spatial"]
 script = ExtResource( 1 )
@@ -25,9 +26,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Static" type="TextureRect" parent="."]
+margin_left = 20.0
+margin_top = 15.0
+margin_right = 660.0
+margin_bottom = 495.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Subtitles" parent="." instance=ExtResource( 2 )]
 margin_left = 20.0
+margin_top = 235.0
 margin_right = 660.0
+margin_bottom = 315.0
 
 [node name="CrtCurtain" type="ColorRect" parent="."]
 material = ExtResource( 3 )
