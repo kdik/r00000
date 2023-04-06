@@ -13,6 +13,7 @@ var actions_in_darkness = 0
 var door_3_open = false
 var gate_3_open = false
 var batteries_removed = false
+var monster_introduced = false
 
 enum {ROOTS, EVIL, WIN}
 
@@ -21,7 +22,6 @@ func reset():
     battery_count = 0
     loops_completed = 0
     flashlight_on = false
-    
     reset_single_loop()
     
 func reset_single_loop():
@@ -30,11 +30,16 @@ func reset_single_loop():
     door_3_open = false
     gate_3_open = false
     batteries_removed = false
+    monster_introduced = false
     
 func monster_introduction():
     if not Global.lights_on or Global.flashlight_on:
         return yield(get_tree(), "idle_frame")
+    if monster_introduced:
+        return yield(get_tree(), "idle_frame")
+    monster_introduced = true
     get_tree().call_group("player", "lock_actions")
+    yield(get_tree().create_timer(1.5), "timeout")
     get_tree().call_group("monster_subtitles", "show_subtitles", "it's me, behind the door", 3)
     yield(get_tree().create_timer(4), "timeout")
     get_tree().call_group("monster_subtitles", "show_subtitles", "let me out", 3)
@@ -45,6 +50,7 @@ func monster_hide_and_seek():
     if Global.lights_on or Global.flashlight_on:
         return yield(get_tree(), "idle_frame")
     get_tree().call_group("player", "lock_actions")
+    yield(get_tree().create_timer(1.5), "timeout")
     match Global.actions_in_darkness:
         0:
             get_tree().call_group("monster_subtitles", "show_subtitles", "hello, my friend", 4)

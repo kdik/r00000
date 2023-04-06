@@ -4,8 +4,6 @@ onready var current_area = $Areas/Area1
 
 func _ready():
     add_to_group("main")
-    get_tree().call_group("ui", "fade_in")
-    Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
     current_area.on_enter(null)
     
 func _process(_delta):
@@ -14,11 +12,11 @@ func _process(_delta):
         $Pause.pause()
 
 func switch_areas(next_area):
-    print("Switching to " + next_area)
+    var previous_area = current_area.name
+    print("Switching to " + next_area + " from " + previous_area)
     get_tree().call_group("audio", "play", "Footsteps")
     get_tree().call_group("ui", "fade_out")
     yield(get_tree().create_timer(0.5), "timeout")
-    var previous_area = current_area.name
     current_area.on_leave(next_area)
     get_tree().call_group("player", "lock_actions")
     get_tree().call_group("player", "reset_position")

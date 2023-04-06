@@ -5,6 +5,7 @@ onready var studio_animation_player = $Viewport/StudioNameLabel/AnimationPlayer
 onready var menu_scene = preload("res://scenes/Menu.tscn")
 
 func _ready():
+    Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
     viewport_animation_player.play("turn_on")
     yield(get_tree().create_timer(viewport_animation_player.get_animation("turn_on").length), "timeout")
     studio_animation_player.play("fade_in")
