@@ -10,7 +10,8 @@ func _ready():
     
 func _process(_delta):
     if Input.is_action_just_pressed("ui_cancel") and OS.get_name() != "HTML5":
-        get_tree().quit()
+        get_tree().paused = true
+        $Pause.pause()
 
 func switch_areas(next_area):
     print("Switching to " + next_area)

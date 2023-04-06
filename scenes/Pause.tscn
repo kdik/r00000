@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/Pause.gd" type="Script" id=1]
+[ext_resource path="res://fonts/vhs_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://images/play_triangle.png" type="Texture" id=3]
+
+[node name="Pause" type="ColorRect"]
+margin_right = 640.0
+margin_bottom = 480.0
+color = Color( 0, 0, 1, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleLabel" type="RichTextLabel" parent="."]
+margin_left = 24.0
+margin_top = 32.0
+margin_right = 640.0
+margin_bottom = 112.0
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "R00000"
+text = "R00000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectionLabel" type="RichTextLabel" parent="."]
+margin_top = 32.0
+margin_right = 616.0
+margin_bottom = 332.0
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[right]RESUME  [/right]
+[right]EJECT   [/right]"
+text = "RESUME  
+EJECT   "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cursor" type="TextureRect" parent="."]
+margin_left = 600.0
+margin_top = 32.0
+margin_right = 640.0
+margin_bottom = 72.0
+texture = ExtResource( 3 )

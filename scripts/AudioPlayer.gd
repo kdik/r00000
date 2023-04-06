@@ -14,6 +14,7 @@ func play(sound_name):
             child_node.play()
             
 func _process(_delta):
+
     if not Global.lights_on and not Global.flashlight_on:
         if not ambience_danger.is_playing():
             ambience_general.stop()
