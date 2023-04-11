@@ -19,16 +19,16 @@ func _process(_delta):
     if movement_locked:
         return
     elif Input.is_action_pressed("ui_left"):
-        rotation_y = _calculate_rotation(rotation_y, rotation_speed)
+        set_rotation_y(rotation_y + rotation_speed)
         update_rotation()
     elif Input.is_action_pressed("ui_right"):
-        rotation_y = _calculate_rotation(rotation_y, -rotation_speed)
+        set_rotation_y(rotation_y - rotation_speed)
         update_rotation()
     elif Input.is_action_pressed("ui_up"):
-        rotation_x = _calculate_rotation(rotation_x, rotation_speed)
+        set_rotation_x(rotation_x + rotation_speed)
         update_rotation()
     elif Input.is_action_pressed("ui_down"):
-        rotation_x = _calculate_rotation(rotation_x, -rotation_speed)
+        set_rotation_x(rotation_x - rotation_speed)
         update_rotation()    
 
 func _calculate_rotation(start, increment):
@@ -36,9 +36,19 @@ func _calculate_rotation(start, increment):
     if sum > PI: return sum - 2.0 * PI
     elif sum < - PI: return sum + 2.0 * PI
     else: return sum
+    
+func set_rotation_x(x):
+    if x > PI: rotation_x = x - 2.0 * PI
+    elif x < - PI: rotation_x = x + 2.0 * PI
+    else: rotation_x = x
+    
+func set_rotation_y(y):
+    if y > PI: rotation_y = y - 2.0 * PI
+    elif y < - PI: rotation_y = y + 2.0 * PI
+    else: rotation_y = y
 
 func update_rotation():
-    print("rot_x: " + str(rotation_x) + " rot_y: " + str(rotation_y))
+    #print("rot_x: " + str(rotation_x) + " rot_y: " + str(rotation_y))
     rotation_x = clamp(rotation_x, -0.25 * PI, 0.25 * PI)
     transform.basis = Basis()
     rotate_x(rotation_x)
