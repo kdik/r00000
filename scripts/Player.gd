@@ -5,6 +5,7 @@ var rotation_x = 0
 var rotation_y = 0
 var object_in_sight_number = 0
 var actions_locked = false
+var movement_locked = false
 onready var hidden_detector_viewport = $HiddenDetectorViewport
 onready var hidden_detector_camera = $HiddenDetectorViewport/HiddenDetectorCamera
 
@@ -12,22 +13,32 @@ func _ready():
     add_to_group("player")
 
 func _process(_delta):
-    if Input.is_action_pressed("ui_left"):
-        rotation_y += rotation_speed
-        _update_rotation()
-    elif Input.is_action_pressed("ui_right"):
-        rotation_y -= rotation_speed
-        _update_rotation()
-    elif Input.is_action_pressed("ui_up"):
-        rotation_x += rotation_speed
-        _update_rotation()
-    elif Input.is_action_pressed("ui_down"):
-        rotation_x -= rotation_speed
-        _update_rotation()    
-    elif Input.is_action_just_pressed("ui_select") or Input.is_action_just_pressed("ui_accept"):
+    if Input.is_action_just_pressed("ui_select") or Input.is_action_just_pressed("ui_accept"):
         _use()
+        return
+    if movement_locked:
+        return
+    elif Input.is_action_pressed("ui_left"):
+        rotation_y = _calculate_rotation(rotation_y, rotation_speed)
+        update_rotation()
+    elif Input.is_action_pressed("ui_right"):
+        rotation_y = _calculate_rotation(rotation_y, -rotation_speed)
+        update_rotation()
+    elif Input.is_action_pressed("ui_up"):
+        rotation_x = _calculate_rotation(rotation_x, rotation_speed)
+        update_rotation()
+    elif Input.is_action_pressed("ui_down"):
+        rotation_x = _calculate_rotation(rotation_x, -rotation_speed)
+        update_rotation()    
 
-func _update_rotation():
+func _calculate_rotation(start, increment):
+    var sum = start + increment
+    if sum > PI: return sum - 2.0 * PI
+    elif sum < - PI: return sum + 2.0 * PI
+    else: return sum
+
+func update_rotation():
+    print("rot_x: " + str(rotation_x) + " rot_y: " + str(rotation_y))
     rotation_x = clamp(rotation_x, -0.25 * PI, 0.25 * PI)
     transform.basis = Basis()
     rotate_x(rotation_x)
@@ -74,13 +85,19 @@ func unlock_actions():
     actions_locked = false
     _check_crosshairs()
     
+func lock_movement():
+    movement_locked = true
+    
+func unlock_movement():
+    movement_locked = false
+    
 func reset_object_in_sight():
     _check_crosshairs()
     
 func reset_position():
     rotation_x = 0
     rotation_y = 0
-    _update_rotation()
+    update_rotation()
     
 func _use():
     if actions_locked:

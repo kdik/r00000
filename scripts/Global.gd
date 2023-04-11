@@ -53,6 +53,10 @@ func monster_hide_and_seek():
     yield(get_tree().create_timer(1.5), "timeout")
     match Global.actions_in_darkness:
         0:
+            yield(get_tree(), "idle_frame")
+            get_tree().call_group("player_automated_movement", "turn", -0.19635, -2.159845, 2.0)
+            yield(get_tree().create_timer(2), "timeout")
+            
             get_tree().call_group("monster_subtitles", "show_subtitles", "hello, my friend", 4)
             yield(get_tree().create_timer(6), "timeout")
             get_tree().call_group("monster_subtitles", "show_subtitles", "You get a few moves before I hurt you", 5)

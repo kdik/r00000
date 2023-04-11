@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://images/area1/area_1_object_1.png" type="Texture" id=1]
 [ext_resource path="res://images/area1/area_1_light_view.jpg" type="Texture" id=2]
@@ -51,6 +51,7 @@
 [ext_resource path="res://scripts/Roots.gd" type="Script" id=49]
 [ext_resource path="res://scenes/BlueScreen.tscn" type="PackedScene" id=50]
 [ext_resource path="res://scenes/Pause.tscn" type="PackedScene" id=51]
+[ext_resource path="res://scripts/AutomatedMovement.gd" type="Script" id=52]
 
 [sub_resource type="ViewportTexture" id=32]
 viewport_path = NodePath("Viewport")
@@ -224,6 +225,9 @@ size = Vector2( 640, 480 )
 render_target_v_flip = true
 
 [node name="Player" parent="Viewport" instance=ExtResource( 3 )]
+
+[node name="AutomatedMovement" type="Spatial" parent="Viewport/Player"]
+script = ExtResource( 52 )
 
 [node name="Areas" type="Spatial" parent="."]
 
