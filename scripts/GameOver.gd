@@ -13,6 +13,7 @@ func _ready():
         Global.WIN:
             text = "YOU HAVE BECOME\nTHE EVIL PRESENCE BEYOND THE DOOR"
     yield($Subtitles.show_subtitles(text, 5), "completed")
+    $Subtitles.visible = false
     $Static.visible = true
     yield(get_tree(), "idle_frame")
     get_tree().change_scene("res://scenes/Menu.tscn")

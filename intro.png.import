@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/weekend_warriors.png-62711b212145ec2fedcc21ea718d7899.stex"
+path="res://.import/intro.png-933ca9eb4c4b50e5bf48ad29115cd7fd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://weekend_warriors.png"
-dest_files=[ "res://.import/weekend_warriors.png-62711b212145ec2fedcc21ea718d7899.stex" ]
+source_file="res://intro.png"
+dest_files=[ "res://.import/intro.png-933ca9eb4c4b50e5bf48ad29115cd7fd.stex" ]
 
 [params]
 

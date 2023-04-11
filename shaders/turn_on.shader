@@ -10,7 +10,7 @@ uniform float half_resolution_y = 256.0;
 
 void fragment(){
     if (time < time_point_3) {
-       COLOR.rgb = texture(TEXTURE, UV).rgb * time_point_3 / (time + 0.001); 
+       COLOR.rgb = texture(TEXTURE, UV).rgb;
     } else {
        COLOR.rgb = texture(TEXTURE, UV).rgb;
     }

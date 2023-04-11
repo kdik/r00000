@@ -107,9 +107,6 @@ script = ExtResource( 1 )
 margin_right = 680.0
 margin_bottom = 512.0
 color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ViewportTexture" type="TextureRect" parent="."]
 material = SubResource( 3 )
@@ -118,9 +115,6 @@ margin_top = 15.0
 margin_right = 660.0
 margin_bottom = 495.0
 texture = SubResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ViewportTexture"]
 root_node = NodePath("../..")
