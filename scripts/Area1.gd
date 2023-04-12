@@ -59,9 +59,11 @@ func on_use(object_number):
                 yield(get_tree().create_timer(3), "timeout")
             else:
                 Global.lights_on = not Global.lights_on
-                Global.actions_in_darkness = 0
+                if Global.lights_on:
+                    Global.actions_in_darkness = 0
+                    Global.hide_and_seek_started = false
                 _update_view_visibility()
-    yield(Global.monster_hide_and_seek(), "completed")
+    yield(Global.monster_hide_and_seek("Area1"), "completed")
     if visible: get_tree().call_group("player", "unlock_actions")
 
 func _update_view_visibility():

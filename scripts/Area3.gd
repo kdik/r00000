@@ -78,7 +78,8 @@ func on_use(object_number):
                 else:
                     get_tree().call_group("player_subtitles", "show_subtitles", "I have no use for the battery I removed", 2)
                     yield(get_tree().create_timer(3), "timeout")
-    yield(Global.monster_hide_and_seek(), "completed")
+                yield(Global.monster_hide_and_seek_start("Area3"), "completed")
+    yield(Global.monster_hide_and_seek("Area3"), "completed")
     if visible: get_tree().call_group("player", "unlock_actions")
 
 func _update_view_visibility():

@@ -14,6 +14,7 @@ var door_3_open = false
 var gate_3_open = false
 var batteries_removed = false
 var monster_introduced = false
+var hide_and_seek_started = false
 
 enum {ROOTS, EVIL, WIN}
 
@@ -31,6 +32,7 @@ func reset_single_loop():
     gate_3_open = false
     batteries_removed = false
     monster_introduced = false
+    hide_and_seek_started = false
     
 func monster_introduction():
     if not Global.lights_on or Global.flashlight_on:
@@ -46,21 +48,29 @@ func monster_introduction():
     yield(get_tree().create_timer(4), "timeout")
     get_tree().call_group("player", "unlock_actions")
     
-func monster_hide_and_seek():
-    if Global.lights_on or Global.flashlight_on:
+func monster_hide_and_seek_start(area):
+    if hide_and_seek_started or Global.lights_on or Global.flashlight_on:
+        return yield(get_tree(), "idle_frame")
+    get_tree().call_group("player", "lock_actions")
+    yield(get_tree().create_timer(1.5), "timeout")
+    if area == "Area2":
+        get_tree().call_group("player_automated_movement", "turn", -0.19635, -2.159845)
+    elif area == "Area3":
+        get_tree().call_group("player_automated_movement", "turn", -0.1309, 2.552544)
+    yield(get_tree().create_timer(2), "timeout")  
+    get_tree().call_group("monster_subtitles", "show_subtitles", "hello, my friend", 4)
+    yield(get_tree().create_timer(6), "timeout")
+    get_tree().call_group("monster_subtitles", "show_subtitles", "You get a few moves before I hurt you", 5)
+    yield(get_tree().create_timer(7), "timeout")
+    hide_and_seek_started = true
+    get_tree().call_group("player", "unlock_actions")
+
+func monster_hide_and_seek(area):
+    if not hide_and_seek_started or Global.lights_on or Global.flashlight_on:
         return yield(get_tree(), "idle_frame")
     get_tree().call_group("player", "lock_actions")
     yield(get_tree().create_timer(1.5), "timeout")
     match Global.actions_in_darkness:
-        0:
-            yield(get_tree(), "idle_frame")
-            get_tree().call_group("player_automated_movement", "turn", -0.19635, -2.159845)
-            yield(get_tree().create_timer(2), "timeout")
-            
-            get_tree().call_group("monster_subtitles", "show_subtitles", "hello, my friend", 4)
-            yield(get_tree().create_timer(6), "timeout")
-            get_tree().call_group("monster_subtitles", "show_subtitles", "You get a few moves before I hurt you", 5)
-            yield(get_tree().create_timer(7), "timeout")
         1:
             get_tree().call_group("monster_subtitles", "show_subtitles", "three", 3)
             yield(get_tree().create_timer(4), "timeout")

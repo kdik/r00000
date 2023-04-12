@@ -16,6 +16,7 @@ func on_enter(previous_area):
     visible = true
     add_to_group("area")
     yield(Global.monster_introduction(), "completed")
+    yield(Global.monster_hide_and_seek_start("Area2"), "completed")
     get_tree().call_group("player", "unlock_actions")
     
 func on_leave(next_area):
@@ -42,6 +43,8 @@ func on_use(object_number):
             if Global.flashlight_on:
                 Global.ending = Global.WIN
                 get_tree().call_group("main", "game_over")
+            else:
+                yield(Global.monster_hide_and_seek_start("Area2"), "completed")
         object_2.object_number:
             if Global.batteries_removed:
                 get_tree().call_group("player_subtitles", "show_subtitles", "I have no use for more batteries", 2)
@@ -69,13 +72,14 @@ func on_use(object_number):
                 else:
                     get_tree().call_group("player_subtitles", "show_subtitles", "I have no use for the battery I removed", 2)
                     yield(get_tree().create_timer(3), "timeout")
+                yield(Global.monster_hide_and_seek_start("Area2"), "completed")
         object_3.object_number:
             get_tree().call_group("main", "switch_areas", "Area3")
             yield(get_tree().create_timer(3), "timeout")
         object_4.object_number:
             get_tree().call_group("main", "switch_areas", "Area1")
             yield(get_tree().create_timer(3), "timeout")
-    yield(Global.monster_hide_and_seek(), "completed")
+    yield(Global.monster_hide_and_seek("Area2"), "completed")
     if visible: get_tree().call_group("player", "unlock_actions")
 
 func _update_view_visibility():
