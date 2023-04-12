@@ -63,14 +63,17 @@ func monster_hide_and_seek_start(area):
     yield(get_tree().create_timer(6), "timeout")
     get_tree().call_group("monster_subtitles", "show_subtitles", "You get a few moves before I hurt you", 5)
     yield(get_tree().create_timer(7), "timeout")
-    hide_and_seek_started = true
     if area == "Area2":
         get_tree().call_group("monster_eyes", "fade_out_near")
     elif area == "Area3":
         get_tree().call_group("monster_eyes", "fade_out_far")
+    yield(get_tree().create_timer(1.5), "timeout")
+    get_tree().call_group("monster", "hide")
+    get_tree().call_group("monster_eyes", "fade_in")
     yield(get_tree().create_timer(3), "timeout")
     get_tree().call_group("player", "unlock_actions")
     get_tree().call_group("player", "unlock_movement")
+    hide_and_seek_started = true
 
 func monster_hide_and_seek(area):
     if not hide_and_seek_started or Global.lights_on or Global.flashlight_on:

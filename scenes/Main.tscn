@@ -65,10 +65,10 @@ ambient_light_energy = 0.0
 
 [sub_resource type="ShaderMaterial" id=33]
 shader = ExtResource( 53 )
-shader_param/left_eye = Vector2( 0.557, 0.45 )
-shader_param/right_eye = Vector2( 0.581, 0.45 )
+shader_param/left_eye = Vector2( 0.23, 0.455 )
+shader_param/right_eye = Vector2( 0.35, 0.455 )
 shader_param/radius = 0.1
-shader_param/solid_radius = 0.001
+shader_param/solid_radius = 0.007
 shader_param/color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="Animation" id=34]
@@ -99,7 +99,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 1.5, 0.01 ]
+"values": [ 1.5, 0.03 ]
 }
 
 [sub_resource type="Animation" id=35]
@@ -435,7 +435,6 @@ margin_bottom = 495.0
 text_color = Color( 0.87451, 0.117647, 0.117647, 1 )
 
 [node name="MonsterEyes" type="ColorRect" parent="."]
-visible = false
 material = SubResource( 33 )
 margin_left = 20.0
 margin_top = 15.0

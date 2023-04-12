@@ -92,7 +92,7 @@ func _update_view_visibility():
     
 func _update_object_visibility():
     object_2.visible = Global.lights_on
-    $Monster.visible = not Global.lights_on and not Global.flashlight_on
+    $Monster.visible = not Global.lights_on and not Global.flashlight_on and not Global.hide_and_seek_started
 
 func _rotate_self_on_start(rotation_deg):
     transform.basis = Basis()
