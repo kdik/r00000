@@ -7,7 +7,6 @@ func _ready():
     add_to_group("player_automated_movement")
 
 func turn(end_x, end_y):
-    get_tree().call_group("player", "lock_movement")
     var time = abs(end_y - player.rotation_y) / PI
     movement = { 
         "start_x" : player.rotation_x, 
@@ -18,7 +17,6 @@ func turn(end_x, end_y):
         "target_time" : time 
     }
     yield(get_tree().create_timer(time), "timeout")
-    get_tree().call_group("player", "unlock_movement")
 
 func _process(delta):
     if movement == null:
