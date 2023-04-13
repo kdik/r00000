@@ -97,9 +97,11 @@ func unlock_actions():
     
 func lock_movement():
     movement_locked = true
+    $Cursor/Target.visible = false
     
 func unlock_movement():
     movement_locked = false
+    $Cursor/Target.visible = true
     
 func reset_object_in_sight():
     _check_crosshairs()
