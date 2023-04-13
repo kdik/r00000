@@ -15,6 +15,7 @@ var gate_3_open = false
 var batteries_removed = false
 var monster_introduced = false
 var hide_and_seek_started = false
+var hide_and_seek_lost = false
 
 enum {ROOTS, EVIL, WIN}
 
@@ -33,6 +34,7 @@ func reset_single_loop():
     batteries_removed = false
     monster_introduced = false
     hide_and_seek_started = false
+    hide_and_seek_lost = false
     
 func monster_introduction():
     if not Global.lights_on or Global.flashlight_on:
@@ -91,7 +93,9 @@ func monster_hide_and_seek(area):
             get_tree().call_group("monster_subtitles", "show_subtitles", "one", 3)
             yield(get_tree().create_timer(5), "timeout")
             get_tree().call_group("monster_subtitles", "show_subtitles", "here I come", 5)
-            yield(get_tree().create_timer(7), "timeout")
+            yield(get_tree().create_timer(5), "timeout")
+            hide_and_seek_lost = true
+            yield(get_tree().create_timer(3), "timeout")
             Global.ending = Global.EVIL
             get_tree().call_group("main", "game_over")
     get_tree().call_group("player", "unlock_actions")
