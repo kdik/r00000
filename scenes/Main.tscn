@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=2]
+[gd_scene load_steps=92 format=2]
 
 [ext_resource path="res://images/area1/area_1_object_1.png" type="Texture" id=1]
 [ext_resource path="res://images/area1/area_1_light_view.jpg" type="Texture" id=2]
@@ -54,6 +54,16 @@
 [ext_resource path="res://scripts/AutomatedMovement.gd" type="Script" id=52]
 [ext_resource path="res://shaders/monster_eyes.shader" type="Shader" id=53]
 [ext_resource path="res://scripts/MonsterEyes.gd" type="Script" id=54]
+[ext_resource path="res://shaders/glitch.shader" type="Shader" id=55]
+[ext_resource path="res://images/overlay.png" type="Texture" id=56]
+[ext_resource path="res://scripts/ViewportTexture.gd" type="Script" id=57]
+
+[sub_resource type="ShaderMaterial" id=41]
+shader = ExtResource( 55 )
+shader_param/wobble_height = 1.0
+shader_param/wobble_curve = 1.5
+shader_param/wobble_speed = 5.5
+shader_param/on = false
 
 [sub_resource type="ViewportTexture" id=32]
 viewport_path = NodePath("Viewport")
@@ -332,11 +342,13 @@ __meta__ = {
 }
 
 [node name="ViewportTexture" type="TextureRect" parent="."]
+material = SubResource( 41 )
 margin_left = 20.0
 margin_top = 15.0
 margin_right = 660.0
 margin_bottom = 495.0
 texture = SubResource( 32 )
+script = ExtResource( 57 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -544,6 +556,10 @@ margin_left = 20.0
 margin_top = 15.0
 margin_right = 660.0
 margin_bottom = 495.0
+
+[node name="Overlay" type="Sprite" parent="."]
+texture = ExtResource( 56 )
+centered = false
 
 [node name="CrtCurtain" type="ColorRect" parent="."]
 material = ExtResource( 45 )
