@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=2]
+[gd_scene load_steps=93 format=2]
 
 [ext_resource path="res://images/area1/area_1_object_1.png" type="Texture" id=1]
 [ext_resource path="res://images/area1/area_1_light_view.jpg" type="Texture" id=2]
@@ -57,6 +57,7 @@
 [ext_resource path="res://shaders/glitch.shader" type="Shader" id=55]
 [ext_resource path="res://images/overlay.png" type="Texture" id=56]
 [ext_resource path="res://scripts/ViewportTexture.gd" type="Script" id=57]
+[ext_resource path="res://scenes/Filter.tscn" type="PackedScene" id=58]
 
 [sub_resource type="ShaderMaterial" id=41]
 shader = ExtResource( 55 )
@@ -531,6 +532,12 @@ anims/final_fade_out = SubResource( 40 )
 anims/wobble_1 = SubResource( 37 )
 anims/wobble_2 = SubResource( 38 )
 anims/wobble_3 = SubResource( 39 )
+
+[node name="Filter" parent="." instance=ExtResource( 58 )]
+margin_left = 20.0
+margin_top = 15.0
+margin_right = 660.0
+margin_bottom = 495.0
 
 [node name="Roots" type="AnimatedSprite" parent="."]
 position = Vector2( 20, 15 )

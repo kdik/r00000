@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://videos/filter.ogv" type="VideoStream" id=1]
+[ext_resource path="res://scripts/Filter.gd" type="Script" id=2]
+[ext_resource path="res://shaders/filter.shader" type="Shader" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 3 )
+shader_param/alpha = 0.0
+
+[node name="Filter" type="VideoPlayer"]
+material = SubResource( 1 )
+margin_right = 40.0
+margin_bottom = 40.0
+stream = ExtResource( 1 )
+expand = false
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="finished" from="." to="." method="_on_finished"]

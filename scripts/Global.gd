@@ -62,6 +62,8 @@ func monster_hide_and_seek_start(area):
         get_tree().call_group("player_automated_movement", "turn", -0.1309, 2.552544)
     yield(get_tree().create_timer(2), "timeout")  
     get_tree().call_group("monster_subtitles", "show_subtitles", "hello, my friend", 4)
+    get_tree().call_group("filter", "play")
+    get_tree().call_group("filter", "set_alpha", 0.05)
     yield(get_tree().create_timer(6), "timeout")
     get_tree().call_group("monster_subtitles", "show_subtitles", "You get a few moves before I hurt you", 5)
     yield(get_tree().create_timer(7), "timeout")
@@ -85,12 +87,18 @@ func monster_hide_and_seek(area):
     match Global.actions_in_darkness:
         1:
             get_tree().call_group("monster_subtitles", "show_subtitles", "three", 3)
+            get_tree().call_group("filter", "play")
+            get_tree().call_group("filter", "set_alpha", 0.1)
             yield(get_tree().create_timer(4), "timeout")
         2:
             get_tree().call_group("monster_subtitles", "show_subtitles", "two", 3)
+            get_tree().call_group("filter", "play")
+            get_tree().call_group("filter", "set_alpha", 0.2)
             yield(get_tree().create_timer(4), "timeout")
         3:
             get_tree().call_group("monster_subtitles", "show_subtitles", "one", 3)
+            get_tree().call_group("filter", "play")
+            get_tree().call_group("filter", "set_alpha", 0.3)
             yield(get_tree().create_timer(5), "timeout")
             get_tree().call_group("monster_subtitles", "show_subtitles", "here I come", 5)
             yield(get_tree().create_timer(5), "timeout")
