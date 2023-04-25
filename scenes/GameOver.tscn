@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/GameOver.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Subtitles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://materials/crt.material" type="Material" id=3]
 [ext_resource path="res://images/static.png" type="Texture" id=4]
+[ext_resource path="res://videos/ending_4.ogv" type="VideoStream" id=5]
+[ext_resource path="res://videos/ending_3.ogv" type="VideoStream" id=6]
+[ext_resource path="res://videos/ending_2.ogv" type="VideoStream" id=7]
+[ext_resource path="res://videos/ending_1.ogv" type="VideoStream" id=8]
 
 [node name="GameOver" type="Spatial"]
 script = ExtResource( 1 )
@@ -22,6 +26,54 @@ margin_top = 15.0
 margin_right = 660.0
 margin_bottom = 495.0
 color = Color( 0.576471, 0.0901961, 0.0901961, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VideoPlayer1" type="VideoPlayer" parent="."]
+visible = false
+margin_left = 20.0
+margin_top = 15.0
+margin_right = 660.0
+margin_bottom = 495.0
+stream = ExtResource( 8 )
+expand = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VideoPlayer2" type="VideoPlayer" parent="."]
+visible = false
+margin_left = 20.0
+margin_top = 15.0
+margin_right = 660.0
+margin_bottom = 495.0
+stream = ExtResource( 7 )
+expand = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VideoPlayer3" type="VideoPlayer" parent="."]
+visible = false
+margin_left = 20.0
+margin_top = 15.0
+margin_right = 660.0
+margin_bottom = 495.0
+stream = ExtResource( 6 )
+expand = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VideoPlayer4" type="VideoPlayer" parent="."]
+visible = false
+margin_left = 20.0
+margin_top = 15.0
+margin_right = 660.0
+margin_bottom = 495.0
+stream = ExtResource( 5 )
+expand = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -52,3 +104,8 @@ margin_bottom = 495.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="finished" from="VideoPlayer1" to="." method="_on_ending_video_finished"]
+[connection signal="finished" from="VideoPlayer2" to="." method="_on_ending_video_finished"]
+[connection signal="finished" from="VideoPlayer3" to="." method="_on_ending_video_finished"]
+[connection signal="finished" from="VideoPlayer4" to="." method="_on_ending_video_finished"]
