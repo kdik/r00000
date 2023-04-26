@@ -6,7 +6,7 @@ func _ready():
     $Static.visible = false
     var text
     match Global.ending:
-        Global.EVIL:
+        Global.CAUGHT:
             #text = "YOU WERE KILLED BY\nSOMETHING WICKED"
             $VideoPlayer3.visible = true
             $VideoPlayer3.play()
@@ -14,7 +14,7 @@ func _ready():
             $VideoPlayer4.visible = true
             $VideoPlayer4.play()
             #text = "YOU WERE KILLED BY\nTHE ROOTS IN YOUR HEAD"
-        Global.WIN:
+        Global.BECOME_EVIL:
             #text = "YOU HAVE BECOME\nTHE EVIL PRESENCE BEYOND THE DOOR"
             $VideoPlayer1.visible = true
             $VideoPlayer1.play()

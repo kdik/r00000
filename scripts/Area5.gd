@@ -28,7 +28,7 @@ func on_enter(previous_area):
     yield(get_tree().create_timer(2), "timeout")
     get_tree().call_group("player", "turn_off_flashlight")
     yield(get_tree().create_timer(1), "timeout")
-    Global.ending = Global.WIN
+    Global.ending = Global.BECOME_EVIL
     get_tree().call_group("main", "game_over")
     
 func hide_all_views():

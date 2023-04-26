@@ -17,7 +17,7 @@ var monster_introduced = false
 var hide_and_seek_started = false
 var hide_and_seek_lost = false
 
-enum {ROOTS, EVIL, WIN}
+enum {ROOTS, CAUGHT, BECOME_EVIL, ESCAPE}
 
 func reset():
     have_flashlight = false
@@ -104,7 +104,7 @@ func monster_hide_and_seek(area):
             yield(get_tree().create_timer(5), "timeout")
             hide_and_seek_lost = true
             yield(get_tree().create_timer(3), "timeout")
-            Global.ending = Global.EVIL
+            Global.ending = Global.CAUGHT
             get_tree().call_group("main", "game_over")
     get_tree().call_group("player", "unlock_actions")
 
