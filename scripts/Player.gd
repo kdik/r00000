@@ -48,7 +48,7 @@ func set_rotation_y(y):
     else: rotation_y = y
 
 func update_rotation():
-    #print("rot_x: " + str(rotation_x) + " rot_y: " + str(rotation_y))
+    print("rot_x: " + str(rotation_x) + " rot_y: " + str(rotation_y))
     rotation_x = clamp(rotation_x, -0.25 * PI, 0.25 * PI)
     transform.basis = Basis()
     rotate_x(rotation_x)

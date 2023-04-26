@@ -41,8 +41,8 @@ func on_use(object_number):
                 Global.lights_on = false
             _update_view_visibility()
             if Global.flashlight_on:
-                Global.ending = Global.WIN
-                get_tree().call_group("main", "game_over")
+                get_tree().call_group("main", "switch_areas", "Area5")
+                yield(get_tree().create_timer(3), "timeout")
             else:
                 yield(Global.monster_hide_and_seek_start("Area2"), "completed")
         object_2.object_number:
