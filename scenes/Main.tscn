@@ -541,10 +541,10 @@ omni_attenuation = 1e-05
 environment = SubResource( 5 )
 
 [node name="PlayerSubtitles" parent="." instance=ExtResource( 46 )]
-margin_left = 40.0
-margin_top = 47.0
-margin_right = 656.0
-margin_bottom = 127.0
+margin_left = 15.0
+margin_top = 40.0
+margin_right = 631.0
+margin_bottom = 120.0
 
 [node name="MonsterSubtitles" parent="." instance=ExtResource( 47 )]
 margin_left = 20.0
