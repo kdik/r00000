@@ -37,7 +37,9 @@ func on_interact(object_number):
     var description = ""
     match object_number:
         object_1.object_number: description = "no way I'm going down there"
-        object_2.object_number: description = "the door is locked"
+        object_2.object_number:
+            if Global.flashlight_on and not Global.lights_on: description = "the door is not locked"
+            else: description = "the door is locked"
         object_3.object_number: description = "a light switch"
     get_tree().call_group("player_subtitles", "show_subtitles", description)
 
@@ -51,8 +53,19 @@ func on_use(object_number):
                 get_tree().call_group("main", "switch_areas", "Area2")
                 yield(get_tree().create_timer(3), "timeout")
         object_2.object_number:
-            get_tree().call_group("player_subtitles", "show_subtitles", "the door is locked", 2)
-            yield(get_tree().create_timer(3), "timeout")
+            if Global.flashlight_on and not Global.lights_on:
+                $Snow.visible = true
+                $ViewDarkEscape.visible = true
+                get_tree().call_group("player", "lock_actions")
+                get_tree().call_group("player", "lock_movement")
+                yield(get_tree().create_timer(5), "timeout")
+                get_tree().call_group("player", "turn_off_flashlight")
+                yield(get_tree().create_timer(2), "timeout")
+                Global.ending = Global.ESCAPE
+                get_tree().call_group("main", "game_over")
+            else:
+                get_tree().call_group("player_subtitles", "show_subtitles", "the door is locked", 2)
+                yield(get_tree().create_timer(3), "timeout")
         object_3.object_number:
             if Global.batteries_removed:
                 get_tree().call_group("player_subtitles", "show_subtitles", "it did not work", 2)
@@ -70,6 +83,8 @@ func on_use(object_number):
 func _update_view_visibility():
     $ViewLight.visible = Global.lights_on
     $ViewDark.visible = not Global.lights_on
+    $Snow.visible = false
+    $ViewDarkEscape.visible = false
     
 func _rotate_self_on_start(rotation_deg):
     transform.basis = Basis()

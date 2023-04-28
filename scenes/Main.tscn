@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=2]
+[gd_scene load_steps=105 format=2]
 
 [ext_resource path="res://images/area1/area_1_object_1.png" type="Texture" id=1]
 [ext_resource path="res://images/area1/area_1_light_view.jpg" type="Texture" id=2]
@@ -68,9 +68,8 @@
 [ext_resource path="res://images/area5/area_5_1.jpg" type="Texture" id=66]
 [ext_resource path="res://images/area5/area_5_5.jpg" type="Texture" id=67]
 [ext_resource path="res://images/area5/area_5_2.jpg" type="Texture" id=68]
-[ext_resource path="res://images/area1/area_1_escape_back.png" type="Texture" id=69]
-[ext_resource path="res://images/area1/area_1_escape_front.png" type="Texture" id=70]
-[ext_resource path="res://materials/snow.material" type="Material" id=71]
+[ext_resource path="res://images/area1/area_1_dark_escape_view.jpg" type="Texture" id=69]
+[ext_resource path="res://images/area1/area_1_object_3.png" type="Texture" id=70]
 
 [sub_resource type="ShaderMaterial" id=41]
 shader = ExtResource( 55 )
@@ -385,15 +384,12 @@ texture = ExtResource( 2 )
 [node name="ViewDark" parent="Areas/Area1" instance=ExtResource( 8 )]
 texture = ExtResource( 19 )
 
-[node name="ViewDarkEscapeBack" parent="Areas/Area1" instance=ExtResource( 8 )]
-material/0 = ExtResource( 71 )
+[node name="ViewDarkEscape" parent="Areas/Area1" instance=ExtResource( 8 )]
+visible = false
 texture = ExtResource( 69 )
 
 [node name="Snow" parent="Areas/Area1" instance=ExtResource( 20 )]
 visible = false
-
-[node name="ViewDarkEscapeFront" parent="Areas/Area1" instance=ExtResource( 8 )]
-texture = ExtResource( 70 )
 
 [node name="Object1" parent="Areas/Area1" instance=ExtResource( 7 )]
 skeleton = NodePath("")
@@ -404,6 +400,8 @@ texture = ExtResource( 13 )
 object_number = 2
 
 [node name="Object3" parent="Areas/Area1" instance=ExtResource( 7 )]
+texture = ExtResource( 70 )
+object_number = 3
 
 [node name="Area2" type="Spatial" parent="Areas"]
 script = ExtResource( 15 )

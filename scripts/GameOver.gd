@@ -18,9 +18,12 @@ func _ready():
             #text = "YOU HAVE BECOME\nTHE EVIL PRESENCE BEYOND THE DOOR"
             $VideoPlayer1.visible = true
             $VideoPlayer1.play()
+        Global.ESCAPE:
+            #text = "YOU HAVE ESCAPED"
+            $VideoPlayer2.visible = true
+            $VideoPlayer2.play()
     #yield($Subtitles.show_subtitles(text, 5), "completed")
     #$Subtitles.visible = false
-
 
 func _on_ending_video_finished():
     $Static.visible = true
