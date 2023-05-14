@@ -4,13 +4,13 @@ onready var object_1 = $Object1
 onready var object_2 = $Object2
 onready var object_3 = $Object3
 
-func on_enter(previous_area):
-    if previous_area == null: _rotate_self_on_start(-55)
-    elif previous_area == "Area3": _rotate_self_on_start(-55)
-    elif previous_area == "Area2": _rotate_self_on_start(120)
-    _update_view_visibility()
-    visible = true
-    add_to_group("area")
+func get_initial_rotation(previous_area):
+    if previous_area == null: return -55
+    elif previous_area == "Area3": return -55
+    elif previous_area == "Area2": return 120
+    else: return 0
+
+func init(previous_area):
     if Global.loops_completed > 0 and previous_area != "Area2":
         yield(get_tree().create_timer(1), "timeout")
         var subtitle_text = ""
@@ -64,11 +64,11 @@ func on_use(object_number):
                     Global.actions_in_darkness = 0
                     Global.hide_and_seek_started = false
                     get_tree().call_group("monster_eyes", "hide")
-                _update_view_visibility()
+                update_visibilities()
     yield(Global.monster_hide_and_seek("Area1"), "completed")
     if visible: get_tree().call_group("player", "unlock_actions")
 
-func _update_view_visibility():
+func update_visibilities():
     $ViewLight.visible = Global.lights_on
     $ViewDark.visible = not Global.lights_on
     $Snow.visible = false

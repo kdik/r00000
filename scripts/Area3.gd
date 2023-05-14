@@ -5,13 +5,9 @@ onready var object_2 = $Object2
 onready var object_3 = $Object3
 onready var object_4 = $Object4
 
-func on_enter(previous_area):
-    if previous_area == "Area2": _rotate_self_on_start(135)
-    if previous_area == "Area4": _rotate_self_on_start(0)
-    _update_view_visibility()
-    visible = true
-    add_to_group("area")
-    yield(get_tree(), "idle_frame")
+func get_initial_rotation(previous_area):
+    if previous_area == "Area2": return 135
+    else: return 0
 
 func get_description(object_number):
     match object_number:
@@ -34,10 +30,10 @@ func on_use(object_number):
         object_3.object_number:
             if not Global.door_3_open:
                 Global.door_3_open = true
-                _update_view_visibility()
+                update_visibilities()
             elif not Global.gate_3_open:
                 Global.gate_3_open = true
-                _update_view_visibility()
+                update_visibilities()
             else:
                 Global.loops_completed += 1
                 Global.reset_single_loop()
@@ -57,7 +53,7 @@ func on_use(object_number):
             else:
                 Global.batteries_removed = true
                 Global.lights_on = false
-                _update_view_visibility()
+                update_visibilities()
                 if Global.have_flashlight and Global.battery_count < 3:
                     get_tree().call_group("player", "add_battery")
                     yield(get_tree().create_timer(3), "timeout")
@@ -71,7 +67,7 @@ func on_use(object_number):
                         get_tree().call_group("monster_eyes", "hide")
                         get_tree().call_group("filter", "hide")
                         Global.flashlight_on = true
-                        _update_view_visibility()
+                        update_visibilities()
                     yield(get_tree().create_timer(3), "timeout")
                 else:
                     get_tree().call_group("player_subtitles", "show_subtitles", "I have no use for the battery I removed", 2)
@@ -80,7 +76,7 @@ func on_use(object_number):
     yield(Global.monster_hide_and_seek("Area3"), "completed")
     if visible: get_tree().call_group("player", "unlock_actions")
 
-func _update_view_visibility():
+func update_visibilities():
     $ViewLight.visible = Global.lights_on and not Global.door_3_open and not Global.gate_3_open
     $ViewLightDoor3Open.visible = Global.lights_on and Global.door_3_open and not Global.gate_3_open
     $ViewLightDoor3Gate3Open.visible = Global.lights_on and Global.door_3_open and Global.gate_3_open
@@ -88,8 +84,5 @@ func _update_view_visibility():
     $ViewDarkDoor3Open.visible = not Global.lights_on and Global.door_3_open and not Global.gate_3_open
     $ViewDarkGate3Open.visible = not Global.lights_on and Global.door_3_open and Global.gate_3_open
     $Graffiti.visible = Global.lights_on
-    _update_object_visibility()
-
-func _update_object_visibility():
     object_4.visible = Global.lights_on
     $Monster.visible = not Global.lights_on and not Global.flashlight_on and not Global.hide_and_seek_started

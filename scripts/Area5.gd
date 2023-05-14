@@ -1,7 +1,9 @@
 extends R00000Area
 
-func on_enter(previous_area):
-    _rotate_self_on_start(180)
+func get_initial_rotation(previous_area):
+    return 180
+
+func init(previous_area):
     add_to_group("area")
     get_tree().call_group("player", "lock_actions")
     get_tree().call_group("player", "lock_movement")
