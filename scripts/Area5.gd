@@ -1,7 +1,4 @@
-extends Spatial
-
-func _ready():
-    visible = false
+extends R00000Area
 
 func on_enter(previous_area):
     _rotate_self_on_start(180)
@@ -38,16 +35,5 @@ func hide_all_views():
     $View4.visible = false
     $View5.visible = false
     
-func on_leave(next_area):
-    visible = false
-    remove_from_group("area")
-
-func on_interact(object_number):
-    pass
-    
 func on_use(object_number):
     pass
-
-func _rotate_self_on_start(rotation_deg):
-    transform.basis = Basis()
-    rotate_y(deg2rad(rotation_deg))

@@ -1,12 +1,9 @@
-extends Spatial
+extends R00000Area
 
 onready var object_1 = $Object1
 onready var object_2 = $Object2
 onready var object_3 = $Object3
 onready var object_4 = $Object4
-
-func _ready():
-    visible = false
 
 func on_enter(previous_area):
     if previous_area == "Area2": _rotate_self_on_start(135)
@@ -14,23 +11,18 @@ func on_enter(previous_area):
     _update_view_visibility()
     visible = true
     add_to_group("area")
-    
-func on_leave(next_area):
-    visible = false
-    remove_from_group("area")
+    yield(get_tree(), "idle_frame")
 
-func on_interact(object_number):
-    var description = ""
+func get_description(object_number):
     match object_number:
-        object_1.object_number: description = "the corridor goes a little bit back"
-        object_2.object_number: description = "a small nook under the staircase"
+        object_1.object_number: return "the corridor goes a little bit back"
+        object_2.object_number: return "a small nook under the staircase"
         object_3.object_number:
-            if not Global.door_3_open: description = "a door"
-            elif not Global.gate_3_open: description = "a gate"
-            else: description = "a passageway"
-        object_4.object_number: description = "a battery powered light source"
-    get_tree().call_group("player_subtitles", "show_subtitles", description)    
-    
+            if not Global.door_3_open: return "a door"
+            elif not Global.gate_3_open: return "a gate"
+            else: return "a passageway"
+        object_4.object_number: return "a battery powered light source"
+
 func on_use(object_number):
     match object_number:
         object_1.object_number:
@@ -49,6 +41,8 @@ func on_use(object_number):
             else:
                 Global.loops_completed += 1
                 Global.reset_single_loop()
+                get_tree().call_group("blue_screen", "show")
+                yield(get_tree().create_timer(2.5), "timeout")
                 get_tree().call_group("main", "switch_areas", "Area1")
                 get_tree().call_group("monster_eyes", "hide")
                 get_tree().call_group("filter", "hide")
@@ -99,7 +93,3 @@ func _update_view_visibility():
 func _update_object_visibility():
     object_4.visible = Global.lights_on
     $Monster.visible = not Global.lights_on and not Global.flashlight_on and not Global.hide_and_seek_started
-
-func _rotate_self_on_start(rotation_deg):
-    transform.basis = Basis()
-    rotate_y(deg2rad(rotation_deg))

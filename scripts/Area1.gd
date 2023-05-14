@@ -1,16 +1,10 @@
-extends Spatial
+extends R00000Area
 
 onready var object_1 = $Object1
 onready var object_2 = $Object2
 onready var object_3 = $Object3
 
-func _ready():
-    visible = false
-
 func on_enter(previous_area):
-    if previous_area == "Area3": 
-        get_tree().call_group("blue_screen", "show")
-        yield(get_tree().create_timer(2.5), "timeout")
     if previous_area == null: _rotate_self_on_start(-55)
     elif previous_area == "Area3": _rotate_self_on_start(-55)
     elif previous_area == "Area2": _rotate_self_on_start(120)
@@ -29,19 +23,13 @@ func on_enter(previous_area):
         get_tree().call_group("player_subtitles", "show_subtitles", subtitle_text, 3)
         yield(get_tree().create_timer(4), "timeout")
 
-func on_leave(next_area):
-    visible = false
-    remove_from_group("area")
-
-func on_interact(object_number):
-    var description = ""
+func get_description(object_number):
     match object_number:
-        object_1.object_number: description = "no way I'm going down there"
+        object_1.object_number: return "no way I'm going down there"
         object_2.object_number:
-            if Global.flashlight_on and not Global.lights_on: description = "the door is not locked"
-            else: description = "the door is locked"
-        object_3.object_number: description = "a light switch"
-    get_tree().call_group("player_subtitles", "show_subtitles", description)
+            if Global.flashlight_on and not Global.lights_on: return "the door is not locked"
+            else: return "the door is locked"
+        object_3.object_number: return "a light switch"
 
 func on_use(object_number):
     match object_number:
@@ -85,7 +73,3 @@ func _update_view_visibility():
     $ViewDark.visible = not Global.lights_on
     $Snow.visible = false
     $ViewDarkEscape.visible = false
-    
-func _rotate_self_on_start(rotation_deg):
-    transform.basis = Basis()
-    rotate_y(deg2rad(rotation_deg))

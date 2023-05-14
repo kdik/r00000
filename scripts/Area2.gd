@@ -1,12 +1,9 @@
-extends Spatial
+extends R00000Area
 
 onready var object_1 = $Object1
 onready var object_2 = $Object2
 onready var object_3 = $Object3
 onready var object_4 = $Object4
-
-func _ready():
-    visible = false
 
 func on_enter(previous_area):
     get_tree().call_group("player", "lock_actions")
@@ -18,21 +15,16 @@ func on_enter(previous_area):
     yield(Global.monster_introduction(), "completed")
     yield(Global.monster_hide_and_seek_start("Area2"), "completed")
     get_tree().call_group("player", "unlock_actions")
-    
-func on_leave(next_area):
-    visible = false
-    remove_from_group("area")
+    yield(get_tree(), "idle_frame")
 
-func on_interact(object_number):
-    var description = ""
+func get_description(object_number):
     match object_number:
         object_1.object_number:
-            if Global.flashlight_on: description = "light destroyed the parasite"
-            else: description = "an evil presence lurks there"
-        object_2.object_number: description = "a battery powered light source"
-        object_3.object_number: description = "the corridor goes a little bit further"
-        object_4.object_number: description = "upstairs, the door I came through"
-    get_tree().call_group("player_subtitles", "show_subtitles", description)
+            if Global.flashlight_on: return "light destroyed the parasite"
+            else: return "an evil presence lurks there"
+        object_2.object_number: return "a battery powered light source"
+        object_3.object_number: return "the corridor goes a little bit further"
+        object_4.object_number: return "upstairs, the door I came through"
     
 func on_use(object_number):
     match object_number:
@@ -96,7 +88,3 @@ func _update_view_visibility():
 func _update_object_visibility():
     object_2.visible = Global.lights_on
     $Monster.visible = not Global.lights_on and not Global.flashlight_on and not Global.hide_and_seek_started
-
-func _rotate_self_on_start(rotation_deg):
-    transform.basis = Basis()
-    rotate_y(deg2rad(rotation_deg))
