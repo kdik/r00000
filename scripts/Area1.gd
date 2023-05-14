@@ -31,7 +31,7 @@ func get_description(object_number):
             else: return "the door is locked"
         object_3.object_number: return "a light switch"
 
-func on_use(object_number):
+func trigger_use(object_number):
     match object_number:
         object_1.object_number:
             if Global.loops_completed == 5:

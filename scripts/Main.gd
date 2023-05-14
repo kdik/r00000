@@ -23,7 +23,6 @@ func switch_areas(next_area):
         yield(get_tree().create_timer(0.5), "timeout")
     current_area.on_leave(next_area)
     get_tree().call_group("player", "reset_position")
-    get_tree().call_group("player", "reset_object_in_sight")
     if previous_area != "Area3" or next_area != "Area1":    
         yield(get_tree().create_timer(0.5), "timeout")
         get_tree().call_group("ui", "fade_in")

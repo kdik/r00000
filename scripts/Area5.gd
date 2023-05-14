@@ -36,6 +36,3 @@ func hide_all_views():
     $View3.visible = false
     $View4.visible = false
     $View5.visible = false
-    
-func on_use(object_number):
-    pass

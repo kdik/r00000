@@ -3,9 +3,6 @@ extends Node2D
 onready var locked = false
 onready var current_object_number = 0
 
-func _ready():
-    add_to_group("crosshairs")
-
 func in_sight(object_number):
     if locked:
         return

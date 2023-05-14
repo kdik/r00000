@@ -48,7 +48,7 @@ func set_rotation_y(y):
     else: rotation_y = y
 
 func update_rotation():
-    print("rot_x: " + str(rotation_x) + " rot_y: " + str(rotation_y))
+    #print("rot_x: " + str(rotation_x) + " rot_y: " + str(rotation_y))
     rotation_x = clamp(rotation_x, -0.25 * PI, 0.25 * PI)
     transform.basis = Basis()
     rotate_x(rotation_x)
@@ -56,14 +56,23 @@ func update_rotation():
     hidden_detector_camera.transform.basis = Basis()
     hidden_detector_camera.rotate_x(rotation_x)
     hidden_detector_camera.rotate_y(rotation_y)
-    _check_crosshairs()    
+    check_crosshairs()    
     
-func _check_crosshairs():
+func check_crosshairs():
     var pixel_data = hidden_detector_viewport.get_texture().get_data()
     pixel_data.lock()
+    var previous_object_in_sight_number = object_in_sight_number
     object_in_sight_number = int(pixel_data.get_pixel(320, 240).a)
-    get_tree().call_group("crosshairs", "in_sight", object_in_sight_number)
     pixel_data.unlock()
+    if not actions_locked:
+        if object_in_sight_number > 0:
+            get_tree().call_group("left_hand", "open")
+            if previous_object_in_sight_number == 0:
+                get_tree().call_group("area", "on_interact", object_in_sight_number)
+        elif object_in_sight_number == 0:
+            get_tree().call_group("left_hand", "close")
+            if previous_object_in_sight_number > 0:
+                get_tree().call_group("player_subtitles", "fade_out")
         
 func acquire_flashlight():
     Global.have_flashlight = true
@@ -87,14 +96,20 @@ func turn_off_flashlight():
     $Flashlight.visible = false
     
 func lock_actions():
-    $Cursor.lock()
+    if actions_locked: return
     actions_locked = true
+    if object_in_sight_number > 0:
+        get_tree().call_group("left_hand", "close")
+        get_tree().call_group("player_subtitles", "fade_out")
     
 func unlock_actions():
-    $Cursor.unlock()
+    if not actions_locked: return
     actions_locked = false
-    _check_crosshairs()
-    
+    check_crosshairs()
+    if object_in_sight_number > 0:
+        get_tree().call_group("left_hand", "open")
+        get_tree().call_group("area", "on_interact", object_in_sight_number)
+
 func lock_movement():
     movement_locked = true
     $Cursor/Target.visible = false
@@ -102,9 +117,6 @@ func lock_movement():
 func unlock_movement():
     movement_locked = false
     $Cursor/Target.visible = true
-    
-func reset_object_in_sight():
-    _check_crosshairs()
     
 func reset_position():
     rotation_x = 0
@@ -114,7 +126,6 @@ func reset_position():
 func _use():
     if actions_locked:
         return
-    lock_actions()
     if Global.hide_and_seek_started: Global.actions_in_darkness += 1
     get_tree().call_group("area", "on_use", object_in_sight_number)
 

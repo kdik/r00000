@@ -19,7 +19,7 @@ func get_description(object_number):
             else: return "a passageway"
         object_4.object_number: return "a battery powered light source"
 
-func on_use(object_number):
+func trigger_use(object_number):
     match object_number:
         object_1.object_number:
             get_tree().call_group("main", "switch_areas", "Area2")
@@ -74,7 +74,6 @@ func on_use(object_number):
                     yield(get_tree().create_timer(3), "timeout")
                 yield(Global.monster_hide_and_seek_start("Area3"), "completed")
     yield(Global.monster_hide_and_seek("Area3"), "completed")
-    if visible: get_tree().call_group("player", "unlock_actions")
 
 func update_visibilities():
     $ViewLight.visible = Global.lights_on and not Global.door_3_open and not Global.gate_3_open

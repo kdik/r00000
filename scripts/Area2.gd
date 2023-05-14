@@ -10,10 +10,8 @@ func get_initial_rotation(previous_area):
     else: return 0
 
 func init(previous_area):
-    get_tree().call_group("player", "lock_actions")
     yield(Global.monster_introduction(), "completed")
     yield(Global.monster_hide_and_seek_start("Area2"), "completed")
-    get_tree().call_group("player", "unlock_actions")
 
 func get_description(object_number):
     match object_number:
@@ -24,7 +22,7 @@ func get_description(object_number):
         object_3.object_number: return "the corridor goes a little bit further"
         object_4.object_number: return "upstairs, the door I came through"
     
-func on_use(object_number):
+func trigger_use(object_number):
     match object_number:
         object_1.object_number:
             if not Global.flashlight_on: 
@@ -72,7 +70,6 @@ func on_use(object_number):
             get_tree().call_group("main", "switch_areas", "Area1")
             yield(get_tree().create_timer(3), "timeout")
     yield(Global.monster_hide_and_seek("Area2"), "completed")
-    if visible: get_tree().call_group("player", "unlock_actions")
 
 func update_visibilities():
     $ViewLight.visible = Global.lights_on and not Global.door_3_open and not Global.gate_3_open
