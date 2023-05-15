@@ -10,6 +10,9 @@ func show_subtitles(subtitles, timeout = 0):
     if timeout > 0:
         yield(get_tree().create_timer(timeout), "timeout")
         fade_out()
+
+func clear():
+    self.set_bbcode("")
         
 func fade_in():
     $AnimationPlayer.play("fade_in")

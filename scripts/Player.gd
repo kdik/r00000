@@ -21,15 +21,19 @@ func _process(_delta):
     elif Input.is_action_pressed("ui_left"):
         set_rotation_y(rotation_y + rotation_speed)
         update_rotation()
+        check_crosshairs()
     elif Input.is_action_pressed("ui_right"):
         set_rotation_y(rotation_y - rotation_speed)
         update_rotation()
+        check_crosshairs()
     elif Input.is_action_pressed("ui_up"):
         set_rotation_x(rotation_x + rotation_speed)
         update_rotation()
+        check_crosshairs()
     elif Input.is_action_pressed("ui_down"):
         set_rotation_x(rotation_x - rotation_speed)
-        update_rotation()    
+        update_rotation()
+        check_crosshairs()    
 
 func _calculate_rotation(start, increment):
     var sum = start + increment
@@ -56,23 +60,25 @@ func update_rotation():
     hidden_detector_camera.transform.basis = Basis()
     hidden_detector_camera.rotate_x(rotation_x)
     hidden_detector_camera.rotate_y(rotation_y)
-    check_crosshairs()    
     
 func check_crosshairs():
     var pixel_data = hidden_detector_viewport.get_texture().get_data()
     pixel_data.lock()
     var previous_object_in_sight_number = object_in_sight_number
-    object_in_sight_number = int(pixel_data.get_pixel(320, 240).a)
-    pixel_data.unlock()
-    if not actions_locked:
-        if object_in_sight_number > 0:
-            get_tree().call_group("left_hand", "open")
-            if previous_object_in_sight_number == 0:
-                get_tree().call_group("area", "on_interact", object_in_sight_number)
-        elif object_in_sight_number == 0:
-            get_tree().call_group("left_hand", "close")
-            if previous_object_in_sight_number > 0:
-                get_tree().call_group("player_subtitles", "fade_out")
+    var current_object_in_sight_number = int(pixel_data.get_pixel(320, 240).a)
+    object_in_sight_number = current_object_in_sight_number
+    pixel_data.unlock()  
+    if not actions_locked: _update_hand_position(previous_object_in_sight_number, current_object_in_sight_number)
+    
+func _update_hand_position(previous_object_number, current_object_number):
+    if current_object_number > 0:
+        get_tree().call_group("left_hand", "open")
+        if previous_object_number == 0:
+            get_tree().call_group("area", "on_interact", current_object_number)
+    elif current_object_number == 0:
+        get_tree().call_group("left_hand", "close")
+        if previous_object_number > 0:
+            get_tree().call_group("player_subtitles", "fade_out")
         
 func acquire_flashlight():
     Global.have_flashlight = true
@@ -100,17 +106,16 @@ func lock_actions():
     if actions_locked: return
     actions_locked = true
     if object_in_sight_number > 0:
-        get_tree().call_group("left_hand", "close")
-        get_tree().call_group("player_subtitles", "fade_out")
+        var previous_object_in_sight_number = object_in_sight_number
+        var current_object_in_sight_number = 0
+        object_in_sight_number = current_object_in_sight_number
+        _update_hand_position(previous_object_in_sight_number, current_object_in_sight_number)
     
 func unlock_actions():
     print("Player actions unlocked")
     if not actions_locked: return
     actions_locked = false
     check_crosshairs()
-    if object_in_sight_number > 0:
-        get_tree().call_group("left_hand", "open")
-        get_tree().call_group("area", "on_interact", object_in_sight_number)
 
 func lock_movement():
     print("Player movement locked")

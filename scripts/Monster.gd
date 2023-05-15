@@ -6,7 +6,7 @@ func introduce(eye_coordinates, fade_out_function_name):
     get_tree().call_group("player", "lock_movement")
     yield(get_tree().create_timer(1.5), "timeout")
     get_tree().call_group("player_automated_movement", "turn", eye_coordinates.x, eye_coordinates.y)
-    yield(get_tree().create_timer(2), "timeout")  
+    yield(get_tree().create_timer(3), "timeout")  
     get_tree().call_group("monster_eyes", fade_out_function_name)
     yield(get_tree().create_timer(1.5), "timeout")
     get_tree().call_group("filter", "play")
@@ -22,9 +22,10 @@ func on_use():
         return yield(get_tree(), "idle_frame")
     var alpha = 0.0
     match Global.actions_in_darkness:
-        1: alpha = 0.1
-        2: alpha = 0.2
-        3: alpha = 0.3
+        1: alpha = 0.05
+        2: alpha = 0.1
+        3: alpha = 0.2
+        4: alpha = 0.3
     get_tree().call_group("filter", "play")
     get_tree().call_group("filter", "set_alpha", alpha)
     if Global.actions_in_darkness > 3:

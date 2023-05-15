@@ -25,9 +25,9 @@ func get_description(object_number):
 func trigger_use(object_number):
     match object_number:
         object_1.object_number:
-            get_tree().call_group("main", "switch_areas", "Area2")
+            yield(switch_areas("Area2"), "completed")
         object_2.object_number:
-            get_tree().call_group("main", "switch_areas", "Area4")
+            yield(switch_areas("Area4"), "completed")
         object_3.object_number:
             if not Global.door_3_open:
                 Global.door_3_open = true
@@ -36,10 +36,10 @@ func trigger_use(object_number):
             else:
                 Global.loops_completed += 1
                 Global.reset_single_loop()
+                switch_areas("Area1")
                 get_tree().call_group("blue_screen", "show")
                 yield(get_tree().create_timer(2.5), "timeout")
                 get_tree().call_group("blue_screen", "hide")
-                get_tree().call_group("main", "switch_areas", "Area1")
                 get_tree().call_group("monster_eyes", "hide")
                 get_tree().call_group("filter", "hide")
         object_4.object_number:
@@ -55,18 +55,18 @@ func trigger_use(object_number):
                     get_tree().call_group("player", "add_battery")
                     yield(get_tree().create_timer(3), "timeout")
                     if Global.battery_count == 1:
-                        yield(say("two more batteries left to go"), "completed")
+                        yield(say("two more batteries left to go", 2, true), "completed")
                     elif Global.battery_count == 2:
-                        yield(say("one more battery left to go"), "completed")
+                        yield(say("one more battery left to go", 2, true), "completed")
                     elif Global.battery_count == 3:
-                        say("bingo")
+                        say("bingo", 2, true)
                         get_tree().call_group("player", "turn_on_flashlight")
                         get_tree().call_group("monster_eyes", "hide")
                         get_tree().call_group("filter", "hide")
                         Global.flashlight_on = true
                         yield(get_tree().create_timer(3), "timeout")
                 else:
-                    yield(say("I have no use for the battery I removed"), "completed")
+                    yield(say("I have no use for the battery I removed", 2, true), "completed")
                 yield(Monster.introduce(Vector2(-0.1309, 2.552544), "fade_out_far"), "completed")
     yield(get_tree(), "idle_frame")
 

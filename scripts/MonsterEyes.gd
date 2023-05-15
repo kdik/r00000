@@ -51,10 +51,10 @@ func _on_animation_finished(anim_name):
     if not Global.hide_and_seek_started:
         return
     match Global.actions_in_darkness:
-        0: $AnimationPlayer.play("wobble_1")
-        1: $AnimationPlayer.play("wobble_2")
-        2: $AnimationPlayer.play("wobble_3")
-        3: 
+        1: $AnimationPlayer.play("wobble_1")
+        2: $AnimationPlayer.play("wobble_2")
+        3: $AnimationPlayer.play("wobble_3")
+        4: 
             if Global.hide_and_seek_lost and anim_name == "wobble_3":
                 $AnimationPlayer.play("final_fade_out")
             else:

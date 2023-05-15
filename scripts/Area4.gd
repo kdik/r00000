@@ -14,12 +14,12 @@ func get_description(object_number):
 func trigger_use(object_number):
     match object_number:
         object_1.object_number:
-            get_tree().call_group("main", "switch_areas", "Area3")
+            yield(switch_areas("Area3"), "completed")
         object_2.object_number:
             Global.have_flashlight = true
             update_visibilities()
             get_tree().call_group("player", "acquire_flashlight")
-            yield(say("now I only need batteries"), "completed")
+            yield(say("now I only need batteries", 2, true), "completed")
     yield(get_tree(), "idle_frame")
     
 func update_visibilities():

@@ -26,8 +26,7 @@ func init(previous_area):
             3: subtitle_text = "I feel worse every time"
             4: subtitle_text = "I am one with the roots, in my head"
             5: subtitle_text = "the horror, at last"
-        get_tree().call_group("player_subtitles", "show_subtitles", subtitle_text, 3)
-        yield(get_tree().create_timer(4), "timeout")
+        yield(say(subtitle_text, 3, true), "completed")
     else: yield(get_tree(), "idle_frame")
 
 func get_description(object_number):
@@ -44,15 +43,15 @@ func trigger_use(object_number):
             if Global.loops_completed == 5:
                 get_tree().call_group("main", "game_over", Global.ROOTS)
             else:
-                get_tree().call_group("main", "switch_areas", "Area2")
+                yield(switch_areas("Area2"), "completed")
         object_2.object_number:
             if Global.flashlight_on and not Global.lights_on:
                 yield(_init_escape_ending(), "completed")
             else:
-                yield(say("the door does not budge"), "completed")
+                yield(say("the door does not budge", 2, true), "completed")
         object_3.object_number:
             if Global.batteries_removed:
-                yield(say("it did not work"), "completed")
+                yield(say("it did not work", 2, true), "completed")
             else:
                 Global.lights_on = not Global.lights_on
                 if Global.lights_on: Monster.illuminate()
