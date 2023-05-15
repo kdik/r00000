@@ -38,7 +38,7 @@ func on_use(object_number):
     update_visibilities()
     if Global.hide_and_seek_started: Global.actions_in_darkness += 1
     yield(Monster.on_use(), "completed")
-    yield(get_tree().create_timer(0.5), "timeout")
+    #yield(get_tree().create_timer(0.5), "timeout")
     get_tree().call_group("player", "unlock_actions")
     
 func say(text, time = 2, lock_movement = false):
