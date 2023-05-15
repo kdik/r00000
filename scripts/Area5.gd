@@ -5,7 +5,6 @@ func get_initial_rotation(previous_area):
 
 func init(previous_area):
     add_to_group("area")
-    get_tree().call_group("player", "lock_actions")
     get_tree().call_group("player", "lock_movement")
     hide_all_views()
     $View1.visible = true

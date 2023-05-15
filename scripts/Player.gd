@@ -96,6 +96,7 @@ func turn_off_flashlight():
     $Flashlight.visible = false
     
 func lock_actions():
+    print("LOCK ACTIONS")
     if actions_locked: return
     actions_locked = true
     if object_in_sight_number > 0:
@@ -103,6 +104,7 @@ func lock_actions():
         get_tree().call_group("player_subtitles", "fade_out")
     
 func unlock_actions():
+    print("UNLOCK ACTIONS")
     if not actions_locked: return
     actions_locked = false
     check_crosshairs()

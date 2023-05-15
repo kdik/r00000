@@ -12,9 +12,6 @@ func _process(_delta):
         $Pause.pause()
 
 func switch_areas(next_area):
-    get_tree().call_group("player", "lock_actions")
-    
-    
     var previous_area = current_area.name
     print("Switching to " + next_area + " from " + previous_area)
     if previous_area != "Area3" or next_area != "Area1":
@@ -32,12 +29,6 @@ func switch_areas(next_area):
     current_area = $Areas.get_node(next_area)
     yield(current_area.on_enter(previous_area), "completed")
     yield(get_tree().create_timer(0.5), "timeout")
-    
-    
-    
-    
-    
-    get_tree().call_group("player", "unlock_actions")
 
 func game_over():
     get_tree().call_group("player", "lock_actions")

@@ -44,7 +44,6 @@ func trigger_use(object_number):
             if Global.flashlight_on and not Global.lights_on:
                 $Snow.visible = true
                 $ViewDarkEscape.visible = true
-                get_tree().call_group("player", "lock_actions")
                 get_tree().call_group("player", "lock_movement")
                 yield(get_tree().create_timer(5), "timeout")
                 get_tree().call_group("player", "turn_off_flashlight")
@@ -66,7 +65,6 @@ func trigger_use(object_number):
                     get_tree().call_group("monster_eyes", "hide")
                 update_visibilities()
     yield(Global.monster_hide_and_seek("Area1"), "completed")
-    if visible: get_tree().call_group("player", "unlock_actions")
 
 func update_visibilities():
     $ViewLight.visible = Global.lights_on
