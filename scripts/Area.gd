@@ -10,7 +10,7 @@ func update_visibilities():
     pass
     
 func init(previous_area):
-    pass
+    yield(get_tree(), "idle_frame")
 
 func get_description(object_number):
     return ""
@@ -37,10 +37,9 @@ func rotate_self_on_start(rotation_deg):
 func on_enter(previous_area):
     rotate_self_on_start(get_initial_rotation(previous_area))
     update_visibilities()
-    init(previous_area)
     add_to_group("area")
     visible = true
-    yield(get_tree(), "idle_frame")
+    yield(init(previous_area), "completed")
 
 func on_leave(next_area):
     visible = false

@@ -22,6 +22,7 @@ func init(previous_area):
             5: subtitle_text = "the horror, at last"
         get_tree().call_group("player_subtitles", "show_subtitles", subtitle_text, 3)
         yield(get_tree().create_timer(4), "timeout")
+    else: yield(get_tree(), "idle_frame")
 
 func get_description(object_number):
     match object_number:
