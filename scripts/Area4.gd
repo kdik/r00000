@@ -15,14 +15,12 @@ func trigger_use(object_number):
     match object_number:
         object_1.object_number:
             get_tree().call_group("main", "switch_areas", "Area3")
-            yield(get_tree().create_timer(3), "timeout")
         object_2.object_number:
             Global.have_flashlight = true
             update_visibilities()
             get_tree().call_group("player", "acquire_flashlight")
-            get_tree().call_group("player_subtitles", "show_subtitles", "now I only need batteries", 2)
-            yield(get_tree().create_timer(3), "timeout")
-    #yield(Global.monster_hide_and_seek("Area4"), "completed")
+            yield(say("now I only need batteries"), "completed")
+    yield(get_tree(), "idle_frame")
     
 func update_visibilities():
     $ViewLight.visible = Global.lights_on and Global.have_flashlight and not Global.door_3_open

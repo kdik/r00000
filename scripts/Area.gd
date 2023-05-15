@@ -34,7 +34,14 @@ func on_interact(object_number):
 func on_use(object_number):
     get_tree().call_group("player", "lock_actions")
     yield(trigger_use(object_number), "completed")
+    update_visibilities()
+    if Global.hide_and_seek_started: Global.actions_in_darkness += 1
+    yield(Monster.on_use(), "completed")
     get_tree().call_group("player", "unlock_actions")
+    
+func say(text):
+    get_tree().call_group("player_subtitles", "show_subtitles", text, 2)
+    yield(get_tree().create_timer(3), "timeout")
 
 func rotate_self_on_start(rotation_deg):
     transform.basis = Basis()

@@ -59,5 +59,3 @@ func _on_animation_finished(anim_name):
                 $AnimationPlayer.play("final_fade_out")
             else:
                 $AnimationPlayer.play("wobble_3")
-        
-        

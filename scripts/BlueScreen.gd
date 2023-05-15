@@ -9,7 +9,8 @@ func show():
     get_tree().paused = true
     $RichTextLabel.set_bbcode(_to_code(Global.loops_completed).to_upper())
     visible = true
-    yield(get_tree().create_timer(2.5), "timeout")
+
+func hide():
     get_tree().paused = false
     visible = false
 

@@ -13,12 +13,12 @@ func get_initial_rotation(previous_area):
     else: return 0
 
 func init(previous_area):
-    if not Global.monster_introduced:
+    if not Global.monster_introduced and Global.lights_on:
         get_tree().call_group("monster_screen", "show")
         yield(get_tree().create_timer(3), "timeout")
         get_tree().call_group("monster_screen", "hide")
         Global.monster_introduced = true
-    #yield(Global.monster_hide_and_seek_start("Area2"), "completed")
+    yield(Monster.introduce(Vector2(-0.19635, -2.159845), "fade_out_near"), "completed")
 
 func get_description(object_number):
     match object_number:
@@ -34,19 +34,16 @@ func trigger_use(object_number):
         object_1.object_number:
             if not Global.flashlight_on: 
                 Global.lights_on = false
-            update_visibilities()
+                update_visibilities()
             if Global.flashlight_on:
                 get_tree().call_group("main", "switch_areas", "Area5")
-                yield(get_tree().create_timer(3), "timeout")
             else:
-                yield(Global.monster_hide_and_seek_start("Area2"), "completed")
+                yield(Monster.introduce(Vector2(-0.19635, -2.159845), "fade_out_near"), "completed")
         object_2.object_number:
             if Global.batteries_removed:
-                get_tree().call_group("player_subtitles", "show_subtitles", "I have no use for more batteries", 2)
-                yield(get_tree().create_timer(3), "timeout")
+                yield(say("I have no use for more batteries"), "completed")
             elif Global.batteries_removed:
-                get_tree().call_group("player_subtitles", "show_subtitles", "the light source has no batteries", 2)
-                yield(get_tree().create_timer(3), "timeout")
+                yield(say("the light source has no batteries"), "completed")
             else:
                 Global.batteries_removed = true
                 Global.lights_on = false
@@ -55,28 +52,24 @@ func trigger_use(object_number):
                     get_tree().call_group("player", "add_battery")
                     yield(get_tree().create_timer(3), "timeout")
                     if Global.battery_count == 1:
-                        get_tree().call_group("player_subtitles", "show_subtitles", "two more batteries left to go", 2)
+                        yield(say("two more batteries left to go"), "completed")
                     elif Global.battery_count == 2:
-                        get_tree().call_group("player_subtitles", "show_subtitles", "one more battery left to go", 2)
+                        yield(say("one more battery left to go"), "completed")
                     elif Global.battery_count == 3:
-                        get_tree().call_group("player_subtitles", "show_subtitles", "bingo", 2)
+                        say("bingo")
                         get_tree().call_group("player", "turn_on_flashlight")
                         get_tree().call_group("monster_eyes", "hide")
                         get_tree().call_group("filter", "hide")
                         Global.flashlight_on = true
-                        update_visibilities()
-                    yield(get_tree().create_timer(3), "timeout")
+                        yield(get_tree().create_timer(3), "timeout")
                 else:
-                    get_tree().call_group("player_subtitles", "show_subtitles", "I have no use for the battery I removed", 2)
-                    yield(get_tree().create_timer(3), "timeout")
-                yield(Global.monster_hide_and_seek_start("Area2"), "completed")
+                    yield(say("I have no use for the battery I removed"), "completed")
+                yield(Monster.introduce(Vector2(-0.19635, -2.159845), "fade_out_near"), "completed")
         object_3.object_number:
             get_tree().call_group("main", "switch_areas", "Area3")
-            yield(get_tree().create_timer(3), "timeout")
         object_4.object_number:
             get_tree().call_group("main", "switch_areas", "Area1")
-            yield(get_tree().create_timer(3), "timeout")
-    yield(Global.monster_hide_and_seek("Area2"), "completed")
+    yield(get_tree(), "idle_frame")
 
 func update_visibilities():
     $ViewLight.visible = Global.lights_on and not Global.door_3_open and not Global.gate_3_open

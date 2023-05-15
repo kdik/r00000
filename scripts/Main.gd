@@ -19,8 +19,9 @@ func switch_areas(next_area):
     current_area = $Areas.get_node(next_area)
     yield(current_area.on_enter(previous_area), "completed")
 
-func game_over():
+func game_over(ending):
     get_tree().call_group("player", "lock_actions")
     get_tree().reload_current_scene()
     Global.reset()
+    Global.ending = ending
     get_tree().change_scene("res://scenes/GameOver.tscn")

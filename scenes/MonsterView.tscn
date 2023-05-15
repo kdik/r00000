@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://images/area2/area_2_monster.png" type="Texture" id=1]
-[ext_resource path="res://scripts/Monster.gd" type="Script" id=2]
+[ext_resource path="res://scripts/MonsterView.gd" type="Script" id=1]
+[ext_resource path="res://images/area2/area_2_monster.png" type="Texture" id=2]
 
 [sub_resource type="SpatialMaterial" id=2]
 flags_transparent = true
 flags_unshaded = true
 params_cull_mode = 1
-albedo_texture = ExtResource( 1 )
+albedo_texture = ExtResource( 2 )
 
 [sub_resource type="SphereMesh" id=1]
 material = SubResource( 2 )
@@ -17,4 +17,4 @@ height = 19.98
 [node name="Monster" type="MeshInstance"]
 mesh = SubResource( 1 )
 material/0 = null
-script = ExtResource( 2 )
+script = ExtResource( 1 )

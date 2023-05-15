@@ -8,7 +8,7 @@ func play_fade_in(previous_area):
     return previous_area != null and previous_area != "Area3"
 
 func play_fade_out(next_area):
-    return next_area != "Area2" or Global.monster_introduced
+    return next_area != "Area2" or Global.monster_introduced or not Global.lights_on
 
 func get_initial_rotation(previous_area):
     if previous_area == null: return -55
@@ -42,39 +42,34 @@ func trigger_use(object_number):
     match object_number:
         object_1.object_number:
             if Global.loops_completed == 5:
-                Global.ending = Global.ROOTS
-                get_tree().call_group("main", "game_over")
+                get_tree().call_group("main", "game_over", Global.ROOTS)
             else:
                 get_tree().call_group("main", "switch_areas", "Area2")
-                yield(get_tree().create_timer(3), "timeout")
         object_2.object_number:
             if Global.flashlight_on and not Global.lights_on:
-                $Snow.visible = true
-                $ViewDarkEscape.visible = true
-                get_tree().call_group("player", "lock_movement")
-                yield(get_tree().create_timer(5), "timeout")
-                get_tree().call_group("player", "turn_off_flashlight")
-                yield(get_tree().create_timer(2), "timeout")
-                Global.ending = Global.ESCAPE
-                get_tree().call_group("main", "game_over")
+                yield(_init_escape_ending(), "completed")
             else:
-                get_tree().call_group("player_subtitles", "show_subtitles", "the door is locked", 2)
-                yield(get_tree().create_timer(3), "timeout")
+                yield(say("the door does not budge"), "completed")
         object_3.object_number:
             if Global.batteries_removed:
-                get_tree().call_group("player_subtitles", "show_subtitles", "it did not work", 2)
-                yield(get_tree().create_timer(3), "timeout")
+                yield(say("it did not work"), "completed")
             else:
                 Global.lights_on = not Global.lights_on
-                if Global.lights_on:
-                    Global.actions_in_darkness = 0
-                    Global.hide_and_seek_started = false
-                    get_tree().call_group("monster_eyes", "hide")
+                if Global.lights_on: Monster.illuminate()
                 update_visibilities()
-    yield(Global.monster_hide_and_seek("Area1"), "completed")
+    yield(get_tree(), "idle_frame")
 
 func update_visibilities():
     $ViewLight.visible = Global.lights_on
     $ViewDark.visible = not Global.lights_on
     $Snow.visible = false
     $ViewDarkEscape.visible = false
+
+func _init_escape_ending():
+    $Snow.visible = true
+    $ViewDarkEscape.visible = true
+    get_tree().call_group("player", "lock_movement")
+    yield(get_tree().create_timer(5), "timeout")
+    get_tree().call_group("player", "turn_off_flashlight")
+    yield(get_tree().create_timer(2), "timeout")
+    get_tree().call_group("main", "game_over", Global.ESCAPE)

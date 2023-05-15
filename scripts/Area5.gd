@@ -4,7 +4,6 @@ func get_initial_rotation(previous_area):
     return 180
 
 func init(previous_area):
-    add_to_group("area")
     get_tree().call_group("player", "lock_movement")
     hide_all_views()
     $View1.visible = true
@@ -26,8 +25,7 @@ func init(previous_area):
     yield(get_tree().create_timer(2), "timeout")
     get_tree().call_group("player", "turn_off_flashlight")
     yield(get_tree().create_timer(1), "timeout")
-    Global.ending = Global.BECOME_EVIL
-    get_tree().call_group("main", "game_over")
+    get_tree().call_group("main", "game_over", Global.BECOME_EVIL)
     
 func hide_all_views():
     $View1.visible = false
