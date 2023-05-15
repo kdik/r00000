@@ -20,3 +20,6 @@ margin_bottom = 300.0
 custom_fonts/normal_font = ExtResource( 1 )
 bbcode_enabled = true
 script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

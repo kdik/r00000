@@ -20,6 +20,12 @@ func trigger_use(object_number):
     
 func get_initial_rotation(previous_area):
     return 0
+    
+func play_fade_in(previous_area):
+    return true
+    
+func play_fade_out(next_area):
+    return true
 # -------------------------------------
 
 func on_interact(object_number):
@@ -38,9 +44,17 @@ func on_enter(previous_area):
     rotate_self_on_start(get_initial_rotation(previous_area))
     update_visibilities()
     add_to_group("area")
+    if play_fade_in(previous_area):
+        get_tree().call_group("ui", "fade_in")
     visible = true
     yield(init(previous_area), "completed")
 
 func on_leave(next_area):
+    if play_fade_out(next_area):
+        get_tree().call_group("audio", "play", "Footsteps")
+        get_tree().call_group("ui", "fade_out")
+        yield(get_tree().create_timer(1), "timeout")
+    else:
+        yield(get_tree(), "idle_frame")
     visible = false
     remove_from_group("area")

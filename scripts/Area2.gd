@@ -5,13 +5,20 @@ onready var object_2 = $Object2
 onready var object_3 = $Object3
 onready var object_4 = $Object4
 
+func play_fade_in(previous_area):
+    return not Global.monster_introduced
+
 func get_initial_rotation(previous_area):
     if previous_area == "Area3": return 170
     else: return 0
 
 func init(previous_area):
-    yield(Global.monster_introduction(), "completed")
-    yield(Global.monster_hide_and_seek_start("Area2"), "completed")
+    if not Global.monster_introduced:
+        get_tree().call_group("monster_screen", "show")
+        yield(get_tree().create_timer(3), "timeout")
+        get_tree().call_group("monster_screen", "hide")
+        Global.monster_introduced = true
+    #yield(Global.monster_hide_and_seek_start("Area2"), "completed")
 
 func get_description(object_number):
     match object_number:

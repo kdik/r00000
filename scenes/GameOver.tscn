@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/GameOver.gd" type="Script" id=1]
-[ext_resource path="res://scenes/Subtitles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://materials/crt.material" type="Material" id=3]
 [ext_resource path="res://images/static.png" type="Texture" id=4]
 [ext_resource path="res://videos/ending_4.ogv" type="VideoStream" id=5]
@@ -16,16 +15,6 @@ script = ExtResource( 1 )
 margin_right = 680.0
 margin_bottom = 510.0
 color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="BlueBackground" type="ColorRect" parent="."]
-margin_left = 20.0
-margin_top = 15.0
-margin_right = 660.0
-margin_bottom = 495.0
-color = Color( 0.576471, 0.0901961, 0.0901961, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -88,12 +77,6 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Subtitles" parent="." instance=ExtResource( 2 )]
-margin_left = 20.0
-margin_top = 235.0
-margin_right = 660.0
-margin_bottom = 315.0
 
 [node name="CrtCurtain" type="ColorRect" parent="."]
 material = ExtResource( 3 )

@@ -96,7 +96,7 @@ func turn_off_flashlight():
     $Flashlight.visible = false
     
 func lock_actions():
-    print("LOCK ACTIONS")
+    print("Player actions locked")
     if actions_locked: return
     actions_locked = true
     if object_in_sight_number > 0:
@@ -104,7 +104,7 @@ func lock_actions():
         get_tree().call_group("player_subtitles", "fade_out")
     
 func unlock_actions():
-    print("UNLOCK ACTIONS")
+    print("Player actions unlocked")
     if not actions_locked: return
     actions_locked = false
     check_crosshairs()
@@ -113,10 +113,12 @@ func unlock_actions():
         get_tree().call_group("area", "on_interact", object_in_sight_number)
 
 func lock_movement():
+    print("Player movement locked")
     movement_locked = true
     $Cursor/Target.visible = false
     
 func unlock_movement():
+    print("Player movement unlocked")
     movement_locked = false
     $Cursor/Target.visible = true
     

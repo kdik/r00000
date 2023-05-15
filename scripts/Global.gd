@@ -14,6 +14,7 @@ var door_3_open = false
 var gate_3_open = false
 var batteries_removed = false
 var monster_introduced = false
+var monster_defeated = false
 var hide_and_seek_started = false
 var hide_and_seek_lost = false
 
@@ -33,21 +34,10 @@ func reset_single_loop():
     gate_3_open = false
     batteries_removed = false
     monster_introduced = false
+    monster_defeated = false
     hide_and_seek_started = false
     hide_and_seek_lost = false
-    
-func monster_introduction():
-    if not Global.lights_on or Global.flashlight_on:
-        return yield(get_tree(), "idle_frame")
-    if monster_introduced:
-        return yield(get_tree(), "idle_frame")
-    monster_introduced = true
-    yield(get_tree().create_timer(1.5), "timeout")
-    get_tree().call_group("monster_subtitles", "show_subtitles", "it's me, behind the door", 3)
-    yield(get_tree().create_timer(4), "timeout")
-    get_tree().call_group("monster_subtitles", "show_subtitles", "let me out", 3)
-    yield(get_tree().create_timer(4), "timeout")
-    
+
 func monster_hide_and_seek_start(area):
     if hide_and_seek_started or Global.lights_on or Global.flashlight_on:
         return yield(get_tree(), "idle_frame")
@@ -58,17 +48,13 @@ func monster_hide_and_seek_start(area):
     elif area == "Area3":
         get_tree().call_group("player_automated_movement", "turn", -0.1309, 2.552544)
     yield(get_tree().create_timer(2), "timeout")  
-    get_tree().call_group("monster_subtitles", "show_subtitles", "hello, my friend", 4)
-    get_tree().call_group("filter", "play")
-    get_tree().call_group("filter", "set_alpha", 0.05)
-    yield(get_tree().create_timer(6), "timeout")
-    get_tree().call_group("monster_subtitles", "show_subtitles", "You get a few moves before I hurt you", 5)
-    yield(get_tree().create_timer(7), "timeout")
     if area == "Area2":
         get_tree().call_group("monster_eyes", "fade_out_near")
     elif area == "Area3":
         get_tree().call_group("monster_eyes", "fade_out_far")
     yield(get_tree().create_timer(1.5), "timeout")
+    get_tree().call_group("filter", "play")
+    get_tree().call_group("filter", "set_alpha", 0.05)
     get_tree().call_group("monster", "hide")
     get_tree().call_group("monster_eyes", "fade_in")
     yield(get_tree().create_timer(3), "timeout")
@@ -78,25 +64,19 @@ func monster_hide_and_seek_start(area):
 func monster_hide_and_seek(area):
     if not hide_and_seek_started or Global.lights_on or Global.flashlight_on:
         return yield(get_tree(), "idle_frame")
-    yield(get_tree().create_timer(1.5), "timeout")
     match Global.actions_in_darkness:
         1:
             get_tree().call_group("monster_subtitles", "show_subtitles", "three", 3)
             get_tree().call_group("filter", "play")
             get_tree().call_group("filter", "set_alpha", 0.1)
-            yield(get_tree().create_timer(4), "timeout")
         2:
             get_tree().call_group("monster_subtitles", "show_subtitles", "two", 3)
             get_tree().call_group("filter", "play")
             get_tree().call_group("filter", "set_alpha", 0.2)
-            yield(get_tree().create_timer(4), "timeout")
         3:
             get_tree().call_group("monster_subtitles", "show_subtitles", "one", 3)
             get_tree().call_group("filter", "play")
             get_tree().call_group("filter", "set_alpha", 0.3)
-            yield(get_tree().create_timer(5), "timeout")
-            get_tree().call_group("monster_subtitles", "show_subtitles", "here I come", 5)
-            yield(get_tree().create_timer(5), "timeout")
             hide_and_seek_lost = true
             yield(get_tree().create_timer(3), "timeout")
             Global.ending = Global.CAUGHT

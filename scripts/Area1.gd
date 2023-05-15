@@ -4,6 +4,12 @@ onready var object_1 = $Object1
 onready var object_2 = $Object2
 onready var object_3 = $Object3
 
+func play_fade_in(previous_area):
+    return previous_area != null and previous_area != "Area3"
+
+func play_fade_out(next_area):
+    return next_area != "Area2" or Global.monster_introduced
+
 func get_initial_rotation(previous_area):
     if previous_area == null: return -55
     elif previous_area == "Area3": return -55

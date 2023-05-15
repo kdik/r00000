@@ -46,7 +46,6 @@
 [ext_resource path="res://images/area3/area_3_monster.png" type="Texture" id=44]
 [ext_resource path="res://materials/crt.material" type="Material" id=45]
 [ext_resource path="res://scenes/PlayerSubtitles.tscn" type="PackedScene" id=46]
-[ext_resource path="res://scenes/MonsterSubtitles.tscn" type="PackedScene" id=47]
 [ext_resource path="res://images/area3/area_3_object_4.png" type="Texture" id=48]
 [ext_resource path="res://scripts/Roots.gd" type="Script" id=49]
 [ext_resource path="res://scenes/BlueScreen.tscn" type="PackedScene" id=50]
@@ -70,6 +69,7 @@
 [ext_resource path="res://images/area5/area_5_2.jpg" type="Texture" id=68]
 [ext_resource path="res://images/area1/area_1_dark_escape_view.jpg" type="Texture" id=69]
 [ext_resource path="res://images/area1/area_1_object_3.png" type="Texture" id=70]
+[ext_resource path="res://scenes/MonsterScreen.tscn" type="PackedScene" id=71]
 
 [sub_resource type="ShaderMaterial" id=41]
 shader = ExtResource( 55 )
@@ -552,13 +552,6 @@ margin_top = 40.0
 margin_right = 631.0
 margin_bottom = 120.0
 
-[node name="MonsterSubtitles" parent="." instance=ExtResource( 47 )]
-margin_left = 20.0
-margin_top = 15.0
-margin_right = 660.0
-margin_bottom = 495.0
-text_color = Color( 0.87451, 0.117647, 0.117647, 1 )
-
 [node name="MonsterEyes" type="ColorRect" parent="."]
 visible = false
 material = SubResource( 33 )
@@ -605,6 +598,8 @@ margin_left = 20.0
 margin_top = 15.0
 margin_right = 660.0
 margin_bottom = 495.0
+
+[node name="MonsterScreen" parent="." instance=ExtResource( 71 )]
 
 [node name="Pause" parent="." instance=ExtResource( 51 )]
 margin_left = 20.0

@@ -250,6 +250,9 @@ margin_right = 616.0
 margin_bottom = 112.0
 custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Red"]
 anims/RESET = SubResource( 30 )
