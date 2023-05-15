@@ -33,9 +33,9 @@ func on_interact(object_number):
 
 func on_use(object_number):
     get_tree().call_group("player", "lock_actions")
+    if Global.hide_and_seek_started: Global.actions_in_darkness += 1
     yield(trigger_use(object_number), "completed")
     update_visibilities()
-    if Global.hide_and_seek_started: Global.actions_in_darkness += 1
     yield(Monster.on_use(), "completed")
     get_tree().call_group("player", "unlock_actions")
     
