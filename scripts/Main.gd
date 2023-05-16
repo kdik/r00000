@@ -1,6 +1,6 @@
 extends Spatial
 
-onready var current_area = $Areas/Area1
+onready var current_area = $Areas/Area01
 
 func _ready():
     add_to_group("main")

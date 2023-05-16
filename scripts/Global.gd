@@ -10,6 +10,7 @@ var ending
 # non persistent between loops variables
 var lights_on = true
 var actions_in_darkness = 0
+var door_2_open = false
 var door_3_open = false
 var gate_3_open = false
 var batteries_removed = false
@@ -30,6 +31,7 @@ func reset():
 func reset_single_loop():
     lights_on = true
     actions_in_darkness = 0
+    door_2_open = false
     door_3_open = false
     gate_3_open = false
     batteries_removed = false
