@@ -8,6 +8,9 @@ onready var object_4 = $Object4
 func get_initial_rotation(previous_area):
     if previous_area == "Area03": return 170
     else: return 0
+    
+func play_fade_out(next_area):
+    return next_area != "Area11"
 
 func get_description(object_number):
     match object_number:
@@ -27,7 +30,11 @@ func trigger_use(object_number):
                 yield(say("meh", 2, true), "completed")
             else:
                 yield(say("fuck this footage", 2, true), "completed")
-                yield(switch_areas("Area11"), "completed")
+                Global.reset_single_loop()
+                switch_areas("Area11")
+                get_tree().call_group("blue_screen", "show")
+                yield(get_tree().create_timer(2.5), "timeout")
+                get_tree().call_group("blue_screen", "hide")
         object_2.object_number: yield(say("I don't have a use for batteries right now"), "completed")
         object_3.object_number: yield(switch_areas("Area03"), "completed")
         object_4.object_number: yield(switch_areas("Area01"), "completed")
