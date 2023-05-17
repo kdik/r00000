@@ -24,3 +24,7 @@ func trigger_use(object_number):
         object_2.object_number: yield(say("nope, not going without my monster movie", 2, true), "completed")
         object_3.object_number: yield(say("tempting, but no", 2, true), "completed")
     yield(get_tree(), "idle_frame")
+    
+func update_visibilities():
+    $ViewLight.visible = not Global.door_2_open
+    $ViewLightDoor2Open.visible = Global.door_2_open

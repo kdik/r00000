@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=2]
+[gd_scene load_steps=122 format=2]
 
 [ext_resource path="res://images/area1/area_1_object_1.png" type="Texture" id=1]
 [ext_resource path="res://images/area1/area_1_light_view.jpg" type="Texture" id=2]
@@ -81,6 +81,12 @@
 [ext_resource path="res://scripts/Area03.gd" type="Script" id=79]
 [ext_resource path="res://scripts/Area04.gd" type="Script" id=80]
 [ext_resource path="res://scripts/Area11.gd" type="Script" id=81]
+[ext_resource path="res://scripts/Area12.gd" type="Script" id=82]
+[ext_resource path="res://scenes/FriendlyScreen.tscn" type="PackedScene" id=83]
+[ext_resource path="res://scripts/Area13.gd" type="Script" id=84]
+[ext_resource path="res://images/area1/area_1_light_view_door_2_open.jpg" type="Texture" id=85]
+[ext_resource path="res://scripts/Area14.gd" type="Script" id=86]
+[ext_resource path="res://images/area4/area_4_object_2_larger.png" type="Texture" id=87]
 
 [sub_resource type="ShaderMaterial" id=41]
 shader = ExtResource( 55 )
@@ -392,6 +398,10 @@ script = ExtResource( 47 )
 skeleton = NodePath("../../..")
 texture = ExtResource( 2 )
 
+[node name="ViewLightDoor2Open" parent="Areas/Area01" instance=ExtResource( 8 )]
+skeleton = NodePath("../../..")
+texture = ExtResource( 85 )
+
 [node name="Object1" parent="Areas/Area01" instance=ExtResource( 7 )]
 skeleton = NodePath("")
 texture = ExtResource( 1 )
@@ -497,6 +507,10 @@ script = ExtResource( 81 )
 skeleton = NodePath("../../..")
 texture = ExtResource( 2 )
 
+[node name="ViewLightDoor2Open" parent="Areas/Area11" instance=ExtResource( 8 )]
+skeleton = NodePath("../../..")
+texture = ExtResource( 85 )
+
 [node name="Object1" parent="Areas/Area11" instance=ExtResource( 7 )]
 skeleton = NodePath("")
 texture = ExtResource( 1 )
@@ -508,6 +522,103 @@ object_number = 2
 [node name="Object3" parent="Areas/Area11" instance=ExtResource( 7 )]
 texture = ExtResource( 70 )
 object_number = 3
+
+[node name="Area12" type="Spatial" parent="Areas"]
+script = ExtResource( 82 )
+
+[node name="ViewLight" parent="Areas/Area12" instance=ExtResource( 8 )]
+skeleton = NodePath("../..")
+texture = ExtResource( 14 )
+
+[node name="ViewLightDoor3Open" parent="Areas/Area12" instance=ExtResource( 8 )]
+texture = ExtResource( 41 )
+
+[node name="ViewLightDoor3Gate3Open" parent="Areas/Area12" instance=ExtResource( 8 )]
+skeleton = NodePath("../ViewLightDoor3Open")
+texture = ExtResource( 42 )
+
+[node name="ViewLightDoor2Open" parent="Areas/Area12" instance=ExtResource( 8 )]
+texture = ExtResource( 75 )
+
+[node name="ViewLightDoor2Door3Open" parent="Areas/Area12" instance=ExtResource( 8 )]
+texture = ExtResource( 73 )
+
+[node name="ViewLightDoor2Door3Gate3Open" parent="Areas/Area12" instance=ExtResource( 8 )]
+texture = ExtResource( 74 )
+
+[node name="Object1" parent="Areas/Area12" instance=ExtResource( 7 )]
+texture = ExtResource( 16 )
+
+[node name="Object2" parent="Areas/Area12" instance=ExtResource( 7 )]
+texture = ExtResource( 22 )
+object_number = 2
+
+[node name="Object3" parent="Areas/Area12" instance=ExtResource( 7 )]
+texture = ExtResource( 23 )
+object_number = 3
+
+[node name="Object4" parent="Areas/Area12" instance=ExtResource( 7 )]
+texture = ExtResource( 24 )
+object_number = 4
+
+[node name="Monster" parent="Areas/Area12" instance=ExtResource( 26 )]
+skeleton = NodePath("../../Area32")
+texture = ExtResource( 43 )
+
+[node name="Area13" type="Spatial" parent="Areas"]
+script = ExtResource( 84 )
+
+[node name="ViewLight" parent="Areas/Area13" instance=ExtResource( 8 )]
+texture = ExtResource( 27 )
+
+[node name="ViewLightDoor3Open" parent="Areas/Area13" instance=ExtResource( 8 )]
+texture = ExtResource( 11 )
+
+[node name="ViewLightDoor3Gate3Open" parent="Areas/Area13" instance=ExtResource( 8 )]
+texture = ExtResource( 28 )
+
+[node name="ViewLightDoor2Open" parent="Areas/Area13" instance=ExtResource( 8 )]
+texture = ExtResource( 77 )
+
+[node name="ViewLightDoor2Door3Open" parent="Areas/Area13" instance=ExtResource( 8 )]
+texture = ExtResource( 78 )
+
+[node name="ViewLightDoor2Door3Gate3Open" parent="Areas/Area13" instance=ExtResource( 8 )]
+texture = ExtResource( 76 )
+
+[node name="Object1" parent="Areas/Area13" instance=ExtResource( 7 )]
+texture = ExtResource( 36 )
+
+[node name="Object2" parent="Areas/Area13" instance=ExtResource( 7 )]
+texture = ExtResource( 37 )
+object_number = 2
+
+[node name="Object3" parent="Areas/Area13" instance=ExtResource( 7 )]
+texture = ExtResource( 35 )
+object_number = 3
+
+[node name="Object4" parent="Areas/Area13" instance=ExtResource( 7 )]
+texture = ExtResource( 48 )
+object_number = 4
+
+[node name="Monster" parent="Areas/Area13" instance=ExtResource( 26 )]
+texture = ExtResource( 44 )
+
+[node name="Area14" type="Spatial" parent="Areas"]
+script = ExtResource( 86 )
+
+[node name="ViewLight" parent="Areas/Area14" instance=ExtResource( 8 )]
+texture = ExtResource( 31 )
+
+[node name="ViewLightDoor3Open" parent="Areas/Area14" instance=ExtResource( 8 )]
+texture = ExtResource( 32 )
+
+[node name="Object1" parent="Areas/Area14" instance=ExtResource( 7 )]
+texture = ExtResource( 38 )
+
+[node name="Object2" parent="Areas/Area14" instance=ExtResource( 7 )]
+texture = ExtResource( 87 )
+object_number = 2
 
 [node name="Area31" type="Spatial" parent="Areas"]
 script = ExtResource( 12 )
@@ -735,6 +846,8 @@ margin_right = 660.0
 margin_bottom = 495.0
 
 [node name="MonsterScreen" parent="." instance=ExtResource( 71 )]
+
+[node name="FriendlyScreen" parent="." instance=ExtResource( 83 )]
 
 [node name="Pause" parent="." instance=ExtResource( 51 )]
 margin_left = 20.0

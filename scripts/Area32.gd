@@ -15,7 +15,8 @@ func init(previous_area):
         yield(get_tree().create_timer(3), "timeout")
         get_tree().call_group("monster_screen", "hide")
         Global.monster_introduced = true
-    yield(Monster.introduce(Vector2(-0.19635, -2.159845), "fade_out_near"), "completed")
+    yield(get_tree(), "idle_frame")
+    #yield(Monster.introduce(Vector2(-0.19635, -2.159845), "fade_out_near"), "completed")
 
 func get_description(object_number):
     match object_number:
