@@ -6,6 +6,7 @@ func _ready():
     add_to_group("main")
     if Global.have_flashlight: get_tree().call_group("player", "acquire_flashlight")
     if Global.flashlight_on: get_tree().call_group("player", "turn_on_flashlight")
+    Monster.on_load()
     current_area = $Areas.get_node(Global.area)
     current_area.on_enter(null)
     
