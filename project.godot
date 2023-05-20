@@ -44,6 +44,7 @@ settings/fps/force_fps=15
 window/size/width=680
 window/size/height=510
 window/size/resizable=false
+window/size/fullscreen=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
