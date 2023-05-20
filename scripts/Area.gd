@@ -22,7 +22,7 @@ func get_initial_rotation(previous_area):
     return 0
     
 func play_fade_in(previous_area):
-    return true
+    return previous_area != null
     
 func play_fade_out(next_area):
     return true

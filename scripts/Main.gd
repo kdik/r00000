@@ -4,7 +4,6 @@ onready var current_area
 
 func _ready():
     add_to_group("main")
-    SaveLoad.init()
     if Global.have_flashlight: get_tree().call_group("player", "acquire_flashlight")
     if Global.flashlight_on: get_tree().call_group("player", "turn_on_flashlight")
     current_area = $Areas.get_node(Global.area)

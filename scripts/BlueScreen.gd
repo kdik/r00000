@@ -15,4 +15,9 @@ func hide():
     visible = false
 
 func _to_code(number):
-    return "R0000" + str(number)
+    if number < 10: return "R0000" + str(number)
+    elif number < 100: return "R000" + str(number)
+    elif number < 1000: return "R00" + str(number)
+    elif number < 10000: return "R0" + str(number)
+    elif number < 100000: return "R" + str(number)
+    else: return "WHAT THE HECK"
