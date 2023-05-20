@@ -2,7 +2,7 @@ extends R00000Area
 
 onready var object_1 = $Object1
 onready var object_2 = $Object2
-onready var object_3 = $Object2
+onready var object_3 = $Object3
 
 func get_initial_rotation(previous_area):
     return 30

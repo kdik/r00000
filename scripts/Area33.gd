@@ -6,10 +6,10 @@ onready var object_3 = $Object3
 onready var object_4 = $Object4
 
 func play_fade_out(next_area):
-    return next_area != "Area1"
+    return next_area != "Area31"
 
 func get_initial_rotation(previous_area):
-    if previous_area == "Area2": return 135
+    if previous_area == "Area32": return 135
     else: return 0
 
 func get_description(object_number):
@@ -25,9 +25,9 @@ func get_description(object_number):
 func trigger_use(object_number):
     match object_number:
         object_1.object_number:
-            yield(switch_areas("Area2"), "completed")
+            yield(switch_areas("Area32"), "completed")
         object_2.object_number:
-            yield(switch_areas("Area4"), "completed")
+            yield(switch_areas("Area34"), "completed")
         object_3.object_number:
             if not Global.door_3_open:
                 Global.door_3_open = true
@@ -36,7 +36,7 @@ func trigger_use(object_number):
             else:
                 Global.loops_completed += 1
                 Global.reset_single_loop()
-                switch_areas("Area1")
+                switch_areas("Area31")
                 get_tree().call_group("blue_screen", "display")
                 yield(get_tree().create_timer(2.5), "timeout")
                 get_tree().call_group("blue_screen", "hide")

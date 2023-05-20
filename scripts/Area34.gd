@@ -14,7 +14,7 @@ func get_description(object_number):
 func trigger_use(object_number):
     match object_number:
         object_1.object_number:
-            yield(switch_areas("Area3"), "completed")
+            yield(switch_areas("Area33"), "completed")
         object_2.object_number:
             Global.have_flashlight = true
             update_visibilities()

@@ -5,19 +5,19 @@ onready var object_2 = $Object2
 onready var object_3 = $Object3
 
 func play_fade_in(previous_area):
-    return previous_area != null and previous_area != "Area3"
+    return previous_area != null and previous_area != "Area33" and previous_area != "Area23" and previous_area != "Area22"
 
 func play_fade_out(next_area):
-    return next_area != "Area2" or Global.monster_introduced or not Global.lights_on
+    return next_area != "Area32" or Global.monster_introduced or not Global.lights_on
 
 func get_initial_rotation(previous_area):
     if previous_area == null: return -55
-    elif previous_area == "Area3": return -55
-    elif previous_area == "Area2": return 120
+    elif previous_area == "Area33": return -55
+    elif previous_area == "Area32": return 120
     else: return 0
 
 func init(previous_area):
-    if Global.loops_completed > 0 and previous_area != "Area2":
+    if Global.loops_completed > 0 and previous_area != "Area32":
         yield(get_tree().create_timer(1), "timeout")
         var subtitle_text = ""
         match Global.loops_completed:
@@ -43,7 +43,7 @@ func trigger_use(object_number):
             if Global.loops_completed == 5:
                 get_tree().call_group("main", "game_over", Global.ROOTS)
             else:
-                yield(switch_areas("Area2"), "completed")
+                yield(switch_areas("Area32"), "completed")
         object_2.object_number:
             if Global.flashlight_on and not Global.lights_on:
                 yield(_init_escape_ending(), "completed")

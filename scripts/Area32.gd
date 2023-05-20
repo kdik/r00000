@@ -6,7 +6,7 @@ onready var object_3 = $Object3
 onready var object_4 = $Object4
 
 func get_initial_rotation(previous_area):
-    if previous_area == "Area3": return 170
+    if previous_area == "Area33": return 170
     else: return 0
 
 func init(previous_area):
@@ -33,7 +33,7 @@ func trigger_use(object_number):
                 Global.lights_on = false
                 update_visibilities()
             if Global.flashlight_on:
-                yield(switch_areas("Area5"), "completed")
+                yield(switch_areas("Area35"), "completed")
             else:
                 yield(Monster.introduce(Vector2(-0.19635, -2.159845), "fade_out_near"), "completed")
         object_2.object_number:
@@ -63,9 +63,9 @@ func trigger_use(object_number):
                     yield(say("I have no use for the battery I removed", 2, true), "completed")
                 yield(Monster.introduce(Vector2(-0.19635, -2.159845), "fade_out_near"), "completed")
         object_3.object_number:
-            yield(switch_areas("Area3"), "completed")
+            yield(switch_areas("Area33"), "completed")
         object_4.object_number:
-            yield(switch_areas("Area1"), "completed")
+            yield(switch_areas("Area31"), "completed")
     yield(get_tree(), "idle_frame")
 
 func update_visibilities():

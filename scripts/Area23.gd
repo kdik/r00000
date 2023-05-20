@@ -37,7 +37,7 @@ func trigger_use(object_number):
                 yield(say("dad, come out! we need just a few more shots", 2, true), "completed")
                 Global.reset_single_loop()
                 switch_areas("Area31")
-                get_tree().call_group("monster_screen", "display", "BE CAR00000EFUL WHAT", "YOU WISH FOR00000")
+                get_tree().call_group("monster_screen", "display", "BE CAR00000EFUL WHAT\nYOU WISH FOR00000")
                 yield(get_tree().create_timer(3), "timeout")
                 get_tree().call_group("monster_screen", "hide")
         object_4.object_number:
@@ -63,3 +63,4 @@ func update_visibilities():
     $ViewDarkDoor2Open.visible = not Global.lights_on and not Global.door_3_open and not Global.gate_3_open and Global.door_2_open
     $ViewDarkDoor2Door3Open.visible = not Global.lights_on and Global.door_3_open and not Global.gate_3_open and Global.door_2_open
     $ViewDarkDoor2Door3Gate3Open.visible = not Global.lights_on and Global.door_3_open and Global.gate_3_open and Global.door_2_open
+    $Graffiti.visible = Global.lights_on

@@ -42,7 +42,7 @@ func trigger_use(object_number):
                 yield(say("dad, come out! we need just a few more shots", 2, true), "completed")
                 Global.reset_single_loop()
                 switch_areas("Area31")
-                get_tree().call_group("monster_screen", "display", "BE CAR00000EFUL WHAT", "YOU WISH FOR00000")
+                get_tree().call_group("monster_screen", "display", "BE CAR00000EFUL WHAT\nYOU WISH FOR00000")
                 yield(get_tree().create_timer(3), "timeout")
                 get_tree().call_group("monster_screen", "hide")
         object_2.object_number: 
