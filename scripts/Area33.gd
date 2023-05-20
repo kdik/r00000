@@ -37,7 +37,7 @@ func trigger_use(object_number):
                 Global.loops_completed += 1
                 Global.reset_single_loop()
                 switch_areas("Area1")
-                get_tree().call_group("blue_screen", "show")
+                get_tree().call_group("blue_screen", "display")
                 yield(get_tree().create_timer(2.5), "timeout")
                 get_tree().call_group("blue_screen", "hide")
                 get_tree().call_group("monster_eyes", "hide")

@@ -4,11 +4,13 @@ func _ready():
     visible = false
     add_to_group("monster_screen")
     
-func show():
-    var text = "IT'S ME, BEHIND THE DOOR\nLET ME OUT"
+func display(text_line_1, text_line_2 = null):
     visible = true
-    yield($Subtitles.show_subtitles("IT'S ME, BEHIND THE DOOR", 1.5), "completed")
-    yield($Subtitles.show_subtitles("LET ME OUT", 1.5), "completed")
+    if text_line_2 != null:
+        yield($Subtitles.show_subtitles(text_line_1, 1.5), "completed")
+        yield($Subtitles.show_subtitles(text_line_2, 1.5), "completed")
+    else:
+        yield($Subtitles.show_subtitles(text_line_1, 3), "completed")
 
 func hide():
     visible = false

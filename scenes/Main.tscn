@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=2]
+[gd_scene load_steps=128 format=2]
 
 [ext_resource path="res://images/area1/area_1_object_1.png" type="Texture" id=1]
 [ext_resource path="res://images/area1/area_1_light_view.jpg" type="Texture" id=2]
@@ -33,13 +33,13 @@
 [ext_resource path="res://images/area4/area_4_light_view.jpg" type="Texture" id=31]
 [ext_resource path="res://images/area4/area_4_light_view_door_3_open.jpg" type="Texture" id=32]
 [ext_resource path="res://images/area4/area_4_light_view_flashlight.jpg" type="Texture" id=33]
-[ext_resource path="res://images/area4/area_4_door_3_open.jpg" type="Texture" id=34]
+[ext_resource path="res://images/area4/area_4_dark_view_door_3_open.jpg" type="Texture" id=34]
 [ext_resource path="res://images/area3/area_3_object_3.png" type="Texture" id=35]
 [ext_resource path="res://images/area3/area_3_object_1.png" type="Texture" id=36]
 [ext_resource path="res://images/area3/area_3_object_2.png" type="Texture" id=37]
 [ext_resource path="res://images/area4/area_4_object_1.png" type="Texture" id=38]
 [ext_resource path="res://images/area4/area_4_object_2.png" type="Texture" id=39]
-[ext_resource path="res://images/area2/area_2_dark_view_door_3_open.jpg" type="Texture" id=40]
+[ext_resource path="res://images/area2/area_2_dark_view_door_2_door_3_open.jpg" type="Texture" id=40]
 [ext_resource path="res://images/area2/area_2_light_view_door_3_open.jpg" type="Texture" id=41]
 [ext_resource path="res://images/area2/area_2_light_view_door_3_gate_3_open.jpg" type="Texture" id=42]
 [ext_resource path="res://images/area2/area_2_monster.png" type="Texture" id=43]
@@ -60,7 +60,7 @@
 [ext_resource path="res://scenes/Filter.tscn" type="PackedScene" id=58]
 [ext_resource path="res://images/area3/graffiti.png" type="Texture" id=59]
 [ext_resource path="res://images/area4/graffiti.png" type="Texture" id=60]
-[ext_resource path="res://images/area2/area_2_dark_view_gate_3_open.jpg" type="Texture" id=61]
+[ext_resource path="res://images/area2/area_2_dark_view_door_3_gate_3_open.jpg" type="Texture" id=61]
 [ext_resource path="res://images/area3/area_3_dark_view_gate_3_open.jpg" type="Texture" id=62]
 [ext_resource path="res://images/area5/area_5_4.jpg" type="Texture" id=63]
 [ext_resource path="res://scripts/Area35.gd" type="Script" id=64]
@@ -68,7 +68,7 @@
 [ext_resource path="res://images/area5/area_5_1.jpg" type="Texture" id=66]
 [ext_resource path="res://images/area5/area_5_5.jpg" type="Texture" id=67]
 [ext_resource path="res://images/area5/area_5_2.jpg" type="Texture" id=68]
-[ext_resource path="res://images/area1/area_1_dark_escape_view.jpg" type="Texture" id=69]
+[ext_resource path="res://images/area1/area_1_dark_view_escape.jpg" type="Texture" id=69]
 [ext_resource path="res://images/area1/area_1_object_3.png" type="Texture" id=70]
 [ext_resource path="res://scenes/MonsterScreen.tscn" type="PackedScene" id=71]
 [ext_resource path="res://scripts/Area02.gd" type="Script" id=72]
@@ -87,6 +87,12 @@
 [ext_resource path="res://images/area1/area_1_light_view_door_2_open.jpg" type="Texture" id=85]
 [ext_resource path="res://scripts/Area14.gd" type="Script" id=86]
 [ext_resource path="res://images/area4/area_4_object_2_larger.png" type="Texture" id=87]
+[ext_resource path="res://scripts/Area21.gd" type="Script" id=88]
+[ext_resource path="res://images/area1/area_1_dark_view_door_2_open.jpg" type="Texture" id=89]
+[ext_resource path="res://scripts/Area22.gd" type="Script" id=90]
+[ext_resource path="res://images/area2/area_2_dark_view_door_3_open.jpg" type="Texture" id=91]
+[ext_resource path="res://images/area2/area_2_dark_view_door_2_open.jpg" type="Texture" id=92]
+[ext_resource path="res://images/area2/area_2_dark_view_door_2_door_3_gate_3_open.jpg" type="Texture" id=93]
 
 [sub_resource type="ShaderMaterial" id=41]
 shader = ExtResource( 55 )
@@ -620,6 +626,142 @@ texture = ExtResource( 38 )
 texture = ExtResource( 87 )
 object_number = 2
 
+[node name="Area21" type="Spatial" parent="Areas"]
+script = ExtResource( 88 )
+
+[node name="ViewLight" parent="Areas/Area21" instance=ExtResource( 8 )]
+skeleton = NodePath("../../..")
+texture = ExtResource( 2 )
+
+[node name="ViewLightDoor2Open" parent="Areas/Area21" instance=ExtResource( 8 )]
+skeleton = NodePath("../../..")
+texture = ExtResource( 85 )
+
+[node name="ViewDark" parent="Areas/Area21" instance=ExtResource( 8 )]
+skeleton = NodePath("../../Area31")
+
+[node name="ViewDarkDoor2Open" parent="Areas/Area21" instance=ExtResource( 8 )]
+skeleton = NodePath("../../Area31")
+texture = ExtResource( 89 )
+
+[node name="Object1" parent="Areas/Area21" instance=ExtResource( 7 )]
+skeleton = NodePath("")
+texture = ExtResource( 1 )
+
+[node name="Object2" parent="Areas/Area21" instance=ExtResource( 7 )]
+texture = ExtResource( 13 )
+object_number = 2
+
+[node name="Object3" parent="Areas/Area21" instance=ExtResource( 7 )]
+texture = ExtResource( 70 )
+object_number = 3
+
+[node name="Area22" type="Spatial" parent="Areas"]
+script = ExtResource( 90 )
+
+[node name="ViewLight" parent="Areas/Area22" instance=ExtResource( 8 )]
+skeleton = NodePath("../..")
+texture = ExtResource( 14 )
+
+[node name="ViewLightDoor3Open" parent="Areas/Area22" instance=ExtResource( 8 )]
+texture = ExtResource( 41 )
+
+[node name="ViewLightDoor3Gate3Open" parent="Areas/Area22" instance=ExtResource( 8 )]
+skeleton = NodePath("../ViewLightDoor3Open")
+texture = ExtResource( 42 )
+
+[node name="ViewLightDoor2Open" parent="Areas/Area22" instance=ExtResource( 8 )]
+texture = ExtResource( 75 )
+
+[node name="ViewLightDoor2Door3Open" parent="Areas/Area22" instance=ExtResource( 8 )]
+texture = ExtResource( 73 )
+
+[node name="ViewLightDoor2Door3Gate3Open" parent="Areas/Area22" instance=ExtResource( 8 )]
+texture = ExtResource( 74 )
+
+[node name="ViewDark" parent="Areas/Area22" instance=ExtResource( 8 )]
+skeleton = NodePath("../..")
+texture = ExtResource( 21 )
+
+[node name="ViewDarkDoor3Open" parent="Areas/Area22" instance=ExtResource( 8 )]
+texture = ExtResource( 91 )
+
+[node name="ViewDarkDoor3Gate3Open" parent="Areas/Area22" instance=ExtResource( 8 )]
+skeleton = NodePath("../ViewLightDoor3Open")
+texture = ExtResource( 61 )
+
+[node name="ViewDarkDoor2Open" parent="Areas/Area22" instance=ExtResource( 8 )]
+texture = ExtResource( 92 )
+
+[node name="ViewDarkDoor2Door3Open" parent="Areas/Area22" instance=ExtResource( 8 )]
+texture = ExtResource( 40 )
+
+[node name="ViewDarkDoor2Door3Gate3Open" parent="Areas/Area22" instance=ExtResource( 8 )]
+texture = ExtResource( 93 )
+
+[node name="Object1" parent="Areas/Area22" instance=ExtResource( 7 )]
+texture = ExtResource( 16 )
+
+[node name="Object2" parent="Areas/Area22" instance=ExtResource( 7 )]
+texture = ExtResource( 22 )
+object_number = 2
+
+[node name="Object3" parent="Areas/Area22" instance=ExtResource( 7 )]
+texture = ExtResource( 23 )
+object_number = 3
+
+[node name="Object4" parent="Areas/Area22" instance=ExtResource( 7 )]
+texture = ExtResource( 24 )
+object_number = 4
+
+[node name="Area23" type="Spatial" parent="Areas"]
+visible = false
+
+[node name="ViewLight" parent="Areas/Area23" instance=ExtResource( 8 )]
+texture = ExtResource( 27 )
+
+[node name="ViewLightDoor3Open" parent="Areas/Area23" instance=ExtResource( 8 )]
+texture = ExtResource( 11 )
+
+[node name="ViewLightDoor3Gate3Open" parent="Areas/Area23" instance=ExtResource( 8 )]
+texture = ExtResource( 28 )
+
+[node name="ViewLightDoor2Open" parent="Areas/Area23" instance=ExtResource( 8 )]
+texture = ExtResource( 77 )
+
+[node name="ViewLightDoor2Door3Open" parent="Areas/Area23" instance=ExtResource( 8 )]
+texture = ExtResource( 78 )
+
+[node name="ViewLightDoor2Door3Gate3Open" parent="Areas/Area23" instance=ExtResource( 8 )]
+texture = ExtResource( 76 )
+
+[node name="Object1" parent="Areas/Area23" instance=ExtResource( 7 )]
+texture = ExtResource( 36 )
+
+[node name="Object2" parent="Areas/Area23" instance=ExtResource( 7 )]
+texture = ExtResource( 37 )
+object_number = 2
+
+[node name="Object3" parent="Areas/Area23" instance=ExtResource( 7 )]
+texture = ExtResource( 35 )
+object_number = 3
+
+[node name="Object4" parent="Areas/Area23" instance=ExtResource( 7 )]
+texture = ExtResource( 48 )
+object_number = 4
+
+[node name="Area24" type="Spatial" parent="Areas"]
+visible = false
+
+[node name="ViewLight" parent="Areas/Area24" instance=ExtResource( 8 )]
+texture = ExtResource( 31 )
+
+[node name="ViewLightDoor3Open" parent="Areas/Area24" instance=ExtResource( 8 )]
+texture = ExtResource( 32 )
+
+[node name="Object1" parent="Areas/Area24" instance=ExtResource( 7 )]
+texture = ExtResource( 38 )
+
 [node name="Area31" type="Spatial" parent="Areas"]
 script = ExtResource( 12 )
 
@@ -664,13 +806,13 @@ skeleton = NodePath("../ViewLightDoor3Open")
 texture = ExtResource( 42 )
 
 [node name="ViewDark" parent="Areas/Area32" instance=ExtResource( 8 )]
-texture = ExtResource( 21 )
+texture = ExtResource( 92 )
 
 [node name="ViewDarkDoor3Open" parent="Areas/Area32" instance=ExtResource( 8 )]
 texture = ExtResource( 40 )
 
 [node name="ViewDarkGate3Open" parent="Areas/Area32" instance=ExtResource( 8 )]
-texture = ExtResource( 61 )
+texture = ExtResource( 93 )
 
 [node name="Object1" parent="Areas/Area32" instance=ExtResource( 7 )]
 texture = ExtResource( 16 )

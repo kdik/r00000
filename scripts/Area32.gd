@@ -11,12 +11,11 @@ func get_initial_rotation(previous_area):
 
 func init(previous_area):
     if not Global.monster_introduced and Global.lights_on:
-        get_tree().call_group("monster_screen", "show")
+        get_tree().call_group("monster_screen", "display", "IT'S ME, BEHIND THE DOOR", "LET ME OUT")
         yield(get_tree().create_timer(3), "timeout")
         get_tree().call_group("monster_screen", "hide")
         Global.monster_introduced = true
     yield(get_tree(), "idle_frame")
-    #yield(Monster.introduce(Vector2(-0.19635, -2.159845), "fade_out_near"), "completed")
 
 func get_description(object_number):
     match object_number:

@@ -34,9 +34,9 @@ func trigger_use(object_number):
             else:
                 Global.reset_single_loop()
                 switch_areas("Area21")
-                get_tree().call_group("blue_screen", "show")
-                yield(get_tree().create_timer(2.5), "timeout")
-                get_tree().call_group("blue_screen", "hide")
+                get_tree().call_group("monster_screen", "display", "YOU WILL REGRET COMING DOWN HERE")
+                yield(get_tree().create_timer(3), "timeout")
+                get_tree().call_group("monster_screen", "hide")
         object_4.object_number: yield(say("I don't have a use for batteries right now", 2, true), "completed")
     yield(get_tree(), "idle_frame")
 
