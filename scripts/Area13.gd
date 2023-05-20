@@ -32,6 +32,7 @@ func trigger_use(object_number):
             elif not Global.gate_3_open:
                 Global.gate_3_open = true
             else:
+                Global.takes += 1
                 Global.reset_single_loop()
                 switch_areas("Area21")
                 get_tree().call_group("monster_screen", "display", "YOU WILL REGRET COMING DOWN HERE")

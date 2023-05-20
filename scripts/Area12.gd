@@ -39,6 +39,7 @@ func trigger_use(object_number):
                 yield(say("meh", 2, true), "completed")
             else:
                 yield(say("we have to try again", 2, true), "completed")
+                Global.takes += 1
                 Global.reset_single_loop()
                 switch_areas("Area21")
                 get_tree().call_group("monster_screen", "display", "YOU WILL REGRET COMING DOWN HERE")

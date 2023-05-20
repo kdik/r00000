@@ -1,6 +1,10 @@
 extends Node
 
+# eternal
+var takes = 0
+
 # persistent between loops variables
+var area = "Area01"
 var have_flashlight = false
 var battery_count = 0
 var loops_completed = 0
@@ -22,6 +26,7 @@ var hide_and_seek_lost = false
 enum {ROOTS, CAUGHT, BECOME_EVIL, ESCAPE}
 
 func reset():
+    area = "Area31"
     have_flashlight = false
     battery_count = 0
     loops_completed = 0

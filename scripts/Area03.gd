@@ -33,6 +33,7 @@ func trigger_use(object_number):
                 Global.gate_3_open = true
             else:
                 yield(say("cut!", 2, true), "completed")
+                Global.takes += 1
                 Global.reset_single_loop()
                 switch_areas("Area11")
                 get_tree().call_group("blue_screen", "display")

@@ -40,6 +40,7 @@ func trigger_use(object_number):
                 update_visibilities()
             else:
                 yield(say("dad, come out! we need just a few more shots", 2, true), "completed")
+                Global.takes += 1
                 Global.reset_single_loop()
                 switch_areas("Area31")
                 get_tree().call_group("monster_screen", "display", "BE CAR00000EFUL WHAT\nYOU WISH FOR00000")

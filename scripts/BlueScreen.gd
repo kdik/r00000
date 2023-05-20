@@ -7,7 +7,7 @@ func _ready():
     
 func display():
     get_tree().paused = true
-    $RichTextLabel.set_bbcode(_to_code(Global.loops_completed).to_upper())
+    $RichTextLabel.set_bbcode(_to_code(Global.takes).to_upper())
     visible = true
 
 func hide():
