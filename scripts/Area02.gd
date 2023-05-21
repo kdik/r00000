@@ -27,9 +27,9 @@ func trigger_use(object_number):
             if not Global.door_2_open: 
                 Global.door_2_open = true
                 update_visibilities()
-                yield(say("meh", 2, true), "completed")
+                yield(say("meh"), "completed")
             else:
-                yield(say("fuck this footage", 2, true), "completed")
+                yield(say("fuck this footage"), "completed")
                 Global.takes += 1
                 Global.reset_single_loop()
                 switch_areas("Area11")

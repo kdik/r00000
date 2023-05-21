@@ -19,7 +19,7 @@ func trigger_use(object_number):
             Global.have_flashlight = true
             update_visibilities()
             get_tree().call_group("player", "acquire_flashlight")
-            yield(say("now I only need batteries", 2, true), "completed")
+            yield(say("now I only need batteries"), "completed")
     yield(get_tree(), "idle_frame")
     
 func update_visibilities():

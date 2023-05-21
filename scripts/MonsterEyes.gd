@@ -50,7 +50,7 @@ func stop_showing():
 func _on_animation_finished(anim_name):
     if not Global.hide_and_seek_started:
         return
-    match Global.actions_in_darkness:
+    match int(Global.actions_in_darkness):
         1: $AnimationPlayer.play("wobble_1")
         2: $AnimationPlayer.play("wobble_2")
         3: $AnimationPlayer.play("wobble_3")

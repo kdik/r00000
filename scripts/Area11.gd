@@ -24,8 +24,8 @@ func get_description(object_number):
 func trigger_use(object_number):
     match object_number:
         object_1.object_number: yield(switch_areas("Area12"), "completed")
-        object_2.object_number: yield(say("no quitting", 2, true), "completed")
-        object_3.object_number: yield(say("if I had a night vision camera, which I do not", 2, true), "completed")
+        object_2.object_number: yield(say("no quitting"), "completed")
+        object_3.object_number: yield(say("if I had a night vision camera, which I do not"), "completed")
     yield(get_tree(), "idle_frame")
 
 func update_visibilities():

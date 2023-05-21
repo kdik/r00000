@@ -38,15 +38,12 @@ func on_use(object_number):
     update_visibilities()
     if Global.hide_and_seek_started: Global.actions_in_darkness += 1
     yield(Monster.on_use(), "completed")
-    #yield(get_tree().create_timer(0.5), "timeout")
     SaveLoad.save()
     get_tree().call_group("player", "unlock_actions")
     
-func say(text, time = 2, lock_movement = false):
-    if lock_movement: get_tree().call_group("player", "lock_movement")
+func say(text, time = 2):
     get_tree().call_group("player_subtitles", "show_subtitles", text, time)
     yield(get_tree().create_timer(time + 1), "timeout")
-    if lock_movement: get_tree().call_group("player", "unlock_movement")
 
 func rotate_self_on_start(rotation_deg):
     transform.basis = Basis()

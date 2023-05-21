@@ -4,7 +4,7 @@ func _ready():
     visible = false
 
 func _process(_delta):
-    match Global.loops_completed:
+    match int(Global.loops_completed):
         1: if not is_playing(): 
             visible = true
             play("level_1")

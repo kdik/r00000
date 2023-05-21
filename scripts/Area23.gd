@@ -34,7 +34,7 @@ func trigger_use(object_number):
             elif not Global.gate_3_open:
                 Global.gate_3_open = true
             else:
-                yield(say("dad, come out! we need just a few more shots", 2, true), "completed")
+                yield(say("dad, come out! we need just a few more shots"), "completed")
                 Global.takes += 1
                 Global.reset_single_loop()
                 switch_areas("Area31")

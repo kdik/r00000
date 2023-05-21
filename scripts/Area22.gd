@@ -18,7 +18,7 @@ func init(previous_area):
         yield(get_tree().create_timer(3), "timeout")
         get_tree().call_group("monster_screen", "stop_showing")
         Global.monster_introduced = true
-        yield(say("wow", 2, true), "completed")
+        yield(say("wow"), "completed")
     yield(get_tree(), "idle_frame")
 
 func get_description(object_number):
@@ -39,7 +39,7 @@ func trigger_use(object_number):
                 Global.door_2_open = true
                 update_visibilities()
             else:
-                yield(say("dad, come out! we need just a few more shots", 2, true), "completed")
+                yield(say("dad, come out! we need just a few more shots"), "completed")
                 Global.takes += 1
                 Global.reset_single_loop()
                 switch_areas("Area31")

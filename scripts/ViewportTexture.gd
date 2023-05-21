@@ -4,7 +4,7 @@ func _process(anim_name):
     if not Global.hide_and_seek_started:
         material.set_shader_param("on", false)
         return
-    match Global.actions_in_darkness:
+    match int(Global.actions_in_darkness):
         1:
             material.set_shader_param("on", true)
             material.set_shader_param("wobble_height", 1.0)

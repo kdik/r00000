@@ -21,7 +21,7 @@ func on_use():
     if not Global.hide_and_seek_started or Global.monster_defeated or Global.lights_on:
         return yield(get_tree(), "idle_frame")
     var alpha = 0.0
-    match Global.actions_in_darkness:
+    match int(Global.actions_in_darkness):
         1: alpha = 0.05
         2: alpha = 0.1
         3: alpha = 0.2
@@ -39,7 +39,7 @@ func on_load():
     if not Global.hide_and_seek_started or Global.monster_defeated or Global.lights_on:
         return
     var alpha = 0.0
-    match Global.actions_in_darkness:
+    match int(Global.actions_in_darkness):
         1: alpha = 0.05
         2: alpha = 0.1
         3: alpha = 0.2

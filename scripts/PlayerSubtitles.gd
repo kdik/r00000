@@ -8,6 +8,7 @@ func _ready():
 
 func show_subtitles(subtitles, timeout = 0):
     if state != IDLE:
+        print("Skipping description text: " + subtitles.to_upper())
         return
     state = SHOWING
     var line = "[right]" + subtitles.to_upper() + "[/right]"

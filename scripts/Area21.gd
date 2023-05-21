@@ -26,12 +26,12 @@ func get_description(object_number):
 func trigger_use(object_number):
     match object_number:
         object_1.object_number: yield(switch_areas("Area22"), "completed")
-        object_2.object_number: yield(say("but not good enough to call it quits", 2, true), "completed")
+        object_2.object_number: yield(say("but not good enough to call it quits"), "completed")
         object_3.object_number: 
             Global.lights_on = not Global.lights_on
             update_visibilities()
-            if Global.lights_on: yield(say("phew!", 2, true), "completed")
-            else: yield(say("creepyness level 10000!", 2, true), "completed")
+            if Global.lights_on: yield(say("phew!"), "completed")
+            else: yield(say("creepyness level 10000!"), "completed")
     yield(get_tree(), "idle_frame")
 
 func update_visibilities():
