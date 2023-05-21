@@ -27,6 +27,5 @@ func _load_variables_to_save_data():
             save_data[variable_name] = Global.get(variable_name)
 
 func _load_variables_from_save_data():
-    print(save_data)
     for variable in save_data:
         Global.set(variable, save_data[variable])

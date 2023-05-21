@@ -68,7 +68,7 @@ func trigger_use(object_number):
                         yield(get_tree().create_timer(3), "timeout")
                 else:
                     yield(say("I have no use for the battery I removed", 2, true), "completed")
-                yield(Monster.introduce(Vector2(-0.1309, 2.552544), "fade_out_far"), "completed")
+                yield(_introduce_monster(), "completed")
     yield(get_tree(), "idle_frame")
 
 func update_visibilities():
@@ -81,3 +81,9 @@ func update_visibilities():
     $Graffiti.visible = Global.lights_on
     object_4.visible = Global.lights_on
     $Monster.visible = not Global.lights_on and not Global.flashlight_on and not Global.hide_and_seek_started
+
+func _introduce_monster():
+    var euler_rotation = global_transform.basis.get_euler()
+    var monster_coordinates = Vector2(-0.1309, 2.552544)
+    if euler_rotation.y == 0: monster_coordinates -= Vector2(0, deg2rad(135))
+    yield(Monster.introduce(monster_coordinates, "fade_out_far"), "completed")

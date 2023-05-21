@@ -35,7 +35,7 @@ func trigger_use(object_number):
             if Global.flashlight_on:
                 yield(switch_areas("Area35"), "completed")
             else:
-                yield(Monster.introduce(Vector2(-0.19635, -2.159845), "fade_out_near"), "completed")
+                yield(_introduce_monster(), "completed")
         object_2.object_number:
             if Global.batteries_removed:
                 yield(say("I have no use for more batteries"), "completed")
@@ -61,7 +61,7 @@ func trigger_use(object_number):
                         yield(get_tree().create_timer(3), "timeout")
                 else:
                     yield(say("I have no use for the battery I removed", 2, true), "completed")
-                yield(Monster.introduce(Vector2(-0.19635, -2.159845), "fade_out_near"), "completed")
+                yield(_introduce_monster(), "completed")
         object_3.object_number:
             yield(switch_areas("Area33"), "completed")
         object_4.object_number:
@@ -77,3 +77,9 @@ func update_visibilities():
     $ViewDarkGate3Open.visible = not Global.lights_on and Global.door_3_open and Global.gate_3_open
     object_2.visible = Global.lights_on
     $Monster.visible = not Global.lights_on and not Global.flashlight_on and not Global.hide_and_seek_started
+
+func _introduce_monster():
+    var euler_rotation = global_transform.basis.get_euler()
+    var monster_coordinates = Vector2(-0.19635, -2.159845)
+    if euler_rotation.y > 0: monster_coordinates += Vector2(0, euler_rotation.y)
+    yield(Monster.introduce(monster_coordinates, "fade_out_near"), "completed")
