@@ -14,9 +14,9 @@ func play_fade_out(next_area):
 
 func init(previous_area):
     if not Global.monster_introduced and Global.lights_on:
-        get_tree().call_group("monster_screen", "display", "I WILL BE THE END OF YOU")
+        get_tree().call_group("monster_screen", "start_showing", "I WILL BE THE END OF YOU")
         yield(get_tree().create_timer(3), "timeout")
-        get_tree().call_group("monster_screen", "hide")
+        get_tree().call_group("monster_screen", "stop_showing")
         Global.monster_introduced = true
         yield(say("wow", 2, true), "completed")
     yield(get_tree(), "idle_frame")
@@ -43,9 +43,9 @@ func trigger_use(object_number):
                 Global.takes += 1
                 Global.reset_single_loop()
                 switch_areas("Area31")
-                get_tree().call_group("monster_screen", "display", "BE CAR00000EFUL WHAT\nYOU WISH FOR00000")
+                get_tree().call_group("monster_screen", "start_showing", "BE CAR00000EFUL WHAT\nYOU WISH FOR00000")
                 yield(get_tree().create_timer(3), "timeout")
-                get_tree().call_group("monster_screen", "hide")
+                get_tree().call_group("monster_screen", "stop_showing")
         object_2.object_number: 
             Global.batteries_removed = true
             Global.lights_on = false

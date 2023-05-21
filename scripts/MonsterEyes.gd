@@ -44,7 +44,7 @@ func fade_in():
     yield(get_tree().create_timer($AnimationPlayer.get_animation("fade_in").length), "timeout")
     $AnimationPlayer.play("wobble_1")
     
-func hide():
+func stop_showing():
     visible = false
 
 func _on_animation_finished(anim_name):

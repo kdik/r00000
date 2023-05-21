@@ -38,9 +38,9 @@ func trigger_use(object_number):
                 Global.takes += 1
                 Global.reset_single_loop()
                 switch_areas("Area31")
-                get_tree().call_group("monster_screen", "display", "BE CAR00000EFUL WHAT\nYOU WISH FOR00000")
+                get_tree().call_group("monster_screen", "start_showing", "BE CAR00000EFUL WHAT\nYOU WISH FOR00000")
                 yield(get_tree().create_timer(3), "timeout")
-                get_tree().call_group("monster_screen", "hide")
+                get_tree().call_group("monster_screen", "stop_showing")
         object_4.object_number:
             Global.batteries_removed = true
             Global.lights_on = false

@@ -2,7 +2,6 @@ extends MeshInstance
 
 export var texture : StreamTexture
 
-
 func _ready():
     add_to_group("monster_view")
     var material = mesh.surface_get_material(0).duplicate()
@@ -10,5 +9,5 @@ func _ready():
     material.albedo_texture = texture
     mesh.surface_set_material(0, material)
 
-func hide():
+func stop_showing():
     visible = false

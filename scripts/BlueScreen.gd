@@ -5,12 +5,12 @@ func _ready():
     add_to_group("blue_screen")
     set_pause_mode(PAUSE_MODE_PROCESS)
     
-func display():
+func start_showing():
     get_tree().paused = true
     $RichTextLabel.set_bbcode(_to_code(Global.takes).to_upper())
     visible = true
 
-func hide():
+func stop_showing():
     get_tree().paused = false
     visible = false
 

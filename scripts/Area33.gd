@@ -38,11 +38,11 @@ func trigger_use(object_number):
                 Global.loops_completed += 1
                 Global.reset_single_loop()
                 switch_areas("Area31")
-                get_tree().call_group("blue_screen", "display")
+                get_tree().call_group("blue_screen", "start_showing")
                 yield(get_tree().create_timer(2.5), "timeout")
-                get_tree().call_group("blue_screen", "hide")
-                get_tree().call_group("monster_eyes", "hide")
-                get_tree().call_group("filter", "hide")
+                get_tree().call_group("blue_screen", "stop_showing")
+                get_tree().call_group("monster_eyes", "stop_showing")
+                get_tree().call_group("filter", "stop_playing")
         object_4.object_number:
             if Global.batteries_removed:
                 yield(say("I have no use for more batteries"), "completed")
@@ -62,8 +62,8 @@ func trigger_use(object_number):
                     elif Global.battery_count == 3:
                         say("bingo", 2, true)
                         get_tree().call_group("player", "turn_on_flashlight")
-                        get_tree().call_group("monster_eyes", "hide")
-                        get_tree().call_group("filter", "hide")
+                        get_tree().call_group("monster_eyes", "stop_showing")
+                        get_tree().call_group("filter", "stop_playing")
                         Global.flashlight_on = true
                         yield(get_tree().create_timer(3), "timeout")
                 else:

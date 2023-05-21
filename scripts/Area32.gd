@@ -11,9 +11,9 @@ func get_initial_rotation(previous_area):
 
 func init(previous_area):
     if not Global.monster_introduced and Global.lights_on:
-        get_tree().call_group("monster_screen", "display", "IT'S ME, BEHIND THE DOOR", "LET ME OUT")
+        get_tree().call_group("monster_screen", "start_showing", "IT'S ME, BEHIND THE DOOR", "LET ME OUT")
         yield(get_tree().create_timer(3), "timeout")
-        get_tree().call_group("monster_screen", "hide")
+        get_tree().call_group("monster_screen", "stop_showing")
         Global.monster_introduced = true
     yield(get_tree(), "idle_frame")
 
@@ -55,8 +55,8 @@ func trigger_use(object_number):
                     elif Global.battery_count == 3:
                         say("bingo", 2, true)
                         get_tree().call_group("player", "turn_on_flashlight")
-                        get_tree().call_group("monster_eyes", "hide")
-                        get_tree().call_group("filter", "hide")
+                        get_tree().call_group("monster_eyes", "stop_showing")
+                        get_tree().call_group("filter", "stop_playing")
                         Global.flashlight_on = true
                         yield(get_tree().create_timer(3), "timeout")
                 else:

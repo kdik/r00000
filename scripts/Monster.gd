@@ -9,9 +9,9 @@ func introduce(eye_coordinates, fade_out_function_name):
     yield(get_tree().create_timer(3), "timeout")  
     get_tree().call_group("monster_eyes", fade_out_function_name)
     yield(get_tree().create_timer(1.5), "timeout")
-    get_tree().call_group("filter", "show")
+    get_tree().call_group("filter", "start_playing")
     get_tree().call_group("filter", "set_alpha", 0.05)
-    get_tree().call_group("monster_view", "hide")
+    get_tree().call_group("monster_view", "stop_showing")
     get_tree().call_group("monster_eyes", "fade_in")
     yield(get_tree().create_timer(3), "timeout")
     get_tree().call_group("player", "unlock_movement")
@@ -26,7 +26,7 @@ func on_use():
         2: alpha = 0.1
         3: alpha = 0.2
         4: alpha = 0.3
-    get_tree().call_group("filter", "show")
+    get_tree().call_group("filter", "start_playing")
     get_tree().call_group("filter", "set_alpha", alpha)
     if Global.actions_in_darkness > 3:
         Global.hide_and_seek_lost = true
@@ -44,11 +44,11 @@ func on_load():
         2: alpha = 0.1
         3: alpha = 0.2
         4: alpha = 0.3
-    get_tree().call_group("filter", "show")
+    get_tree().call_group("filter", "start_playing")
     get_tree().call_group("filter", "set_alpha", alpha)
     get_tree().call_group("monster_eyes", "fade_in")
 
 func illuminate():
     Global.actions_in_darkness = 0
     Global.hide_and_seek_started = false
-    get_tree().call_group("monster_eyes", "hide")
+    get_tree().call_group("monster_eyes", "stop_showing")

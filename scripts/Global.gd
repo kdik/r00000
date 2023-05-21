@@ -25,6 +25,12 @@ var hide_and_seek_lost = false
 
 enum {ROOTS, CAUGHT, BECOME_EVIL, ESCAPE}
 
+# Should only be used to delete footage
+func reset_everything():
+    reset()
+    area = "Area01"
+    takes = 0
+
 func reset():
     area = "Area31"
     have_flashlight = false

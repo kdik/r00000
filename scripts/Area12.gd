@@ -14,9 +14,9 @@ func play_fade_out(next_area):
 
 func init(previous_area):
     if not Global.monster_introduced:
-        get_tree().call_group("friendly_screen", "display")
+        get_tree().call_group("friendly_screen", "start_showing")
         yield(get_tree().create_timer(3), "timeout")
-        get_tree().call_group("friendly_screen", "hide")
+        get_tree().call_group("friendly_screen", "stop_showing")
         Global.monster_introduced = true
         yield(say("dear lord...", 2, true), "completed")
     yield(get_tree(), "idle_frame")
@@ -42,9 +42,9 @@ func trigger_use(object_number):
                 Global.takes += 1
                 Global.reset_single_loop()
                 switch_areas("Area21")
-                get_tree().call_group("monster_screen", "display", "YOU WILL REGRET COMING DOWN HERE")
+                get_tree().call_group("monster_screen", "start_showing", "YOU WILL REGRET COMING DOWN HERE")
                 yield(get_tree().create_timer(3), "timeout")
-                get_tree().call_group("monster_screen", "hide")
+                get_tree().call_group("monster_screen", "stop_showing")
         object_2.object_number: yield(say("I don't have a use for batteries right now"), "completed")
         object_3.object_number: yield(switch_areas("Area13"), "completed")
         object_4.object_number: yield(switch_areas("Area11"), "completed")

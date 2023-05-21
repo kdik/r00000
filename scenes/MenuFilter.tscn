@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://shaders/filter.shader" type="Shader" id=1]
+[ext_resource path="res://scripts/MenuFilter.gd" type="Script" id=2]
+[ext_resource path="res://videos/filter.ogv" type="VideoStream" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/alpha = 0.0
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/alpha")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/alpha")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/alpha")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
+[node name="MenuFilter" type="VideoPlayer"]
+material = SubResource( 1 )
+margin_left = 20.0
+margin_top = 14.0
+margin_right = 660.0
+margin_bottom = 494.0
+stream = ExtResource( 3 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/fade_in = SubResource( 3 )
+anims/fade_out = SubResource( 4 )

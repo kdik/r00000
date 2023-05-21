@@ -33,9 +33,9 @@ func trigger_use(object_number):
                 Global.takes += 1
                 Global.reset_single_loop()
                 switch_areas("Area11")
-                get_tree().call_group("blue_screen", "display")
+                get_tree().call_group("blue_screen", "start_showing")
                 yield(get_tree().create_timer(2.5), "timeout")
-                get_tree().call_group("blue_screen", "hide")
+                get_tree().call_group("blue_screen", "stop_showing")
         object_2.object_number: yield(say("I don't have a use for batteries right now"), "completed")
         object_3.object_number: yield(switch_areas("Area03"), "completed")
         object_4.object_number: yield(switch_areas("Area01"), "completed")

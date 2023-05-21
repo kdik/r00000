@@ -3,10 +3,10 @@ extends VideoPlayer
 func _ready():
     add_to_group("filter")
 
-func show():
+func start_playing():
     if not is_playing(): play()
     
-func stop():
+func stop_playing():
     if is_playing(): stop()
     
 func set_alpha(alpha):
