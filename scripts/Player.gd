@@ -68,13 +68,14 @@ func check_crosshairs():
     var current_object_in_sight_number = int(pixel_data.get_pixel(320, 240).a)
     object_in_sight_number = current_object_in_sight_number
     pixel_data.unlock()  
-    if not actions_locked: _update_hand_position(previous_object_in_sight_number, current_object_in_sight_number)
+    if not actions_locked: 
+        _update_hand_position(previous_object_in_sight_number, current_object_in_sight_number)
+        if previous_object_in_sight_number == 0:
+            get_tree().call_group("area", "on_interact", current_object_in_sight_number)
     
 func _update_hand_position(previous_object_number, current_object_number):
     if current_object_number > 0:
         get_tree().call_group("left_hand", "open")
-        if previous_object_number == 0:
-            get_tree().call_group("area", "on_interact", current_object_number)
     elif current_object_number == 0:
         get_tree().call_group("left_hand", "close")
         if previous_object_number > 0:
