@@ -8,7 +8,6 @@ R00000 is a scary game created during Global Game Jam 2023.
 
 <ul>
   <li>Arrow keys - move camera</li>
-  <li>Spacebar - inspect</li>
   <li>Enter - interact</li>
 </ul>
 
