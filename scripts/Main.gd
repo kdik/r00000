@@ -28,8 +28,5 @@ func switch_areas(next_area):
 func game_over(ending):
     get_tree().call_group("player", "lock_actions")
     get_tree().reload_current_scene()
-    Global.takes += 1
-    Global.reset()
     Global.ending = ending
-    SaveLoad.save()
     get_tree().change_scene("res://scenes/GameOver.tscn")
