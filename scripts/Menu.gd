@@ -64,6 +64,7 @@ func _delete_footage():
     selected_item = 0
     _set_selection_text()
     _update_selection()
+    $TitleLabel.set_bbcode(_to_code(Global.takes))
     yield(get_tree().create_timer(0.5), "timeout")
     yield($MenuFilter.stop_playing(), "completed")
     locked = false
