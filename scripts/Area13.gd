@@ -14,13 +14,13 @@ func get_initial_rotation(previous_area):
 
 func get_description(object_number):
     match object_number:
-        object_1.object_number: return "sound was coming from there"
-        object_2.object_number: return "these walls lack some creepy visuals"
+        object_1.object_number: return "go back"
+        object_2.object_number: return "crawl deeper"
         object_3.object_number:
-            if not Global.door_3_open: return "someone there?"
-            elif not Global.gate_3_open: return "looks good on camera, but where is the monster?"
-            else: return "same old nothing!"
-        object_4.object_number: return "lamp. with batteries. what of it?"
+            if not Global.door_3_open: return "open doors"
+            elif not Global.gate_3_open: return "open gates"
+            else: return "go further"
+        object_4.object_number: return "take batteries"
 
 func trigger_use(object_number):
     match object_number:
@@ -35,10 +35,8 @@ func trigger_use(object_number):
                 Global.takes += 1
                 Global.reset_single_loop()
                 switch_areas("Area21")
-                get_tree().call_group("monster_screen", "start_showing", "YOU WILL REGRET COMING DOWN HERE")
-                yield(get_tree().create_timer(3), "timeout")
-                get_tree().call_group("monster_screen", "stop_showing")
-        object_4.object_number: yield(say("I don't have a use for batteries right now"), "completed")
+                yield(say_yourself("nothing to film here"), "completed")
+        object_4.object_number: yield(say_yourself("my camera doesn't need them"), "completed")
     yield(get_tree(), "idle_frame")
 
 func update_visibilities():
@@ -48,4 +46,3 @@ func update_visibilities():
     $ViewLightDoor2Open.visible = not Global.door_3_open and not Global.gate_3_open and Global.door_2_open
     $ViewLightDoor2Door3Open.visible = Global.door_3_open and not Global.gate_3_open and Global.door_2_open
     $ViewLightDoor2Door3Gate3Open.visible = Global.door_3_open and Global.gate_3_open and Global.door_2_open
-    $Monster.visible = Global.door_2_open

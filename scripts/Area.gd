@@ -41,6 +41,21 @@ func on_use(object_number):
     SaveLoad.save()
     get_tree().call_group("player", "unlock_actions")
     
+func say_yourself(text_line_1, text_line_2 = null):
+    get_tree().call_group("you_screen", "start_showing", text_line_1, text_line_2)
+    yield(get_tree().create_timer(3), "timeout")
+    get_tree().call_group("you_screen", "stop_showing")
+    
+func say_dad(text_line_1, text_line_2 = null):
+    get_tree().call_group("friendly_screen", "start_showing", text_line_1, text_line_2)
+    yield(get_tree().create_timer(3), "timeout")
+    get_tree().call_group("friendly_screen", "stop_showing")
+    
+func say_monster(text_line_1, text_line_2 = null):
+    get_tree().call_group("monster_screen", "start_showing", text_line_1, text_line_2)
+    yield(get_tree().create_timer(3), "timeout")
+    get_tree().call_group("monster_screen", "stop_showing")
+    
 func say(text, time = 2):
     get_tree().call_group("player_subtitles", "show_subtitles", text, time)
     yield(get_tree().create_timer(time + 1), "timeout")
@@ -71,3 +86,4 @@ func on_leave(next_area):
 func switch_areas(next_area):
     get_tree().call_group("main", "switch_areas", next_area)
     yield(get_tree().create_timer(1.5), "timeout")
+    Global.reset_between_areas()

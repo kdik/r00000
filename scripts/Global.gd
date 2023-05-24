@@ -4,12 +4,13 @@ extends Node
 var takes = 0
 
 # persistent between loops variables
-var area = "Area01"
+var area = "Area11"
 var have_flashlight = false
 var battery_count = 0
 var loops_completed = 0
 var flashlight_on = false
-var ending
+var ending = null
+var monster_defeated = false
 
 # non persistent between loops variables
 var lights_on = true
@@ -19,16 +20,18 @@ var door_3_open = false
 var gate_3_open = false
 var batteries_removed = false
 var monster_introduced = false
-var monster_defeated = false
 var hide_and_seek_started = false
 var hide_and_seek_lost = false
+
+# non persistent between areas variables
+var door_1_open = false
 
 enum {ROOTS, CAUGHT, BECOME_EVIL, ESCAPE}
 
 # Should only be used to delete footage
 func reset_everything():
     reset()
-    area = "Area01"
+    area = "Area11"
     takes = 0
 
 func reset():
@@ -37,6 +40,7 @@ func reset():
     battery_count = 0
     loops_completed = 0
     flashlight_on = false
+    monster_defeated = false
     reset_single_loop()
     
 func reset_single_loop():
@@ -47,6 +51,8 @@ func reset_single_loop():
     gate_3_open = false
     batteries_removed = false
     monster_introduced = false
-    monster_defeated = false
     hide_and_seek_started = false
     hide_and_seek_lost = false
+
+func reset_between_areas():
+    door_1_open = false

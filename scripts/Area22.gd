@@ -13,47 +13,42 @@ func play_fade_out(next_area):
     return next_area != "Area31"
 
 func init(previous_area):
-    if not Global.monster_introduced and Global.lights_on:
-        get_tree().call_group("monster_screen", "start_showing", "I WILL BE THE END OF YOU")
-        yield(get_tree().create_timer(3), "timeout")
-        get_tree().call_group("monster_screen", "stop_showing")
+    if not Global.monster_introduced:
+        yield(say_monster("I will be the end of you"), "completed")
+        yield(say_yourself("he is getting better!"), "completed")
         Global.monster_introduced = true
-        yield(say("wow"), "completed")
     yield(get_tree(), "idle_frame")
 
 func get_description(object_number):
     match object_number:
         object_1.object_number:
-            if Global.door_2_open: return "dad? where are you?"
-            else: return "I... I don't think I heard it behind this door"
-        object_2.object_number:
-            if Global.have_flashlight: return "batteries!"
-            else: return "light source, battery powered"
-        object_3.object_number: return "who said it?"
-        object_4.object_number: return "light switch is up there"
+            if Global.door_2_open: return "go further"
+            else: return "open the forsaken doors"
+        object_2.object_number: return "take batteries"
+        object_3.object_number: return "go further"
+        object_4.object_number: return "go upstairs"
     
 func trigger_use(object_number):
     match object_number:
         object_1.object_number:
-            if not Global.door_2_open: 
+            if not Global.door_2_open:
                 Global.door_2_open = true
                 update_visibilities()
             else:
-                yield(say("dad, come out! we need just a few more shots"), "completed")
                 Global.takes += 1
                 Global.reset_single_loop()
                 switch_areas("Area31")
-                get_tree().call_group("monster_screen", "start_showing", "BE CAR00000EFUL WHAT\nYOU WISH FOR00000")
-                yield(get_tree().create_timer(3), "timeout")
-                get_tree().call_group("monster_screen", "stop_showing")
-        object_2.object_number: 
-            Global.batteries_removed = true
-            Global.lights_on = false
-            update_visibilities()
-            get_tree().call_group("player", "add_battery")
-            yield(get_tree().create_timer(3), "timeout")
-            if not Global.have_flashlight: yield(say("I don't have a use for batteries right now"), "completed")
-            else: yield(say("shit, I need two more"), "completed")
+                yield(say_yourself("dad?"), "completed")
+        object_2.object_number:
+            if Global.have_flashlight:
+                Global.batteries_removed = true
+                Global.lights_on = false
+                update_visibilities()
+                get_tree().call_group("player", "add_battery")
+                yield(get_tree().create_timer(5), "timeout")
+                yield(say_yourself("two more left"), "completed")
+            else:
+                yield(say_yourself("my camera doesn't need them"), "completed")
         object_3.object_number: yield(switch_areas("Area23"), "completed")
         object_4.object_number: yield(switch_areas("Area21"), "completed")
     yield(get_tree(), "idle_frame")

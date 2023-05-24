@@ -14,15 +14,13 @@ func get_initial_rotation(previous_area):
 
 func get_description(object_number):
     match object_number:
-        object_1.object_number: return "who's there?"
-        object_2.object_number: return "what is that?"
+        object_1.object_number: return "go back"
+        object_2.object_number: return "crawl deeper"
         object_3.object_number:
-            if not Global.door_3_open: return "are you there?"
-            elif not Global.gate_3_open: return "dad?"
-            else: return "where are you?"
-        object_4.object_number:
-            if Global.have_flashlight: return "batteries!"
-            else: return "light source, battery powered"
+            if not Global.door_3_open: return "open doors"
+            elif not Global.gate_3_open: return "open gates"
+            else: return "go further"
+        object_4.object_number: return "take batteries"
 
 func trigger_use(object_number):
     match object_number:
@@ -34,21 +32,20 @@ func trigger_use(object_number):
             elif not Global.gate_3_open:
                 Global.gate_3_open = true
             else:
-                yield(say("dad, come out! we need just a few more shots"), "completed")
                 Global.takes += 1
                 Global.reset_single_loop()
                 switch_areas("Area31")
-                get_tree().call_group("monster_screen", "start_showing", "BE CAR00000EFUL WHAT\nYOU WISH FOR00000")
-                yield(get_tree().create_timer(3), "timeout")
-                get_tree().call_group("monster_screen", "stop_showing")
+                yield(say_yourself("dad, come out!", "we need to film\nthis one again"), "completed")
         object_4.object_number:
-            Global.batteries_removed = true
-            Global.lights_on = false
-            update_visibilities()
-            get_tree().call_group("player", "add_battery")
-            yield(get_tree().create_timer(3), "timeout")
-            if not Global.have_flashlight: yield(say("I don't have a use for batteries right now"), "completed")
-            else: yield(say("shit, I need two more"), "completed")
+            if Global.have_flashlight:
+                Global.batteries_removed = true
+                Global.lights_on = false
+                update_visibilities()
+                get_tree().call_group("player", "add_battery")
+                yield(get_tree().create_timer(5), "timeout")
+                yield(say_yourself("two more left"), "completed")
+            else:
+                yield(say_yourself("my camera doesn't need them"), "completed")
     yield(get_tree(), "idle_frame")
 
 func update_visibilities():

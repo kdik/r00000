@@ -14,38 +14,27 @@ func play_fade_out(next_area):
 
 func init(previous_area):
     if not Global.monster_introduced:
-        get_tree().call_group("friendly_screen", "start_showing")
-        yield(get_tree().create_timer(3), "timeout")
-        get_tree().call_group("friendly_screen", "stop_showing")
+        yield(say_dad("booooooooooo!"), "completed")
+        yield(say_yourself("dad, you have to act\nharder next time"), "completed")
         Global.monster_introduced = true
-        yield(say("dear lord..."), "completed")
     yield(get_tree(), "idle_frame")
 
 func get_description(object_number):
     match object_number:
-        object_1.object_number:
-            if Global.door_2_open: return "dad, it's supposed to be a scary movie"
-            else: return "are you there?"
-        object_2.object_number: return "lamp. with batteries. what of it?"
-        object_3.object_number: return "cringe"
-        object_4.object_number: return "I came through there"
+        object_1.object_number: return "open the forsaken doors"
+        object_2.object_number: return "take batteries"
+        object_3.object_number: return "go further"
+        object_4.object_number: return "go upstairs"
     
 func trigger_use(object_number):
     match object_number:
         object_1.object_number:
-            if not Global.door_2_open: 
-                Global.door_2_open = true
-                update_visibilities()
-                yield(say("meh"), "completed")
-            else:
-                yield(say("we have to try again"), "completed")
-                Global.takes += 1
-                Global.reset_single_loop()
-                switch_areas("Area21")
-                get_tree().call_group("monster_screen", "start_showing", "YOU WILL REGRET COMING DOWN HERE")
-                yield(get_tree().create_timer(3), "timeout")
-                get_tree().call_group("monster_screen", "stop_showing")
-        object_2.object_number: yield(say("I don't have a use for batteries right now"), "completed")
+            Global.takes += 1
+            Global.reset_single_loop()
+            switch_areas("Area21")
+            yield(say_dad("fuck, the damn doors are stuck"), "completed")
+            yield(say_yourself("cut!"), "completed")
+        object_2.object_number: yield(say_yourself("my camera doesn't need them"), "completed")
         object_3.object_number: yield(switch_areas("Area13"), "completed")
         object_4.object_number: yield(switch_areas("Area11"), "completed")
     yield(get_tree(), "idle_frame")
@@ -57,4 +46,3 @@ func update_visibilities():
     $ViewLightDoor2Open.visible = not Global.door_3_open and not Global.gate_3_open and Global.door_2_open
     $ViewLightDoor2Door3Open.visible = Global.door_3_open and not Global.gate_3_open and Global.door_2_open
     $ViewLightDoor2Door3Gate3Open.visible = Global.door_3_open and Global.gate_3_open and Global.door_2_open
-    $Monster.visible = Global.door_2_open

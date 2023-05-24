@@ -39,7 +39,7 @@ func _on_select():
         
 func _set_selection_text():
     var text = ""
-    if Global.area == "Area01":
+    if Global.area == "Area11":
         text += "[right]PLAY   [/right]"
         text += "[right]EJECT  [/right]"
         item_count = 2

@@ -2,7 +2,7 @@ extends ColorRect
 
 func _ready():
     visible = false
-    add_to_group("monster_screen")
+    add_to_group("you_screen")
     
 func start_showing(text_line_1, text_line_2 = null):
     visible = true

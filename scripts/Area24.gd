@@ -9,21 +9,19 @@ func get_initial_rotation(previous_area):
 
 func get_description(object_number):
     match object_number:
-        object_1.object_number: return "the corridor does not seem as cramped"
-        object_2.object_number: return "this was not here before"
-        object_3.object_number: return "the fuck?!"
+        object_1.object_number: return "crawl back"
+        object_2.object_number: return "take flashlight"
+        object_3.object_number: return "look closer"
     
 func trigger_use(object_number):
     match object_number:
-        object_1.object_number:
-            yield(switch_areas("Area23"), "completed")
+        object_1.object_number: yield(switch_areas("Area23"), "completed")
         object_2.object_number:
+            yield(say_yourself("I don't remember leaving it here"), "completed")
             Global.have_flashlight = true
             update_visibilities()
             get_tree().call_group("player", "acquire_flashlight")
-            yield(say("no batteries"), "completed")
-        object_3.object_number:
-            yield(say("dad, have you done this?"), "completed")
+        object_3.object_number: yield(say_yourself("the fuck is this?"), "completed")
     yield(get_tree(), "idle_frame")
     
 func update_visibilities():

@@ -17,21 +17,19 @@ func get_initial_rotation(previous_area):
 
 func get_description(object_number):
     match object_number:
-        object_1.object_number: return "damn, he is getting better!"
-        object_2.object_number: return "what I have is decent"
+        object_1.object_number: return "go downstairs"
+        object_2.object_number: return "exit basement"
         object_3.object_number:
-            if Global.lights_on: return "lights out!"
-            else: return "dear light!"
+            if Global.lights_on: return "turn light off"
+            else: return "turn light on"
 
 func trigger_use(object_number):
     match object_number:
         object_1.object_number: yield(switch_areas("Area22"), "completed")
-        object_2.object_number: yield(say("but not good enough to call it quits"), "completed")
+        object_2.object_number: yield(say_yourself("the footage is not yet good enough"), "completed")
         object_3.object_number: 
             Global.lights_on = not Global.lights_on
             update_visibilities()
-            if Global.lights_on: yield(say("phew!"), "completed")
-            else: yield(say("creepyness level 10000!"), "completed")
     yield(get_tree(), "idle_frame")
 
 func update_visibilities():

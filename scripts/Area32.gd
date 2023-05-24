@@ -10,21 +10,19 @@ func get_initial_rotation(previous_area):
     else: return 0
 
 func init(previous_area):
-    if not Global.monster_introduced and Global.lights_on:
-        get_tree().call_group("monster_screen", "start_showing", "IT'S ME, BEHIND THE DOOR", "LET ME OUT")
-        yield(get_tree().create_timer(3), "timeout")
-        get_tree().call_group("monster_screen", "stop_showing")
+    if not Global.monster_introduced:
+        yield(say_monster("it's me,\nbehind the door", "let me out"), "completed")
         Global.monster_introduced = true
     yield(get_tree(), "idle_frame")
 
 func get_description(object_number):
     match object_number:
         object_1.object_number:
-            if Global.flashlight_on: return "light destroyed the parasite"
-            else: return "an evil presence lurks there"
-        object_2.object_number: return "a battery powered light source"
-        object_3.object_number: return "the corridor goes a little bit further"
-        object_4.object_number: return "upstairs, the door I came through"
+            if Global.door_2_open: return "go further"
+            else: return "open the forsaken doors"
+        object_2.object_number: return "take batteries"
+        object_3.object_number: return "go further"
+        object_4.object_number: return "go upstairs"
     
 func trigger_use(object_number):
     match object_number:
@@ -65,7 +63,11 @@ func trigger_use(object_number):
         object_3.object_number:
             yield(switch_areas("Area33"), "completed")
         object_4.object_number:
-            yield(switch_areas("Area31"), "completed")
+            if Global.monster_defeated:
+                switch_areas("Area31")
+                yield(say_yourself("is... leave... possible?"), "completed")
+            else:
+                yield(switch_areas("Area31"), "completed")
     yield(get_tree(), "idle_frame")
 
 func update_visibilities():

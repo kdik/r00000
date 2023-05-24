@@ -4,10 +4,13 @@ func _ready():
     visible = false
     add_to_group("friendly_screen")
     
-func start_showing():
+func start_showing(text_line_1, text_line_2 = null):
     visible = true
-    yield($Subtitles.show_subtitles("UUUUU, ZE MONSTA IS\nWAITIN FOR YOU!", 3), "completed")
-    yield($Subtitles.show_subtitles("LET ME OUT", 1.5), "completed")
+    if text_line_2 != null:
+        yield($Subtitles.show_subtitles(text_line_1.to_upper(), 1.5), "completed")
+        yield($Subtitles.show_subtitles(text_line_2.to_upper(), 1.5), "completed")
+    else:
+        yield($Subtitles.show_subtitles(text_line_1.to_upper(), 3), "completed")
 
 func stop_showing():
     visible = false
