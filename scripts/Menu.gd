@@ -33,7 +33,7 @@ func _update_selection(increment = 0):
     
 func _on_select():
     match selected_item:
-        play_number: get_tree().change_scene_to(game_scene)
+        play_number: _play()
         eject_number: get_tree().change_scene("res://scenes/Outro.tscn")
         delete_footage_number: _delete_footage()
         
@@ -55,6 +55,12 @@ func _set_selection_text():
         delete_footage_number = 1
         eject_number = 2
     $SelectionLabel.set_bbcode(text)
+
+func _play():
+    if Global.area == "Area11":
+        locked = true
+        yield($VideoIntro.play_introduction(), "completed")
+    get_tree().change_scene_to(game_scene)
 
 func _delete_footage():
     locked = true
