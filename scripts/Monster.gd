@@ -1,8 +1,10 @@
 extends Node
 
 func introduce(eye_coordinates, fade_out_function_name):
-    if Global.hide_and_seek_started or Global.lights_on or Global.flashlight_on or Global.monster_defeated:
+    if Global.hide_and_seek_started or Global.monster_defeated:
         return yield(get_tree(), "idle_frame")
+    Global.door_2_open = true
+    get_tree().call_group("area", "update_visibilities")
     get_tree().call_group("player", "lock_movement")
     yield(get_tree().create_timer(1.5), "timeout")
     get_tree().call_group("player_automated_movement", "turn", eye_coordinates.x, eye_coordinates.y)
@@ -12,10 +14,12 @@ func introduce(eye_coordinates, fade_out_function_name):
     get_tree().call_group("filter", "start_playing")
     get_tree().call_group("filter", "set_alpha", 0.05)
     get_tree().call_group("monster_view", "stop_showing")
+    Global.hide_and_seek_started = true
+    Global.door_2_open = false
+    get_tree().call_group("area", "update_visibilities")
     get_tree().call_group("monster_eyes", "fade_in")
     yield(get_tree().create_timer(3), "timeout")
     get_tree().call_group("player", "unlock_movement")
-    Global.hide_and_seek_started = true
 
 func on_use():
     if not Global.hide_and_seek_started or Global.monster_defeated or Global.lights_on:

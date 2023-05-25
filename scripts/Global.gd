@@ -53,6 +53,7 @@ func reset_single_loop():
     monster_introduced = false
     hide_and_seek_started = false
     hide_and_seek_lost = false
+    reset_between_areas()
 
 func reset_between_areas():
     door_1_open = false

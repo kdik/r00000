@@ -36,6 +36,7 @@ func trigger_use(object_number):
                 Global.reset_single_loop()
                 switch_areas("Area31")
                 yield(say_yourself("dad, come out!", "we need to film\nthis one again"), "completed")
+                yield(show_blue_screen(), "completed")
         object_4.object_number:
             if Global.have_flashlight:
                 Global.batteries_removed = true

@@ -14,20 +14,18 @@ func get_initial_rotation(previous_area):
 
 func get_description(object_number):
     match object_number:
-        object_1.object_number: return "the corridor goes a little bit back"
-        object_2.object_number: return "a small nook under the staircase"
+        object_1.object_number: return "go back"
+        object_2.object_number: return "crawl deeper"
         object_3.object_number:
-            if not Global.door_3_open: return "a door"
-            elif not Global.gate_3_open: return "a gate"
-            else: return "a passageway"
-        object_4.object_number: return "a battery powered light source"
+            if not Global.door_3_open: return "open doors"
+            elif not Global.gate_3_open: return "open gates"
+            else: return "go further"
+        object_4.object_number: return "take batteries"
 
 func trigger_use(object_number):
     match object_number:
-        object_1.object_number:
-            yield(switch_areas("Area32"), "completed")
-        object_2.object_number:
-            yield(switch_areas("Area34"), "completed")
+        object_1.object_number: yield(switch_areas("Area32"), "completed")
+        object_2.object_number: yield(switch_areas("Area34"), "completed")
         object_3.object_number:
             if not Global.door_3_open:
                 Global.door_3_open = true
@@ -38,52 +36,70 @@ func trigger_use(object_number):
                 Global.loops_completed += 1
                 Global.reset_single_loop()
                 switch_areas("Area31")
-                get_tree().call_group("blue_screen", "start_showing")
-                yield(get_tree().create_timer(2.5), "timeout")
-                get_tree().call_group("blue_screen", "stop_showing")
+                if Global.monster_defeated: yield(say_yourself("just one more take..."), "completed")
+                yield(show_blue_screen(), "completed")
                 get_tree().call_group("monster_eyes", "stop_showing")
                 get_tree().call_group("filter", "stop_playing")
         object_4.object_number:
-            if Global.batteries_removed:
-                yield(say("I have no use for more batteries"), "completed")
-            elif Global.batteries_removed:
-                yield(say("the light source has no batteries"), "completed")
-            else:
+            if Global.battery_count < 3:
                 Global.batteries_removed = true
                 Global.lights_on = false
                 update_visibilities()
-                if Global.have_flashlight and Global.battery_count < 3:
-                    get_tree().call_group("player", "add_battery")
-                    yield(get_tree().create_timer(3), "timeout")
-                    if Global.battery_count == 1:
-                        yield(say("two more batteries left to go"), "completed")
-                    elif Global.battery_count == 2:
-                        yield(say("one more battery left to go"), "completed")
-                    elif Global.battery_count == 3:
-                        say("bingo", 2)
-                        get_tree().call_group("player", "turn_on_flashlight")
-                        get_tree().call_group("monster_eyes", "stop_showing")
-                        get_tree().call_group("filter", "stop_playing")
-                        Global.flashlight_on = true
-                        yield(get_tree().create_timer(3), "timeout")
-                else:
-                    yield(say("I have no use for the battery I removed"), "completed")
+            else:
+                return yield(say_yourself("I don't need them"), "completed")
+            if Global.have_flashlight:
+                get_tree().call_group("player", "add_battery")
+                yield(get_tree().create_timer(5), "timeout")
+                if Global.battery_count == 1:
+                    yield(say_yourself("two more left"), "completed")
+                    yield(_introduce_monster(), "completed")
+                elif Global.battery_count == 2:
+                    yield(say_yourself("one more left"), "completed")
+                    yield(_introduce_monster(), "completed")
+                elif Global.battery_count == 3:
+                    yield(say_yourself("that's it"), "completed")
+                    Global.door_2_open = true
+                    update_visibilities()
+                    get_tree().call_group("player", "lock_movement")
+                    yield(_look_at_monster(), "completed")
+                    get_tree().call_group("player", "turn_on_flashlight")
+                    get_tree().call_group("monster_eyes", "stop_showing")
+                    get_tree().call_group("filter", "stop_playing")
+                    get_tree().call_group("player", "unlock_movement")
+                    Global.monster_defeated = true
+            else:
+                yield(say_yourself("my camera doesn't need them"), "completed")
                 yield(_introduce_monster(), "completed")
     yield(get_tree(), "idle_frame")
 
 func update_visibilities():
-    $ViewLight.visible = Global.lights_on and not Global.door_3_open and not Global.gate_3_open
-    $ViewLightDoor3Open.visible = Global.lights_on and Global.door_3_open and not Global.gate_3_open
-    $ViewLightDoor3Gate3Open.visible = Global.lights_on and Global.door_3_open and Global.gate_3_open
-    $ViewDark.visible = not Global.lights_on and not Global.door_3_open and not Global.gate_3_open
-    $ViewDarkDoor3Open.visible = not Global.lights_on and Global.door_3_open and not Global.gate_3_open
-    $ViewDarkGate3Open.visible = not Global.lights_on and Global.door_3_open and Global.gate_3_open
+    $ViewLight.visible = Global.lights_on and not Global.door_3_open and not Global.gate_3_open and not Global.door_2_open
+    $ViewLightDoor3Open.visible = Global.lights_on and Global.door_3_open and not Global.gate_3_open and not Global.door_2_open
+    $ViewLightDoor3Gate3Open.visible = Global.lights_on and Global.door_3_open and Global.gate_3_open and not Global.door_2_open
+    $ViewLightDoor2Open.visible = Global.lights_on and not Global.door_3_open and not Global.gate_3_open and Global.door_2_open
+    $ViewLightDoor2Door3Open.visible = Global.lights_on and Global.door_3_open and not Global.gate_3_open and Global.door_2_open
+    $ViewLightDoor2Door3Gate3Open.visible = Global.lights_on and Global.door_3_open and Global.gate_3_open and Global.door_2_open
+    $ViewDark.visible = not Global.lights_on and not Global.door_3_open and not Global.gate_3_open and not Global.door_2_open
+    $ViewDarkDoor3Open.visible = not Global.lights_on and Global.door_3_open and not Global.gate_3_open and not Global.door_2_open
+    $ViewDarkDoor3Gate3Open.visible = not Global.lights_on and Global.door_3_open and Global.gate_3_open and not Global.door_2_open
+    $ViewDarkDoor2Open.visible = not Global.lights_on and not Global.door_3_open and not Global.gate_3_open and Global.door_2_open
+    $ViewDarkDoor2Door3Open.visible = not Global.lights_on and Global.door_3_open and not Global.gate_3_open and Global.door_2_open
+    $ViewDarkDoor2Door3Gate3Open.visible = not Global.lights_on and Global.door_3_open and Global.gate_3_open and Global.door_2_open
     $Graffiti.visible = Global.lights_on
     object_4.visible = Global.lights_on
-    $Monster.visible = not Global.lights_on and not Global.flashlight_on and not Global.hide_and_seek_started
+    $Monster.visible = not Global.lights_on and Global.door_2_open and not Global.monster_defeated and not Global.hide_and_seek_started
 
 func _introduce_monster():
+    yield(Monster.introduce(_get_monster_coordinates(), "fade_out_far"), "completed")
+    
+func _look_at_monster():
+    var monster_coordinates = _get_monster_coordinates()
+    yield(get_tree().create_timer(1.5), "timeout")
+    get_tree().call_group("player_automated_movement", "turn", monster_coordinates.x, monster_coordinates.y)
+    yield(get_tree().create_timer(3), "timeout")  
+
+func _get_monster_coordinates():
     var euler_rotation = global_transform.basis.get_euler()
     var monster_coordinates = Vector2(-0.1309, 2.552544)
     if euler_rotation.y == 0: monster_coordinates -= Vector2(0, deg2rad(135))
-    yield(Monster.introduce(monster_coordinates, "fade_out_far"), "completed")
+    return monster_coordinates

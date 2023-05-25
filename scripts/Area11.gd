@@ -28,8 +28,11 @@ func trigger_use(object_number):
         object_1.object_number: yield(switch_areas("Area12"), "completed")
         object_2.object_number: yield(say_yourself("I can't leave without footage"), "completed")
         object_3.object_number:
-            Global.lights_on = not Global.lights_on
-            update_visibilities()
+            if Global.batteries_removed:
+                yield(say_yourself("batteries are missing"), "completed")
+            else:
+                Global.lights_on = not Global.lights_on
+                update_visibilities()
     yield(get_tree(), "idle_frame")
 
 func update_visibilities():

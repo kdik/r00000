@@ -32,5 +32,5 @@ func update_visibilities():
     $ViewDark.visible = not Global.lights_on and not Global.door_3_open
     $ViewDarkDoor3Open.visible = not Global.lights_on and Global.door_3_open
     $Graffiti.visible = Global.lights_on
-    $Object2.visible = not Global.have_flashlight
+    $Object2.visible = Global.lights_on and not Global.have_flashlight
     $Object3.visible = Global.lights_on

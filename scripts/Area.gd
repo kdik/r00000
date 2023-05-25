@@ -55,10 +55,11 @@ func say_monster(text_line_1, text_line_2 = null):
     get_tree().call_group("monster_screen", "start_showing", text_line_1, text_line_2)
     yield(get_tree().create_timer(3), "timeout")
     get_tree().call_group("monster_screen", "stop_showing")
-    
-func say(text, time = 2):
-    get_tree().call_group("player_subtitles", "show_subtitles", text, time)
-    yield(get_tree().create_timer(time + 1), "timeout")
+
+func show_blue_screen():
+    get_tree().call_group("blue_screen", "start_showing")
+    yield(get_tree().create_timer(2.5), "timeout")
+    get_tree().call_group("blue_screen", "stop_showing")
 
 func rotate_self_on_start(rotation_deg):
     transform.basis = Basis()

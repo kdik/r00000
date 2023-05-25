@@ -7,6 +7,7 @@ func _ready():
     visible = false
     $TitleLabel.set_bbcode(_to_code(Global.takes))
     _update_selection()
+    _set_selection_text()
     
 func pause():
     visible = true
@@ -14,6 +15,10 @@ func pause():
 func resume():
     visible = false
     get_tree().paused = false
+    
+func go_to_menu():
+    get_tree().paused = false
+    get_tree().change_scene("res://scenes/Menu.tscn")
 
 func _to_code(number):
     if number < 10: return "R0000" + str(number)
@@ -34,7 +39,7 @@ func _update_selection(increment = 0):
 func _on_select():
     match selected_item:
         0: resume()
-        1: get_tree().change_scene("res://scenes/Outro.tscn")
+        1: go_to_menu()
 
 func _process(_delta):
     if not visible:
@@ -45,3 +50,9 @@ func _process(_delta):
         _update_selection(1)    
     elif Input.is_action_just_pressed("ui_select") or Input.is_action_just_pressed("ui_accept"):
         _on_select()
+        
+func _set_selection_text():
+    var text = ""
+    text += "[right]RESUME  [/right]"
+    text += "[right]MENU    [/right]"
+    $SelectionLabel.set_bbcode(text)
