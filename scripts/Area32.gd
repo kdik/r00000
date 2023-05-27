@@ -70,6 +70,7 @@ func trigger_use(object_number):
                     get_tree().call_group("player", "turn_on_flashlight")
                     get_tree().call_group("monster_eyes", "stop_showing")
                     get_tree().call_group("filter", "stop_playing")
+                    get_tree().call_group("rumble", "stop")
                     get_tree().call_group("player", "unlock_movement")
                     Global.monster_defeated = true
             else:

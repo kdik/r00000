@@ -11,10 +11,12 @@ func _ready():
     
 func pause():
     visible = true
+    get_tree().call_group("rumble", "pause")
     
 func resume():
     visible = false
     get_tree().paused = false
+    get_tree().call_group("rumble", "resume")    
     
 func go_to_menu():
     get_tree().paused = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=130 format=2]
+[gd_scene load_steps=131 format=2]
 
 [ext_resource path="res://images/area1/area_1_object_1.png" type="Texture" id=1]
 [ext_resource path="res://images/area1/area_1_light_view.jpg" type="Texture" id=2]
@@ -71,6 +71,7 @@
 [ext_resource path="res://images/area1/area_1_dark_view_escape.jpg" type="Texture" id=69]
 [ext_resource path="res://images/area1/area_1_object_3.png" type="Texture" id=70]
 [ext_resource path="res://scenes/MonsterScreen.tscn" type="PackedScene" id=71]
+[ext_resource path="res://scripts/Rumble.gd" type="Script" id=72]
 [ext_resource path="res://images/area2/area_2_light_view_door_2_door_3_open.jpg" type="Texture" id=73]
 [ext_resource path="res://images/area2/area_2_light_view_door_2_door_3_gate_3_open.jpg" type="Texture" id=74]
 [ext_resource path="res://images/area2/area_2_light_view_door_2_open.jpg" type="Texture" id=75]
@@ -1080,5 +1081,8 @@ __meta__ = {
 }
 
 [node name="AudioPlayer" parent="." instance=ExtResource( 4 )]
+
+[node name="Rumble" type="Node" parent="."]
+script = ExtResource( 72 )
 
 [connection signal="animation_finished" from="MonsterEyes/AnimationPlayer" to="MonsterEyes" method="_on_animation_finished"]
