@@ -38,5 +38,10 @@ func _on_ending_video_finished():
         get_tree().change_scene("res://scenes/Menu.tscn")
     
 func _process(delta):
-    if Input.is_action_just_pressed("cheatcode"):
+    if Global.CAUGHT and Input.is_action_just_pressed("cheatcode"):
         cheatcode_count += 1
+        if cheatcode_count == 3:
+            $VideoPlayer5.play()
+            $VideoPlayer5.visible = true
+            $VideoPlayer3.visible = true
+            $VideoPlayer3.stop()
