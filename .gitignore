@@ -4,3 +4,4 @@
 export/windows/
 export/linux/
 export/macos/
+export/*.zip

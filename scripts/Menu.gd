@@ -4,6 +4,7 @@ onready var selected_item = 0
 onready var item_count
 onready var play_number
 onready var delete_footage_number
+onready var credits_number
 onready var eject_number
 onready var game_scene = preload("res://scenes/Main.tscn")
 onready var locked = false
@@ -30,30 +31,37 @@ func _update_selection(increment = 0):
         0: $Cursor.set_position(Vector2(620, 47))
         1: $Cursor.set_position(Vector2(620, 71))
         2: $Cursor.set_position(Vector2(620, 95))
+        3: $Cursor.set_position(Vector2(620, 119))
+        
     
 func _on_select():
     match selected_item:
         play_number: _play()
         eject_number: get_tree().change_scene("res://scenes/Outro.tscn")
         delete_footage_number: _delete_footage()
+        credits_number: get_tree().change_scene("res://scenes/Credits.tscn")
         
 func _set_selection_text():
     var text = ""
     if Global.area == "Area11":
-        text += "[right]PLAY   [/right]"
-        text += "[right]EJECT  [/right]"
-        item_count = 2
+        text += "[right]PLAY     [/right]"
+        text += "[right]CREDITS  [/right]"
+        text += "[right]EJECT    [/right]"
+        item_count = 3
         play_number = 0
-        eject_number = 1
+        credits_number = 1
+        eject_number = 2
         delete_footage_number = -1
     else:
         text += "[right]PLAY            [/right]"
         text += "[right]DELETE FOOTAGE  [/right]"
+        text += "[right]CREDITS         [/right]"
         text += "[right]EJECT           [/right]"
-        item_count = 3
+        item_count = 4
         play_number = 0
         delete_footage_number = 1
-        eject_number = 2
+        credits_number = 2
+        eject_number = 3
     $SelectionLabel.set_bbcode(text)
 
 func _play():
