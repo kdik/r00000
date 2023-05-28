@@ -21,7 +21,7 @@ func init(previous_area):
 func get_description(object_number):
     match object_number:
         object_1.object_number:
-            if Global.door_2_open: return "go further"
+            if Global.door_2_open: return "retake footage"
             else: return "open the forsaken doors"
         object_2.object_number: return "take batteries"
         object_3.object_number: return "go further"
@@ -37,7 +37,7 @@ func trigger_use(object_number):
                 Global.takes += 1
                 Global.reset_single_loop()
                 switch_areas("Area31")
-                yield(say_yourself("who's talking?!!!!", "my footage is ruined"), "completed")
+                yield(say_yourself(YouScreen.WHOS_TALKING), "completed")
                 yield(show_blue_screen(), "completed")
         object_2.object_number:
             Global.batteries_removed = true
@@ -49,9 +49,9 @@ func trigger_use(object_number):
                 update_visibilities()
                 get_tree().call_group("player", "add_battery")
                 yield(get_tree().create_timer(4), "timeout")
-                yield(say_yourself("two more left"), "completed")
+                yield(say_yourself(YouScreen.TWO_MORE), "completed")
             else:
-                yield(say_yourself("my camera doesn't need them"), "completed")
+                yield(say_yourself(-1), "completed")
         object_3.object_number: yield(switch_areas("Area23"), "completed")
         object_4.object_number: yield(switch_areas("Area21"), "completed")
     yield(get_tree(), "idle_frame")

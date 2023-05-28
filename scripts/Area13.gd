@@ -19,7 +19,7 @@ func get_description(object_number):
         object_3.object_number:
             if not Global.door_3_open: return "open doors"
             elif not Global.gate_3_open: return "open gates"
-            else: return "go further"
+            else: return "retake footage"
         object_4.object_number: return "take batteries"
 
 func trigger_use(object_number):
@@ -35,13 +35,13 @@ func trigger_use(object_number):
                 Global.takes += 1
                 Global.reset_single_loop()
                 switch_areas("Area21")
-                yield(say_yourself("this footage is not good enough", "I have to start again"), "completed")
+                yield(say_yourself(YouScreen.WHOS_TALKING), "completed")
                 yield(show_blue_screen(), "completed")
         object_4.object_number: 
             Global.batteries_removed = true
             Global.lights_on = false
             update_visibilities()
-            yield(say_yourself("my camera doesn't need them"), "completed")
+            yield(say_yourself(-1), "completed")
     yield(get_tree(), "idle_frame")
 
 func update_visibilities():

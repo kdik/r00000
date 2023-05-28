@@ -26,10 +26,10 @@ func get_description(object_number):
 func trigger_use(object_number):
     match object_number:
         object_1.object_number: yield(switch_areas("Area22"), "completed")
-        object_2.object_number: yield(say_yourself("I can't leave without footage"), "completed")
+        object_2.object_number: yield(say_yourself(YouScreen.NO_QUITTING), "completed")
         object_3.object_number: 
             if Global.batteries_removed:
-                yield(say_yourself("batteries are missing"), "completed")
+                yield(say_yourself(-1), "completed")
             else:
                 Global.lights_on = not Global.lights_on
                 update_visibilities()

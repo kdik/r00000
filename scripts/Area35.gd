@@ -1,9 +1,13 @@
 extends R00000Area
 
+func play_fade_in(next_area):
+    return false
+
 func get_initial_rotation(previous_area):
     return 180
 
 func init(previous_area):
+    yield(say_yourself(YouScreen.I_CAN_STILL_HEAR), "completed")
     get_tree().call_group("player", "lock_movement")
     hide_all_views()
     $View1.visible = true

@@ -19,7 +19,7 @@ func get_description(object_number):
         object_3.object_number:
             if not Global.door_3_open: return "open doors"
             elif not Global.gate_3_open: return "open gates"
-            else: return "go further"
+            else: return "retake footage"
         object_4.object_number: return "take batteries"
 
 func trigger_use(object_number):
@@ -36,7 +36,7 @@ func trigger_use(object_number):
                 Global.loops_completed += 1
                 Global.reset_single_loop()
                 switch_areas("Area31")
-                if Global.monster_defeated: yield(say_yourself("just one more take..."), "completed")
+                if Global.monster_defeated: yield(say_yourself(YouScreen.FUCK_THIS_FOOTAGE), "completed")
                 elif Global.hide_and_seek_started: yield(say_monster(MonsterScreen.FOOTAGE_STILL_NOT_GOOD_ENOUGH), "completed")
                 else: yield(say_monster(MonsterScreen.BE_BETTER_YOU_HAVE_TO_BE_BETTER), "completed")
                 yield(show_blue_screen(), "completed")

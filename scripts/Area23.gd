@@ -25,7 +25,7 @@ func get_description(object_number):
         object_3.object_number:
             if not Global.door_3_open: return "open doors"
             elif not Global.gate_3_open: return "open gates"
-            else: return "go further"
+            else: return "retake footage"
         object_4.object_number: return "take batteries"
 
 func trigger_use(object_number):
@@ -51,9 +51,9 @@ func trigger_use(object_number):
                 update_visibilities()
                 get_tree().call_group("player", "add_battery")
                 yield(get_tree().create_timer(4), "timeout")
-                yield(say_yourself("two more left"), "completed")
+                yield(say_yourself(YouScreen.TWO_MORE), "completed")
             else:
-                yield(say_yourself("my camera doesn't need them"), "completed")
+                yield(say_yourself(-1), "completed")
     yield(get_tree(), "idle_frame")
 
 func update_visibilities():

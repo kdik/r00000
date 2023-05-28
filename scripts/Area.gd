@@ -41,10 +41,8 @@ func on_use(object_number):
     SaveLoad.save()
     get_tree().call_group("player", "unlock_actions")
     
-func say_yourself(text_line_1, text_line_2 = null):
-    get_tree().call_group("you_screen", "start_showing", text_line_1, text_line_2)
-    yield(get_tree().create_timer(3), "timeout")
-    get_tree().call_group("you_screen", "stop_showing")
+func say_yourself(dialogue_id):
+    yield($"../../YouScreen".start_showing(dialogue_id), "completed")
     
 func say_monster(dialogue_id):
     yield($"../../MonsterScreen".start_showing(dialogue_id), "completed")

@@ -5,6 +5,10 @@ onready var object_2 = $Object2
 onready var object_3 = $Object3
 onready var object_4 = $Object4
 
+func play_fade_out(next_area):
+    return next_area != "Area35"
+
+
 func get_initial_rotation(previous_area):
     if previous_area == "Area33": return 170
     else: return 0
@@ -20,7 +24,7 @@ func init(previous_area):
 func get_description(object_number):
     match object_number:
         object_1.object_number:
-            if Global.door_2_open: return "go further"
+            if Global.door_2_open: return "become the other"
             else: return "open the forsaken doors"
         object_2.object_number: return "take batteries"
         object_3.object_number: return "go further"
@@ -37,7 +41,7 @@ func trigger_use(object_number):
                     update_visibilities()
             else:
                 if Global.hide_and_seek_started:
-                    yield(say_yourself("the doors are sealed shut"), "completed")
+                    yield(say_yourself(-1), "completed")
                 else:
                     Global.lights_on = false
                     Global.door_2_open = true
@@ -51,7 +55,7 @@ func trigger_use(object_number):
                 Global.lights_on = false
                 update_visibilities()
             else:
-                return yield(say_yourself("I do not need them"), "completed")
+                return yield(say_yourself(YouScreen.I_DONT_NEED_THEM_ANYMORE), "completed")
             if Global.have_flashlight:
                 get_tree().call_group("player", "add_battery")
                 yield(get_tree().create_timer(4), "timeout")
@@ -81,7 +85,7 @@ func trigger_use(object_number):
         object_4.object_number:
             if Global.monster_defeated:
                 switch_areas("Area31")
-                yield(say_yourself("is... leave... possible?"), "completed")
+                yield(say_yourself(YouScreen.IS_LEAVE_POSSIBLE), "completed")
             else:
                 yield(switch_areas("Area31"), "completed")
     yield(get_tree(), "idle_frame")

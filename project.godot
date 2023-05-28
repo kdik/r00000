@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "R00000Area",
 "language": "GDScript",
 "path": "res://scripts/Area.gd"
+}, {
+"base": "ColorRect",
+"class": "YouScreen",
+"language": "GDScript",
+"path": "res://scripts/YouScreen.gd"
 } ]
 _global_script_class_icons={
 "MonsterScreen": "",
-"R00000Area": ""
+"R00000Area": "",
+"YouScreen": ""
 }
 
 [application]
