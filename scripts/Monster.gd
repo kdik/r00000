@@ -9,7 +9,7 @@ func introduce(eye_coordinates, fade_out_function_name):
     get_tree().call_group("player", "lock_movement")
     yield(get_tree().create_timer(1.5), "timeout")
     get_tree().call_group("player_automated_movement", "turn", eye_coordinates.x, eye_coordinates.y)
-    yield(get_tree().create_timer(2.5), "timeout")
+    yield(get_tree().create_timer(2), "timeout")
     get_tree().call_group("monster_screen", "start_showing", MonsterScreen.IS_THIS_GOOD_ENOUGH)
     yield(get_tree().create_timer(3), "timeout")
     get_tree().call_group("rumble", "play_intro_sequence")
