@@ -35,9 +35,13 @@ func trigger_use(object_number):
                 Global.takes += 1
                 Global.reset_single_loop()
                 switch_areas("Area21")
-                yield(say_yourself("nothing to film here"), "completed")
+                yield(say_yourself("this footage is not good enough", "I have to start again"), "completed")
                 yield(show_blue_screen(), "completed")
-        object_4.object_number: yield(say_yourself("my camera doesn't need them"), "completed")
+        object_4.object_number: 
+            Global.batteries_removed = true
+            Global.lights_on = false
+            update_visibilities()
+            yield(say_yourself("my camera doesn't need them"), "completed")
     yield(get_tree(), "idle_frame")
 
 func update_visibilities():

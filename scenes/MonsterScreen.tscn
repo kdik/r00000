@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/MonsterScreen.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Subtitles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://materials/crt.material" type="Material" id=3]
+[ext_resource path="res://videos/monster_dont_you_worry_im_always_near.ogv" type="VideoStream" id=4]
+[ext_resource path="res://scenes/DialoguePlayer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://videos/monster_turn_away_now.ogv" type="VideoStream" id=6]
+[ext_resource path="res://videos/monster_you_want_to_play_with_me.ogv" type="VideoStream" id=7]
+[ext_resource path="res://videos/monster_start_over_now.ogv" type="VideoStream" id=8]
+[ext_resource path="res://videos/monster_miss_me_i_know_you_do.ogv" type="VideoStream" id=9]
+[ext_resource path="res://videos/monster_your_video_is_a_disgrace.ogv" type="VideoStream" id=10]
+[ext_resource path="res://videos/monster_hello_my_dear.ogv" type="VideoStream" id=11]
 
 [node name="MonsterScreen" type="ColorRect"]
 margin_right = 680.0
@@ -22,6 +30,34 @@ color = Color( 0.576471, 0.0901961, 0.0901961, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="DialoguePlayer1" parent="." instance=ExtResource( 5 )]
+stream = ExtResource( 4 )
+frame_count = 66
+
+[node name="DialoguePlayer2" parent="." instance=ExtResource( 5 )]
+stream = ExtResource( 11 )
+frame_count = 23
+
+[node name="DialoguePlayer3" parent="." instance=ExtResource( 5 )]
+stream = ExtResource( 9 )
+frame_count = 53
+
+[node name="DialoguePlayer4" parent="." instance=ExtResource( 5 )]
+stream = ExtResource( 8 )
+frame_count = 48
+
+[node name="DialoguePlayer5" parent="." instance=ExtResource( 5 )]
+stream = ExtResource( 6 )
+frame_count = 48
+
+[node name="DialoguePlayer6" parent="." instance=ExtResource( 5 )]
+stream = ExtResource( 10 )
+frame_count = 61
+
+[node name="DialoguePlayer7" parent="." instance=ExtResource( 5 )]
+stream = ExtResource( 7 )
+frame_count = 30
 
 [node name="Subtitles" parent="." instance=ExtResource( 2 )]
 margin_left = 20.0

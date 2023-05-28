@@ -10,13 +10,12 @@ func get_initial_rotation(previous_area):
     else: return 0
     
 func play_fade_out(next_area):
-    return next_area != "Area31"
+    return next_area != "Area31" or Global.monster_introduced_take_2_23
 
 func init(previous_area):
-    if not Global.monster_introduced:
-        yield(say_monster("I will be the end of you"), "completed")
-        yield(say_yourself("he is getting better!"), "completed")
-        Global.monster_introduced = true
+    if not Global.monster_introduced_take_2_12:
+        yield(say_monster_new(MonsterScreen.MISS_ME), "completed")
+        Global.monster_introduced_take_2_12 = true
     yield(get_tree(), "idle_frame")
 
 func get_description(object_number):
@@ -38,7 +37,7 @@ func trigger_use(object_number):
                 Global.takes += 1
                 Global.reset_single_loop()
                 switch_areas("Area31")
-                yield(say_yourself("dad?"), "completed")
+                yield(say_yourself("who's talking?!!!!", "my footage is ruined"), "completed")
                 yield(show_blue_screen(), "completed")
         object_2.object_number:
             Global.batteries_removed = true
@@ -49,7 +48,7 @@ func trigger_use(object_number):
                 Global.lights_on = false
                 update_visibilities()
                 get_tree().call_group("player", "add_battery")
-                yield(get_tree().create_timer(5), "timeout")
+                yield(get_tree().create_timer(4), "timeout")
                 yield(say_yourself("two more left"), "completed")
             else:
                 yield(say_yourself("my camera doesn't need them"), "completed")

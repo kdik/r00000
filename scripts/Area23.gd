@@ -12,6 +12,12 @@ func get_initial_rotation(previous_area):
     if previous_area == "Area22": return 135
     else: return 0
 
+func init(previous_area):
+    if not Global.monster_introduced_take_2_23:
+        yield(say_monster_new(MonsterScreen.DONT_YOU_WORRY), "completed")
+        Global.monster_introduced_take_2_23 = true
+    yield(get_tree(), "idle_frame")
+
 func get_description(object_number):
     match object_number:
         object_1.object_number: return "go back"
@@ -35,7 +41,8 @@ func trigger_use(object_number):
                 Global.takes += 1
                 Global.reset_single_loop()
                 switch_areas("Area31")
-                yield(say_yourself("dad, come out!", "we need to film\nthis one again"), "completed")
+                yield(say_monster_new(MonsterScreen.YOUR_VIDEO_IS_A_DISGRACE), "completed")
+                yield(say_monster_new(MonsterScreen.START_OVER_NOW), "completed")
                 yield(show_blue_screen(), "completed")
         object_4.object_number:
             if Global.have_flashlight:
@@ -43,7 +50,7 @@ func trigger_use(object_number):
                 Global.lights_on = false
                 update_visibilities()
                 get_tree().call_group("player", "add_battery")
-                yield(get_tree().create_timer(5), "timeout")
+                yield(get_tree().create_timer(4), "timeout")
                 yield(say_yourself("two more left"), "completed")
             else:
                 yield(say_yourself("my camera doesn't need them"), "completed")

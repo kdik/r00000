@@ -13,15 +13,16 @@ func play_fade_out(next_area):
     return next_area != "Area21"
 
 func init(previous_area):
-    if not Global.monster_introduced:
-        yield(say_dad("booooooooooo!"), "completed")
-        yield(say_yourself("dad, you have to act\nharder next time"), "completed")
-        Global.monster_introduced = true
+    if not Global.monster_introduced_take_1_12:
+        yield(say_monster_new(MonsterScreen.HELLO_MY_DEAR), "completed")
+        Global.monster_introduced_take_1_12 = true
     yield(get_tree(), "idle_frame")
 
 func get_description(object_number):
     match object_number:
-        object_1.object_number: return "open the forsaken doors"
+        object_1.object_number: 
+            if Global.door_2_open: return "go further"
+            else: return "open the forsaken doors"
         object_2.object_number: return "take batteries"
         object_3.object_number: return "go further"
         object_4.object_number: return "go upstairs"
@@ -29,12 +30,15 @@ func get_description(object_number):
 func trigger_use(object_number):
     match object_number:
         object_1.object_number:
-            Global.takes += 1
-            Global.reset_single_loop()
-            switch_areas("Area21")
-            yield(say_dad("fuck, the damn doors are stuck"), "completed")
-            yield(say_yourself("cut!"), "completed")
-            yield(show_blue_screen(), "completed")
+            if not Global.door_2_open:
+                Global.door_2_open = true
+                update_visibilities()
+            else:
+                Global.takes += 1
+                Global.reset_single_loop()
+                switch_areas("Area21")
+                yield(say_yourself("who's talking?", "I have to start again"), "completed")
+                yield(show_blue_screen(), "completed")
         object_2.object_number:
             Global.batteries_removed = true
             Global.lights_on = false

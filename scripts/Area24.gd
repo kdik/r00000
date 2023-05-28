@@ -17,11 +17,12 @@ func trigger_use(object_number):
     match object_number:
         object_1.object_number: yield(switch_areas("Area23"), "completed")
         object_2.object_number:
-            yield(say_yourself("I don't remember leaving it here"), "completed")
+            yield(say_monster_new(MonsterScreen.YOU_WANT_TO_PLAY_WITH_ME), "completed")
             Global.have_flashlight = true
             update_visibilities()
             get_tree().call_group("player", "acquire_flashlight")
-        object_3.object_number: yield(say_yourself("the fuck is this?"), "completed")
+        object_3.object_number:
+            yield(say_monster_new(MonsterScreen.TURN_AWAY_NOW), "completed")
     yield(get_tree(), "idle_frame")
     
 func update_visibilities():

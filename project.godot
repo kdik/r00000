@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "ColorRect",
+"class": "MonsterScreen",
+"language": "GDScript",
+"path": "res://scripts/MonsterScreen.gd"
+}, {
 "base": "Spatial",
 "class": "R00000Area",
 "language": "GDScript",
 "path": "res://scripts/Area.gd"
 } ]
 _global_script_class_icons={
+"MonsterScreen": "",
 "R00000Area": ""
 }
 

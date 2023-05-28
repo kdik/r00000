@@ -8,7 +8,7 @@ func play_fade_in(previous_area):
     return previous_area != null
 
 func play_fade_out(next_area):
-    return next_area != "Area12" or Global.monster_introduced
+    return next_area != "Area12" or Global.monster_introduced_take_1_12
 
 func get_initial_rotation(previous_area):
     if previous_area == null: return -55
