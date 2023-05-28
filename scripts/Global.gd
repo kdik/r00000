@@ -19,10 +19,10 @@ var door_2_open = false
 var door_3_open = false
 var gate_3_open = false
 var batteries_removed = false
-var monster_introduced = false
 var monster_introduced_take_1_12 = false
 var monster_introduced_take_2_12 = false
 var monster_introduced_take_2_23 = false
+var monster_introduced_take_3_12 = false
 var hide_and_seek_started = false
 var hide_and_seek_lost = false
 
@@ -53,7 +53,7 @@ func reset_single_loop():
     door_3_open = false
     gate_3_open = false
     batteries_removed = false
-    monster_introduced = false
+    monster_introduced_take_3_12 = false
     monster_introduced_take_1_12 = false
     monster_introduced_take_2_12 = false
     monster_introduced_take_2_23 = false

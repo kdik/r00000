@@ -10,11 +10,11 @@ func get_initial_rotation(previous_area):
     else: return 0
     
 func play_fade_out(next_area):
-    return next_area != "Area31" or Global.monster_introduced_take_2_23
+    return next_area != "Area31" and (Global.monster_introduced_take_2_23 or next_area != "Area23")
 
 func init(previous_area):
     if not Global.monster_introduced_take_2_12:
-        yield(say_monster_new(MonsterScreen.MISS_ME), "completed")
+        yield(say_monster(MonsterScreen.MISS_ME), "completed")
         Global.monster_introduced_take_2_12 = true
     yield(get_tree(), "idle_frame")
 

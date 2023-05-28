@@ -8,7 +8,7 @@ func play_fade_in(previous_area):
     return previous_area != null and previous_area != "Area33" and previous_area != "Area23" and previous_area != "Area22"
 
 func play_fade_out(next_area):
-    return next_area != "Area32" or Global.monster_introduced or Global.monster_defeated or (not Global.lights_on and not Global.hide_and_seek_started)
+    return next_area != "Area32" or Global.monster_introduced_take_3_12 or Global.monster_defeated or (not Global.lights_on and not Global.hide_and_seek_started)
 
 func get_initial_rotation(previous_area):
     if previous_area == null: return -55
@@ -40,7 +40,7 @@ func trigger_use(object_number):
                 else:
                     Global.door_1_open = true
             else:
-                yield(say_yourself("someone locked it!"), "completed")
+                yield(say_monster(MonsterScreen.YOU_ARE_STUCK_WITH_ME), "completed")
         object_3.object_number:
             if Global.batteries_removed:
                 yield(say_yourself("batteries are missing"), "completed")

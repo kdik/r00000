@@ -14,7 +14,7 @@ func play_fade_out(next_area):
 
 func init(previous_area):
     if not Global.monster_introduced_take_1_12:
-        yield(say_monster_new(MonsterScreen.HELLO_MY_DEAR), "completed")
+        yield(say_monster(MonsterScreen.HELLO_MY_DEAR), "completed")
         Global.monster_introduced_take_1_12 = true
     yield(get_tree(), "idle_frame")
 

@@ -12,9 +12,9 @@ func get_initial_rotation(previous_area):
 func init(previous_area):
     if not Global.lights_on and not Global.hide_and_seek_started:
         yield(_introduce_monster(), "completed")
-    if not Global.monster_introduced and not Global.monster_defeated:
-        yield(say_monster("it's me, behind the door", "let me out"), "completed")
-        Global.monster_introduced = true
+    if not Global.monster_introduced_take_3_12 and not Global.monster_defeated:
+        yield(say_monster(MonsterScreen.THIS_TIME_BE_BETTER), "completed")
+        Global.monster_introduced_take_3_12 = true
     yield(get_tree(), "idle_frame")
 
 func get_description(object_number):
@@ -51,18 +51,18 @@ func trigger_use(object_number):
                 Global.lights_on = false
                 update_visibilities()
             else:
-                return yield(say_yourself("I don't need them"), "completed")
+                return yield(say_yourself("I do not need them"), "completed")
             if Global.have_flashlight:
                 get_tree().call_group("player", "add_battery")
-                yield(get_tree().create_timer(5), "timeout")
+                yield(get_tree().create_timer(4), "timeout")
                 if Global.battery_count == 1:
-                    yield(say_yourself("two more left"), "completed")
+                    yield(say_monster(MonsterScreen.TWO_MORE), "completed")
                     yield(_introduce_monster(), "completed")
                 elif Global.battery_count == 2:
-                    yield(say_yourself("one more left"), "completed")
+                    yield(say_monster(MonsterScreen.TWO_MORE), "completed")
                     yield(_introduce_monster(), "completed")
                 elif Global.battery_count == 3:
-                    yield(say_yourself("that's it"), "completed")
+                    yield(say_monster(MonsterScreen.DONT_YOU_DARE), "completed")
                     Global.door_2_open = true
                     update_visibilities()
                     get_tree().call_group("player", "lock_movement")
@@ -74,7 +74,7 @@ func trigger_use(object_number):
                     get_tree().call_group("player", "unlock_movement")
                     Global.monster_defeated = true
             else:
-                yield(say_yourself("my camera doesn't need them"), "completed")
+                yield(say_monster(MonsterScreen.YOU_DO_NOT_NEED_THEM), "completed")
                 yield(_introduce_monster(), "completed")
         object_3.object_number:
             yield(switch_areas("Area33"), "completed")

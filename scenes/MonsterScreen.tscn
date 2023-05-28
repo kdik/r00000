@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scripts/MonsterScreen.gd" type="Script" id=1]
-[ext_resource path="res://scenes/Subtitles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://materials/crt.material" type="Material" id=3]
 [ext_resource path="res://videos/monster_dont_you_worry_im_always_near.ogv" type="VideoStream" id=4]
 [ext_resource path="res://scenes/DialoguePlayer.tscn" type="PackedScene" id=5]
@@ -11,22 +10,21 @@
 [ext_resource path="res://videos/monster_miss_me_i_know_you_do.ogv" type="VideoStream" id=9]
 [ext_resource path="res://videos/monster_your_video_is_a_disgrace.ogv" type="VideoStream" id=10]
 [ext_resource path="res://videos/monster_hello_my_dear.ogv" type="VideoStream" id=11]
+[ext_resource path="res://videos/monster_dont_you_dare.ogv" type="VideoStream" id=12]
+[ext_resource path="res://videos/monster_be_better_you_have_to_be_better.ogv" type="VideoStream" id=13]
+[ext_resource path="res://videos/monster_footage_still_not_good_enough.ogv" type="VideoStream" id=14]
+[ext_resource path="res://videos/monster_is_this_good_enough.ogv" type="VideoStream" id=15]
+[ext_resource path="res://videos/monster_one_more.ogv" type="VideoStream" id=16]
+[ext_resource path="res://videos/monster_this_time_be_better.ogv" type="VideoStream" id=17]
+[ext_resource path="res://videos/monster_two_more.ogv" type="VideoStream" id=18]
+[ext_resource path="res://videos/monster_you_are_stuck_with_me.ogv" type="VideoStream" id=19]
+[ext_resource path="res://videos/monster_you_do_not_need_them.ogv" type="VideoStream" id=20]
 
 [node name="MonsterScreen" type="ColorRect"]
 margin_right = 680.0
 margin_bottom = 510.0
 color = Color( 0, 0, 0, 1 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RedBackground" type="ColorRect" parent="."]
-margin_left = 20.0
-margin_top = 15.0
-margin_right = 660.0
-margin_bottom = 495.0
-color = Color( 0.576471, 0.0901961, 0.0901961, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -41,7 +39,7 @@ frame_count = 23
 
 [node name="DialoguePlayer3" parent="." instance=ExtResource( 5 )]
 stream = ExtResource( 9 )
-frame_count = 53
+frame_count = 54
 
 [node name="DialoguePlayer4" parent="." instance=ExtResource( 5 )]
 stream = ExtResource( 8 )
@@ -59,11 +57,41 @@ frame_count = 61
 stream = ExtResource( 7 )
 frame_count = 30
 
-[node name="Subtitles" parent="." instance=ExtResource( 2 )]
-margin_left = 20.0
-margin_top = 235.0
-margin_right = 660.0
-margin_bottom = 315.0
+[node name="DialoguePlayer8" parent="." instance=ExtResource( 5 )]
+stream = ExtResource( 13 )
+frame_count = 72
+
+[node name="DialoguePlayer9" parent="." instance=ExtResource( 5 )]
+stream = ExtResource( 12 )
+frame_count = 33
+
+[node name="DialoguePlayer10" parent="." instance=ExtResource( 5 )]
+stream = ExtResource( 14 )
+frame_count = 58
+
+[node name="DialoguePlayer11" parent="." instance=ExtResource( 5 )]
+stream = ExtResource( 15 )
+frame_count = 28
+
+[node name="DialoguePlayer12" parent="." instance=ExtResource( 5 )]
+stream = ExtResource( 16 )
+frame_count = 74
+
+[node name="DialoguePlayer13" parent="." instance=ExtResource( 5 )]
+stream = ExtResource( 17 )
+frame_count = 48
+
+[node name="DialoguePlayer14" parent="." instance=ExtResource( 5 )]
+stream = ExtResource( 18 )
+frame_count = 73
+
+[node name="DialoguePlayer15" parent="." instance=ExtResource( 5 )]
+stream = ExtResource( 19 )
+frame_count = 53
+
+[node name="DialoguePlayer16" parent="." instance=ExtResource( 5 )]
+stream = ExtResource( 20 )
+frame_count = 30
 
 [node name="CrtCurtain" type="ColorRect" parent="."]
 material = ExtResource( 3 )

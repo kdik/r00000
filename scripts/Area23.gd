@@ -14,7 +14,7 @@ func get_initial_rotation(previous_area):
 
 func init(previous_area):
     if not Global.monster_introduced_take_2_23:
-        yield(say_monster_new(MonsterScreen.DONT_YOU_WORRY), "completed")
+        yield(say_monster(MonsterScreen.DONT_YOU_WORRY), "completed")
         Global.monster_introduced_take_2_23 = true
     yield(get_tree(), "idle_frame")
 
@@ -41,8 +41,8 @@ func trigger_use(object_number):
                 Global.takes += 1
                 Global.reset_single_loop()
                 switch_areas("Area31")
-                yield(say_monster_new(MonsterScreen.YOUR_VIDEO_IS_A_DISGRACE), "completed")
-                yield(say_monster_new(MonsterScreen.START_OVER_NOW), "completed")
+                yield(say_monster(MonsterScreen.YOUR_VIDEO_IS_A_DISGRACE), "completed")
+                yield(say_monster(MonsterScreen.START_OVER_NOW), "completed")
                 yield(show_blue_screen(), "completed")
         object_4.object_number:
             if Global.have_flashlight:

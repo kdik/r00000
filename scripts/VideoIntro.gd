@@ -22,5 +22,5 @@ func _on_intro_video_player_finished():
 func _process(delta):
     if visible:
         time += delta
-    if time > 1.0 and Input.is_action_just_pressed("ui_accept"):
+    if time > 0.05 and Input.is_action_just_pressed("ui_accept"):
         _on_intro_video_player_finished()
