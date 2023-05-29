@@ -41,7 +41,7 @@ func trigger_use(object_number):
                     update_visibilities()
             else:
                 if Global.hide_and_seek_started:
-                    yield(say_yourself(-1), "completed")
+                    yield(say_monster(MonsterScreen.IM_HERE_DONT_YOU_SEE), "completed")
                 else:
                     Global.lights_on = false
                     Global.door_2_open = true

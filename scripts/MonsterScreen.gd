@@ -17,6 +17,7 @@ const THIS_TIME_BE_BETTER = 13
 const TWO_MORE = 14
 const YOU_ARE_STUCK_WITH_ME = 15
 const YOU_DO_NOT_NEED_THEM = 16
+const IM_HERE_DONT_YOU_SEE = 17
 
 func _ready():
     visible = false
@@ -48,6 +49,7 @@ func _get_video_player(video_id):
         TWO_MORE: return $DialoguePlayer14
         YOU_ARE_STUCK_WITH_ME: return $DialoguePlayer15
         YOU_DO_NOT_NEED_THEM: return $DialoguePlayer16
+        IM_HERE_DONT_YOU_SEE: return $DialoguePlayer17
 
 func _on_video_player_finished():
     visible = false

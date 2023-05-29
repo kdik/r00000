@@ -43,7 +43,7 @@ func trigger_use(object_number):
             Global.batteries_removed = true
             Global.lights_on = false
             update_visibilities()
-            yield(say_yourself(-1), "completed")
+            yield(say_yourself(YouScreen.I_CANNOT_USE_THEM_RIGHT_NOW), "completed")
         object_3.object_number: yield(switch_areas("Area13"), "completed")
         object_4.object_number: yield(switch_areas("Area11"), "completed")
     yield(get_tree(), "idle_frame")

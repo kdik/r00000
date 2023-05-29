@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scripts/MonsterScreen.gd" type="Script" id=1]
+[ext_resource path="res://videos/monster_im_here_dont_you_see.ogv" type="VideoStream" id=2]
 [ext_resource path="res://videos/monster_dont_you_worry_im_always_near.ogv" type="VideoStream" id=4]
 [ext_resource path="res://scenes/DialoguePlayer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://videos/monster_turn_away_now.ogv" type="VideoStream" id=6]
@@ -91,3 +92,7 @@ frame_count = 53
 [node name="DialoguePlayer16" parent="." instance=ExtResource( 5 )]
 stream = ExtResource( 20 )
 frame_count = 30
+
+[node name="DialoguePlayer17" parent="." instance=ExtResource( 5 )]
+stream = ExtResource( 2 )
+frame_count = 48

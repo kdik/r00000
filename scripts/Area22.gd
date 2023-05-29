@@ -51,7 +51,7 @@ func trigger_use(object_number):
                 yield(get_tree().create_timer(4), "timeout")
                 yield(say_yourself(YouScreen.TWO_MORE), "completed")
             else:
-                yield(say_yourself(-1), "completed")
+                yield(say_yourself(YouScreen.I_CANNOT_USE_THEM_RIGHT_NOW), "completed")
         object_3.object_number: yield(switch_areas("Area23"), "completed")
         object_4.object_number: yield(switch_areas("Area21"), "completed")
     yield(get_tree(), "idle_frame")
