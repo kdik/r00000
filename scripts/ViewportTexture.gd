@@ -11,10 +11,12 @@ func _process(anim_name):
             material.set_shader_param("wobble_curve", 1.5)
             material.set_shader_param("wobble_speed", 1.0)
         2: 
+            material.set_shader_param("on", true)
             material.set_shader_param("wobble_height", 2.5)
             material.set_shader_param("wobble_curve", 5.0)
             material.set_shader_param("wobble_speed", 2.5)
         3: 
+            material.set_shader_param("on", true)
             material.set_shader_param("wobble_height", 5.0)
             material.set_shader_param("wobble_curve", 7.5)
             material.set_shader_param("wobble_speed", 5.0)

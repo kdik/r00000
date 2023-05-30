@@ -387,6 +387,9 @@ margin_right = 660.0
 margin_bottom = 495.0
 texture = SubResource( 32 )
 script = ExtResource( 57 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 640, 480 )

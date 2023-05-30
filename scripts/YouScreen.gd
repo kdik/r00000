@@ -11,17 +11,17 @@ const NO_QUITTING = 7
 const WHOS_TALKING = 8
 const I_TOOK_THE_BATTERIES = 9
 
+var current_video_player
+
 func _ready():
     visible = false
     add_to_group("you_screen")
 
 func start_showing(dialogue_id):
     visible = true
-    yield(_get_video_player(dialogue_id).show_dialogue(), "completed")
+    current_video_player = _get_video_player(dialogue_id)
+    yield(current_video_player.show_dialogue(), "completed")
     visible = false
-    
-func get_frame_count(dialogue_id):
-    return _get_video_player(dialogue_id).get_frame_count()
 
 func _get_video_player(video_id):
     match video_id:
@@ -37,3 +37,4 @@ func _get_video_player(video_id):
 
 func _on_video_player_finished():
     visible = false
+    current_video_player.stop

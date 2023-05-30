@@ -19,17 +19,17 @@ const YOU_ARE_STUCK_WITH_ME = 15
 const YOU_DO_NOT_NEED_THEM = 16
 const IM_HERE_DONT_YOU_SEE = 17
 
+var current_video_player
+
 func _ready():
     visible = false
     add_to_group("monster_screen")
 
 func start_showing(dialogue_id):
     visible = true
-    yield(_get_video_player(dialogue_id).show_dialogue(), "completed")
+    current_video_player = _get_video_player(dialogue_id)
+    yield(current_video_player.show_dialogue(), "completed")
     visible = false
-    
-func get_frame_count(dialogue_id):
-    return _get_video_player(dialogue_id).get_frame_count()
 
 func _get_video_player(video_id):
     match video_id:
@@ -53,3 +53,4 @@ func _get_video_player(video_id):
 
 func _on_video_player_finished():
     visible = false
+    current_video_player.stop()

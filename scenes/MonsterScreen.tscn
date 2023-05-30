@@ -91,7 +91,7 @@ frame_count = 53
 
 [node name="DialoguePlayer16" parent="." instance=ExtResource( 5 )]
 stream = ExtResource( 20 )
-frame_count = 30
+frame_count = 60
 
 [node name="DialoguePlayer17" parent="." instance=ExtResource( 5 )]
 stream = ExtResource( 2 )
