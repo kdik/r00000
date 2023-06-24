@@ -35,6 +35,7 @@ func trigger_use(object_number):
                 update_visibilities()
             else:
                 Global.takes += 1
+                Global.loops_completed += 1
                 Global.reset_single_loop()
                 switch_areas("Area31")
                 yield(say_yourself(YouScreen.WHOS_TALKING), "completed")

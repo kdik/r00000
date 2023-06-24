@@ -39,6 +39,7 @@ func trigger_use(object_number):
                 Global.gate_3_open = true
             else:
                 Global.takes += 1
+                Global.loops_completed += 1
                 Global.reset_single_loop()
                 switch_areas("Area31")
                 yield(say_monster(MonsterScreen.YOUR_VIDEO_IS_A_DISGRACE), "completed")
