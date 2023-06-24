@@ -2,6 +2,7 @@ extends Node
 
 # eternal
 var takes = 0
+var basement_escaped = false
 
 # persistent between loops variables
 var area = "Area11"
@@ -36,6 +37,7 @@ func reset_everything():
     reset()
     area = "Area11"
     takes = 0
+    basement_escaped = false
 
 func reset():
     area = "Area31"

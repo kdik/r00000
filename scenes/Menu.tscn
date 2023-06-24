@@ -14,9 +14,6 @@ script = ExtResource( 1 )
 margin_right = 680.0
 margin_bottom = 512.0
 color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BlueBackground" type="ColorRect" parent="."]
 margin_left = 20.0

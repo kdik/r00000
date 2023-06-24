@@ -114,6 +114,7 @@ func show_middle_finger():
     $Cursor/MiddleFinger.play()
     yield(get_tree().create_timer(38.0 / 15.0), "timeout")
     $Cursor/MiddleFinger.visible = false
+    yield(get_tree().create_timer(1.5), "timeout")
     $Cursor/LeftHand.visible = true
 
 func lock_actions():

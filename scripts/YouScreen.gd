@@ -10,6 +10,7 @@ const IS_LEAVE_POSSIBLE = 6
 const NO_QUITTING = 7
 const WHOS_TALKING = 8
 const I_TOOK_THE_BATTERIES = 9
+const WILL_I_EVER_BREAK_FREE = 10
 
 var current_video_player
 
@@ -34,6 +35,7 @@ func _get_video_player(video_id):
         NO_QUITTING: return $DialoguePlayer7
         WHOS_TALKING: return $DialoguePlayer8
         I_TOOK_THE_BATTERIES: return $DialoguePlayer9
+        WILL_I_EVER_BREAK_FREE: return $DialoguePlayer10
 
 func _on_video_player_finished():
     visible = false

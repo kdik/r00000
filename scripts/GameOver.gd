@@ -16,9 +16,11 @@ func _ready():
             $VideoPlayer4.visible = true
             $VideoPlayer4.play()
         Global.BECOME_EVIL:
+            Global.basement_escaped = true
             $VideoPlayer1.visible = true
             $VideoPlayer1.play()
         Global.ESCAPE:
+            Global.basement_escaped = true
             $VideoPlayer2.visible = true
             $VideoPlayer2.play()
 

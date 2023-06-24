@@ -10,6 +10,12 @@ func play_fade_in(previous_area):
 func play_fade_out(next_area):
     return next_area != "Area32" or Global.monster_introduced_take_3_12 or Global.monster_defeated or (not Global.lights_on and not Global.hide_and_seek_started)
 
+func init(previous_area):
+    if Global.basement_escaped and previous_area == null:
+        yield(say_yourself(YouScreen.WILL_I_EVER_BREAK_FREE), "completed")
+    yield(get_tree(), "idle_frame")
+
+
 func get_initial_rotation(previous_area):
     if previous_area == null: return -55
     elif previous_area == "Area22": return -55

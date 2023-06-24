@@ -66,7 +66,7 @@ func trigger_use(object_number):
                     get_tree().call_group("player", "lock_movement")
                     yield(_look_at_monster(), "completed")
                     get_tree().call_group("player", "show_middle_finger")
-                    yield(get_tree().create_timer(38.0 / 15.0), "timeout")
+                    yield(get_tree().create_timer(38.0 / 15.0 + 0.5), "timeout")
                     get_tree().call_group("player", "turn_on_flashlight")
                     get_tree().call_group("monster_eyes", "stop_showing")
                     get_tree().call_group("filter", "stop_playing")
