@@ -1,6 +1,7 @@
 extends Spatial
 
 var cheatcode_count = 0
+var time = 0
 
 func _ready():
     $Static.visible = true
@@ -38,6 +39,9 @@ func _on_ending_video_finished():
         get_tree().change_scene("res://scenes/Menu.tscn")
     
 func _process(delta):
+    time += delta
+    if time < 9.2:
+        return
     if Global.CAUGHT and Input.is_action_just_pressed("cheatcode"):
         cheatcode_count += 1
         if cheatcode_count == 3:
