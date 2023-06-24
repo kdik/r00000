@@ -88,6 +88,7 @@ func acquire_flashlight():
     Global.have_flashlight = true
     $Cursor/RightHand.set_frame(45)
     $Cursor/RightHand.visible = true
+    get_tree().call_group("battery_indicator", "update_battery_count")
 
 func add_battery():
     Global.battery_count += 1
@@ -97,6 +98,7 @@ func add_battery():
     $Cursor/RightHand.play()
     yield(get_tree().create_timer(3), "timeout")
     $Cursor/LeftHand.visible = true
+    get_tree().call_group("battery_indicator", "update_battery_count")
     
 func turn_on_flashlight():
     $Flashlight.visible = true
