@@ -107,6 +107,15 @@ func turn_on_flashlight():
 func turn_off_flashlight():
     $Flashlight.visible = false
     
+func show_middle_finger():
+    $Cursor/LeftHand.visible = false
+    $Cursor/MiddleFinger.set_frame(0)
+    $Cursor/MiddleFinger.visible = true
+    $Cursor/MiddleFinger.play()
+    yield(get_tree().create_timer(38.0 / 15.0), "timeout")
+    $Cursor/MiddleFinger.visible = false
+    $Cursor/LeftHand.visible = true
+
 func lock_actions():
     print("Player actions locked")
     if actions_locked: return
