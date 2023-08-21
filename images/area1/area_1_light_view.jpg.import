@@ -2,21 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/area_1_light_view.jpg-e165b9fe97d536c40ef5d0252c4ab078.s3tc.stex"
-path.etc2="res://.import/area_1_light_view.jpg-e165b9fe97d536c40ef5d0252c4ab078.etc2.stex"
+path="res://.import/area_1_light_view.jpg-e165b9fe97d536c40ef5d0252c4ab078.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://images/area1/area_1_light_view.jpg"
-dest_files=[ "res://.import/area_1_light_view.jpg-e165b9fe97d536c40ef5d0252c4ab078.s3tc.stex", "res://.import/area_1_light_view.jpg-e165b9fe97d536c40ef5d0252c4ab078.etc2.stex" ]
+dest_files=[ "res://.import/area_1_light_view.jpg-e165b9fe97d536c40ef5d0252c4ab078.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

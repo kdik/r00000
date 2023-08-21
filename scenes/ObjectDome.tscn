@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scripts/ObjectDome.gd" type="Script" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+flags_unshaded = true
+params_cull_mode = 1
+albedo_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="SphereMesh" id=2]
+material = SubResource( 1 )
+radius = 10.0
+height = 20.0
+
+[sub_resource type="SpatialMaterial" id=3]
+flags_transparent = true
+flags_unshaded = true
+params_cull_mode = 1
+albedo_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="SphereMesh" id=4]
+material = SubResource( 3 )
+radius = 10.0
+height = 20.0
+
+[sub_resource type="SpatialMaterial" id=5]
+flags_transparent = true
+flags_unshaded = true
+params_cull_mode = 1
+albedo_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="SphereMesh" id=6]
+material = SubResource( 5 )
+radius = 10.0
+height = 20.0
+
+[sub_resource type="SpatialMaterial" id=7]
+flags_transparent = true
+flags_unshaded = true
+params_cull_mode = 1
+albedo_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="SphereMesh" id=8]
+material = SubResource( 7 )
+radius = 10.0
+height = 20.0
+
+[node name="ObjectDome" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Dome1" type="MeshInstance" parent="."]
+layers = 2
+mesh = SubResource( 2 )
+skeleton = NodePath("../Sphere")
+
+[node name="Dome2" type="MeshInstance" parent="."]
+layers = 2
+mesh = SubResource( 4 )
+skeleton = NodePath("../Sphere")
+
+[node name="Dome3" type="MeshInstance" parent="."]
+layers = 2
+mesh = SubResource( 6 )
+skeleton = NodePath("../Sphere")
+
+[node name="Dome4" type="MeshInstance" parent="."]
+layers = 2
+mesh = SubResource( 8 )
+skeleton = NodePath("../Sphere")

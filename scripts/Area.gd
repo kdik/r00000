@@ -35,7 +35,7 @@ func on_use(object_number):
     get_tree().call_group("player", "lock_actions")
     yield(get_tree().create_timer(0.5), "timeout")
     yield(trigger_use(object_number), "completed")
-    update_visibilities()
+    if visible: update_visibilities()
     if Global.hide_and_seek_started: Global.actions_in_darkness += 1
     yield(Monster.on_use(), "completed")
     SaveLoad.save()
@@ -57,6 +57,8 @@ func rotate_self_on_start(rotation_deg):
     rotate_y(deg2rad(rotation_deg))
 
 func on_enter(previous_area):
+    get_tree().call_group("view_dome", "set_initial_rotation", get_initial_rotation(previous_area))
+    get_tree().call_group("object_dome", "set_initial_rotation", get_initial_rotation(previous_area))
     rotate_self_on_start(get_initial_rotation(previous_area))
     update_visibilities()
     add_to_group("area")

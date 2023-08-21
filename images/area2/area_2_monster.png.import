@@ -2,21 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/area_2_monster.png-27af09c3496acfaa0d49e6915a199707.s3tc.stex"
-path.etc2="res://.import/area_2_monster.png-27af09c3496acfaa0d49e6915a199707.etc2.stex"
+path="res://.import/area_2_monster.png-27af09c3496acfaa0d49e6915a199707.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://images/area2/area_2_monster.png"
-dest_files=[ "res://.import/area_2_monster.png-27af09c3496acfaa0d49e6915a199707.s3tc.stex", "res://.import/area_2_monster.png-27af09c3496acfaa0d49e6915a199707.etc2.stex" ]
+dest_files=[ "res://.import/area_2_monster.png-27af09c3496acfaa0d49e6915a199707.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

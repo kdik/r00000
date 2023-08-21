@@ -1,12 +1,9 @@
-extends MeshInstance
+extends Spatial
 
-export var texture : StreamTexture
 export var object_number : int = 1
-export var description : String
+export var texture_path : String
 
-func _ready():
-    var material = mesh.surface_get_material(0).duplicate()
-    mesh = mesh.duplicate()
-    material.albedo_texture = texture
-    material.albedo_color = Color(1.0, 1.0, 1.0, object_number)
-    mesh.surface_set_material(0, material)
+func set_visibility(show):
+    if show:
+        get_tree().call_group("object_dome", "add_object", texture_path, object_number)
+            

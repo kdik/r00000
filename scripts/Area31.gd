@@ -56,9 +56,12 @@ func trigger_use(object_number):
     yield(get_tree(), "idle_frame")
 
 func update_visibilities():
-    $ViewLight.visible = Global.lights_on and not Global.door_2_open and not Global.door_1_open
-    $ViewLightDoor2Open.visible = Global.lights_on and Global.door_2_open and not Global.door_1_open
-    $ViewDark.visible = not Global.lights_on and not Global.door_2_open and not Global.door_1_open
-    $ViewDarkDoor2Open.visible = not Global.lights_on and Global.door_2_open and not Global.door_1_open
+    $ViewLight.set_visibility(Global.lights_on and not Global.door_2_open and not Global.door_1_open)
+    $ViewLightDoor2Open.set_visibility(Global.lights_on and Global.door_2_open and not Global.door_1_open)
+    $ViewDark.set_visibility(not Global.lights_on and not Global.door_2_open and not Global.door_1_open)
+    $ViewDarkDoor2Open.set_visibility(not Global.lights_on and Global.door_2_open and not Global.door_1_open)
+    $ViewDarkEscape.set_visibility(Global.door_1_open)
     $Snow.visible = Global.door_1_open
-    $ViewDarkEscape.visible = Global.door_1_open
+    object_1.set_visibility(true)
+    object_2.set_visibility(true)
+    object_3.set_visibility(true)
