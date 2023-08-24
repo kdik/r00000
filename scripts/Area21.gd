@@ -40,6 +40,7 @@ func update_visibilities():
     $ViewLightDoor2Open.set_visibility(Global.lights_on and Global.door_2_open)
     $ViewDark.set_visibility(not Global.lights_on and not Global.door_2_open)
     $ViewDarkDoor2Open.set_visibility(not Global.lights_on and Global.door_2_open)
+    get_tree().call_group("object_dome", "clear")
     object_1.set_visibility(true)
     object_2.set_visibility(true)
     object_3.set_visibility(true)

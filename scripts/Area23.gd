@@ -54,6 +54,9 @@ func trigger_use(object_number):
                 yield(get_tree().create_timer(4), "timeout")
                 yield(say_yourself(YouScreen.TWO_MORE), "completed")
             else:
+                Global.batteries_removed = true
+                Global.lights_on = false
+                update_visibilities()
                 yield(say_yourself(YouScreen.I_CANNOT_USE_THEM_RIGHT_NOW), "completed")
     yield(get_tree(), "idle_frame")
 
@@ -71,6 +74,7 @@ func update_visibilities():
     $ViewDarkDoor2Door3Open.set_visibility(not Global.lights_on and Global.door_3_open and not Global.gate_3_open and Global.door_2_open)
     $ViewDarkDoor2Door3Gate3Open.set_visibility(not Global.lights_on and Global.door_3_open and Global.gate_3_open and Global.door_2_open)
     $Graffiti.set_visibility(Global.lights_on)
+    get_tree().call_group("object_dome", "clear")
     object_1.set_visibility(true)
     object_2.set_visibility(true)
     object_3.set_visibility(true)

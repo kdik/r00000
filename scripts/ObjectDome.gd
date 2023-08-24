@@ -24,7 +24,7 @@ func add_object(texture_path, object_number):
         3:
             material_3.albedo_texture = load(texture_path)
             material_3.albedo_color = color_3
-        3: 
+        4: 
             material_4.albedo_texture = load(texture_path)
             material_4.albedo_color = color_4
 

@@ -93,6 +93,7 @@ func update_visibilities():
     $ViewDarkDoor2Door3Gate3Open.set_visibility(not Global.lights_on and Global.door_3_open and Global.gate_3_open and Global.door_2_open)
     $Graffiti.set_visibility(Global.lights_on)
     $Monster.visible = not Global.lights_on and Global.door_2_open and not Global.monster_defeated and not Global.hide_and_seek_started
+    get_tree().call_group("object_dome", "clear")
     object_1.set_visibility(true)
     object_2.set_visibility(true)
     object_3.set_visibility(true)
