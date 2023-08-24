@@ -1,4 +1,4 @@
-extends Spatial
+extends Control
 
 onready var selected_item = 0
 onready var item_count
@@ -10,6 +10,7 @@ onready var game_scene = preload("res://scenes/Main.tscn")
 onready var locked = false
 
 func _ready():
+    if Settings.disable_crt: _disable_crt()
     SaveLoad.init()
     $TitleLabel.set_bbcode(_to_code(Global.takes))
     _set_selection_text()
@@ -82,6 +83,11 @@ func _delete_footage():
     yield(get_tree().create_timer(0.5), "timeout")
     yield($MenuFilter.stop_playing(), "completed")
     locked = false
+
+func _disable_crt():
+    var shift_diff = Vector2(20, 15)
+    self.rect_position -= shift_diff
+    $CrtCurtain.visible = false
 
 func _process(_delta):
     if locked: return

@@ -100,7 +100,7 @@ tracks/0/keys = {
 "values": [ 1.57, 0.0 ]
 }
 
-[node name="Intro" type="Spatial"]
+[node name="Intro" type="Control"]
 script = ExtResource( 1 )
 
 [node name="Background" type="ColorRect" parent="."]

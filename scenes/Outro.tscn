@@ -48,7 +48,7 @@ tracks/0/keys = {
 "values": [ 1.5, 0.0 ]
 }
 
-[node name="Outro" type="Spatial"]
+[node name="Outro" type="Control"]
 script = ExtResource( 1 )
 
 [node name="Background" type="ColorRect" parent="."]
@@ -96,6 +96,3 @@ margin_left = 20.0
 margin_top = 15.0
 margin_right = 660.0
 margin_bottom = 495.0
-__meta__ = {
-"_edit_use_anchors_": false
-}

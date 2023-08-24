@@ -1,9 +1,10 @@
-extends Spatial
+extends Control
 
 onready var current_area
 
 func _ready():
     add_to_group("main")
+    if Settings.disable_crt: _disable_crt()
     if Global.have_flashlight: get_tree().call_group("player", "acquire_flashlight")
     if Global.flashlight_on: get_tree().call_group("player", "turn_on_flashlight")
     Monster.on_load()
@@ -30,3 +31,8 @@ func game_over(ending):
     get_tree().reload_current_scene()
     Global.ending = ending
     get_tree().change_scene("res://scenes/GameOver.tscn")
+
+func _disable_crt():
+    var shift_diff = Vector2(20, 15)
+    self.rect_position -= shift_diff
+    $CrtCurtain.visible = false

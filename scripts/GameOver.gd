@@ -1,9 +1,10 @@
-extends Spatial
+extends Control
 
 var cheatcode_count = 0
 var time = 0
 
 func _ready():
+    if Settings.disable_crt: _disable_crt()
     $Static.visible = true
     yield(get_tree().create_timer(1.5), "timeout")
     $Static.visible = false
@@ -40,6 +41,11 @@ func _on_ending_video_finished():
         yield(get_tree(), "idle_frame")
         get_tree().change_scene("res://scenes/Menu.tscn")
     
+func _disable_crt():
+    var shift_diff = Vector2(20, 15)
+    self.rect_position -= shift_diff
+    $CrtCurtain.visible = false    
+
 func _process(delta):
     time += delta
     if time < 9.2:

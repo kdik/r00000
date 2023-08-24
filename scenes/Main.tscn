@@ -381,7 +381,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Main" type="Spatial"]
+[node name="Main" type="Control"]
 script = ExtResource( 6 )
 
 [node name="Background" type="ColorRect" parent="."]
@@ -1031,9 +1031,6 @@ margin_left = 20.0
 margin_top = 15.0
 margin_right = 660.0
 margin_bottom = 495.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="AudioPlayer" parent="." instance=ExtResource( 4 )]
 
