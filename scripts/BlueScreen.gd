@@ -9,6 +9,8 @@ func start_showing():
     get_tree().paused = true
     $RichTextLabel.set_bbcode(_to_code(Global.takes).to_upper())
     visible = true
+    if int(Global.takes) >= 100:
+        get_tree().call_group("achievements", "unlock_r00100")
 
 func stop_showing():
     get_tree().paused = false

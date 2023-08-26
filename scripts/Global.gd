@@ -26,6 +26,7 @@ var monster_introduced_take_2_23 = false
 var monster_introduced_take_3_12 = false
 var hide_and_seek_started = false
 var hide_and_seek_lost = false
+var used_cheat_code = false
 
 # non persistent between areas variables
 var door_1_open = false
@@ -61,6 +62,7 @@ func reset_single_loop():
     monster_introduced_take_2_23 = false
     hide_and_seek_started = false
     hide_and_seek_lost = false
+    used_cheat_code = false
     reset_between_areas()
 
 func reset_between_areas():

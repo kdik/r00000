@@ -3,29 +3,28 @@ extends Node
 func _ready():
     add_to_group("achievements")
 
-func _unlock():
-    pass
+func _unlock(achievement):
+    #Steam.setAchievement(achievement)
+    #Steam.storeStats()
+    print("Achievement unlocked: " + achievement)
 
 func unlock_headache():
-    pass
+    _unlock("headache?")
 
 func unlock_getalife():
-    pass
+    _unlock("getalife")
 
 func unlock_r00100():
-    pass
+    _unlock("r00100")
 
 func unlock_cheater():
-    pass
+    _unlock("cheater")
 
 func unlock_onemoretake():
-    pass
+    _unlock("onemoretake")
 
 func unlock_themonsterinme():
-    pass
+    _unlock("themonsterinme")
     
 func unlock_theend():
-    pass
-
-func unlock_ocd():
-    pass
+    _unlock("theend")

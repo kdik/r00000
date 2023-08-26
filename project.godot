@@ -53,7 +53,7 @@ Global="*res://scripts/Global.gd"
 Monster="*res://scripts/Monster.gd"
 SaveLoad="*res://scripts/SaveLoad.gd"
 Settings="*res://scripts/Settings.gd"
-Steam="*res://addons/godotsteam/steam.tscn"
+Steam="res://addons/godotsteam/steam.tscn"
 Achievements="*res://scripts/Achievements.gd"
 
 [debug]

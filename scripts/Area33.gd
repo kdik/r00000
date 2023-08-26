@@ -37,6 +37,7 @@ func trigger_use(object_number):
                 get_tree().call_group("rumble", "stop")
                 Global.monster_defeated = true
                 update_visibilities()
+                if Global.used_cheat_code: get_tree().call_group("achievements", "unlock_cheater")
                 yield(get_tree().create_timer(0.5), "timeout")
                 get_tree().call_group("player", "unlock_movement")
             else:
