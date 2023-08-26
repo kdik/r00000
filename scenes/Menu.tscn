@@ -66,6 +66,8 @@ __meta__ = {
 [node name="VideoIntro" parent="." instance=ExtResource( 6 )]
 
 [node name="MenuFilter" parent="." instance=ExtResource( 5 )]
+margin_top = 15.0
+margin_bottom = 495.0
 
 [node name="CrtCurtain" type="ColorRect" parent="."]
 material = ExtResource( 3 )
