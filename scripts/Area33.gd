@@ -14,7 +14,9 @@ func get_initial_rotation(previous_area):
 
 func get_description(object_number):
     match object_number:
-        object_1.object_number: return "go back"
+        object_1.object_number: 
+            if _should_illuminate_monster(): return "goodbye"
+            else: return "go back"
         object_2.object_number: return "crawl deeper"
         object_3.object_number:
             if not Global.door_3_open: return "open doors"
@@ -24,7 +26,21 @@ func get_description(object_number):
 
 func trigger_use(object_number):
     match object_number:
-        object_1.object_number: yield(switch_areas("Area32"), "completed")
+        object_1.object_number: 
+            if _should_illuminate_monster():
+                get_tree().call_group("player", "lock_movement")
+                get_tree().call_group("player", "show_middle_finger")
+                yield(get_tree().create_timer(38.0 / 15.0 + 0.5), "timeout")
+                get_tree().call_group("player", "turn_on_flashlight")
+                get_tree().call_group("monster_eyes", "stop_showing")
+                get_tree().call_group("filter", "stop_playing")
+                get_tree().call_group("rumble", "stop")
+                Global.monster_defeated = true
+                update_visibilities()
+                yield(get_tree().create_timer(0.5), "timeout")
+                get_tree().call_group("player", "unlock_movement")
+            else:
+                yield(switch_areas("Area32"), "completed")
         object_2.object_number: yield(switch_areas("Area34"), "completed")
         object_3.object_number:
             if not Global.door_3_open:
@@ -65,14 +81,7 @@ func trigger_use(object_number):
                     update_visibilities()
                     get_tree().call_group("player", "lock_movement")
                     yield(_look_at_monster(), "completed")
-                    get_tree().call_group("player", "show_middle_finger")
-                    yield(get_tree().create_timer(38.0 / 15.0 + 0.5), "timeout")
-                    get_tree().call_group("player", "turn_on_flashlight")
-                    get_tree().call_group("monster_eyes", "stop_showing")
-                    get_tree().call_group("filter", "stop_playing")
-                    get_tree().call_group("rumble", "stop")
                     get_tree().call_group("player", "unlock_movement")
-                    Global.monster_defeated = true
             else:
                 yield(say_monster(MonsterScreen.YOU_DO_NOT_NEED_THEM), "completed")
                 yield(_introduce_monster(), "completed")
@@ -95,9 +104,9 @@ func update_visibilities():
     $Monster.visible = not Global.lights_on and Global.door_2_open and not Global.monster_defeated and not Global.hide_and_seek_started
     get_tree().call_group("object_dome", "clear")
     object_1.set_visibility(true)
-    object_2.set_visibility(true)
-    object_3.set_visibility(true)
-    object_4.set_visibility(Global.lights_on)
+    object_2.set_visibility(not _should_illuminate_monster())
+    object_3.set_visibility(not _should_illuminate_monster())
+    object_4.set_visibility(Global.lights_on and not _should_illuminate_monster())
 
 func _introduce_monster():
     yield(Monster.introduce(_get_monster_coordinates(), "fade_out_far"), "completed")
@@ -113,3 +122,6 @@ func _get_monster_coordinates():
     var monster_coordinates = Vector2(-0.1309, 2.552544)
     if euler_rotation.y == 0: monster_coordinates -= Vector2(0, deg2rad(135))
     return monster_coordinates
+    
+func _should_illuminate_monster():
+    return not Global.monster_defeated and int(Global.battery_count) >= 3

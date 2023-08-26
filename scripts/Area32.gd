@@ -14,8 +14,9 @@ func get_initial_rotation(previous_area):
     else: return 0
 
 func init(previous_area):
-    if not Global.lights_on and not Global.hide_and_seek_started:
-        yield(_introduce_monster(), "completed")
+    if _should_illuminate_monster():
+        yield(get_tree(), "idle_frame")
+        return
     if not Global.monster_introduced_take_3_12 and not Global.monster_defeated:
         yield(say_monster(MonsterScreen.THIS_TIME_BE_BETTER), "completed")
         Global.monster_introduced_take_3_12 = true
@@ -24,7 +25,8 @@ func init(previous_area):
 func get_description(object_number):
     match object_number:
         object_1.object_number:
-            if Global.door_2_open: return "become the other"
+            if _should_illuminate_monster(): return "goodbye"
+            elif Global.door_2_open: return "become the other"
             else: return "open the forsaken doors"
         object_2.object_number: return "take batteries"
         object_3.object_number: return "go further"
@@ -39,6 +41,18 @@ func trigger_use(object_number):
                 else:
                     Global.door_2_open = true
                     update_visibilities()
+            elif _should_illuminate_monster():
+                get_tree().call_group("player", "lock_movement")
+                get_tree().call_group("player", "show_middle_finger")
+                yield(get_tree().create_timer(38.0 / 15.0 + 0.5), "timeout")
+                get_tree().call_group("player", "turn_on_flashlight")
+                get_tree().call_group("monster_eyes", "stop_showing")
+                get_tree().call_group("filter", "stop_playing")
+                get_tree().call_group("rumble", "stop")
+                Global.monster_defeated = true
+                update_visibilities()
+                yield(get_tree().create_timer(0.5), "timeout")
+                get_tree().call_group("player", "unlock_movement")
             else:
                 if Global.hide_and_seek_started:
                     yield(say_monster(MonsterScreen.IM_HERE_DONT_YOU_SEE), "completed")
@@ -71,14 +85,7 @@ func trigger_use(object_number):
                     update_visibilities()
                     get_tree().call_group("player", "lock_movement")
                     yield(_look_at_monster(), "completed")
-                    get_tree().call_group("player", "show_middle_finger")
-                    yield(get_tree().create_timer(38.0 / 15.0 + 0.5), "timeout")
-                    get_tree().call_group("player", "turn_on_flashlight")
-                    get_tree().call_group("monster_eyes", "stop_showing")
-                    get_tree().call_group("filter", "stop_playing")
-                    get_tree().call_group("rumble", "stop")
                     get_tree().call_group("player", "unlock_movement")
-                    Global.monster_defeated = true
             else:
                 yield(say_monster(MonsterScreen.YOU_DO_NOT_NEED_THEM), "completed")
                 yield(_introduce_monster(), "completed")
@@ -108,9 +115,9 @@ func update_visibilities():
     $Monster.visible = not Global.lights_on and Global.door_2_open and not Global.monster_defeated and not Global.hide_and_seek_started
     get_tree().call_group("object_dome", "clear")
     object_1.set_visibility(true)
-    object_2.set_visibility(Global.lights_on)
-    object_3.set_visibility(true)
-    object_4.set_visibility(true)
+    object_2.set_visibility(Global.lights_on and not _should_illuminate_monster())
+    object_3.set_visibility(not _should_illuminate_monster())
+    object_4.set_visibility(not _should_illuminate_monster())
 
 func _introduce_monster():
     yield(Monster.introduce(_get_monster_coordinates(), "fade_out_near"), "completed")
@@ -126,3 +133,6 @@ func _get_monster_coordinates():
     var monster_coordinates = Vector2(-0.19635, -2.159845)
     if euler_rotation.y > 0: monster_coordinates += Vector2(0, euler_rotation.y)
     return monster_coordinates
+    
+func _should_illuminate_monster():
+    return not Global.monster_defeated and int(Global.battery_count) >= 3
