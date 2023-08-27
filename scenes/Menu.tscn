@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://fonts/vhs_font.tres" type="DynamicFont" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://images/play_triangle.png" type="Texture" id=4]
 [ext_resource path="res://scenes/MenuFilter.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/VideoIntro.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/ControlInstructions.tscn" type="PackedScene" id=7]
 
 [node name="Menu" type="Control"]
 script = ExtResource( 1 )
@@ -49,9 +50,12 @@ bbcode_text = "[right]PLAY   [/right]
 [right]EJECT  [/right]"
 text = "PLAY   
 EJECT  "
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="ControlInstructions" parent="." instance=ExtResource( 7 )]
+margin_left = 40.0
+margin_top = 425.0
+margin_right = 40.0
+margin_bottom = 425.0
 
 [node name="Cursor" type="TextureRect" parent="."]
 margin_left = 620.0
@@ -64,6 +68,7 @@ __meta__ = {
 }
 
 [node name="VideoIntro" parent="." instance=ExtResource( 6 )]
+visible = false
 
 [node name="MenuFilter" parent="." instance=ExtResource( 5 )]
 margin_top = 15.0
