@@ -40,10 +40,13 @@ func trigger_use(object_number):
             else:
                 Global.takes += 1
                 Global.loops_completed += 1
+                Global.lights_on = true
                 Global.reset_single_loop()
                 switch_areas("Area31")
                 yield(say_monster(MonsterScreen.YOUR_VIDEO_IS_A_DISGRACE), "completed")
                 yield(say_monster(MonsterScreen.START_OVER_NOW), "completed")
+                if Global.lights_on: yield($"../../Rewind".play($"../../Rewind".VIDEO_1), "completed")
+                else: yield($"../../Rewind".play($"../../Rewind".VIDEO_1_1), "completed")
                 yield(show_blue_screen(), "completed")
         object_4.object_number:
             if Global.have_flashlight:

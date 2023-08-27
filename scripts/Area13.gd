@@ -33,9 +33,12 @@ func trigger_use(object_number):
                 Global.gate_3_open = true
             else:
                 Global.takes += 1
+                Global.lights_on = true
                 Global.reset_single_loop()
                 switch_areas("Area21")
                 yield(say_yourself(YouScreen.FUCK_THIS_FOOTAGE), "completed")
+                if Global.lights_on: yield($"../../Rewind".play($"../../Rewind".VIDEO_1), "completed")
+                else: yield($"../../Rewind".play($"../../Rewind".VIDEO_1_1), "completed")
                 yield(show_blue_screen(), "completed")
         object_4.object_number: 
             Global.batteries_removed = true

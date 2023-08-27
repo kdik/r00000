@@ -5,7 +5,6 @@ onready var current_area
 func _ready():
     add_to_group("main")
     if Settings.disable_crt: _disable_crt()
-    #yield($Rewind.play($Rewind.VIDEO_1), "completed")
     if Global.have_flashlight: get_tree().call_group("player", "acquire_flashlight")
     if Global.flashlight_on: get_tree().call_group("player", "turn_on_flashlight")
     Monster.on_load()

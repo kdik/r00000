@@ -49,13 +49,22 @@ func trigger_use(object_number):
             elif not Global.gate_3_open:
                 Global.gate_3_open = true
             else:
+                var hide_and_seek_started = Global.hide_and_seek_started
                 Global.takes += 1
                 Global.loops_completed += 1
+                if not Global.monster_defeated: Global.lights_on = true
                 Global.reset_single_loop()
                 switch_areas("Area31")
-                if Global.monster_defeated: yield(say_yourself(YouScreen.FUCK_THIS_FOOTAGE), "completed")
-                elif Global.hide_and_seek_started: yield(say_monster(MonsterScreen.FOOTAGE_STILL_NOT_GOOD_ENOUGH), "completed")
-                else: yield(say_monster(MonsterScreen.BE_BETTER_YOU_HAVE_TO_BE_BETTER), "completed")
+                if Global.monster_defeated:
+                    yield(say_yourself(YouScreen.FUCK_THIS_FOOTAGE), "completed")
+                    yield($"../../Rewind".play($"../../Rewind".VIDEO_4), "completed")
+                elif hide_and_seek_started: 
+                    yield(say_monster(MonsterScreen.FOOTAGE_STILL_NOT_GOOD_ENOUGH), "completed")
+                    yield($"../../Rewind".play($"../../Rewind".VIDEO_3), "completed")
+                else: 
+                    yield(say_monster(MonsterScreen.BE_BETTER_YOU_HAVE_TO_BE_BETTER), "completed")
+                    if Global.lights_on: yield($"../../Rewind".play($"../../Rewind".VIDEO_1), "completed")
+                    else: yield($"../../Rewind".play($"../../Rewind".VIDEO_1_1), "completed")
                 yield(show_blue_screen(), "completed")
                 get_tree().call_group("monster_eyes", "stop_showing")
                 get_tree().call_group("filter", "stop_playing")

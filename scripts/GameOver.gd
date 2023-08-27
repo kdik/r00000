@@ -32,6 +32,7 @@ func _ready():
 func _on_ending_video_finished():
     if Global.ending == Global.CAUGHT and cheatcode_count >= 3:
         Global.takes += 1
+        Global.lights_on = true
         Global.reset_single_loop()
         Global.used_cheat_code = true
         SaveLoad.save()

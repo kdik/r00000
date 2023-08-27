@@ -10,6 +10,7 @@ const VIDEO_4 = 6
 var finished = false
 
 func _ready():
+    add_to_group("rewind")
     visible = false
 
 func play(video_number):
