@@ -28,3 +28,6 @@ func unlock_themonsterinme():
     
 func unlock_theend():
     _unlock("theend")
+
+func unlock_ocd():
+    _unlock("ocd")

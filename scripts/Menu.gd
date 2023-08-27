@@ -73,6 +73,8 @@ func _play():
 
 func _delete_footage():
     locked = true
+    if Global.ending_1_achieved and Global.ending_2_achieved and Global.ending_3_achieved and Global.ending_4_achieved:
+        get_tree().call_group("achievements", "unlock_ocd")
     yield($MenuFilter.start_playing(), "completed")
     Global.reset_everything()
     SaveLoad.save()

@@ -10,24 +10,27 @@ func _ready():
     $Static.visible = false
     var text
     match Global.ending:
-        Global.CAUGHT:
-            $VideoPlayer3.visible = true
-            $VideoPlayer3.play()
-            get_tree().call_group("achievements", "unlock_headache")
-        Global.ROOTS:
-            $VideoPlayer4.visible = true
-            $VideoPlayer4.play()
-            get_tree().call_group("achievements", "unlock_onemoretake")
         Global.BECOME_EVIL:
-            Global.basement_escaped = true
+            Global.ending_1_achieved = true
             $VideoPlayer1.visible = true
             $VideoPlayer1.play()
             get_tree().call_group("achievements", "unlock_themonsterinme")
         Global.ESCAPE:
+            Global.ending_2_achieved = true
             Global.basement_escaped = true
             $VideoPlayer2.visible = true
             $VideoPlayer2.play()
             get_tree().call_group("achievements", "unlock_theend")
+        Global.CAUGHT:
+            Global.ending_3_achieved = true
+            $VideoPlayer3.visible = true
+            $VideoPlayer3.play()
+            get_tree().call_group("achievements", "unlock_headache")
+        Global.ROOTS:
+            Global.ending_4_achieved = true
+            $VideoPlayer4.visible = true
+            $VideoPlayer4.play()
+            get_tree().call_group("achievements", "unlock_onemoretake")
 
 func _on_ending_video_finished():
     if Global.ending == Global.CAUGHT and cheatcode_count >= 3:
