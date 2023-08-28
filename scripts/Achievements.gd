@@ -4,8 +4,8 @@ func _ready():
     add_to_group("achievements")
 
 func _unlock(achievement):
-    #Steam.setAchievement(achievement)
-    #Steam.storeStats()
+    Steam.Steam.setAchievement(achievement)
+    Steam.Steam.storeStats()
     print("Unlocked achievement: " + achievement)
 
 func unlock_fullstop():
