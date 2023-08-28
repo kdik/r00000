@@ -25,7 +25,7 @@ func _ready():
             Global.ending_3_achieved = true
             $VideoPlayer3.visible = true
             $VideoPlayer3.play()
-            get_tree().call_group("achievements", "unlock_headache")
+            get_tree().call_group("achievements", "unlock_fullstop")
         Global.ROOTS:
             Global.ending_4_achieved = true
             $VideoPlayer4.visible = true
