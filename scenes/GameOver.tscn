@@ -16,9 +16,6 @@ script = ExtResource( 1 )
 margin_right = 680.0
 margin_bottom = 510.0
 color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VideoPlayer1" type="VideoPlayer" parent="."]
 visible = false
@@ -96,9 +93,6 @@ margin_left = 20.0
 margin_top = 15.0
 margin_right = 660.0
 margin_bottom = 495.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="finished" from="VideoPlayer1" to="." method="_on_ending_video_finished"]
 [connection signal="finished" from="VideoPlayer2" to="." method="_on_ending_video_finished"]

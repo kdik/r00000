@@ -3,6 +3,10 @@ extends Control
 var cheatcode_count = 0
 var time = 0
 
+onready var game_over_credits_1 = preload("res://scenes/GameOverCredits1.tscn")
+onready var game_over_credits_2 = preload("res://scenes/GameOverCredits2.tscn")
+onready var game_over_credits_3 = preload("res://scenes/GameOverCredits3.tscn")
+
 func _ready():
     if Settings.disable_crt: _disable_crt()
     $Static.visible = true
@@ -42,14 +46,18 @@ func _on_ending_video_finished():
         $Static.visible = true
         yield(get_tree(), "idle_frame")
         get_tree().change_scene("res://scenes/Main.tscn")
-    else:
+    else: 
         Global.takes += 1
         Global.reset()
         SaveLoad.save()
         $Static.visible = true
         yield(get_tree(), "idle_frame")
-        get_tree().change_scene("res://scenes/Menu.tscn")
-    
+        match Global.ending:
+            Global.ESCAPE: get_tree().change_scene_to(game_over_credits_1)
+            Global.ROOTS: get_tree().change_scene_to(game_over_credits_2)
+            Global.BECOME_EVIL: get_tree().change_scene_to(game_over_credits_3)
+            Global.CAUGHT: get_tree().change_scene("res://scenes/Menu.tscn")
+
 func _disable_crt():
     var shift_diff = Vector2(20, 15)
     self.rect_position -= shift_diff
