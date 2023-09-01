@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/flashlight_pickup.mp3-bb400211a8dee04bd1f8b33acc6e1d1f.mp3str"
+
+[deps]
+
+source_file="res://sounds/actions/flashlight_pickup.mp3"
+dest_files=[ "res://.import/flashlight_pickup.mp3-bb400211a8dee04bd1f8b33acc6e1d1f.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

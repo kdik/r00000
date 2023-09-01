@@ -44,8 +44,10 @@ func trigger_use(object_number):
                 if Global.door_1_open:
                     get_tree().call_group("main", "game_over", Global.ESCAPE)
                 else:
+                    get_tree().call_group("audio_player", "play", "DoorOutside")
                     Global.door_1_open = true
             else:
+                get_tree().call_group("audio_player", "play", "DoorLocked")
                 yield(say_monster(MonsterScreen.YOU_ARE_STUCK_WITH_ME), "completed")
         object_3.object_number:
             if Global.batteries_removed:
@@ -53,6 +55,7 @@ func trigger_use(object_number):
             else:
                 Global.lights_on = not Global.lights_on
                 update_visibilities()
+                get_tree().call_group("audio_player", "play", "LightSwitch")
     yield(get_tree(), "idle_frame")
 
 func update_visibilities():

@@ -21,6 +21,7 @@ func trigger_use(object_number):
             Global.have_flashlight = true
             update_visibilities()
             get_tree().call_group("player", "acquire_flashlight")
+            get_tree().call_group("audio_player", "play", "FlashlightPickup")
         object_3.object_number: yield(say_monster(MonsterScreen.TURN_AWAY_NOW), "completed")
     yield(get_tree(), "idle_frame")
     

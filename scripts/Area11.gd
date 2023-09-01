@@ -33,6 +33,7 @@ func trigger_use(object_number):
             else:
                 Global.lights_on = not Global.lights_on
                 update_visibilities()
+                get_tree().call_group("audio_player", "play", "LightSwitch")
     yield(get_tree(), "idle_frame")
 
 func update_visibilities():

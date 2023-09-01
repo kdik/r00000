@@ -46,8 +46,10 @@ func trigger_use(object_number):
         object_3.object_number:
             if not Global.door_3_open:
                 Global.door_3_open = true
+                get_tree().call_group("audio_player", "play", "DoorRegular")
             elif not Global.gate_3_open:
                 Global.gate_3_open = true
+                get_tree().call_group("audio_player", "play", "DoorMetal")
             else:
                 var hide_and_seek_started = Global.hide_and_seek_started
                 Global.takes += 1

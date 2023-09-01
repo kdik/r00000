@@ -96,6 +96,7 @@ func add_battery():
     $Cursor/RightHand.set_frame(0)
     $Cursor/RightHand.visible = true
     $Cursor/RightHand.play()
+    get_tree().call_group("audio_player", "play", "BatterySequence")
     yield(get_tree().create_timer(3), "timeout")
     $Cursor/LeftHand.visible = true
     get_tree().call_group("battery_indicator", "update_battery_count")
@@ -103,6 +104,7 @@ func add_battery():
 func turn_on_flashlight():
     $Flashlight.visible = true
     Global.flashlight_on = true
+    get_tree().call_group("audio_player", "play", "FlashlightOn")
     
 func turn_off_flashlight():
     $Flashlight.visible = false

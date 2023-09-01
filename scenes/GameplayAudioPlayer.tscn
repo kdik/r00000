@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://sounds/ambiences/ambience_idle_loop.wav" type="AudioStream" id=1]
+[ext_resource path="res://sounds/ambiences/ambience_doom_loop.wav" type="AudioStream" id=2]
+[ext_resource path="res://scripts/GameplayAudioPlayer.gd" type="Script" id=3]
+[ext_resource path="res://sounds/ambiences/ambience_lamp_buzz_loop.wav" type="AudioStream" id=4]
+[ext_resource path="res://sounds/ambiences/ambience_outside_loop.wav" type="AudioStream" id=5]
+
+[node name="GameplayAudioPlayer" type="Node"]
+script = ExtResource( 3 )
+
+[node name="AmbienceDanger" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="AmbienceGeneral" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+
+[node name="AmbienceLamp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="AmbienceOutside" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )

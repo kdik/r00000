@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/GameOver.gd" type="Script" id=1]
 [ext_resource path="res://videos/after_cheat_1.ogv" type="VideoStream" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://videos/ending_3.ogv" type="VideoStream" id=6]
 [ext_resource path="res://videos/ending_2.ogv" type="VideoStream" id=7]
 [ext_resource path="res://videos/ending_1.ogv" type="VideoStream" id=8]
+[ext_resource path="res://sounds/tv/static.wav" type="AudioStream" id=9]
 
 [node name="GameOver" type="Control"]
 script = ExtResource( 1 )
@@ -64,6 +65,9 @@ expand = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VideoPlayer4"]
+stream = ExtResource( 9 )
 
 [node name="VideoPlayer5" type="VideoPlayer" parent="."]
 visible = false

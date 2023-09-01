@@ -6,6 +6,7 @@ func _ready():
     set_pause_mode(PAUSE_MODE_PROCESS)
     
 func start_showing():
+    get_tree().call_group("gameplay_audio_player", "pause")
     get_tree().paused = true
     $RichTextLabel.set_bbcode(_to_code(Global.takes).to_upper())
     visible = true
@@ -15,6 +16,7 @@ func start_showing():
 func stop_showing():
     get_tree().paused = false
     visible = false
+    get_tree().call_group("gameplay_audio_player", "resume")
 
 func _to_code(number):
     if number < 10: return "R0000" + str(number)

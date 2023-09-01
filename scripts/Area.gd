@@ -69,7 +69,7 @@ func on_enter(previous_area):
 
 func on_leave(next_area):
     if play_fade_out(next_area):
-        get_tree().call_group("audio", "play", "Footsteps")
+        get_tree().call_group("audio_player", "play", "Footsteps")
         get_tree().call_group("ui", "fade_out")
         yield(get_tree().create_timer(1), "timeout")
     else:

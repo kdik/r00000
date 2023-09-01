@@ -10,6 +10,7 @@ func _ready():
     Monster.on_load()
     current_area = $Areas.get_node(Global.area)
     current_area.on_enter(null)
+    get_tree().call_group("audio_player", "stop", "NoSignal")
     
 func _process(_delta):
     if Input.is_action_just_pressed("ui_cancel"):

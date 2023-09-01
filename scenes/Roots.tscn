@@ -1,0 +1,173 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://images/roots_sheet.png" type="Texture" id=1]
+[ext_resource path="res://scripts/Roots.gd" type="Script" id=2]
+[ext_resource path="res://sounds/roots/roots_2_loop.wav" type="AudioStream" id=3]
+[ext_resource path="res://sounds/roots/roots_4_loop.wav" type="AudioStream" id=4]
+[ext_resource path="res://sounds/roots/roots_6_loop.wav" type="AudioStream" id=5]
+[ext_resource path="res://sounds/roots/roots_5_loop.wav" type="AudioStream" id=6]
+[ext_resource path="res://sounds/roots/roots_3_loop.wav" type="AudioStream" id=7]
+[ext_resource path="res://sounds/roots/roots_1_loop.wav" type="AudioStream" id=8]
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=43]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 480, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=44]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=45]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 480, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 960, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 480, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 960, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 1440, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=19]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 480, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 960, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 1440, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 1920, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 480, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 960, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=27]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 1440, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 1920, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=29]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 2400, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 2400, 640, 480 )
+
+[sub_resource type="AtlasTexture" id=31]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 2880, 640, 480 )
+
+[sub_resource type="SpriteFrames" id=46]
+animations = [ {
+"frames": [ SubResource( 7 ), SubResource( 43 ), SubResource( 7 ) ],
+"loop": true,
+"name": "level_1",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 44 ), SubResource( 45 ), SubResource( 11 ), SubResource( 45 ), SubResource( 44 ) ],
+"loop": true,
+"name": "level_2",
+"speed": 2.0
+}, {
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 15 ), SubResource( 14 ), SubResource( 13 ) ],
+"loop": true,
+"name": "level_3",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 21 ), SubResource( 20 ), SubResource( 19 ), SubResource( 18 ) ],
+"loop": true,
+"name": "level_4",
+"speed": 4.0
+}, {
+"frames": [ SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 30 ), SubResource( 29 ), SubResource( 28 ), SubResource( 27 ), SubResource( 26 ), SubResource( 25 ), SubResource( 24 ) ],
+"loop": true,
+"name": "level_5",
+"speed": 5.0
+} ]
+
+[node name="Roots" type="AnimatedSprite"]
+position = Vector2( 20, 15 )
+frames = SubResource( 46 )
+animation = "level_5"
+centered = false
+script = ExtResource( 2 )
+
+[node name="Roots1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="Roots2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="Roots3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="Roots4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Roots5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="Roots6" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )

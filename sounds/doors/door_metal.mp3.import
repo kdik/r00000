@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/door_metal.mp3-e425863fee556e84dbf42d5b740bc4b2.mp3str"
+
+[deps]
+
+source_file="res://sounds/doors/door_metal.mp3"
+dest_files=[ "res://.import/door_metal.mp3-e425863fee556e84dbf42d5b740bc4b2.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

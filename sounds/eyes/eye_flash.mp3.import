@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/eye_flash.mp3-69013ea2b795367cb801301e9e457c40.mp3str"
+
+[deps]
+
+source_file="res://sounds/eyes/eye_flash.mp3"
+dest_files=[ "res://.import/eye_flash.mp3-69013ea2b795367cb801301e9e457c40.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

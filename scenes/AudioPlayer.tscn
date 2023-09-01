@@ -1,18 +1,54 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://scripts/AudioPlayer.gd" type="Script" id=1]
-[ext_resource path="res://sounds/footsteps.ogg" type="AudioStream" id=2]
-[ext_resource path="res://sounds/ambience_general.ogg" type="AudioStream" id=3]
-[ext_resource path="res://sounds/ambience_danger.ogg" type="AudioStream" id=4]
+[ext_resource path="res://sounds/actions/action.mp3" type="AudioStream" id=1]
+[ext_resource path="res://sounds/actions/footsteps.mp3" type="AudioStream" id=2]
+[ext_resource path="res://scripts/AudioPlayer.gd" type="Script" id=3]
+[ext_resource path="res://sounds/actions/flashlight_pickup.mp3" type="AudioStream" id=4]
+[ext_resource path="res://sounds/actions/flashlight_on.mp3" type="AudioStream" id=5]
+[ext_resource path="res://sounds/actions/batery_sequence.mp3" type="AudioStream" id=6]
+[ext_resource path="res://sounds/actions/phone_dial.mp3" type="AudioStream" id=7]
+[ext_resource path="res://sounds/actions/light_switch.mp3" type="AudioStream" id=8]
+[ext_resource path="res://sounds/doors/door_locked.mp3" type="AudioStream" id=9]
+[ext_resource path="res://sounds/doors/door_outside.mp3" type="AudioStream" id=10]
+[ext_resource path="res://sounds/doors/door_regular.mp3" type="AudioStream" id=11]
+[ext_resource path="res://sounds/doors/door_metal.mp3" type="AudioStream" id=12]
+[ext_resource path="res://sounds/tv/no_signal.mp3" type="AudioStream" id=13]
 
 [node name="AudioPlayer" type="Node"]
-script = ExtResource( 1 )
+script = ExtResource( 3 )
 
 [node name="Footsteps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 
-[node name="AmbienceDanger" type="AudioStreamPlayer" parent="."]
+[node name="Action" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+
+[node name="FlashlightPickup" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 
-[node name="AmbienceGeneral" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
+[node name="FlashlightOn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="BatterySequence" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="LightSwitch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="PhoneDial" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="DoorLocked" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="DoorOutside" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="DoorRegular" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="DoorMetal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+
+[node name="NoSignal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )

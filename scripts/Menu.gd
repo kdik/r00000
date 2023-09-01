@@ -15,6 +15,7 @@ func _ready():
     $TitleLabel.set_bbcode(_to_code(Global.takes))
     _set_selection_text()
     _update_selection()
+    get_tree().call_group("audio_player", "stop", "NoSignal")
 
 func _to_code(number):
     if number < 10: return "R0000" + str(number)

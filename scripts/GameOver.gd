@@ -9,9 +9,7 @@ onready var game_over_credits_3 = preload("res://scenes/GameOverCredits3.tscn")
 
 func _ready():
     if Settings.disable_crt: _disable_crt()
-    $Static.visible = true
-    yield(get_tree().create_timer(1.5), "timeout")
-    $Static.visible = false
+    yield(_show_static(), "completed")
     var text
     match Global.ending:
         Global.BECOME_EVIL:
@@ -34,9 +32,11 @@ func _ready():
             Global.ending_4_achieved = true
             $VideoPlayer4.visible = true
             $VideoPlayer4.play()
+            $VideoPlayer4/AudioStreamPlayer.play()
             get_tree().call_group("achievements", "unlock_onemoretake")
 
 func _on_ending_video_finished():
+    if Global.ending == Global.ROOTS: $VideoPlayer4/AudioStreamPlayer.stop()
     if Global.ending == Global.CAUGHT and cheatcode_count >= 3:
         Global.takes += 1
         Global.lights_on = true
@@ -44,6 +44,7 @@ func _on_ending_video_finished():
         Global.used_cheat_code = true
         SaveLoad.save()
         $Static.visible = true
+        get_tree().call_group("audio_player", "play", "NoSignal")        
         yield(get_tree(), "idle_frame")
         get_tree().change_scene("res://scenes/Main.tscn")
     else: 
@@ -51,6 +52,7 @@ func _on_ending_video_finished():
         Global.reset()
         SaveLoad.save()
         $Static.visible = true
+        get_tree().call_group("audio_player", "play", "NoSignal")        
         yield(get_tree(), "idle_frame")
         match Global.ending:
             Global.ESCAPE: get_tree().change_scene_to(game_over_credits_1)
@@ -69,9 +71,17 @@ func _process(delta):
         return
     if Global.CAUGHT and Input.is_action_just_pressed("cheatcode"):
         cheatcode_count += 1
+        get_tree().call_group("audio_player", "play", "PhoneDial")
         if cheatcode_count == 3:
             $VideoPlayer5.play()
             $VideoPlayer5.visible = true
             $VideoPlayer3.visible = true
             $VideoPlayer3.stop()
             get_tree().call_group("achievements", "unlock_getalife")
+
+func _show_static():
+    get_tree().call_group("audio_player", "play", "NoSignal")
+    $Static.visible = true
+    yield(get_tree().create_timer(1.5), "timeout")
+    $Static.visible = false
+    get_tree().call_group("audio_player", "stop", "NoSignal")

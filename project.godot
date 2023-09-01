@@ -19,7 +19,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/Area.gd"
 }, {
-"base": "",
+"base": "Reference",
 "class": "Steam",
 "language": "NativeScript",
 "path": "res://addons/godotsteam/godotsteam.gdns"
@@ -47,6 +47,10 @@ config/macos_native_icon="res://icon.icns"
 config/windows_native_icon="res://icon.ico"
 boot_splash/name="R00000"
 
+[audio]
+
+mix_rate=48000
+
 [autoload]
 
 Global="*res://scripts/Global.gd"
@@ -55,6 +59,7 @@ SaveLoad="*res://scripts/SaveLoad.gd"
 Settings="*res://scripts/Settings.gd"
 Steam="*res://addons/godotsteam/steam.tscn"
 Achievements="*res://scripts/Achievements.gd"
+AudioPlayer="*res://scenes/AudioPlayer.tscn"
 
 [debug]
 
