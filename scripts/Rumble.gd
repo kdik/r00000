@@ -8,7 +8,8 @@ func _ready():
 func play(level = null):
     if level == null: current_level = _get_target_level()
     else: current_level = level
-    Input.start_joy_vibration(0, current_level, 0)
+    if Settings.strong_rumble: Input.start_joy_vibration(0, 0, current_level)
+    else: Input.start_joy_vibration(0, current_level, 0)
     
 func stop():
     current_level = 0
@@ -18,7 +19,8 @@ func pause():
     Input.stop_joy_vibration(0)
     
 func resume():
-    Input.start_joy_vibration(0, current_level, 0)
+    if Settings.strong_rumble: Input.start_joy_vibration(0, 0, current_level)
+    else: Input.start_joy_vibration(0, current_level, 0)
 
 func play_intro_sequence():
     for i in range(22): # framerate
