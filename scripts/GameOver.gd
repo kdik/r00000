@@ -71,7 +71,7 @@ func _process(delta):
         return
     if Global.CAUGHT and Input.is_action_just_pressed("cheatcode"):
         cheatcode_count += 1
-        get_tree().call_group("audio_player", "play", "PhoneDial")
+        get_tree().call_group("audio_player", "play", "PhoneDial", true)
         if cheatcode_count == 3:
             $VideoPlayer5.play()
             $VideoPlayer5.visible = true

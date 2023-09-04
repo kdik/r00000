@@ -14,6 +14,7 @@ func init(previous_area):
     yield(get_tree().create_timer(1), "timeout")
     get_tree().call_group("player_automated_movement", "turn", -0.1309, -2.356194)
     yield(get_tree().create_timer(1), "timeout")
+    get_tree().call_group("audio_player", "play", "DoorClosing")
     show_view($View2)
     yield(get_tree().create_timer(0.15), "timeout")
     show_view($View3)

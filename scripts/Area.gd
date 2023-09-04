@@ -36,7 +36,9 @@ func on_use(object_number):
     yield(get_tree().create_timer(0.5), "timeout")
     yield(trigger_use(object_number), "completed")
     if visible: update_visibilities()
-    if Global.hide_and_seek_started: Global.actions_in_darkness += 1
+    if Global.hide_and_seek_started:
+        Global.actions_in_darkness += 1
+        Monster.play_audio(int(Global.actions_in_darkness))
     yield(Monster.on_use(), "completed")
     SaveLoad.save()
     get_tree().call_group("player", "unlock_actions")

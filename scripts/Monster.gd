@@ -14,6 +14,8 @@ func introduce(eye_coordinates, fade_out_function_name):
     yield(get_tree().create_timer(3), "timeout")
     get_tree().call_group("rumble", "play_intro_sequence")
     get_tree().call_group("monster_eyes", fade_out_function_name)
+    get_tree().call_group("audio_player", "play", "EyesFlash")
+    play_audio(1)
     yield(get_tree().create_timer(1.5), "timeout")
     get_tree().call_group("filter", "start_playing")
     get_tree().call_group("filter", "set_alpha", 0.05)
@@ -58,8 +60,26 @@ func on_load():
     get_tree().call_group("filter", "set_alpha", alpha)
     get_tree().call_group("monster_eyes", "fade_in")
     get_tree().call_group("rumble", "play_load_sequence")
+    get_tree().call_group("audio_player", "play", "EyesFlash")
+    play_audio(int(Global.actions_in_darkness))
 
 func illuminate():
     Global.actions_in_darkness = 0
     Global.hide_and_seek_started = false
     get_tree().call_group("monster_eyes", "stop_showing")
+
+func play_audio(level):
+    match level:
+        1:
+            get_tree().call_group("gameplay_audio_player", "play", "Eyes1")
+        2:
+            get_tree().call_group("gameplay_audio_player", "stop", "Eyes1")
+            get_tree().call_group("gameplay_audio_player", "play", "Eyes2")  
+        3:
+            get_tree().call_group("gameplay_audio_player", "stop", "Eyes1")
+            get_tree().call_group("gameplay_audio_player", "stop", "Eyes2")
+            get_tree().call_group("gameplay_audio_player", "play", "Eyes3")
+        4:
+            get_tree().call_group("gameplay_audio_player", "stop", "Eyes1")
+            get_tree().call_group("gameplay_audio_player", "stop", "Eyes2")
+            get_tree().call_group("gameplay_audio_player", "play", "Eyes3")
