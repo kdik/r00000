@@ -59,7 +59,7 @@ func _on_ending_video_finished():
             Global.ESCAPE: get_tree().change_scene_to(game_over_credits_1)
             Global.ROOTS: get_tree().change_scene_to(game_over_credits_2)
             Global.BECOME_EVIL: get_tree().change_scene_to(game_over_credits_3)
-            Global.CAUGHT: get_tree().change_scene("res://scenes/Menu.tscn")
+            Global.CAUGHT: get_tree().change_scene("res://scenes/Main.tscn")
 
 func _disable_crt():
     $CrtCurtain.visible = false
