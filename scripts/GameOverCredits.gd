@@ -5,7 +5,7 @@ var time = 0.0
 
 func _ready():
     if Settings.disable_crt: _disable_crt()
-    if Settings._disable_border: _disable_border()
+    if Settings.disable_border: _disable_border()
     yield(_show_static(), "completed")
     $PostCreditsVideoPlayer.visible = false
     $CreditsVideoPlayer.play()
