@@ -63,9 +63,6 @@ margin_top = 47.0
 margin_right = 660.0
 margin_bottom = 87.0
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VideoIntro" parent="." instance=ExtResource( 6 )]
 visible = false
