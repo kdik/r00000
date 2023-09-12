@@ -55,7 +55,7 @@ func _set_selection_text():
         eject_number = 2
         delete_footage_number = -1
     else:
-        text += "[right]PLAY            [/right]"
+        text += "[right]RESUME          [/right]"
         text += "[right]DELETE FOOTAGE  [/right]"
         text += "[right]CREDITS         [/right]"
         text += "[right]EJECT           [/right]"
