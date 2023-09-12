@@ -11,6 +11,7 @@ onready var locked = false
 
 func _ready():
     if Settings.disable_crt: _disable_crt()
+    if Settings.disable_border: _disable_border()
     SaveLoad.init()
     $TitleLabel.set_bbcode(_to_code(Global.takes))
     _set_selection_text()
@@ -88,9 +89,11 @@ func _delete_footage():
     locked = false
 
 func _disable_crt():
+    $CrtCurtain.visible = false
+
+func _disable_border():
     var shift_diff = Vector2(20, 15)
     self.rect_position -= shift_diff
-    $CrtCurtain.visible = false
 
 func _process(_delta):
     if locked: return

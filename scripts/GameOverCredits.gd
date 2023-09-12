@@ -5,6 +5,7 @@ var time = 0.0
 
 func _ready():
     if Settings.disable_crt: _disable_crt()
+    if Settings._disable_border: _disable_border()
     yield(_show_static(), "completed")
     $PostCreditsVideoPlayer.visible = false
     $CreditsVideoPlayer.play()
@@ -28,9 +29,11 @@ func _process(delta):
         _on_post_credits_video_player_finished()
 
 func _disable_crt():
+    $CrtCurtain.visible = false
+
+func _disable_border():
     var shift_diff = Vector2(20, 15)
     self.rect_position -= shift_diff
-    $CrtCurtain.visible = false    
 
 func _show_static():
     get_tree().call_group("audio_player", "play", "NoSignal")

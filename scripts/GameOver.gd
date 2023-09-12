@@ -9,6 +9,7 @@ onready var game_over_credits_3 = preload("res://scenes/GameOverCredits3.tscn")
 
 func _ready():
     if Settings.disable_crt: _disable_crt()
+    if Settings.disable_border: _disable_border()
     yield(_show_static(), "completed")
     var text
     match Global.ending:
@@ -61,9 +62,11 @@ func _on_ending_video_finished():
             Global.CAUGHT: get_tree().change_scene("res://scenes/Menu.tscn")
 
 func _disable_crt():
+    $CrtCurtain.visible = false
+
+func _disable_border():
     var shift_diff = Vector2(20, 15)
     self.rect_position -= shift_diff
-    $CrtCurtain.visible = false    
 
 func _process(delta):
     time += delta
