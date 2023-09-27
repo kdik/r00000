@@ -26,8 +26,12 @@ func _ready():
             get_tree().call_group("achievements", "unlock_theend")
         Global.CAUGHT:
             Global.ending_3_achieved = true
-            $VideoPlayer3.visible = true
-            $VideoPlayer3.play()
+            if $ControllerChecker.is_controller_connected():
+                $VideoPlayer6.visible = true
+                $VideoPlayer6.play()   
+            else:
+                $VideoPlayer3.visible = true
+                $VideoPlayer3.play()
             get_tree().call_group("achievements", "unlock_fullstop")
         Global.ROOTS:
             Global.ending_4_achieved = true
@@ -78,8 +82,10 @@ func _process(delta):
         if cheatcode_count == 3:
             $VideoPlayer5.play()
             $VideoPlayer5.visible = true
-            $VideoPlayer3.visible = true
+            $VideoPlayer3.visible = false
+            $VideoPlayer6.visible = false
             $VideoPlayer3.stop()
+            $VideoPlayer6.stop()
             get_tree().call_group("achievements", "unlock_getalife")
 
 func _show_static():

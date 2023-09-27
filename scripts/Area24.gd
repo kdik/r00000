@@ -5,7 +5,7 @@ onready var object_2 = $Object2
 onready var object_3 = $Object3
 
 func get_initial_rotation(previous_area):
-    return 30
+    return -150
 
 func get_description(object_number):
     match object_number:

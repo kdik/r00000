@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/DialoguePlayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://videos/player_no_quitting.ogv" type="VideoStream" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://videos/player_is_leave_possible.ogv" type="VideoStream" id=9]
 [ext_resource path="res://videos/player_whos_talking.ogv" type="VideoStream" id=10]
 [ext_resource path="res://videos/player_will_i_ever_break_free.ogv" type="VideoStream" id=11]
+[ext_resource path="res://videos/player_out_of_order.ogv" type="VideoStream" id=12]
 
 [node name="YouScreen" type="ColorRect"]
 margin_right = 680.0
@@ -68,3 +69,7 @@ frame_count = 32
 [node name="DialoguePlayer10" parent="." instance=ExtResource( 1 )]
 stream = ExtResource( 11 )
 frame_count = 55
+
+[node name="DialoguePlayer11" parent="." instance=ExtResource( 1 )]
+stream = ExtResource( 12 )
+frame_count = 21

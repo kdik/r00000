@@ -306,7 +306,7 @@ texture_path = "res://images/area1/area_1_object_2.png"
 
 [node name="Object3" parent="Areas/Area11" instance=ExtResource( 7 )]
 object_number = 3
-texture_path = "res://images/transparent.png"
+texture_path = "res://images/area1/area_1_object_3.png"
 
 [node name="Area12" type="Spatial" parent="Areas"]
 script = ExtResource( 82 )
@@ -458,7 +458,7 @@ texture_path = "res://images/area1/area_1_object_2.png"
 
 [node name="Object3" parent="Areas/Area21" instance=ExtResource( 7 )]
 object_number = 3
-texture_path = "res://images/transparent.png"
+texture_path = "res://images/area1/area_1_object_3.png"
 
 [node name="Area22" type="Spatial" parent="Areas"]
 script = ExtResource( 90 )
@@ -634,7 +634,7 @@ texture_path = "res://images/area1/area_1_object_2.png"
 
 [node name="Object3" parent="Areas/Area31" instance=ExtResource( 7 )]
 object_number = 3
-texture_path = "res://images/transparent.png"
+texture_path = "res://images/area1/area_1_object_3.png"
 
 [node name="Area32" type="Spatial" parent="Areas"]
 script = ExtResource( 15 )

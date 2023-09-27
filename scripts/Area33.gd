@@ -19,9 +19,12 @@ func get_description(object_number):
             else: return "go back"
         object_2.object_number: return "crawl deeper"
         object_3.object_number:
-            if not Global.door_3_open: return "open doors"
-            elif not Global.gate_3_open: return "open gates"
-            else: return "retake footage"
+            if Global.hide_and_seek_started and not Global.monster_defeated:
+                return "escape"
+            else:
+                if not Global.door_3_open: return "open doors"
+                elif not Global.gate_3_open: return "open gates"
+                else: return "retake footage"
         object_4.object_number: return "take batteries"
 
 func trigger_use(object_number):
