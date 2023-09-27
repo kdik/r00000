@@ -50,12 +50,8 @@ func trigger_use(object_number):
                 get_tree().call_group("audio_player", "play", "DoorLocked")
                 yield(say_monster(MonsterScreen.YOU_ARE_STUCK_WITH_ME), "completed")
         object_3.object_number:
-            if Global.batteries_removed:
-                yield(say_yourself(YouScreen.I_TOOK_THE_BATTERIES), "completed")
-            else:
-                Global.lights_on = not Global.lights_on
-                update_visibilities()
                 get_tree().call_group("audio_player", "play", "LightSwitch")
+                yield(say_yourself(YouScreen.OUT_OF_ORDER), "completed")
     yield(get_tree(), "idle_frame")
 
 func update_visibilities():

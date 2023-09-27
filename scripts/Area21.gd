@@ -28,12 +28,8 @@ func trigger_use(object_number):
         object_1.object_number: yield(switch_areas("Area22"), "completed")
         object_2.object_number: yield(say_yourself(YouScreen.NO_QUITTING), "completed")
         object_3.object_number: 
-            if Global.batteries_removed:
-                yield(say_yourself(YouScreen.I_TOOK_THE_BATTERIES), "completed")
-            else:
-                Global.lights_on = not Global.lights_on
-                update_visibilities()
-                get_tree().call_group("audio_player", "play", "LightSwitch")
+            get_tree().call_group("audio_player", "play", "LightSwitch")
+            yield(say_yourself(YouScreen.OUT_OF_ORDER), "completed")
     yield(get_tree(), "idle_frame")
 
 func update_visibilities():

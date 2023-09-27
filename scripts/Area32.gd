@@ -8,7 +8,6 @@ onready var object_4 = $Object4
 func play_fade_out(next_area):
     return next_area != "Area35"
 
-
 func get_initial_rotation(previous_area):
     if previous_area == "Area33": return 170
     else: return 0

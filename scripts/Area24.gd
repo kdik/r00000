@@ -6,6 +6,12 @@ onready var object_3 = $Object3
 
 func get_initial_rotation(previous_area):
     return -150
+    
+func init(previous_area):
+    if not Global.have_flashlight:
+        yield(say_yourself(YouScreen.SOMETHING_DOWN_THERE), "completed")
+        return
+    yield(get_tree(), "idle_frame")
 
 func get_description(object_number):
     match object_number:

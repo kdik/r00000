@@ -12,6 +12,7 @@ const WHOS_TALKING = 8
 const I_TOOK_THE_BATTERIES = 9
 const WILL_I_EVER_BREAK_FREE = 10
 const OUT_OF_ORDER = 11
+const SOMETHING_DOWN_THERE = 12
 
 var current_video_player
 
@@ -38,6 +39,7 @@ func _get_video_player(video_id):
         I_TOOK_THE_BATTERIES: return $DialoguePlayer9
         WILL_I_EVER_BREAK_FREE: return $DialoguePlayer10
         OUT_OF_ORDER: return $DialoguePlayer11
+        SOMETHING_DOWN_THERE: return $DialoguePlayer12
 
 func _on_video_player_finished():
     visible = false
