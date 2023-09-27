@@ -41,6 +41,7 @@ func on_use():
     get_tree().call_group("rumble", "play")
     if Global.actions_in_darkness > 3:
         Global.hide_and_seek_lost = true
+        get_tree().call_group("audio_player", "play", "EyesDefeat")
         yield(get_tree().create_timer(3), "timeout")
         get_tree().call_group("main", "game_over", Global.CAUGHT)
         get_tree().call_group("rumble", "stop")
