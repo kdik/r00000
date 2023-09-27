@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://sounds/actions/action.mp3" type="AudioStream" id=1]
 [ext_resource path="res://sounds/actions/footsteps.mp3" type="AudioStream" id=2]
@@ -14,7 +14,11 @@
 [ext_resource path="res://sounds/doors/door_metal.mp3" type="AudioStream" id=12]
 [ext_resource path="res://sounds/tv/no_signal.mp3" type="AudioStream" id=13]
 [ext_resource path="res://sounds/doors/door_closing.mp3" type="AudioStream" id=14]
+[ext_resource path="res://sounds/tv/delete_footage.mp3" type="AudioStream" id=15]
+[ext_resource path="res://sounds/tv/tv_menu_select.mp3" type="AudioStream" id=16]
 [ext_resource path="res://sounds/eyes/eye_flash.mp3" type="AudioStream" id=17]
+[ext_resource path="res://sounds/tv/tv_buzz.wav" type="AudioStream" id=18]
+[ext_resource path="res://sounds/tv/tv_off.mp3" type="AudioStream" id=19]
 
 [node name="AudioPlayer" type="Node"]
 script = ExtResource( 3 )
@@ -60,3 +64,15 @@ stream = ExtResource( 13 )
 
 [node name="EyesFlash" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 17 )
+
+[node name="DeleteFootage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+
+[node name="TvBuzz" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+
+[node name="TvMenuSelect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+
+[node name="TvOff" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )

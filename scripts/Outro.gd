@@ -7,6 +7,7 @@ func _ready():
     if Settings.disable_border: _disable_border()
     set_pause_mode(PAUSE_MODE_PROCESS)
     viewport_animation_player.play("turn_off")
+    get_tree().call_group("audio_player", "play", "TvOff")
     yield(get_tree().create_timer(viewport_animation_player.get_animation("turn_off").length + 0.5), "timeout")
     get_tree().quit()
 

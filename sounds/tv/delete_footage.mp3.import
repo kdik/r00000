@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/delete_footage.mp3-be17e6af2b41f000d73216f4ef1a7416.mp3str"
+
+[deps]
+
+source_file="res://sounds/tv/delete_footage.mp3"
+dest_files=[ "res://.import/delete_footage.mp3-be17e6af2b41f000d73216f4ef1a7416.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

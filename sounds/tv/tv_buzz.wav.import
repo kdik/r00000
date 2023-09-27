@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/static.wav-adf93241e2848f20240419c4fb16c405.sample"
+path="res://.import/tv_buzz.wav-b3c55264e7b13727a641117a058c1095.sample"
 
 [deps]
 
-source_file="res://sounds/tv/static.wav"
-dest_files=[ "res://.import/static.wav-adf93241e2848f20240419c4fb16c405.sample" ]
+source_file="res://sounds/tv/tv_buzz.wav"
+dest_files=[ "res://.import/tv_buzz.wav-b3c55264e7b13727a641117a058c1095.sample" ]
 
 [params]
 

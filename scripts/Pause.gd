@@ -37,6 +37,8 @@ func _update_selection(increment = 0):
     match selected_item:
         0: $Cursor.set_position(Vector2(600, 32))
         1: $Cursor.set_position(Vector2(600, 56))
+    if increment != 0:
+        get_tree().call_group("audio_player", "play", "TvMenuSelect", true)
     
 func _on_select():
     match selected_item:

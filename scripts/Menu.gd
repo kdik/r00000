@@ -35,8 +35,9 @@ func _update_selection(increment = 0):
         1: $Cursor.set_position(Vector2(620, 71))
         2: $Cursor.set_position(Vector2(620, 95))
         3: $Cursor.set_position(Vector2(620, 119))
-        
-    
+    if increment != 0:
+        get_tree().call_group("audio_player", "play", "TvMenuSelect", true)
+
 func _on_select():
     match selected_item:
         play_number: _play()
@@ -75,6 +76,7 @@ func _play():
 
 func _delete_footage():
     locked = true
+    get_tree().call_group("audio_player", "play", "DeleteFootage")
     if Global.ending_1_achieved and Global.ending_2_achieved and Global.ending_3_achieved and Global.ending_4_achieved:
         get_tree().call_group("achievements", "unlock_ocd")
     yield($MenuFilter.start_playing(), "completed")
