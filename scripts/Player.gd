@@ -108,6 +108,7 @@ func turn_on_flashlight():
     
 func turn_off_flashlight():
     $Flashlight.visible = false
+    get_tree().call_group("audio_player", "play", "FlashlightOn")
     
 func show_middle_finger():
     $Cursor/LeftHand.visible = false

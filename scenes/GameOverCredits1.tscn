@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/GameOverCredits.gd" type="Script" id=1]
 [ext_resource path="res://videos/post_credits_1.ogv" type="VideoStream" id=2]
 [ext_resource path="res://videos/credits.ogv" type="VideoStream" id=3]
 [ext_resource path="res://images/static.png" type="Texture" id=4]
 [ext_resource path="res://materials/crt.material" type="Material" id=5]
+[ext_resource path="res://sounds/endings/credits.mp3" type="AudioStream" id=6]
 
 [node name="GameOverCredits1" type="Control"]
 script = ExtResource( 1 )
@@ -24,6 +25,9 @@ expand = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CreditsVideoPlayer"]
+stream = ExtResource( 6 )
 
 [node name="PostCreditsVideoPlayer" type="VideoPlayer" parent="."]
 margin_left = 20.0

@@ -17,12 +17,14 @@ func _ready():
             Global.ending_1_achieved = true
             $VideoPlayer1.visible = true
             $VideoPlayer1.play()
+            $VideoPlayer1/AudioStreamPlayer.play()
             get_tree().call_group("achievements", "unlock_themonsterinme")
         Global.ESCAPE:
             Global.ending_2_achieved = true
             Global.basement_escaped = true
             $VideoPlayer2.visible = true
             $VideoPlayer2.play()
+            $VideoPlayer2/AudioStreamPlayer.play()
             get_tree().call_group("achievements", "unlock_theend")
         Global.CAUGHT:
             Global.ending_3_achieved = true
@@ -32,6 +34,7 @@ func _ready():
             else:
                 $VideoPlayer3.visible = true
                 $VideoPlayer3.play()
+            $VideoPlayer3/AudioStreamPlayer.play()
             get_tree().call_group("achievements", "unlock_fullstop")
         Global.ROOTS:
             Global.ending_4_achieved = true
@@ -41,7 +44,11 @@ func _ready():
             get_tree().call_group("achievements", "unlock_onemoretake")
 
 func _on_ending_video_finished():
-    if Global.ending == Global.ROOTS: $VideoPlayer4/AudioStreamPlayer.stop()
+    match Global.ending:
+        Global.BECOME_EVIL: $VideoPlayer1/AudioStreamPlayer.stop()
+        Global.ESCAPE: $VideoPlayer2/AudioStreamPlayer.stop()
+        Global.CAUGHT: $VideoPlayer3/AudioStreamPlayer.stop()
+        Global.ROOTS: $VideoPlayer4/AudioStreamPlayer.stop()
     if Global.ending == Global.CAUGHT and cheatcode_count >= 3:
         Global.takes += 1
         Global.lights_on = true

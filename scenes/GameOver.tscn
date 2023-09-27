@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/GameOver.gd" type="Script" id=1]
 [ext_resource path="res://videos/after_cheat_1.ogv" type="VideoStream" id=2]
@@ -11,6 +11,9 @@
 [ext_resource path="res://sounds/endings/static.wav" type="AudioStream" id=9]
 [ext_resource path="res://videos/ending_3_controller.ogv" type="VideoStream" id=10]
 [ext_resource path="res://scripts/ControllerChecker.gd" type="Script" id=11]
+[ext_resource path="res://sounds/endings/ending_1.mp3" type="AudioStream" id=12]
+[ext_resource path="res://sounds/endings/ending_3.mp3" type="AudioStream" id=13]
+[ext_resource path="res://sounds/endings/ending_2.mp3" type="AudioStream" id=14]
 
 [node name="GameOver" type="Control"]
 script = ExtResource( 1 )
@@ -32,6 +35,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VideoPlayer1"]
+stream = ExtResource( 12 )
+
 [node name="VideoPlayer2" type="VideoPlayer" parent="."]
 visible = false
 margin_left = 20.0
@@ -44,6 +50,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VideoPlayer2"]
+stream = ExtResource( 14 )
+
 [node name="VideoPlayer3" type="VideoPlayer" parent="."]
 visible = false
 margin_left = 20.0
@@ -55,6 +64,9 @@ expand = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VideoPlayer3"]
+stream = ExtResource( 13 )
 
 [node name="VideoPlayer4" type="VideoPlayer" parent="."]
 visible = false

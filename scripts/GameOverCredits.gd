@@ -9,9 +9,11 @@ func _ready():
     yield(_show_static(), "completed")
     $PostCreditsVideoPlayer.visible = false
     $CreditsVideoPlayer.play()
+    $CreditsVideoPlayer/AudioStreamPlayer.play()
     while not credits_finished:
         yield(get_tree(), "idle_frame")
     yield(_show_static(), "completed")
+    $CreditsVideoPlayer/AudioStreamPlayer.stop()
     $PostCreditsVideoPlayer.play()
     $CreditsVideoPlayer.visible = false
     $PostCreditsVideoPlayer.visible = true
@@ -36,6 +38,7 @@ func _disable_border():
     self.rect_position -= shift_diff
 
 func _show_static():
+    $CreditsVideoPlayer/AudioStreamPlayer.stop()
     get_tree().call_group("audio_player", "play", "NoSignal")
     $Static.visible = true
     yield(get_tree().create_timer(1.5), "timeout")

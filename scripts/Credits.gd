@@ -4,6 +4,7 @@ onready var menu_scene = preload("res://scenes/Menu.tscn")
 
 func _ready():
     $VideoPlayer.play()
+    $VideoPlayer/AudioStreamPlayer.play()
 
 func _on_video_player_finished():
     get_tree().change_scene_to(menu_scene)
