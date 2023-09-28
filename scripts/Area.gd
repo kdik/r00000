@@ -61,6 +61,8 @@ func rotate_self_on_start(rotation_deg):
 func on_enter(previous_area):
     get_tree().call_group("view_dome", "set_initial_rotation", get_initial_rotation(previous_area))
     get_tree().call_group("object_dome", "set_initial_rotation", get_initial_rotation(previous_area))
+    get_tree().call_group("decal_dome", "set_initial_rotation", get_initial_rotation(previous_area))
+    get_tree().call_group("decal_dome", "clear")
     rotate_self_on_start(get_initial_rotation(previous_area))
     update_visibilities()
     add_to_group("area")

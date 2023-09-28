@@ -1,6 +1,5 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scripts/Graffiti.gd" type="Script" id=1]
 [ext_resource path="res://images/area3/graffiti.png" type="Texture" id=2]
 
 [sub_resource type="SpatialMaterial" id=1]
@@ -14,7 +13,18 @@ material = SubResource( 1 )
 radius = 9.99
 height = 19.98
 
+[sub_resource type="GDScript" id=3]
+script/source = "extends Spatial
+
+export(String) var texture_path = \"\"
+
+func set_visibility(show):
+    #if show:
+    #    get_tree().call_group(\"decal_dome\", \"show_texture\", texture_path)
+    pass
+"
+
 [node name="Graffiti" type="MeshInstance"]
 process_priority = -2
 mesh = SubResource( 2 )
-script = ExtResource( 1 )
+script = SubResource( 3 )
