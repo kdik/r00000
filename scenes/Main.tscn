@@ -679,6 +679,15 @@ texture_path = "res://images/area2/area_2_dark_view_door_2_door_3_open.jpg"
 [node name="ViewDarkDoor2Door3Gate3Open" parent="Areas/Area32" instance=ExtResource( 8 )]
 texture_path = "res://images/area2/area_2_dark_view_door_2_door_3_gate_3_open.jpg"
 
+[node name="DecalTagIn" parent="Areas/Area32" instance=ExtResource( 13 )]
+texture_path = "res://images/area2/tag_in.png"
+
+[node name="DecalTagYour" parent="Areas/Area32" instance=ExtResource( 13 )]
+texture_path = "res://images/area2/tag_your.png"
+
+[node name="DecalTagHead" parent="Areas/Area32" instance=ExtResource( 13 )]
+texture_path = "res://images/area2/tag_head.png"
+
 [node name="Object1" parent="Areas/Area32" instance=ExtResource( 7 )]
 texture_path = "res://images/area2/area_2_object_1.png"
 
@@ -741,6 +750,15 @@ texture_path = "res://images/area3/graffiti.png"
 
 [node name="DecalFlashlight" parent="Areas/Area33" instance=ExtResource( 13 )]
 texture_path = "res://images/area3/flashlight.png"
+
+[node name="DecalTagIn" parent="Areas/Area33" instance=ExtResource( 13 )]
+texture_path = "res://images/area3/tag_in.png"
+
+[node name="DecalTagYour" parent="Areas/Area33" instance=ExtResource( 13 )]
+texture_path = "res://images/area3/tag_your.png"
+
+[node name="DecalTagHead" parent="Areas/Area33" instance=ExtResource( 13 )]
+texture_path = "res://images/area3/tag_head.png"
 
 [node name="Object1" parent="Areas/Area33" instance=ExtResource( 7 )]
 texture_path = "res://images/area3/area_3_object_1.png"

@@ -78,6 +78,7 @@ func update_visibilities():
     $ViewDarkDoor2Open.set_visibility(not Global.lights_on and not Global.door_3_open and not Global.gate_3_open and Global.door_2_open)
     $ViewDarkDoor2Door3Open.set_visibility(not Global.lights_on and Global.door_3_open and not Global.gate_3_open and Global.door_2_open)
     $ViewDarkDoor2Door3Gate3Open.set_visibility(not Global.lights_on and Global.door_3_open and Global.gate_3_open and Global.door_2_open)
+    get_tree().call_group("decal_dome", "clear")
     $DecalGraffiti.set_visibility(Global.lights_on)
     $DecalFlashlight.set_visibility(Global.lights_on and not Global.have_flashlight)
     get_tree().call_group("object_dome", "clear")

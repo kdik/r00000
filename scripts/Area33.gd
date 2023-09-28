@@ -57,6 +57,7 @@ func trigger_use(object_number):
                 var hide_and_seek_started = Global.hide_and_seek_started
                 Global.takes += 1
                 Global.loops_completed += 1
+                if Global.monster_defeated: Global.loops_completed_after_defeating_monster += 1
                 if not Global.monster_defeated: Global.lights_on = true
                 Global.reset_single_loop()
                 switch_areas("Area31")
@@ -115,8 +116,12 @@ func update_visibilities():
     $ViewDarkDoor2Open.set_visibility(not Global.lights_on and not Global.door_3_open and not Global.gate_3_open and Global.door_2_open)
     $ViewDarkDoor2Door3Open.set_visibility(not Global.lights_on and Global.door_3_open and not Global.gate_3_open and Global.door_2_open)
     $ViewDarkDoor2Door3Gate3Open.set_visibility(not Global.lights_on and Global.door_3_open and Global.gate_3_open and Global.door_2_open)
+    get_tree().call_group("decal_dome", "clear")
     $DecalGraffiti.set_visibility(Global.lights_on)
     $DecalFlashlight.set_visibility(Global.lights_on and not Global.have_flashlight)
+    $DecalTagIn.set_visibility(Global.monster_defeated and Global.loops_completed_after_defeating_monster == 1)
+    $DecalTagYour.set_visibility(Global.monster_defeated and Global.loops_completed_after_defeating_monster == 2)
+    $DecalTagHead.set_visibility(Global.monster_defeated and Global.loops_completed_after_defeating_monster == 3)
     $Monster.visible = not Global.lights_on and Global.door_2_open and not Global.monster_defeated and not Global.hide_and_seek_started
     get_tree().call_group("object_dome", "clear")
     object_1.set_visibility(true)

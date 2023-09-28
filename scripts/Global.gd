@@ -13,6 +13,7 @@ var area = "Area11"
 var have_flashlight = false
 var battery_count = 0
 var loops_completed = 0
+var loops_completed_after_defeating_monster = 0
 var flashlight_on = false
 var ending = null
 var monster_defeated = false
@@ -53,6 +54,7 @@ func reset():
     have_flashlight = false
     battery_count = 0
     loops_completed = 0
+    loops_completed_after_defeating_monster = 0
     flashlight_on = false
     monster_defeated = false
     lights_on = true    
