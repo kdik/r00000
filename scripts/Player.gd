@@ -79,10 +79,10 @@ func _update_hand_position(previous_object_number, current_object_number):
         get_tree().call_group("left_hand", "close")
         
 func _update_subtitles(previous_object_number, current_object_number):
-    if previous_object_number == 0 and current_object_number > 0:
-        get_tree().call_group("area", "on_interact", current_object_number)
-    elif previous_object_number != 0 and current_object_number == 0:
+    if current_object_number == 0 and previous_object_number != 0:
         get_tree().call_group("player_subtitles", "fade_out")
+    if current_object_number != 0 and previous_object_number != current_object_number:
+        get_tree().call_group("area", "on_interact", current_object_number)
 
 func acquire_flashlight():
     Global.have_flashlight = true
