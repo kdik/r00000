@@ -350,18 +350,19 @@ texture_path = "res://images/area2/area_2_dark_view_door_2_door_3_open.jpg"
 texture_path = "res://images/area2/area_2_dark_view_door_2_door_3_gate_3_open.jpg"
 
 [node name="Object1" parent="Areas/Area12" instance=ExtResource( 7 )]
+object_number = 4
 texture_path = "res://images/area2/area_2_object_1.png"
 
 [node name="Object2" parent="Areas/Area12" instance=ExtResource( 7 )]
-object_number = 2
+object_number = 5
 texture_path = "res://images/area2/area_2_object_2.png"
 
 [node name="Object3" parent="Areas/Area12" instance=ExtResource( 7 )]
-object_number = 3
+object_number = 6
 texture_path = "res://images/area2/area_2_object_3.png"
 
 [node name="Object4" parent="Areas/Area12" instance=ExtResource( 7 )]
-object_number = 4
+object_number = 7
 texture_path = "res://images/area2/area_2_object_4.png"
 
 [node name="Area13" type="Spatial" parent="Areas"]
@@ -404,18 +405,19 @@ texture_path = "res://images/area3/area_3_dark_view_door_2_door_3_open.jpg"
 texture_path = "res://images/area3/area_3_dark_view_door_2_door_3_gate_3_open.jpg"
 
 [node name="Object1" parent="Areas/Area13" instance=ExtResource( 7 )]
+object_number = 8
 texture_path = "res://images/area3/area_3_object_1.png"
 
 [node name="Object2" parent="Areas/Area13" instance=ExtResource( 7 )]
-object_number = 2
+object_number = 9
 texture_path = "res://images/area3/area_3_object_2.png"
 
 [node name="Object3" parent="Areas/Area13" instance=ExtResource( 7 )]
-object_number = 3
+object_number = 10
 texture_path = "res://images/area3/area_3_object_3.png"
 
 [node name="Object4" parent="Areas/Area13" instance=ExtResource( 7 )]
-object_number = 4
+object_number = 11
 texture_path = "res://images/area3/area_3_object_4.png"
 
 [node name="Area14" type="Spatial" parent="Areas"]
@@ -434,6 +436,7 @@ texture_path = "res://images/area4/area_4_dark_view.jpg"
 texture_path = "res://images/area4/area_4_dark_view_door_3_open.jpg"
 
 [node name="Object1" parent="Areas/Area14" instance=ExtResource( 7 )]
+object_number = 12
 texture_path = "res://images/area4/area_4_object_1.png"
 
 [node name="Area21" type="Spatial" parent="Areas"]
@@ -452,14 +455,15 @@ texture_path = "res://images/area1/area_1_dark_view.jpg"
 texture_path = "res://images/area1/area_1_dark_view_door_2_open.jpg"
 
 [node name="Object1" parent="Areas/Area21" instance=ExtResource( 7 )]
+object_number = 13
 texture_path = "res://images/area1/area_1_object_1.png"
 
 [node name="Object2" parent="Areas/Area21" instance=ExtResource( 7 )]
-object_number = 2
+object_number = 14
 texture_path = "res://images/area1/area_1_object_2.png"
 
 [node name="Object3" parent="Areas/Area21" instance=ExtResource( 7 )]
-object_number = 3
+object_number = 15
 texture_path = "res://images/area1/area_1_object_3.png"
 
 [node name="Area22" type="Spatial" parent="Areas"]
@@ -502,18 +506,19 @@ texture_path = "res://images/area2/area_2_dark_view_door_2_door_3_open.jpg"
 texture_path = "res://images/area2/area_2_dark_view_door_2_door_3_gate_3_open.jpg"
 
 [node name="Object1" parent="Areas/Area22" instance=ExtResource( 7 )]
+object_number = 16
 texture_path = "res://images/area2/area_2_object_1.png"
 
 [node name="Object2" parent="Areas/Area22" instance=ExtResource( 7 )]
-object_number = 2
+object_number = 17
 texture_path = "res://images/area2/area_2_object_2.png"
 
 [node name="Object3" parent="Areas/Area22" instance=ExtResource( 7 )]
-object_number = 3
+object_number = 18
 texture_path = "res://images/area2/area_2_object_3.png"
 
 [node name="Object4" parent="Areas/Area22" instance=ExtResource( 7 )]
-object_number = 4
+object_number = 19
 texture_path = "res://images/area2/area_2_object_4.png"
 
 [node name="Area23" type="Spatial" parent="Areas"]
@@ -562,18 +567,19 @@ texture_path = "res://images/area3/graffiti.png"
 texture_path = "res://images/area3/flashlight.png"
 
 [node name="Object1" parent="Areas/Area23" instance=ExtResource( 7 )]
+object_number = 20
 texture_path = "res://images/area3/area_3_object_1.png"
 
 [node name="Object2" parent="Areas/Area23" instance=ExtResource( 7 )]
-object_number = 2
+object_number = 21
 texture_path = "res://images/area3/area_3_object_2.png"
 
 [node name="Object3" parent="Areas/Area23" instance=ExtResource( 7 )]
-object_number = 3
+object_number = 22
 texture_path = "res://images/area3/area_3_object_3.png"
 
 [node name="Object4" parent="Areas/Area23" instance=ExtResource( 7 )]
-object_number = 4
+object_number = 23
 texture_path = "res://images/area3/area_3_object_4.png"
 
 [node name="Area24" type="Spatial" parent="Areas"]
@@ -598,14 +604,15 @@ texture_path = "res://images/area4/graffiti.png"
 texture_path = "res://images/area4/flashlight.png"
 
 [node name="Object1" parent="Areas/Area24" instance=ExtResource( 7 )]
+object_number = 24
 texture_path = "res://images/area4/area_4_object_1.png"
 
 [node name="Object2" parent="Areas/Area24" instance=ExtResource( 7 )]
-object_number = 2
+object_number = 25
 texture_path = "res://images/area4/area_4_object_2.png"
 
 [node name="Object3" parent="Areas/Area24" instance=ExtResource( 7 )]
-object_number = 3
+object_number = 26
 texture_path = "res://images/area4/area_4_object_3.png"
 
 [node name="Area31" type="Spatial" parent="Areas"]
@@ -630,14 +637,15 @@ texture_path = "res://images/area1/area_1_dark_view_escape.jpg"
 visible = false
 
 [node name="Object1" parent="Areas/Area31" instance=ExtResource( 7 )]
+object_number = 27
 texture_path = "res://images/area1/area_1_object_1.png"
 
 [node name="Object2" parent="Areas/Area31" instance=ExtResource( 7 )]
-object_number = 2
+object_number = 28
 texture_path = "res://images/area1/area_1_object_2.png"
 
 [node name="Object3" parent="Areas/Area31" instance=ExtResource( 7 )]
-object_number = 3
+object_number = 29
 texture_path = "res://images/area1/area_1_object_3.png"
 
 [node name="Area32" type="Spatial" parent="Areas"]
@@ -689,18 +697,19 @@ texture_path = "res://images/area2/tag_your.png"
 texture_path = "res://images/area2/tag_head.png"
 
 [node name="Object1" parent="Areas/Area32" instance=ExtResource( 7 )]
+object_number = 30
 texture_path = "res://images/area2/area_2_object_1.png"
 
 [node name="Object2" parent="Areas/Area32" instance=ExtResource( 7 )]
-object_number = 2
+object_number = 31
 texture_path = "res://images/area2/area_2_object_2.png"
 
 [node name="Object3" parent="Areas/Area32" instance=ExtResource( 7 )]
-object_number = 3
+object_number = 32
 texture_path = "res://images/area2/area_2_object_3.png"
 
 [node name="Object4" parent="Areas/Area32" instance=ExtResource( 7 )]
-object_number = 4
+object_number = 33
 texture_path = "res://images/area2/area_2_object_4.png"
 
 [node name="Monster" parent="Areas/Area32" instance=ExtResource( 26 )]
@@ -761,18 +770,19 @@ texture_path = "res://images/area3/tag_your.png"
 texture_path = "res://images/area3/tag_head.png"
 
 [node name="Object1" parent="Areas/Area33" instance=ExtResource( 7 )]
+object_number = 34
 texture_path = "res://images/area3/area_3_object_1.png"
 
 [node name="Object2" parent="Areas/Area33" instance=ExtResource( 7 )]
-object_number = 2
+object_number = 35
 texture_path = "res://images/area3/area_3_object_2.png"
 
 [node name="Object3" parent="Areas/Area33" instance=ExtResource( 7 )]
-object_number = 3
+object_number = 36
 texture_path = "res://images/area3/area_3_object_3.png"
 
 [node name="Object4" parent="Areas/Area33" instance=ExtResource( 7 )]
-object_number = 4
+object_number = 37
 texture_path = "res://images/area3/area_3_object_4.png"
 
 [node name="Monster" parent="Areas/Area33" instance=ExtResource( 26 )]
@@ -800,14 +810,15 @@ texture_path = "res://images/area4/graffiti.png"
 texture_path = "res://images/area4/flashlight.png"
 
 [node name="Object1" parent="Areas/Area34" instance=ExtResource( 7 )]
+object_number = 38
 texture_path = "res://images/area4/area_4_object_1.png"
 
 [node name="Object2" parent="Areas/Area34" instance=ExtResource( 7 )]
-object_number = 2
+object_number = 39
 texture_path = "res://images/area4/area_4_object_2.png"
 
 [node name="Object3" parent="Areas/Area34" instance=ExtResource( 7 )]
-object_number = 3
+object_number = 40
 texture_path = "res://images/area4/area_4_object_3.png"
 
 [node name="Area35" type="Spatial" parent="Areas"]
