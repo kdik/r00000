@@ -87,6 +87,7 @@ func _process(delta):
         cheatcode_count += 1
         get_tree().call_group("audio_player", "play", "PhoneDial", true)
         if cheatcode_count == 3:
+            $VideoPlayer3/AudioStreamPlayer.stop()
             $VideoPlayer5.play()
             $VideoPlayer5.visible = true
             $VideoPlayer3.visible = false
