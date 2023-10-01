@@ -31,6 +31,7 @@ func trigger_use(object_number):
     match object_number:
         object_1.object_number:
             if not Global.door_2_open:
+                get_tree().call_group("audio_player", "play", "DoorRegular")
                 Global.door_2_open = true
                 update_visibilities()
             else:

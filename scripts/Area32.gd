@@ -38,6 +38,7 @@ func trigger_use(object_number):
                 if Global.door_2_open:
                     yield(switch_areas("Area35"), "completed")
                 else:
+                    get_tree().call_group("audio_player", "play", "DoorRegular")
                     Global.door_2_open = true
                     update_visibilities()
             elif _should_illuminate_monster():
@@ -57,6 +58,7 @@ func trigger_use(object_number):
                 if Global.hide_and_seek_started:
                     yield(say_monster(MonsterScreen.IM_HERE_DONT_YOU_SEE), "completed")
                 else:
+                    get_tree().call_group("audio_player", "play", "DoorRegular")
                     Global.lights_on = false
                     Global.door_2_open = true
                     update_visibilities()
