@@ -6,8 +6,6 @@ var rotation_y = 0
 var object_in_sight_number = 0
 var actions_locked = false
 var movement_locked = false
-onready var hidden_detector_viewport = $HiddenDetectorViewport
-onready var hidden_detector_camera = $HiddenDetectorViewport/HiddenDetectorCamera
 
 func _ready():
     add_to_group("player")
@@ -57,20 +55,22 @@ func update_rotation():
     transform.basis = Basis()
     rotate_x(rotation_x)
     rotate_y(rotation_y)
-    hidden_detector_camera.transform.basis = Basis()
-    hidden_detector_camera.rotate_x(rotation_x)
-    hidden_detector_camera.rotate_y(rotation_y)
-    
+    get_tree().call_group("hidden_detector_camera", "rotate_with_main_camera", rotation_x, rotation_y)
+
 func check_crosshairs():
-    var pixel_data = hidden_detector_viewport.get_texture().get_data()
-    pixel_data.lock()
     var previous_object_in_sight_number = object_in_sight_number
-    var current_object_in_sight_number = int(pixel_data.get_pixel(320, 240).a)
+    var current_object_in_sight_number = _get_oject_in_sight()
     object_in_sight_number = current_object_in_sight_number
-    pixel_data.unlock()  
     if not actions_locked: 
         _update_hand_position(previous_object_in_sight_number, current_object_in_sight_number)
         _update_subtitles(previous_object_in_sight_number, current_object_in_sight_number)
+        
+func _get_oject_in_sight():
+    if ($HiddenDetector1.object_in_sight()): return 1
+    elif ($HiddenDetector2.object_in_sight()): return 2
+    elif ($HiddenDetector3.object_in_sight()): return 3
+    elif ($HiddenDetector4.object_in_sight()): return 4
+    else: return 0
     
 func _update_hand_position(previous_object_number, current_object_number):
     if current_object_number > 0:

@@ -4,14 +4,11 @@ func _ready():
     add_to_group("object_dome")
 
 func add_object(texture_path, object_number):
-    if $Dome1.is_free():
-        $Dome1.show_object(texture_path, object_number)
-    elif $Dome2.is_free():
-        $Dome2.show_object(texture_path, object_number)
-    elif $Dome3.is_free():
-        $Dome3.show_object(texture_path, object_number)
-    elif $Dome4.is_free():
-        $Dome4.show_object(texture_path, object_number)
+    match object_number:
+        1: $Dome1.show_object(texture_path)
+        2: $Dome2.show_object(texture_path)
+        3: $Dome3.show_object(texture_path)
+        4: $Dome4.show_object(texture_path)
 
 func clear():
     $Dome1.clear()
