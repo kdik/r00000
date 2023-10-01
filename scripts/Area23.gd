@@ -6,7 +6,7 @@ onready var object_3 = $Object3
 onready var object_4 = $Object4
 
 func play_fade_out(next_area):
-    return next_area != "Area31" and (Global.have_flashlight or next_area != "Area24")
+    return next_area != "Area31" and (Global.have_flashlight or next_area != "Area24" or not Global.lights_on)
 
 func get_initial_rotation(previous_area):
     if previous_area == "Area22": return 135

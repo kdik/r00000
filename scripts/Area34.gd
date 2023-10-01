@@ -8,7 +8,7 @@ func get_initial_rotation(previous_area):
     return -150
     
 func init(previous_area):
-    if not Global.have_flashlight:
+    if not Global.have_flashlight and Global.lights_on:
         yield(say_yourself(YouScreen.SOMETHING_DOWN_THERE), "completed")
         return
     yield(get_tree(), "idle_frame")
