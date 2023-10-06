@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/GameOver.gd" type="Script" id=1]
 [ext_resource path="res://videos/after_cheat_1.ogv" type="VideoStream" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://sounds/endings/ending_1.mp3" type="AudioStream" id=12]
 [ext_resource path="res://sounds/endings/ending_3.mp3" type="AudioStream" id=13]
 [ext_resource path="res://sounds/endings/ending_2.mp3" type="AudioStream" id=14]
+[ext_resource path="res://videos/555_pickup.ogv" type="VideoStream" id=15]
 
 [node name="GameOver" type="Control"]
 script = ExtResource( 1 )
@@ -106,6 +107,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="VideoPlayer7" type="VideoPlayer" parent="."]
+visible = false
+margin_left = 20.0
+margin_top = 15.0
+margin_right = 660.0
+margin_bottom = 495.0
+stream = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Static" type="TextureRect" parent="."]
 margin_left = 20.0
 margin_top = 15.0
@@ -131,5 +143,6 @@ script = ExtResource( 11 )
 [connection signal="finished" from="VideoPlayer2" to="." method="_on_ending_video_finished"]
 [connection signal="finished" from="VideoPlayer3" to="." method="_on_ending_video_finished"]
 [connection signal="finished" from="VideoPlayer4" to="." method="_on_ending_video_finished"]
-[connection signal="finished" from="VideoPlayer5" to="." method="_on_ending_video_finished"]
+[connection signal="finished" from="VideoPlayer5" to="." method="_on_after_cheat_video_2_finished"]
 [connection signal="finished" from="VideoPlayer6" to="." method="_on_ending_video_finished"]
+[connection signal="finished" from="VideoPlayer7" to="." method="_on_after_cheat_video_1_finished"]

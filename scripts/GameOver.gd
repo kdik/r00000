@@ -49,17 +49,7 @@ func _on_ending_video_finished():
         Global.ESCAPE: $VideoPlayer2/AudioStreamPlayer.stop()
         Global.CAUGHT: $VideoPlayer3/AudioStreamPlayer.stop()
         Global.ROOTS: $VideoPlayer4/AudioStreamPlayer.stop()
-    if Global.ending == Global.CAUGHT and cheatcode_count >= 3:
-        Global.takes += 1
-        Global.lights_on = true
-        Global.reset_single_loop()
-        Global.used_cheat_code = true
-        SaveLoad.save()
-        $Static.visible = true
-        get_tree().call_group("audio_player", "play", "NoSignal")        
-        yield(get_tree(), "idle_frame")
-        get_tree().change_scene("res://scenes/Main.tscn")
-    else: 
+    if not (Global.ending == Global.CAUGHT and cheatcode_count >= 3):
         Global.takes += 1
         Global.reset()
         SaveLoad.save()
@@ -72,6 +62,23 @@ func _on_ending_video_finished():
             Global.BECOME_EVIL: get_tree().change_scene_to(game_over_credits_3)
             Global.CAUGHT: get_tree().change_scene("res://scenes/Main.tscn")
 
+func _on_after_cheat_video_1_finished():
+    $VideoPlayer5.play()
+    $VideoPlayer5.visible = true
+    $VideoPlayer7.visible = false
+    $VideoPlayer7.stop()
+    
+func _on_after_cheat_video_2_finished():
+    Global.takes += 1
+    Global.lights_on = true
+    Global.reset_single_loop()
+    Global.used_cheat_code = true
+    SaveLoad.save()
+    $Static.visible = true
+    get_tree().call_group("audio_player", "play", "NoSignal")        
+    yield(get_tree(), "idle_frame")
+    get_tree().change_scene("res://scenes/Main.tscn")
+    
 func _disable_crt():
     $CrtCurtain.visible = false
 
@@ -88,8 +95,8 @@ func _process(delta):
         get_tree().call_group("audio_player", "play", "PhoneDial", true)
         if cheatcode_count == 3:
             $VideoPlayer3/AudioStreamPlayer.stop()
-            $VideoPlayer5.play()
-            $VideoPlayer5.visible = true
+            $VideoPlayer7.play()
+            $VideoPlayer7.visible = true
             $VideoPlayer3.visible = false
             $VideoPlayer6.visible = false
             $VideoPlayer3.stop()
