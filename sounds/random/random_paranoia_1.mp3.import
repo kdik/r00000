@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/random_paranoia_1.mp3-2f163fc3cbdce628233f76bd29a8c659.mp3str"
+
+[deps]
+
+source_file="res://sounds/random/random_paranoia_1.mp3"
+dest_files=[ "res://.import/random_paranoia_1.mp3-2f163fc3cbdce628233f76bd29a8c659.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
