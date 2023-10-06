@@ -2,6 +2,7 @@ extends Node
 
 func _ready():
     add_to_group("audio_player")
+    set_pause_mode(PAUSE_MODE_PROCESS)
 
 func play(sound_name, force = false):
     for child_node in get_children():
