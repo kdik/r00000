@@ -61,6 +61,8 @@ func trigger_use(object_number):
                 if not Global.monster_defeated: Global.lights_on = true
                 Global.reset_single_loop()
                 switch_areas("Area31")
+                get_tree().call_group("monster_eyes", "stop_showing")
+                get_tree().call_group("filter", "stop_playing")
                 if Global.monster_defeated:
                     yield(say_yourself(YouScreen.FUCK_THIS_FOOTAGE), "completed")
                     yield($"../../Rewind".play($"../../Rewind".VIDEO_4), "completed")
@@ -71,10 +73,11 @@ func trigger_use(object_number):
                     yield(say_monster(MonsterScreen.BE_BETTER_YOU_HAVE_TO_BE_BETTER), "completed")
                     if Global.lights_on: yield($"../../Rewind".play($"../../Rewind".VIDEO_1), "completed")
                     else: yield($"../../Rewind".play($"../../Rewind".VIDEO_1_1), "completed")
-                yield(show_blue_screen(), "completed")
-                get_tree().call_group("monster_eyes", "stop_showing")
-                get_tree().call_group("filter", "stop_playing")
                 get_tree().call_group("rumble", "stop")
+                get_tree().call_group("gameplay_audio_player", "stop", "Eyes1")
+                get_tree().call_group("gameplay_audio_player", "stop", "Eyes2")
+                get_tree().call_group("gameplay_audio_player", "stop", "Eyes3")
+                yield(show_blue_screen(), "completed")
         object_4.object_number:
             if Global.battery_count < 3:
                 Global.batteries_removed = true
