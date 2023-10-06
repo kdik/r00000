@@ -12,12 +12,14 @@ func _ready():
 func pause():
     visible = true
     get_tree().call_group("rumble", "pause")
+    get_tree().call_group("audio_player", "play", "TvBuzz")
     
 func resume():
     visible = false
     get_tree().paused = false
     get_tree().call_group("rumble", "resume")    
-    
+    get_tree().call_group("audio_player", "stop", "TvBuzz")
+
 func go_to_menu():
     get_tree().paused = false
     get_tree().change_scene("res://scenes/Menu.tscn")

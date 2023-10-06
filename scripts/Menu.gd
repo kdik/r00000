@@ -17,6 +17,7 @@ func _ready():
     _set_selection_text()
     _update_selection()
     get_tree().call_group("audio_player", "stop", "NoSignal")
+    get_tree().call_group("audio_player", "play", "TvBuzz")
 
 func _to_code(number):
     if number < 10: return "R0000" + str(number)
@@ -41,9 +42,9 @@ func _update_selection(increment = 0):
 func _on_select():
     match selected_item:
         play_number: _play()
-        eject_number: get_tree().change_scene("res://scenes/Outro.tscn")
+        eject_number: _eject()
         delete_footage_number: _delete_footage()
-        credits_number: get_tree().change_scene("res://scenes/Credits.tscn")
+        credits_number: _credits()
         
 func _set_selection_text():
     var text = ""
@@ -69,10 +70,18 @@ func _set_selection_text():
     $SelectionLabel.set_bbcode(text)
 
 func _play():
+    get_tree().call_group("audio_player", "stop", "TvBuzz")
     if Global.area == "Area11":
         locked = true
         yield($VideoIntro.play_introduction(), "completed")
     get_tree().change_scene_to(game_scene)
+
+func _eject():
+    get_tree().change_scene("res://scenes/Outro.tscn")
+    
+func _credits():
+    get_tree().call_group("audio_player", "stop", "TvBuzz")
+    get_tree().change_scene("res://scenes/Credits.tscn")
 
 func _delete_footage():
     locked = true
