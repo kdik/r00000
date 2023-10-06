@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/insert_tape.mp3-541cac6db8a53c8f8845fa0152e9c647.mp3str"
+
+[deps]
+
+source_file="res://sounds/tv/insert_tape.mp3"
+dest_files=[ "res://.import/insert_tape.mp3-541cac6db8a53c8f8845fa0152e9c647.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

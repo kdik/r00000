@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://sounds/actions/action.mp3" type="AudioStream" id=1]
 [ext_resource path="res://sounds/actions/footsteps.mp3" type="AudioStream" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://sounds/tv/tv_buzz.wav" type="AudioStream" id=18]
 [ext_resource path="res://sounds/tv/tv_off.mp3" type="AudioStream" id=19]
 [ext_resource path="res://sounds/eyes/eye_defeat.mp3" type="AudioStream" id=20]
+[ext_resource path="res://sounds/tv/insert_tape.mp3" type="AudioStream" id=21]
 
 [node name="AudioPlayer" type="Node"]
 script = ExtResource( 3 )
@@ -80,3 +81,6 @@ stream = ExtResource( 16 )
 
 [node name="TvOff" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
+
+[node name="InsertTape" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
