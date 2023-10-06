@@ -11,5 +11,5 @@ dest_files=[ "res://.import/eyes_lit_up.mp3-25f86218f2e2d9da236b7252e62ac1fc.mp3
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

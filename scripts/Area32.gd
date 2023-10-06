@@ -44,6 +44,7 @@ func trigger_use(object_number):
             elif _should_illuminate_monster():
                 get_tree().call_group("player", "lock_movement")
                 get_tree().call_group("player", "show_middle_finger")
+                get_tree().call_group("audio_player", "play", "EyesLitUp")
                 yield(get_tree().create_timer(38.0 / 15.0 + 0.5), "timeout")
                 get_tree().call_group("player", "turn_on_flashlight")
                 get_tree().call_group("monster_eyes", "stop_showing")
