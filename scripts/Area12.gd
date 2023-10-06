@@ -35,13 +35,13 @@ func trigger_use(object_number):
                 Global.door_2_open = true
                 update_visibilities()
             else:
-                Global.takes += 1
-                Global.lights_on = true
-                Global.reset_single_loop()
-                switch_areas("Area21")
                 yield(say_yourself(YouScreen.WHOS_TALKING), "completed")
                 if Global.lights_on: yield($"../../Rewind".play($"../../Rewind".VIDEO_2), "completed")
                 else: yield($"../../Rewind".play($"../../Rewind".VIDEO_2_1), "completed")
+                Global.takes += 1
+                Global.lights_on = true
+                Global.reset_single_loop()
+                switch_areas("Area21")                
                 yield(show_blue_screen(), "completed")
         object_2.object_number:
             Global.batteries_removed = true

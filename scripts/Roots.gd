@@ -35,5 +35,5 @@ func _play_roots_audio(loops_completed):
         2: $Roots2.play()
         3: $Roots3.play()
         4: $Roots4.play()
-        5: $Roots5.play()
+        5: $Roots6.play()
         6: $Roots5.play()

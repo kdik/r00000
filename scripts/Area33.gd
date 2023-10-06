@@ -54,19 +54,12 @@ func trigger_use(object_number):
                 Global.gate_3_open = true
                 get_tree().call_group("audio_player", "play", "DoorMetal")
             else:
-                var hide_and_seek_started = Global.hide_and_seek_started
-                Global.takes += 1
-                Global.loops_completed += 1
-                if Global.monster_defeated: Global.loops_completed_after_defeating_monster += 1
-                if not Global.monster_defeated: Global.lights_on = true
-                Global.reset_single_loop()
-                switch_areas("Area31")
                 get_tree().call_group("monster_eyes", "stop_showing")
                 get_tree().call_group("filter", "stop_playing")
                 if Global.monster_defeated:
                     yield(say_yourself(YouScreen.FUCK_THIS_FOOTAGE), "completed")
                     yield($"../../Rewind".play($"../../Rewind".VIDEO_4), "completed")
-                elif hide_and_seek_started: 
+                elif Global.hide_and_seek_started: 
                     yield(say_monster(MonsterScreen.FOOTAGE_STILL_NOT_GOOD_ENOUGH), "completed")
                     yield($"../../Rewind".play($"../../Rewind".VIDEO_3), "completed")
                 else: 
@@ -77,6 +70,12 @@ func trigger_use(object_number):
                 get_tree().call_group("gameplay_audio_player", "stop", "Eyes1")
                 get_tree().call_group("gameplay_audio_player", "stop", "Eyes2")
                 get_tree().call_group("gameplay_audio_player", "stop", "Eyes3")
+                Global.takes += 1
+                Global.loops_completed += 1
+                if Global.monster_defeated: Global.loops_completed_after_defeating_monster += 1
+                if not Global.monster_defeated: Global.lights_on = true
+                Global.reset_single_loop()
+                switch_areas("Area31")                
                 yield(show_blue_screen(), "completed")
         object_4.object_number:
             if Global.battery_count < 3:
