@@ -22,7 +22,7 @@ func get_description(object_number):
     match object_number:
         object_1.object_number: 
             if Global.door_2_open: return "retake footage"
-            else: return "open the forsaken doors"
+            else: return "open doors"
         object_2.object_number: return "take batteries"
         object_3.object_number: return "go further"
         object_4.object_number: return "go upstairs"
