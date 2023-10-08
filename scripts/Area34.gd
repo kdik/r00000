@@ -32,14 +32,19 @@ func trigger_use(object_number):
     yield(get_tree(), "idle_frame")
     
 func update_visibilities():
-    $ViewLight.set_visibility(Global.lights_on and not Global.door_3_open)
-    $ViewLightDoor3Open.set_visibility(Global.lights_on and Global.door_3_open)
+    $ViewLight.set_visibility(Global.lights_on and not Global.door_3_open and not YellowPaint.is_enabled())
+    $ViewLightDoor3Open.set_visibility(Global.lights_on and Global.door_3_open and not YellowPaint.is_enabled())
     $ViewDark.set_visibility(not Global.lights_on and not Global.door_3_open)
     $ViewDarkDoor3Open.set_visibility(not Global.lights_on and Global.door_3_open)
     get_tree().call_group("decal_dome", "clear")
     $DecalGraffiti.set_visibility(Global.lights_on)
-    $DecalFlashlight.set_visibility(Global.lights_on and not Global.have_flashlight)
+    $DecalFlashlight.set_visibility(Global.lights_on and not Global.have_flashlight and not YellowPaint.is_enabled())
     get_tree().call_group("object_dome", "clear")
     object_1.set_visibility(true)
     object_2.set_visibility(Global.lights_on and not Global.have_flashlight and not Global.monster_defeated)
     object_3.set_visibility(Global.lights_on and not Global.monster_defeated)
+    # yellow paint
+    $ViewLightHint.set_visibility(Global.lights_on and not Global.door_3_open and YellowPaint.is_enabled())
+    $ViewLightDoor3OpenHint.set_visibility(Global.lights_on and Global.door_3_open and YellowPaint.is_enabled())
+    $DecalFlashlightHint.set_visibility(Global.lights_on and not Global.have_flashlight and YellowPaint.is_enabled())
+    

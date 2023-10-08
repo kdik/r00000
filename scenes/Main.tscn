@@ -645,11 +645,20 @@ script = ExtResource( 15 )
 [node name="ViewLight" parent="Areas/Area32" instance=ExtResource( 8 )]
 texture_path = "res://images/area2/area_2_light_view.jpg"
 
+[node name="ViewLightHint" parent="Areas/Area32" instance=ExtResource( 8 )]
+texture_path = "res://images/area2/area_2_light_view_hint.jpg"
+
 [node name="ViewLightDoor3Open" parent="Areas/Area32" instance=ExtResource( 8 )]
 texture_path = "res://images/area2/area_2_light_view_door_3_open.jpg"
 
+[node name="ViewLightDoor3OpenHint" parent="Areas/Area32" instance=ExtResource( 8 )]
+texture_path = "res://images/area2/area_2_light_view_door_3_open_hint.jpg"
+
 [node name="ViewLightDoor3Gate3Open" parent="Areas/Area32" instance=ExtResource( 8 )]
 texture_path = "res://images/area2/area_2_light_view_door_3_gate_3_open.jpg"
+
+[node name="ViewLightDoor3Gate3OpenHint" parent="Areas/Area32" instance=ExtResource( 8 )]
+texture_path = "res://images/area2/area_2_light_view_door_3_gate_3_open_hint.jpg"
 
 [node name="ViewLightDoor2Open" parent="Areas/Area32" instance=ExtResource( 8 )]
 texture_path = "res://images/area2/area_2_light_view_door_2_open.jpg"
@@ -711,11 +720,20 @@ script = ExtResource( 17 )
 [node name="ViewLight" parent="Areas/Area33" instance=ExtResource( 8 )]
 texture_path = "res://images/area3/area_3_light_view.jpg"
 
+[node name="ViewLightHint" parent="Areas/Area33" instance=ExtResource( 8 )]
+texture_path = "res://images/area3/area_3_light_view_hint.jpg"
+
 [node name="ViewLightDoor3Open" parent="Areas/Area33" instance=ExtResource( 8 )]
 texture_path = "res://images/area3/area_3_light_view_door_3_open.jpg"
 
+[node name="ViewLightDoor3OpenHint" parent="Areas/Area33" instance=ExtResource( 8 )]
+texture_path = "res://images/area3/area_3_light_view_door_3_open_hint.jpg"
+
 [node name="ViewLightDoor3Gate3Open" parent="Areas/Area33" instance=ExtResource( 8 )]
 texture_path = "res://images/area3/area_3_light_view_door_3_gate_3_open.jpg"
+
+[node name="ViewLightDoor3Gate3OpenHint" parent="Areas/Area33" instance=ExtResource( 8 )]
+texture_path = "res://images/area3/area_3_light_view_door_3_gate_3_open_hint.jpg"
 
 [node name="ViewLightDoor2Open" parent="Areas/Area33" instance=ExtResource( 8 )]
 texture_path = "res://images/area3/area_3_light_view_door_2_open.jpg"
@@ -750,6 +768,9 @@ texture_path = "res://images/area3/graffiti.png"
 [node name="DecalFlashlight" parent="Areas/Area33" instance=ExtResource( 13 )]
 texture_path = "res://images/area3/flashlight.png"
 
+[node name="DecalFlashlightHint" parent="Areas/Area33" instance=ExtResource( 13 )]
+texture_path = "res://images/area3/flashlight_hint.png"
+
 [node name="DecalTagIn" parent="Areas/Area33" instance=ExtResource( 13 )]
 texture_path = "res://images/area3/tag_in.png"
 
@@ -783,8 +804,14 @@ script = ExtResource( 18 )
 [node name="ViewLight" parent="Areas/Area34" instance=ExtResource( 8 )]
 texture_path = "res://images/area4/area_4_light_view.jpg"
 
+[node name="ViewLightHint" parent="Areas/Area34" instance=ExtResource( 8 )]
+texture_path = "res://images/area4/area_4_light_view_hint.jpg"
+
 [node name="ViewLightDoor3Open" parent="Areas/Area34" instance=ExtResource( 8 )]
 texture_path = "res://images/area4/area_4_light_view_door_3_open.jpg"
+
+[node name="ViewLightDoor3OpenHint" parent="Areas/Area34" instance=ExtResource( 8 )]
+texture_path = "res://images/area4/area_4_light_view_door_3_open_hint.jpg"
 
 [node name="ViewDark" parent="Areas/Area34" instance=ExtResource( 8 )]
 texture_path = "res://images/area4/area_4_dark_view.jpg"
@@ -797,6 +824,9 @@ texture_path = "res://images/area4/graffiti.png"
 
 [node name="DecalFlashlight" parent="Areas/Area34" instance=ExtResource( 13 )]
 texture_path = "res://images/area4/flashlight.png"
+
+[node name="DecalFlashlightHint" parent="Areas/Area34" instance=ExtResource( 13 )]
+texture_path = "res://images/area4/flashlight_hint.png"
 
 [node name="Object1" parent="Areas/Area34" instance=ExtResource( 7 )]
 texture_path = "res://images/area4/area_4_object_1.png"

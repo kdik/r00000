@@ -60,6 +60,7 @@ Settings="*res://scripts/Settings.gd"
 Steam="*res://addons/godotsteam/steam.tscn"
 Achievements="*res://scripts/Achievements.gd"
 AudioPlayer="*res://scenes/AudioPlayer.tscn"
+YellowPaint="*res://scripts/YellowPaint.gd"
 
 [debug]
 

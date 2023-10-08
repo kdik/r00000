@@ -3,11 +3,13 @@ extends Node
 var disable_crt = false
 var strong_rumble = false
 var disable_border = false
+var yellow_paint = false
 
 func _ready():
     disable_crt = _get_boolean_argument_value("disable-crt")
     strong_rumble = _get_boolean_argument_value("strong-rumble")
     disable_border = _get_boolean_argument_value("disable-border")
+    yellow_paint = _get_boolean_argument_value("yellow-paint")
 
 func _get_boolean_argument_value(key_name):
     var arguments = OS.get_cmdline_args()

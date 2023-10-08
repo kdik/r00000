@@ -107,9 +107,9 @@ func trigger_use(object_number):
     yield(get_tree(), "idle_frame")
 
 func update_visibilities():
-    $ViewLight.set_visibility(Global.lights_on and not Global.door_3_open and not Global.gate_3_open and not Global.door_2_open)
-    $ViewLightDoor3Open.set_visibility(Global.lights_on and Global.door_3_open and not Global.gate_3_open and not Global.door_2_open)
-    $ViewLightDoor3Gate3Open.set_visibility(Global.lights_on and Global.door_3_open and Global.gate_3_open and not Global.door_2_open)
+    $ViewLight.set_visibility(Global.lights_on and not Global.door_3_open and not Global.gate_3_open and not Global.door_2_open and not YellowPaint.is_enabled())
+    $ViewLightDoor3Open.set_visibility(Global.lights_on and Global.door_3_open and not Global.gate_3_open and not Global.door_2_open and not YellowPaint.is_enabled())
+    $ViewLightDoor3Gate3Open.set_visibility(Global.lights_on and Global.door_3_open and Global.gate_3_open and not Global.door_2_open and not YellowPaint.is_enabled())
     $ViewLightDoor2Open.set_visibility(Global.lights_on and not Global.door_3_open and not Global.gate_3_open and Global.door_2_open)
     $ViewLightDoor2Door3Open.set_visibility(Global.lights_on and Global.door_3_open and not Global.gate_3_open and Global.door_2_open)
     $ViewLightDoor2Door3Gate3Open.set_visibility(Global.lights_on and Global.door_3_open and Global.gate_3_open and Global.door_2_open)
@@ -121,7 +121,7 @@ func update_visibilities():
     $ViewDarkDoor2Door3Gate3Open.set_visibility(not Global.lights_on and Global.door_3_open and Global.gate_3_open and Global.door_2_open)
     get_tree().call_group("decal_dome", "clear")
     $DecalGraffiti.set_visibility(Global.lights_on)
-    $DecalFlashlight.set_visibility(Global.lights_on and not Global.have_flashlight)
+    $DecalFlashlight.set_visibility(Global.lights_on and not Global.have_flashlight and not YellowPaint.is_enabled())
     $DecalTagIn.set_visibility(Global.monster_defeated and Global.loops_completed_after_defeating_monster == 1)
     $DecalTagYour.set_visibility(Global.monster_defeated and Global.loops_completed_after_defeating_monster == 2)
     $DecalTagHead.set_visibility(Global.monster_defeated and Global.loops_completed_after_defeating_monster == 3)
@@ -131,6 +131,11 @@ func update_visibilities():
     object_2.set_visibility(not _should_illuminate_monster())
     object_3.set_visibility(not _should_illuminate_monster())
     object_4.set_visibility(Global.lights_on and not _should_illuminate_monster())
+    # yellow paint
+    $ViewLightHint.set_visibility(Global.lights_on and not Global.door_3_open and not Global.gate_3_open and not Global.door_2_open and YellowPaint.is_enabled())
+    $ViewLightDoor3OpenHint.set_visibility(Global.lights_on and Global.door_3_open and not Global.gate_3_open and not Global.door_2_open and YellowPaint.is_enabled())
+    $ViewLightDoor3Gate3OpenHint.set_visibility(Global.lights_on and Global.door_3_open and Global.gate_3_open and not Global.door_2_open and YellowPaint.is_enabled())
+    $DecalFlashlightHint.set_visibility(Global.lights_on and not Global.have_flashlight and YellowPaint.is_enabled())
 
 func _introduce_monster():
     yield(Monster.introduce(_get_monster_coordinates(), "fade_out_far"), "completed")

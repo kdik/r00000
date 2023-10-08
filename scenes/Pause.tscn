@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/Pause.gd" type="Script" id=1]
 [ext_resource path="res://fonts/vhs_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://images/play_triangle.png" type="Texture" id=3]
 [ext_resource path="res://scenes/ControlInstructions.tscn" type="PackedScene" id=4]
+[ext_resource path="res://images/play_triangle_yellow.png" type="Texture" id=5]
 
 [node name="Pause" type="ColorRect"]
 margin_right = 640.0
@@ -37,16 +38,23 @@ bbcode_text = "[right]RESUME  [/right]
 [right]EJECT   [/right]"
 text = "RESUME  
 EJECT   "
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Cursor" type="TextureRect" parent="."]
+[node name="Cursor" type="Control" parent="."]
 margin_left = 600.0
 margin_top = 32.0
 margin_right = 640.0
 margin_bottom = 72.0
+
+[node name="White" type="TextureRect" parent="Cursor"]
+margin_right = 40.0
+margin_bottom = 40.0
 texture = ExtResource( 3 )
+
+[node name="Yellow" type="TextureRect" parent="Cursor"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
 
 [node name="ControlInstructions" parent="." instance=ExtResource( 4 )]
 margin_left = 20.0

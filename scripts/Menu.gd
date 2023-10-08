@@ -10,6 +10,7 @@ onready var game_scene = preload("res://scenes/Main.tscn")
 onready var locked = false
 
 func _ready():
+    YellowPaint.disable()
     if Settings.disable_crt: _disable_crt()
     if Settings.disable_border: _disable_border()
     SaveLoad.init()

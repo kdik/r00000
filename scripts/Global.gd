@@ -74,6 +74,7 @@ func reset_single_loop():
     hide_and_seek_lost = false
     used_cheat_code = false
     reset_between_areas()
+    YellowPaint.disable()
 
 func reset_between_areas():
     door_1_open = false
