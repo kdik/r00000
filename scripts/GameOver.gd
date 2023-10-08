@@ -90,10 +90,14 @@ func _process(delta):
     time += delta
     if time < 9.2:
         return
-    if Global.CAUGHT and Input.is_action_just_pressed("cheatcode"):
-        cheatcode_count += 1
-        get_tree().call_group("audio_player", "play", "PhoneDial", true)
-        if cheatcode_count == 3:
+    if Global.CAUGHT and cheatcode_count < 3 and (Input.is_action_just_pressed("cheatcode") or Input.is_action_just_pressed("cheatcode_controller")):
+        if Input.is_action_just_pressed("cheatcode"): 
+            cheatcode_count += 1
+            get_tree().call_group("audio_player", "play", "PhoneDial", true)
+        if Input.is_action_just_pressed("cheatcode_controller"): 
+            cheatcode_count += 3
+            _play_triple_phone_dial()
+        if cheatcode_count >= 3:
             $VideoPlayer3/AudioStreamPlayer.stop()
             $VideoPlayer7.play()
             $VideoPlayer7.visible = true
@@ -102,6 +106,13 @@ func _process(delta):
             $VideoPlayer3.stop()
             $VideoPlayer6.stop()
             get_tree().call_group("achievements", "unlock_getalife")
+
+func _play_triple_phone_dial():
+    get_tree().call_group("audio_player", "play", "PhoneDial", true)
+    yield(get_tree().create_timer(0.25), "timeout")
+    get_tree().call_group("audio_player", "play", "PhoneDial", true)
+    yield(get_tree().create_timer(0.25), "timeout")
+    get_tree().call_group("audio_player", "play", "PhoneDial", true)
 
 func _show_static():
     get_tree().call_group("audio_player", "play", "NoSignal")
