@@ -16,7 +16,7 @@ __meta__ = {
 }
 
 [node name="TitleLabel" type="RichTextLabel" parent="."]
-margin_left = 24.0
+margin_left = 20.0
 margin_top = 32.0
 margin_right = 640.0
 margin_bottom = 112.0
