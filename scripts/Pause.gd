@@ -9,7 +9,6 @@ onready var yellow_paint_number
 func _ready():
     set_pause_mode(PAUSE_MODE_PROCESS)
     visible = false
-    $TitleLabel.set_bbcode(_to_code(Global.takes))
     _set_selection_text()
     _update_selection()
     
@@ -17,6 +16,7 @@ func pause():
     visible = true
     _set_selection_text()
     _update_selection()
+    $TitleLabel.set_bbcode(_to_code(Global.takes))
     get_tree().call_group("rumble", "pause")
     get_tree().call_group("audio_player", "play", "TvBuzz")
     
