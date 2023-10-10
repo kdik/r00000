@@ -1,7 +1,7 @@
 extends Node
 
 # Steam variables
-onready var Steam = preload("res://addons/godotsteam/godotsteam.gdns").new()
+onready var Steam
 var IS_OWNED: bool = false
 var IS_ONLINE: bool = false
 var IS_FREE_WEEKEND: bool = false
@@ -10,6 +10,12 @@ var STEAM_NAME: String = ""
 
 func _ready() -> void:
     # Initialize Steam
+    if ResourceLoader.exists("res://addons/godotsteam/godotsteam.gdns"):
+        Steam = load("res://addons/godotsteam/godotsteam.gdns").new()
+    else:
+        set_process(false)
+        return
+    
     var INIT: Dictionary = Steam.steamInit(false)
     print("[STEAM] Did Steam initialize?: "+str(INIT))
     if INIT['status'] != 1:
@@ -29,7 +35,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
     # Get callbacks
     Steam.run_callbacks()
-
 
 ###
 # You can add more functionality here and just call it through GDScript like so: 
