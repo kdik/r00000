@@ -19,7 +19,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/Area.gd"
 }, {
-"base": "",
+"base": "Reference",
 "class": "Steam",
 "language": "NativeScript",
 "path": "res://addons/godotsteam/godotsteam.gdns"
@@ -57,7 +57,7 @@ Global="*res://scripts/Global.gd"
 Monster="*res://scripts/Monster.gd"
 SaveLoad="*res://scripts/SaveLoad.gd"
 Settings="*res://scripts/Settings.gd"
-Steam="*res://addons/godotsteam/steam.tscn"
+Steam="*res://addons/godotsteam/steam.gd"
 Achievements="*res://scripts/Achievements.gd"
 AudioPlayer="*res://scenes/AudioPlayer.tscn"
 YellowPaint="*res://scripts/YellowPaint.gd"
