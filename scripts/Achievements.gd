@@ -1,9 +1,14 @@
 extends Node
 
+onready var enabled
+
 func _ready():
+    enabled = ResourceLoader.exists("res://addons/godotsteam/godotsteam.gdns")
     add_to_group("achievements")
 
 func _unlock(achievement):
+    if not enabled:
+        return
     Steam.Steam.setAchievement(achievement)
     Steam.Steam.storeStats()
     print("Unlocked achievement: " + achievement)
