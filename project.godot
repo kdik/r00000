@@ -61,6 +61,7 @@ Steam="*res://addons/godotsteam/steam.gd"
 Achievements="*res://scripts/Achievements.gd"
 AudioPlayer="*res://scenes/AudioPlayer.tscn"
 YellowPaint="*res://scripts/YellowPaint.gd"
+WindowManager="*res://scripts/WindowManager.gd"
 
 [debug]
 
@@ -70,8 +71,6 @@ settings/fps/force_fps=15
 
 window/size/width=680
 window/size/height=510
-window/size/resizable=false
-window/size/fullscreen=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 

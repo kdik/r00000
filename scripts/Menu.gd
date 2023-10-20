@@ -6,6 +6,7 @@ onready var play_number
 onready var delete_footage_number
 onready var credits_number
 onready var eject_number
+onready var windowed_fullscreen_number
 onready var game_scene = preload("res://scenes/Main.tscn")
 onready var locked = false
 
@@ -37,6 +38,7 @@ func _update_selection(increment = 0):
         1: $Cursor.set_position(Vector2(620, 71))
         2: $Cursor.set_position(Vector2(620, 95))
         3: $Cursor.set_position(Vector2(620, 119))
+        4: $Cursor.set_position(Vector2(620, 143))
     if increment != 0:
         get_tree().call_group("audio_player", "play", "TvMenuSelect", true)
 
@@ -46,29 +48,65 @@ func _on_select():
         eject_number: _eject()
         delete_footage_number: _delete_footage()
         credits_number: _credits()
+        windowed_fullscreen_number: _windowed_fullscreen()
         
 func _set_selection_text():
     var text = ""
     if Global.area == "Area11":
-        text += "[right]PLAY     [/right]"
-        text += "[right]CREDITS  [/right]"
-        text += "[right]EJECT    [/right]"
-        item_count = 3
-        play_number = 0
-        credits_number = 1
-        eject_number = 2
-        delete_footage_number = -1
+        if Settings.enable_windowed:
+            if WindowManager.is_fullscreen():
+                text = _get_formatted_selection_text(["PLAY", "SET WINDOWED", "CREDITS", "EJECT"])
+            else: 
+                text = _get_formatted_selection_text(["PLAY", "SET FULLSCREEN", "CREDITS", "EJECT"])
+            item_count = 4
+            play_number = 0
+            windowed_fullscreen_number = 1
+            credits_number = 2
+            eject_number = 3
+            delete_footage_number = -1
+        else:
+            text = _get_formatted_selection_text(["PLAY", "CREDITS", "EJECT"])
+            item_count = 3
+            play_number = 0
+            credits_number = 1
+            eject_number = 2
+            delete_footage_number = -1
+            windowed_fullscreen_number = -1
     else:
-        text += "[right]RESUME          [/right]"
-        text += "[right]DELETE FOOTAGE  [/right]"
-        text += "[right]CREDITS         [/right]"
-        text += "[right]EJECT           [/right]"
-        item_count = 4
-        play_number = 0
-        delete_footage_number = 1
-        credits_number = 2
-        eject_number = 3
+        if Settings.enable_windowed:
+            if WindowManager.is_fullscreen(): 
+                text = _get_formatted_selection_text(["RESUME", "DELETE FOOTAGE", "SET WINDOWED", "CREDITS", "EJECT"])
+            else:
+                text = _get_formatted_selection_text(["RESUME", "DELETE FOOTAGE", "SET FULLSCREEN", "CREDITS", "EJECT"])
+            item_count = 5
+            play_number = 0
+            delete_footage_number = 1
+            windowed_fullscreen_number = 2
+            credits_number = 3
+            eject_number = 4
+        else:
+            text = _get_formatted_selection_text(["RESUME", "DELETE FOOTAGE", "CREDITS", "EJECT"])
+            item_count = 4
+            play_number = 0
+            delete_footage_number = 1
+            credits_number = 2
+            eject_number = 3
+            windowed_fullscreen_number = -1
     $SelectionLabel.set_bbcode(text)
+    
+func _get_formatted_selection_text(selections):
+    var longest_selection = 0
+    for selection in selections:
+        if selection.length() > longest_selection: longest_selection = selection.length()
+    var formatted_text = ""
+    for selection in selections:
+        formatted_text += "[right]"
+        formatted_text += selection
+        for i in range(longest_selection - selection.length()):
+            formatted_text += " "
+        formatted_text += "  [/right]"
+    print(formatted_text)
+    return formatted_text
 
 func _play():
     get_tree().call_group("audio_player", "stop", "TvBuzz")
@@ -99,6 +137,11 @@ func _delete_footage():
     yield(get_tree().create_timer(0.5), "timeout")
     yield($MenuFilter.stop_playing(), "completed")
     locked = false
+
+func _windowed_fullscreen():
+    var currently_fullscreen = WindowManager.is_fullscreen()
+    WindowManager.toggle_fullscreen_mode(currently_fullscreen)
+    _set_selection_text()
 
 func _disable_crt():
     $CrtCurtain.visible = false

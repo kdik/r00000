@@ -4,12 +4,14 @@ var disable_crt = false
 var strong_rumble = false
 var disable_border = false
 var yellow_paint = false
+var enable_windowed = false
 
 func _ready():
     disable_crt = _get_boolean_argument_value("disable-crt")
     strong_rumble = _get_boolean_argument_value("strong-rumble")
     disable_border = _get_boolean_argument_value("disable-border")
     yellow_paint = _get_boolean_argument_value("yellow-paint")
+    enable_windowed = _get_boolean_argument_value("enable-windowed")
 
 func _get_boolean_argument_value(key_name):
     var arguments = OS.get_cmdline_args()

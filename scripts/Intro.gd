@@ -5,7 +5,6 @@ onready var studio_animation_player = $Viewport/StudioNameLabel/AnimationPlayer
 onready var warning_scene = preload("res://scenes/Warning.tscn")
 
 func _ready():
-    Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
     if Settings.disable_crt: _disable_crt()
     if Settings.disable_border: _disable_border()
     viewport_animation_player.play("turn_on")
